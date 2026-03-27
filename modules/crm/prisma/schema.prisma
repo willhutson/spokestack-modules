@@ -1,0 +1,126 @@
+// =============================================================================
+// CRM Module Schema
+// All models prefixed with crm_
+// Only FK into core: organizationId
+// Cross-model links go through ContextEntry
+// deletedAt on every model for soft deletes
+// =============================================================================
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model crm_Contact {
+  id             String   @id @default(uuid())
+  organizationId String
+  email          String?
+  phone          String?
+  firstName      String?
+  lastName       String?
+  company        String?
+  jobTitle       String?
+  source         String?
+  status         String   @default("active") // active | inactive | lead | customer
+  score          Int      @default(0) // lead score 0-100
+  metadata       Json     @default("{}")
+  lastContactedAt DateTime?
+  deletedAt      DateTime?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  deals        crm_Deal[]
+  interactions crm_Interaction[]
+  tags         crm_Tag[]
+
+  @@index([organizationId])
+  @@index([organizationId, email])
+  @@index([organizationId, status])
+  @@map("crm_contacts")
+}
+
+model crm_Deal {
+  id             String   @id @default(uuid())
+  organizationId String
+  contactId      String?
+  pipelineId     String
+  title          String
+  value          Float    @default(0)
+  currency       String   @default("USD")
+  stage          String   @default("lead")
+  probability    Int      @default(0) // 0-100 percent
+  expectedCloseDate DateTime?
+  closedAt       DateTime?
+  lostReason     String?
+  metadata       Json     @default("{}")
+  deletedAt      DateTime?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  contact  crm_Contact? @relation(fields: [contactId], references: [id])
+  pipeline crm_Pipeline @relation(fields: [pipelineId], references: [id])
+
+  @@index([organizationId])
+  @@index([organizationId, stage])
+  @@index([organizationId, pipelineId])
+  @@map("crm_deals")
+}
+
+model crm_Pipeline {
+  id             String   @id @default(uuid())
+  organizationId String
+  name           String
+  stages         Json     @default("[]") // ordered array of { id, name, probability }
+  isDefault      Boolean  @default(false)
+  deletedAt      DateTime?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  deals crm_Deal[]
+
+  @@unique([organizationId, name])
+  @@map("crm_pipelines")
+}
+
+model crm_Interaction {
+  id             String   @id @default(uuid())
+  organizationId String
+  contactId      String
+  type           String   // call | email | meeting | note | chat | task
+  subject        String?
+  body           String?
+  direction      String?  // inbound | outbound
+  duration       Int?     // seconds
+  outcome        String?
+  metadata       Json     @default("{}")
+  occurredAt     DateTime @default(now())
+  deletedAt      DateTime?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  contact crm_Contact @relation(fields: [contactId], references: [id])
+
+  @@index([organizationId])
+  @@index([organizationId, contactId])
+  @@index([organizationId, type])
+  @@map("crm_interactions")
+}
+
+model crm_Tag {
+  id             String   @id @default(uuid())
+  organizationId String
+  contactId      String
+  name           String
+  color          String?
+  deletedAt      DateTime?
+  createdAt      DateTime @default(now())
+
+  contact crm_Contact @relation(fields: [contactId], references: [id])
+
+  @@unique([organizationId, contactId, name])
+  @@map("crm_tags")
+}

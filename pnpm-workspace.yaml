@@ -1,0 +1,5 @@
+packages:
+  - "sdk"
+  - "core-schema"
+  - "marketplace"
+  - "modules/*"

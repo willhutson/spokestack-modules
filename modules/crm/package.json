@@ -1,0 +1,22 @@
+{
+  "name": "@spokestack/crm",
+  "version": "1.0.0",
+  "description": "CRM module for SpokeStack — contacts, deals, pipelines, and sales intelligence",
+  "main": "agent/definition.ts",
+  "scripts": {
+    "build": "tsc --noEmit",
+    "test": "vitest run",
+    "validate": "node -e \"require('@spokestack/module-sdk/cli/validate').validateModule('.')\"",
+    "lint": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@spokestack/module-sdk": "workspace:*",
+    "@spokestack/core-schema": "workspace:*"
+  },
+  "devDependencies": {
+    "react": "^18.2.0",
+    "@types/react": "^18.2.0",
+    "typescript": "^5.3.0",
+    "vitest": "^1.2.0"
+  }
+}

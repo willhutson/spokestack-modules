@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "outDir": "dist",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "jsx": "react-jsx",
+    "paths": {
+      "@spokestack/sdk": ["./sdk/index.ts"],
+      "@spokestack/sdk/*": ["./sdk/*"],
+      "@spokestack/core-schema": ["./core-schema/index.ts"],
+      "@spokestack/marketplace": ["./marketplace/index.ts"]
+    }
+  },
+  "include": ["sdk/**/*.ts", "marketplace/**/*.ts", "modules/**/*.ts", "modules/**/*.tsx", "core-schema/**/*.ts"],
+  "exclude": ["node_modules", "dist"]
+}

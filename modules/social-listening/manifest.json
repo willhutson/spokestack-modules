@@ -1,0 +1,66 @@
+{
+  "name": "@spokestack/social-listening",
+  "displayName": "Social Listening",
+  "description": "Social media monitoring, brand mentions, and sentiment tracking.",
+  "version": "0.1.0",
+  "author": {
+    "name": "SpokeStack",
+    "email": "modules@spokestack.io",
+    "url": "https://spokestack.io"
+  },
+  "compatibility": {
+    "coreVersion": "1.0.0",
+    "schemaHash": ""
+  },
+  "tier": {
+    "minimum": "growth",
+    "recommended": "scale"
+  },
+  "pricing": {
+    "model": "metered",
+    "price": 500,
+    "currency": "USD",
+    "trialDays": 7
+  },
+  "schema": {
+    "models": [
+      "sl_Monitor",
+      "sl_Mention",
+      "sl_Sentiment",
+      "sl_Topic",
+      "sl_Alert"
+    ],
+    "prefix": "sl_",
+    "dependsOn": []
+  },
+  "agent": {
+    "name": "social-listening-agent",
+    "personality": "A brand intelligence analyst that monitors social media, tracks mentions, analyzes sentiment, and alerts on trending topics.",
+    "tools": [
+      "createMonitor",
+      "getMentions",
+      "analyzeSentiment",
+      "setAlert"
+    ],
+    "contextContributions": []
+  },
+  "surfaces": {
+    "dashboard": [],
+    "pages": [],
+    "agentCards": []
+  },
+  "milestones": [],
+  "permissions": {
+    "coreRead": [
+      "Organization",
+      "Contact",
+      "ContextEntry"
+    ],
+    "coreWrite": [
+      "ContextEntry"
+    ],
+    "ownModels": true
+  },
+  "conflicts": [],
+  "enhances": []
+}

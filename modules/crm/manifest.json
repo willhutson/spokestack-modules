@@ -1,0 +1,195 @@
+{
+  "name": "@spokestack/crm",
+  "displayName": "CRM",
+  "description": "Full-featured CRM with contact management, deal pipelines, interaction tracking, and AI-powered sales intelligence.",
+  "version": "1.0.0",
+  "author": {
+    "name": "SpokeStack",
+    "email": "modules@spokestack.io",
+    "url": "https://spokestack.io"
+  },
+  "compatibility": {
+    "coreVersion": "1.0.0",
+    "schemaHash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tier": {
+    "minimum": "growth",
+    "recommended": "scale"
+  },
+  "pricing": {
+    "model": "flat",
+    "price": 4900,
+    "currency": "USD",
+    "trialDays": 14
+  },
+  "schema": {
+    "models": [
+      "crm_Contact",
+      "crm_Deal",
+      "crm_Pipeline",
+      "crm_Interaction",
+      "crm_Tag"
+    ],
+    "prefix": "crm_",
+    "dependsOn": []
+  },
+  "agent": {
+    "name": "crm-agent",
+    "personality": "A proactive sales intelligence assistant that helps manage contacts, track deals, and surface actionable insights from your pipeline.",
+    "tools": [
+      "createContact",
+      "updateContact",
+      "logInteraction",
+      "moveDeal",
+      "searchContacts",
+      "generatePipelineReport"
+    ],
+    "contextContributions": [
+      "crm.contact.created",
+      "crm.contact.updated",
+      "crm.deal.created",
+      "crm.deal.moved",
+      "crm.interaction.logged",
+      "crm.pipeline.report"
+    ]
+  },
+  "surfaces": {
+    "dashboard": [
+      {
+        "id": "crm-pipeline-widget",
+        "title": "Pipeline Overview",
+        "component": "CrmPipelineWidget",
+        "defaultSize": "large",
+        "refreshInterval": 300
+      },
+      {
+        "id": "crm-recent-contacts",
+        "title": "Recent Contacts",
+        "component": "CrmRecentContacts",
+        "defaultSize": "medium",
+        "refreshInterval": 60
+      }
+    ],
+    "pages": [
+      {
+        "path": "/crm",
+        "title": "CRM",
+        "component": "CrmOverviewPage",
+        "icon": "users",
+        "navSection": "modules"
+      },
+      {
+        "path": "/crm/contacts",
+        "title": "Contacts",
+        "component": "CrmContactsPage",
+        "icon": "contact",
+        "navSection": "modules"
+      },
+      {
+        "path": "/crm/deals",
+        "title": "Deals",
+        "component": "CrmDealsPage",
+        "icon": "dollar-sign",
+        "navSection": "modules"
+      }
+    ],
+    "agentCards": [
+      {
+        "id": "crm-quick-add",
+        "title": "Quick Add Contact",
+        "trigger": "add contact",
+        "component": "CrmQuickAddCard"
+      }
+    ]
+  },
+  "milestones": [
+    {
+      "id": "crm-first-contact",
+      "metric": {
+        "type": "count",
+        "entityTypes": ["crm_Contact"]
+      },
+      "threshold": 1,
+      "message": "You added your first contact! Your CRM journey begins.",
+      "priority": "medium",
+      "cooldownDays": 0
+    },
+    {
+      "id": "crm-100-contacts",
+      "metric": {
+        "type": "count",
+        "entityTypes": ["crm_Contact"]
+      },
+      "threshold": 100,
+      "message": "You've reached 100 contacts! Consider segmenting with tags for targeted outreach.",
+      "priority": "high",
+      "cooldownDays": 0
+    },
+    {
+      "id": "crm-first-deal-won",
+      "metric": {
+        "type": "count",
+        "entityTypes": ["crm_Deal"],
+        "field": "stage",
+        "keys": ["closed_won"]
+      },
+      "threshold": 1,
+      "message": "Congratulations on closing your first deal!",
+      "priority": "high",
+      "cooldownDays": 0
+    },
+    {
+      "id": "crm-stale-deals",
+      "metric": {
+        "type": "count",
+        "entityTypes": ["crm_Deal"],
+        "field": "updatedAt",
+        "window": {
+          "unit": "days",
+          "value": 14
+        }
+      },
+      "threshold": 5,
+      "message": "You have 5+ deals that haven't been updated in 2 weeks. Review your pipeline.",
+      "priority": "medium",
+      "cooldownDays": 7
+    },
+    {
+      "id": "crm-weekly-interactions",
+      "metric": {
+        "type": "count",
+        "entityTypes": ["crm_Interaction"],
+        "window": {
+          "unit": "weeks",
+          "value": 1
+        }
+      },
+      "threshold": 20,
+      "message": "Great engagement! You logged 20+ interactions this week.",
+      "priority": "low",
+      "cooldownDays": 7
+    }
+  ],
+  "permissions": {
+    "coreRead": [
+      "Organization",
+      "User",
+      "Contact",
+      "Conversation",
+      "Message",
+      "ContextEntry",
+      "Tag"
+    ],
+    "coreWrite": [
+      "ContextEntry",
+      "Notification"
+    ],
+    "ownModels": true
+  },
+  "conflicts": [],
+  "enhances": [
+    "social-publisher",
+    "analytics",
+    "nps-surveys"
+  ]
+}

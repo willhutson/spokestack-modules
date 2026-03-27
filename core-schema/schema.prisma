@@ -1,0 +1,602 @@
+// =============================================================================
+// SpokeStack Core Schema — 39 models
+// Mirror of spokestack-core's Prisma schema for module development.
+// DO NOT EDIT — see SYNC.md for update process.
+// =============================================================================
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ---------------------------------------------------------------------------
+// 1. Organization & Auth
+// ---------------------------------------------------------------------------
+
+model Organization {
+  id            String   @id @default(uuid())
+  name          String
+  slug          String   @unique
+  tier          String   @default("starter") // starter | growth | scale | enterprise
+  stripeCustomerId String? @unique
+  billingEmail  String?
+  logoUrl       String?
+  settings      Json     @default("{}")
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  deletedAt     DateTime?
+
+  users         User[]
+  teams         Team[]
+  invitations   Invitation[]
+  apiKeys       ApiKey[]
+  contacts      Contact[]
+  conversations Conversation[]
+  messages      Message[]
+  agents        Agent[]
+  workflows     Workflow[]
+  contextEntries ContextEntry[]
+  moduleInstallations ModuleInstallation[]
+  milestoneEvents MilestoneEvent[]
+  notifications Notification[]
+  files         File[]
+  webhooks      Webhook[]
+  auditLogs     AuditLog[]
+  channels      Channel[]
+  tags          Tag[]
+  pipelines     Pipeline[]
+  campaigns     Campaign[]
+  forms         Form[]
+  products      Product[]
+  invoices      Invoice[]
+  subscriptions Subscription[]
+
+  @@map("organizations")
+}
+
+model User {
+  id             String   @id @default(uuid())
+  organizationId String
+  email          String
+  name           String
+  avatarUrl      String?
+  role           String   @default("member") // owner | admin | member | viewer
+  lastActiveAt   DateTime?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  deletedAt      DateTime?
+
+  organization   Organization @relation(fields: [organizationId], references: [id])
+  teamMembers    TeamMember[]
+  messages       Message[]
+  auditLogs      AuditLog[]
+  notifications  Notification[]
+
+  @@unique([organizationId, email])
+  @@map("users")
+}
+
+model Team {
+  id             String   @id @default(uuid())
+  organizationId String
+  name           String
+  description    String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  deletedAt      DateTime?
+
+  organization   Organization @relation(fields: [organizationId], references: [id])
+  members        TeamMember[]
+
+  @@map("teams")
+}
+
+model TeamMember {
+  id        String   @id @default(uuid())
+  teamId    String
+  userId    String
+  role      String   @default("member")
+  createdAt DateTime @default(now())
+
+  team Team @relation(fields: [teamId], references: [id])
+  user User @relation(fields: [userId], references: [id])
+
+  @@unique([teamId, userId])
+  @@map("team_members")
+}
+
+model Invitation {
+  id             String   @id @default(uuid())
+  organizationId String
+  email          String
+  role           String   @default("member")
+  token          String   @unique
+  expiresAt      DateTime
+  acceptedAt     DateTime?
+  createdAt      DateTime @default(now())
+
+  organization Organization @relation(fields: [organizationId], references: [id])
+
+  @@map("invitations")
+}
+
+model ApiKey {
+  id             String   @id @default(uuid())
+  organizationId String
+  name           String
+  keyHash        String   @unique
+  prefix         String
+  scopes         Json     @default("[]")
+  lastUsedAt     DateTime?
+  expiresAt      DateTime?
+  createdAt      DateTime @default(now())
+  revokedAt      DateTime?
+
+  organization Organization @relation(fields: [organizationId], references: [id])
+
+  @@map("api_keys")
+}
+
+// ---------------------------------------------------------------------------
+// 2. Contacts & Conversations
+// ---------------------------------------------------------------------------
+
+model Contact {
+  id             String   @id @default(uuid())
+  organizationId String
+  externalId     String?
+  email          String?
+  phone          String?
+  name           String?
+  firstName      String?
+  lastName       String?
+  avatarUrl      String?
+  metadata       Json     @default("{}")
+  source         String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  deletedAt      DateTime?
+
+  organization   Organization @relation(fields: [organizationId], references: [id])
+  conversations  Conversation[]
+  tags           ContactTag[]
+
+  @@unique([organizationId, externalId])
+  @@map("contacts")
+}
+
+model Conversation {
+  id             String   @id @default(uuid())
+  organizationId String
+  contactId      String?
+  channelId      String?
+  status         String   @default("active") // active | archived | closed
+  subject        String?
+  metadata       Json     @default("{}")
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  closedAt       DateTime?
+
+  organization Organization @relation(fields: [organizationId], references: [id])
+  contact      Contact?     @relation(fields: [contactId], references: [id])
+  channel      Channel?     @relation(fields: [channelId], references: [id])
+  messages     Message[]
+
+  @@map("conversations")
+}
+
+model Message {
+  id             String   @id @default(uuid())
+  organizationId String
+  conversationId String
+  senderId       String?
+  senderType     String   @default("user") // user | agent | system | contact
+  content        String
+  contentType    String   @default("text") // text | image | file | card | action
+  metadata       Json     @default("{}")
+  createdAt      DateTime @default(now())
+  editedAt       DateTime?
+  deletedAt      DateTime?
+
+  organization Organization @relation(fields: [organizationId], references: [id])
+  conversation Conversation @relation(fields: [conversationId], references: [id])
+  sender       User?        @relation(fields: [senderId], references: [id])
+
+  @@map("messages")
+}
+
+model Channel {
+  id             String   @id @default(uuid())
+  organizationId String
+  type           String   // whatsapp | email | sms | web | voice
+  name           String
+  config         Json     @default("{}")
+  isActive       Boolean  @default(true)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  organization  Organization   @relation(fields: [organizationId], references: [id])
+  conversations Conversation[]
+
+  @@map("channels")
+}
+
+// ---------------------------------------------------------------------------
+// 3. Agents & Workflows
+// ---------------------------------------------------------------------------
+
+model Agent {
+  id             String   @id @default(uuid())
+  organizationId String
+  name           String
+  slug           String
+  type           String   @default("module") // core | module | custom
+  moduleId       String?
+  systemPrompt   String?
+  personality    String?
+  config         Json     @default("{}")
+  isActive       Boolean  @default(true)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  deletedAt      DateTime?
+
+  organization Organization @relation(fields: [organizationId], references: [id])
+  tools        AgentTool[]
+
+  @@unique([organizationId, slug])
+  @@map("agents")
+}
+
+model AgentTool {
+  id        String   @id @default(uuid())
+  agentId   String
+  name      String
+  config    Json     @default("{}")
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+
+  agent Agent @relation(fields: [agentId], references: [id])
+
+  @@unique([agentId, name])
+  @@map("agent_tools")
+}
+
+model Workflow {
+  id             String   @id @default(uuid())
+  organizationId String
+  name           String
+  description    String?
+  trigger        Json
+  steps          Json     @default("[]")
+  isActive       Boolean  @default(true)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  deletedAt      DateTime?
+
+  organization Organization @relation(fields: [organizationId], references: [id])
+  executions   WorkflowExecution[]
+
+  @@map("workflows")
+}
+
+model WorkflowExecution {
+  id         String   @id @default(uuid())
+  workflowId String
+  status     String   @default("running") // running | completed | failed
+  input      Json     @default("{}")
+  output     Json?
+  error      String?
+  startedAt  DateTime @default(now())
+  completedAt DateTime?
+
+  workflow Workflow @relation(fields: [workflowId], references: [id])
+
+  @@map("workflow_executions")
+}
+
+// ---------------------------------------------------------------------------
+// 4. Context & Modules
+// ---------------------------------------------------------------------------
+
+model ContextEntry {
+  id             String   @id @default(uuid())
+  organizationId String
+  source         String
+  type           String
+  entityType     String
+  entityId       String
+  data           Json     @default("{}")
+  relevance      Float    @default(0.5)
+  createdAt      DateTime @default(now())
+  expiresAt      DateTime?
+
+  organization Organization @relation(fields: [organizationId], references: [id])
+
+  @@index([organizationId, entityType, entityId])
+  @@index([organizationId, source, type])
+  @@map("context_entries")
+}
+
+model ModuleInstallation {
+  id             String   @id @default(uuid())
+  organizationId String
+  moduleName     String
+  moduleVersion  String
+  status         String   @default("provisioning") // provisioning | active | suspended | uninstalling | uninstalled
+  config         Json     @default("{}")
+  installedAt    DateTime @default(now())
+  activatedAt    DateTime?
+  suspendedAt    DateTime?
+  uninstalledAt  DateTime?
+
+  organization Organization @relation(fields: [organizationId], references: [id])
+
+  @@unique([organizationId, moduleName])
+  @@map("module_installations")
+}
+
+model MilestoneEvent {
+  id             String   @id @default(uuid())
+  organizationId String
+  milestoneId    String
+  moduleName     String
+  message        String
+  priority       String
+  data           Json     @default("{}")
+  acknowledgedAt DateTime?
+  createdAt      DateTime @default(now())
+
+  organization Organization @relation(fields: [organizationId], references: [id])
+
+  @@map("milestone_events")
+}
+
+// ---------------------------------------------------------------------------
+// 5. Notifications & Audit
+// ---------------------------------------------------------------------------
+
+model Notification {
+  id             String   @id @default(uuid())
+  organizationId String
+  userId         String?
+  type           String
+  title          String
+  body           String?
+  data           Json     @default("{}")
+  readAt         DateTime?
+  createdAt      DateTime @default(now())
+
+  organization Organization @relation(fields: [organizationId], references: [id])
+  user         User?        @relation(fields: [userId], references: [id])
+
+  @@map("notifications")
+}
+
+model AuditLog {
+  id             String   @id @default(uuid())
+  organizationId String
+  userId         String?
+  action         String
+  entityType     String?
+  entityId       String?
+  metadata       Json     @default("{}")
+  ipAddress      String?
+  createdAt      DateTime @default(now())
+
+  organization Organization @relation(fields: [organizationId], references: [id])
+  user         User?        @relation(fields: [userId], references: [id])
+
+  @@map("audit_logs")
+}
+
+model Webhook {
+  id             String   @id @default(uuid())
+  organizationId String
+  url            String
+  events         Json     @default("[]")
+  secret         String
+  isActive       Boolean  @default(true)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  organization Organization @relation(fields: [organizationId], references: [id])
+
+  @@map("webhooks")
+}
+
+// ---------------------------------------------------------------------------
+// 6. Files & Media
+// ---------------------------------------------------------------------------
+
+model File {
+  id             String   @id @default(uuid())
+  organizationId String
+  name           String
+  mimeType       String
+  sizeBytes      Int
+  storageKey     String
+  url            String?
+  metadata       Json     @default("{}")
+  createdAt      DateTime @default(now())
+  deletedAt      DateTime?
+
+  organization Organization @relation(fields: [organizationId], references: [id])
+
+  @@map("files")
+}
+
+// ---------------------------------------------------------------------------
+// 7. Tags
+// ---------------------------------------------------------------------------
+
+model Tag {
+  id             String   @id @default(uuid())
+  organizationId String
+  name           String
+  color          String?
+  createdAt      DateTime @default(now())
+
+  organization Organization @relation(fields: [organizationId], references: [id])
+  contacts     ContactTag[]
+
+  @@unique([organizationId, name])
+  @@map("tags")
+}
+
+model ContactTag {
+  id        String   @id @default(uuid())
+  contactId String
+  tagId     String
+  createdAt DateTime @default(now())
+
+  contact Contact @relation(fields: [contactId], references: [id])
+  tag     Tag     @relation(fields: [tagId], references: [id])
+
+  @@unique([contactId, tagId])
+  @@map("contact_tags")
+}
+
+// ---------------------------------------------------------------------------
+// 8. Commerce & Billing
+// ---------------------------------------------------------------------------
+
+model Pipeline {
+  id             String   @id @default(uuid())
+  organizationId String
+  name           String
+  stages         Json     @default("[]")
+  isDefault      Boolean  @default(false)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  deletedAt      DateTime?
+
+  organization Organization @relation(fields: [organizationId], references: [id])
+
+  @@map("pipelines")
+}
+
+model Campaign {
+  id             String   @id @default(uuid())
+  organizationId String
+  name           String
+  type           String
+  status         String   @default("draft") // draft | active | paused | completed
+  config         Json     @default("{}")
+  startDate      DateTime?
+  endDate        DateTime?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  deletedAt      DateTime?
+
+  organization Organization @relation(fields: [organizationId], references: [id])
+
+  @@map("campaigns")
+}
+
+model Form {
+  id             String   @id @default(uuid())
+  organizationId String
+  name           String
+  slug           String
+  fields         Json     @default("[]")
+  settings       Json     @default("{}")
+  isActive       Boolean  @default(true)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  deletedAt      DateTime?
+
+  organization Organization @relation(fields: [organizationId], references: [id])
+  submissions  FormSubmission[]
+
+  @@unique([organizationId, slug])
+  @@map("forms")
+}
+
+model FormSubmission {
+  id        String   @id @default(uuid())
+  formId    String
+  data      Json     @default("{}")
+  metadata  Json     @default("{}")
+  createdAt DateTime @default(now())
+
+  form Form @relation(fields: [formId], references: [id])
+
+  @@map("form_submissions")
+}
+
+model Product {
+  id             String   @id @default(uuid())
+  organizationId String
+  name           String
+  description    String?
+  sku            String?
+  price          Float?
+  currency       String   @default("USD")
+  metadata       Json     @default("{}")
+  isActive       Boolean  @default(true)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  deletedAt      DateTime?
+
+  organization Organization @relation(fields: [organizationId], references: [id])
+
+  @@map("products")
+}
+
+model Invoice {
+  id             String   @id @default(uuid())
+  organizationId String
+  number         String
+  status         String   @default("draft") // draft | sent | paid | overdue | cancelled
+  currency       String   @default("USD")
+  subtotal       Float
+  tax            Float    @default(0)
+  total          Float
+  lineItems      Json     @default("[]")
+  dueDate        DateTime?
+  paidAt         DateTime?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  organization Organization @relation(fields: [organizationId], references: [id])
+
+  @@unique([organizationId, number])
+  @@map("invoices")
+}
+
+model Subscription {
+  id             String   @id @default(uuid())
+  organizationId String
+  stripeSubId    String?  @unique
+  plan           String
+  status         String   @default("active") // active | past_due | cancelled | trialing
+  currentPeriodStart DateTime?
+  currentPeriodEnd   DateTime?
+  cancelledAt    DateTime?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  organization Organization @relation(fields: [organizationId], references: [id])
+
+  @@map("subscriptions")
+}
+
+// ---------------------------------------------------------------------------
+// 9. Settings
+// ---------------------------------------------------------------------------
+
+model Setting {
+  id             String   @id @default(uuid())
+  organizationId String?
+  key            String
+  value          Json
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  @@unique([organizationId, key])
+  @@map("settings")
+}

@@ -1,0 +1,66 @@
+{
+  "name": "@spokestack/media-buying",
+  "displayName": "Media Buying",
+  "description": "Ad campaign management, budget allocation, and ROAS tracking.",
+  "version": "0.1.0",
+  "author": {
+    "name": "SpokeStack",
+    "email": "modules@spokestack.io",
+    "url": "https://spokestack.io"
+  },
+  "compatibility": {
+    "coreVersion": "1.0.0",
+    "schemaHash": ""
+  },
+  "tier": {
+    "minimum": "scale",
+    "recommended": "enterprise"
+  },
+  "pricing": {
+    "model": "tiered",
+    "price": 9900,
+    "currency": "USD",
+    "trialDays": 14
+  },
+  "schema": {
+    "models": [
+      "mb_Campaign",
+      "mb_AdSet",
+      "mb_Creative",
+      "mb_Budget",
+      "mb_Performance"
+    ],
+    "prefix": "mb_",
+    "dependsOn": []
+  },
+  "agent": {
+    "name": "media-buying-agent",
+    "personality": "A media buying strategist that manages ad campaigns, allocates budgets, tracks ROAS, and optimizes bid strategies across channels.",
+    "tools": [
+      "createCampaign",
+      "allocateBudget",
+      "trackPerformance",
+      "optimizeBids"
+    ],
+    "contextContributions": []
+  },
+  "surfaces": {
+    "dashboard": [],
+    "pages": [],
+    "agentCards": []
+  },
+  "milestones": [],
+  "permissions": {
+    "coreRead": [
+      "Organization",
+      "Contact",
+      "ContextEntry"
+    ],
+    "coreWrite": [
+      "ContextEntry"
+    ],
+    "ownModels": true
+  },
+  "conflicts": [],
+  "enhances": []
+}

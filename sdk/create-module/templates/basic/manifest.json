@@ -1,0 +1,4 @@
+{
+  "$schema": "../../types/manifest.ts",
+  "_comment": "This is the basic template manifest. The scaffolder populates real values."
+}
