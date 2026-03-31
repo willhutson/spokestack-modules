@@ -15,14 +15,49 @@ SpokeStack is composed of four repositories:
 
 ### Key Principles
 
-- **Prisma is the context layer.** One database. Every agent reads the full context graph.
+- **Prisma is the context layer.** One database (39 models + 27 enums). Every agent reads the full context graph.
 - **Modules are the interface layer.** Agent tools, UI surfaces, marketplace listings — NOT data boundaries.
 - **Agents bridge them.** Module agent definitions are authored here but EXECUTED by ongoing-agent-builder.
 - **ContextEntry is the glue.** Cross-module intelligence flows through ContextEntry, not direct foreign keys.
 
+### Core Schema (39 Models)
+
+The core schema is organized into 7 sections:
+
+| Section | Models | Description |
+|---------|--------|-------------|
+| Foundation (7) | Organization, User, Team, TeamMember, OrgSettings, OrgModule, FeatureFlag | Multi-tenant hierarchy and module activation |
+| Billing (4) | BillingAccount, BillingTier, BillingMeterEvent, BillingInvoice | Stripe-backed tiered billing (FREE/STARTER/PRO/BUSINESS/ENTERPRISE) |
+| Tasks (4) | TaskList, Task, TaskComment, TaskAttachment | Task management with comments and file attachments |
+| Projects (6) | Project, ProjectPhase, ProjectMilestone, WfCanvas, WfCanvasNode, WfCanvasEdge | Project workflows with visual canvas builder |
+| Briefs (4) | Brief, BriefPhase, Artifact, ArtifactReview | Creative briefs with versioned artifacts and review workflows |
+| Orders (5) | Customer, Order, OrderItem, Invoice, InvoiceItem | Commerce with customers, orders, and invoicing |
+| Agent (4) | AgentSession, AgentMessage, ContextEntry, ContextMilestone | Agent intelligence and the shared context graph |
+| Infrastructure (5) | Integration, Notification, NotificationPreference, FileAsset, FileVersion | Integrations, notifications, and file storage |
+
+Plus **27 enums** including `BillingTierType`, `ModuleType`, `ContextType`, `AgentType`, `TaskStatus`, `ProjectStatus`, `BriefStatus`, `OrderStatus`, and more.
+
+### ContextEntry — The Shared Context Graph
+
+ContextEntry is the moat. Every agent reads and writes to it. The real schema:
+
+```
+entryType:       ContextType (ENTITY | PATTERN | PREFERENCE | MILESTONE | INSIGHT)
+category:        String      — grouping key, e.g. "crm.contact", "crm.deal"
+key:             String      — unique within [organizationId, category, key]
+value:           Json        — structured context data
+confidence:      Float       — 0-1 relevance score
+sourceAgentType: AgentType?  — ONBOARDING | TASKS | PROJECTS | BRIEFS | ORDERS | MODULE
+```
+
+Modules write to ContextEntry when creating or updating entities. Other agents (and other modules) read these entries to build cross-domain intelligence.
+
 ### Module Agent Execution
 
-Module agents are defined in this repo as JSON-serializable `ModuleAgent` interfaces. At install time, they're registered with agent-builder via `POST /agents/register`. Agent tools execute through agent-builder's CoreToolkit (direct Prisma calls to spokestack-core's Supabase).
+Module agents are defined in this repo as JSON-serializable `ModuleAgent` interfaces. At install time, the marketplace installer:
+1. Creates an `OrgModule` record in core (using the `ModuleType` enum)
+2. Registers the agent with agent-builder via the multi-tenant API
+3. Agent tools execute through agent-builder's CoreToolkit (direct Prisma calls to spokestack-core's Supabase)
 
 ## Repository Structure
 
@@ -46,8 +81,8 @@ spokestack-modules/
 │       └── publish.ts            # Publish to marketplace
 │
 ├── core-schema/                  # Read-only mirror of core's Prisma schema
-│   ├── schema.prisma             # 39 core models
-│   ├── version.json              # Core version + schema hash
+│   ├── schema.prisma             # 39 models + 27 enums (synced from spokestack-core)
+│   ├── version.json              # Core version + schema hash + counts
 │   └── SYNC.md                   # Sync process documentation
 │
 ├── modules/                      # Module implementations
@@ -62,7 +97,7 @@ spokestack-modules/
 │
 └── marketplace/                  # Marketplace infrastructure
     ├── registry.ts               # Module registry + discovery
-    ├── installer.ts              # Async installation flow
+    ├── installer.ts              # Async installation flow (writes to OrgModule)
     ├── validator.ts              # Pre-install validation
     ├── billing.ts                # Per-module Stripe metered billing
     └── composer.ts               # Schema composition at publish time
@@ -102,6 +137,37 @@ Every module must include:
 3. **Cross-model links** go through `ContextEntry`, not direct FKs
 4. **`deletedAt` on every model** for soft deletes
 5. **No modifications** to core models
+6. **Use `@default(cuid())`** for IDs (matching core convention)
+
+### ContextEntry Writes
+
+When your tools create or update entities, write to ContextEntry using the real core fields:
+
+```typescript
+await prisma.contextEntry.create({
+  data: {
+    organizationId,
+    entryType: "ENTITY",              // ENTITY | PATTERN | PREFERENCE | MILESTONE | INSIGHT
+    category: "mymodule.thing",       // dot-separated namespace
+    key: entity.id,                   // unique within [orgId, category]
+    value: { event: "created", ... }, // structured Json
+    confidence: 0.8,                  // 0-1
+    sourceAgentType: "MODULE",        // always MODULE for marketplace modules
+  },
+});
+```
+
+### Tiers
+
+Manifests declare required tiers using the `BillingTierType` enum from core:
+
+| Tier | Value |
+|------|-------|
+| Free | `FREE` |
+| Starter ($29/mo) | `STARTER` |
+| Pro ($59/mo) | `PRO` |
+| Business ($149/mo) | `BUSINESS` |
+| Enterprise | `ENTERPRISE` |
 
 ### Agent Definition
 
@@ -151,8 +217,10 @@ pnpm sdk publish ./modules/my-module
 ### Requirements
 
 - Valid `manifest.json` with all required fields
+- Tier values match `BillingTierType` enum (`FREE`/`STARTER`/`PRO`/`BUSINESS`/`ENTERPRISE`)
 - All schema models prefixed and following rules
 - Agent definition is JSON-serializable
+- ContextEntry writes use real fields (`entryType`, `category`, `key`, `value`, `confidence`, `sourceAgentType`)
 - At least basic test coverage
 - Install/uninstall migrations working
 - README.md with documentation
@@ -161,8 +229,8 @@ pnpm sdk publish ./modules/my-module
 
 When a user installs your module from the marketplace:
 
-1. **Synchronous**: Validate manifest, check conflicts, create `ModuleInstallation` record (status: `provisioning`), activate Stripe billing
-2. **Async (queued)**: Apply pre-built migration, run `install.ts` seed, register agent with agent-builder, register surfaces, register milestones, update status to `active`, agent announces
+1. **Synchronous**: Validate manifest, check conflicts, create `OrgModule` record (the core model for module tracking), activate Stripe billing
+2. **Async (queued)**: Apply pre-built migration SQL, run `install.ts` seed, register agent with agent-builder, register surfaces, register milestones, activate `OrgModule`, agent announces
 
 ### Pricing Models
 
@@ -191,13 +259,13 @@ pnpm validate
 
 ## Available Modules
 
-| Module | Status | Description |
-|--------|--------|-------------|
-| CRM | Reference | Contact management, deal pipelines, interaction tracking |
-| Social Publisher | Stub | Social media scheduling and publishing |
-| Analytics | Stub | Business analytics and KPI tracking |
-| NPS Surveys | Stub | Net Promoter Score and feedback |
-| Social Listening | Stub | Brand monitoring and sentiment |
-| Media Buying | Stub | Ad campaign management |
-| LMS | Stub | Learning management system |
-| Video Pipeline | Stub | Video processing and streaming |
+| Module | Status | Tier | Description |
+|--------|--------|------|-------------|
+| CRM | Reference | PRO | Contact management, deal pipelines, interaction tracking |
+| Social Publisher | Stub | PRO | Social media scheduling and publishing |
+| Analytics | Stub | PRO | Business analytics and KPI tracking |
+| NPS Surveys | Stub | STARTER | Net Promoter Score and feedback |
+| Social Listening | Stub | PRO | Brand monitoring and sentiment |
+| Media Buying | Stub | BUSINESS | Ad campaign management |
+| LMS | Stub | PRO | Learning management system |
+| Video Pipeline | Stub | BUSINESS | Video processing and streaming |

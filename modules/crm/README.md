@@ -37,6 +37,29 @@ The CRM Agent responds to natural language:
 
 All models are prefixed with `crm_` and connect to core only via `organizationId`. Cross-module intelligence flows through `ContextEntry`.
 
+### Context Integration
+
+Every CRM tool writes to the core `ContextEntry` graph so other agents and modules can access CRM data:
+
+| Category | Entry Type | Description |
+|----------|------------|-------------|
+| `crm.contact` | ENTITY | Contact created or updated |
+| `crm.interaction` | ENTITY | Interaction logged against a contact |
+| `crm.deal` | ENTITY | Deal stage changed |
+| `crm.pipeline.report` | INSIGHT | Pipeline report generated |
+| `crm.module` | ENTITY | Module installed/uninstalled |
+
+All entries use `sourceAgentType: "MODULE"` and include a `confidence` score.
+
+## Core Model Permissions
+
+The CRM module reads from these core models:
+
+| Permission | Models |
+|------------|--------|
+| **coreRead** | Organization, User, Team, TeamMember, Task, TaskList, Project, Brief, ContextEntry |
+| **coreWrite** | ContextEntry, Notification |
+
 ## Installation
 
 ```bash
@@ -49,10 +72,12 @@ cd modules/crm && pnpm install
 
 The installer:
 1. Validates compatibility with your core version
-2. Creates default sales pipeline (Lead → Qualified → Proposal → Negotiation → Closed Won/Lost)
-3. Registers the CRM Agent with your agent-builder instance
-4. Activates dashboard widgets and CRM pages
-5. Sets up milestone tracking
+2. Creates an `OrgModule` record (moduleType: `CRM`)
+3. Creates default sales pipeline (Lead -> Qualified -> Proposal -> Negotiation -> Closed Won/Lost)
+4. Writes initial ContextEntry for the installation
+5. Registers the CRM Agent with your agent-builder instance
+6. Activates dashboard widgets and CRM pages
+7. Sets up milestone tracking
 
 ## Configuration
 
@@ -63,8 +88,8 @@ The module works out of the box. Customize via:
 
 ## Pricing
 
-- **Tier**: Growth (minimum), Scale (recommended)
-- **Price**: $49/month flat rate
+- **Tier**: PRO (minimum and recommended)
+- **Price**: $9/month flat rate (placeholder)
 - **Trial**: 14-day free trial
 
 ## Development
@@ -76,3 +101,9 @@ pnpm test
 # Validate module structure
 pnpm validate
 ```
+
+### Test Coverage
+
+- `tests/agent.test.ts` — Tool behavior against mock core (createContact, updateContact, logInteraction, moveDeal, searchContacts, generatePipelineReport)
+- `tests/schema.test.ts` — Manifest validation, schema rules, tier values, model prefixes, core model references
+- `tests/integration.test.ts` — Full lifecycle: install -> create contact -> log interaction -> create deal -> move through stages -> generate report -> verify ContextEntry writes
