@@ -19,14 +19,22 @@ interface MockModelDelegate {
 }
 
 const CORE_MODEL_NAMES = [
-  "organization", "user", "team", "teamMember", "invitation", "apiKey",
-  "contact", "conversation", "message", "channel",
-  "agent", "agentTool", "workflow", "workflowExecution",
-  "contextEntry", "moduleInstallation", "milestoneEvent",
-  "notification", "auditLog", "webhook",
-  "file", "tag", "contactTag",
-  "pipeline", "campaign", "form", "formSubmission",
-  "product", "invoice", "subscription", "setting",
+  // Foundation (7)
+  "organization", "user", "team", "teamMember", "orgSettings", "orgModule", "featureFlag",
+  // Billing (4)
+  "billingAccount", "billingTier", "billingMeterEvent", "billingInvoice",
+  // Tasks (4)
+  "taskList", "task", "taskComment", "taskAttachment",
+  // Projects (6)
+  "project", "projectPhase", "projectMilestone", "wfCanvas", "wfCanvasNode", "wfCanvasEdge",
+  // Briefs (4)
+  "brief", "briefPhase", "artifact", "artifactReview",
+  // Orders (5)
+  "customer", "order", "orderItem", "invoice", "invoiceItem",
+  // Agent (4)
+  "agentSession", "agentMessage", "contextEntry", "contextMilestone",
+  // Infrastructure (5)
+  "integration", "notification", "notificationPreference", "fileAsset", "fileVersion",
 ] as const;
 
 function generateId(): string {

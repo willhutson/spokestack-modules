@@ -5,39 +5,54 @@
  * ContextEntry is the universal context layer. Every agent reads
  * the full context graph. Modules write to it when creating/updating
  * entities, enabling cross-module intelligence without direct FKs.
+ *
+ * Real core schema fields:
+ *   entryType: ContextType (ENTITY | PATTERN | PREFERENCE | MILESTONE | INSIGHT)
+ *   category: string
+ *   key: string (unique per [organizationId, category, key])
+ *   value: Json
+ *   confidence: float (0-1)
+ *   sourceAgentType: AgentType? (ONBOARDING | TASKS | PROJECTS | BRIEFS | ORDERS | MODULE)
  */
+
+/** Matches the ContextType enum from core */
+export type ContextEntryType = "ENTITY" | "PATTERN" | "PREFERENCE" | "MILESTONE" | "INSIGHT";
+
+/** Matches the AgentType enum from core */
+export type AgentType = "ONBOARDING" | "TASKS" | "PROJECTS" | "BRIEFS" | "ORDERS" | "MODULE";
 
 export interface ContextEntry {
   id: string;
   organizationId: string;
-  /** Source module identifier, e.g. "crm", "analytics" */
-  source: string;
-  /** Entry type key, e.g. "crm.contact.created" */
-  type: string;
-  /** The entity this context relates to */
-  entityType: string;
-  entityId: string;
-  /** Structured context data */
-  data: Record<string, unknown>;
-  /** Relevance score (0-1) for prioritization */
-  relevance: number;
+  /** Entry type from ContextType enum */
+  entryType: ContextEntryType;
+  /** Category grouping, e.g. "crm.contact", "crm.deal" */
+  category: string;
+  /** Unique key within category, e.g. contact ID or event key */
+  key: string;
+  /** Structured context data (Json field in Prisma) */
+  value: Record<string, unknown>;
+  /** Confidence score (0-1) for prioritization */
+  confidence: number;
+  /** Which agent type created this entry */
+  sourceAgentType?: AgentType;
   /** ISO timestamp */
   createdAt: string;
+  updatedAt: string;
   /** Optional expiry */
   expiresAt?: string;
 }
 
 export interface ContextQuery {
   organizationId: string;
-  /** Filter by source module */
-  source?: string;
   /** Filter by entry type */
-  type?: string;
-  /** Filter by entity */
-  entityType?: string;
-  entityId?: string;
-  /** Minimum relevance score */
-  minRelevance?: number;
+  entryType?: ContextEntryType;
+  /** Filter by category */
+  category?: string;
+  /** Filter by key */
+  key?: string;
+  /** Minimum confidence score */
+  minConfidence?: number;
   /** Time range */
   since?: string;
   until?: string;
@@ -65,7 +80,7 @@ export interface MilestoneDefinition {
   /** Minimum days between re-triggers */
   cooldownDays: number;
   /** Optional: only evaluate for specific organization tiers */
-  tierFilter?: string[];
+  tierFilter?: ("FREE" | "STARTER" | "PRO" | "BUSINESS" | "ENTERPRISE")[];
 }
 
 export interface MilestoneMetricDefinition {
@@ -89,6 +104,6 @@ export interface MilestoneMetricDefinition {
  * write context entries when creating/updating entities.
  */
 export interface ContextWriter {
-  write(entry: Omit<ContextEntry, "id" | "createdAt">): Promise<ContextEntry>;
-  writeMany(entries: Omit<ContextEntry, "id" | "createdAt">[]): Promise<ContextEntry[]>;
+  write(entry: Omit<ContextEntry, "id" | "createdAt" | "updatedAt">): Promise<ContextEntry>;
+  writeMany(entries: Omit<ContextEntry, "id" | "createdAt" | "updatedAt">[]): Promise<ContextEntry[]>;
 }

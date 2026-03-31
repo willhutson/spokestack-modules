@@ -59,7 +59,6 @@ describe("CRM Schema Validation", () => {
     expect(modelBlocks.length).toBeGreaterThan(0);
 
     for (const block of modelBlocks) {
-      const modelName = block.match(/model\s+(crm_\w+)/)?.[1];
       expect(block).toContain("deletedAt");
     }
   });
@@ -75,8 +74,32 @@ describe("CRM Schema Validation", () => {
     expect(manifest.permissions.ownModels).toBe(true);
   });
 
+  it("uses real BillingTierType values", () => {
+    manifest = JSON.parse(fs.readFileSync(MANIFEST_PATH, "utf-8"));
+    const validTiers = ["FREE", "STARTER", "PRO", "BUSINESS", "ENTERPRISE"];
+    expect(validTiers).toContain(manifest.tier.minimum);
+    expect(validTiers).toContain(manifest.tier.recommended);
+  });
+
   it("declares ContextEntry in coreWrite permissions", () => {
     manifest = JSON.parse(fs.readFileSync(MANIFEST_PATH, "utf-8"));
     expect(manifest.permissions.coreWrite).toContain("ContextEntry");
+  });
+
+  it("coreRead only references real core models", () => {
+    manifest = JSON.parse(fs.readFileSync(MANIFEST_PATH, "utf-8"));
+    const realCoreModels = [
+      "Organization", "User", "Team", "TeamMember", "OrgSettings", "OrgModule", "FeatureFlag",
+      "BillingAccount", "BillingTier", "BillingMeterEvent", "BillingInvoice",
+      "TaskList", "Task", "TaskComment", "TaskAttachment",
+      "Project", "ProjectPhase", "ProjectMilestone", "WfCanvas", "WfCanvasNode", "WfCanvasEdge",
+      "Brief", "BriefPhase", "Artifact", "ArtifactReview",
+      "Customer", "Order", "OrderItem", "Invoice", "InvoiceItem",
+      "AgentSession", "AgentMessage", "ContextEntry", "ContextMilestone",
+      "Integration", "Notification", "NotificationPreference", "FileAsset", "FileVersion",
+    ];
+    for (const model of manifest.permissions.coreRead) {
+      expect(realCoreModels).toContain(model);
+    }
   });
 });

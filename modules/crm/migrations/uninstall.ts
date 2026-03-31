@@ -42,16 +42,22 @@ export async function uninstall(ctx: UninstallContext): Promise<void> {
     console.error("Failed to reach agent-builder for deregistration:", err);
   }
 
-  // 3. Write uninstall context entry
+  // 3. Deactivate OrgModule record
+  await ctx.prisma.orgModule.updateMany({
+    where: { organizationId: ctx.organizationId, moduleType: "CRM" },
+    data: { active: false },
+  });
+
+  // 4. Write uninstall context entry (using real core ContextEntry fields)
   await ctx.prisma.contextEntry.create({
     data: {
       organizationId: ctx.organizationId,
-      source: "crm",
-      type: "crm.module.uninstalled",
-      entityType: "ModuleInstallation",
-      entityId: "crm",
-      data: { uninstalledAt: now },
-      relevance: 0.3,
+      entryType: "ENTITY",
+      category: "crm.module",
+      key: `uninstalled:${Date.now()}`,
+      value: { uninstalledAt: now },
+      confidence: 0.3,
+      sourceAgentType: "MODULE",
     },
   });
 }

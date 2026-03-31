@@ -1,12 +1,12 @@
 /**
  * CRM Install Migration — seeds defaults and creates initial ContextEntry records.
- * Runs asynchronously after ModuleInstallation record is created.
+ * Runs asynchronously after OrgModule record is created.
  */
 
 interface InstallContext {
   prisma: any;
   organizationId: string;
-  moduleInstallationId: string;
+  orgModuleId: string;
 }
 
 const DEFAULT_PIPELINE_STAGES = [
@@ -29,30 +29,32 @@ export async function install(ctx: InstallContext): Promise<void> {
     },
   });
 
-  // 2. Write initial context entry
+  // 2. Write initial context entry (using real core ContextEntry fields)
   await ctx.prisma.contextEntry.create({
     data: {
       organizationId: ctx.organizationId,
-      source: "crm",
-      type: "crm.module.installed",
-      entityType: "ModuleInstallation",
-      entityId: ctx.moduleInstallationId,
-      data: {
+      entryType: "ENTITY",
+      category: "crm.module",
+      key: "installed",
+      value: {
+        orgModuleId: ctx.orgModuleId,
         defaultPipelineId: pipeline.id,
         stages: DEFAULT_PIPELINE_STAGES.map((s) => s.name),
       },
-      relevance: 0.9,
+      confidence: 0.9,
+      sourceAgentType: "MODULE",
     },
   });
 
-  // 3. Create welcome notification
+  // 3. Create welcome notification (uses real Notification model fields)
   await ctx.prisma.notification.create({
     data: {
       organizationId: ctx.organizationId,
-      type: "module.installed",
+      userId: "", // populated by installer with the installing user
+      type: "AGENT_RECOMMENDATION",
       title: "CRM Module Installed",
       body: "Your CRM is ready! Start by adding contacts or ask your agent to help set up your pipeline.",
-      data: { moduleId: "crm", pipelineId: pipeline.id },
+      channel: "IN_APP",
     },
   });
 }

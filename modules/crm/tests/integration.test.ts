@@ -12,29 +12,28 @@ const CRM_MODELS = ["crm_Contact", "crm_Deal", "crm_Pipeline", "crm_Interaction"
 describe("CRM Integration", () => {
   let prisma: MockPrismaClient;
   let orgId: string;
-  let installationId: string;
+  let orgModuleId: string;
 
   beforeEach(async () => {
     prisma = createMockPrismaClient(CRM_MODELS);
     const org = await prisma.organization.create({
-      data: { name: "Integration Test Org", slug: "int-test", tier: "scale" },
+      data: { name: "Integration Test Org", slug: "int-test" },
     });
     orgId = org.id as string;
 
-    // Create module installation record
-    const installation = await prisma.moduleInstallation.create({
+    // Create OrgModule record (real core model for module installations)
+    const orgModule = await prisma.orgModule.create({
       data: {
         organizationId: orgId,
-        moduleName: "crm",
-        moduleVersion: "1.0.0",
-        status: "provisioning",
+        moduleType: "CRM",
+        active: true,
       },
     });
-    installationId = installation.id as string;
+    orgModuleId = orgModule.id as string;
   });
 
   it("install creates default pipeline and context entry", async () => {
-    await install({ prisma: prisma as any, organizationId: orgId, moduleInstallationId: installationId });
+    await install({ prisma: prisma as any, organizationId: orgId, orgModuleId });
 
     const pipelines = await (prisma as any).crm_Pipeline.findMany({
       where: { organizationId: orgId },
@@ -44,13 +43,15 @@ describe("CRM Integration", () => {
     expect(pipelines[0].name).toBe("Default Pipeline");
 
     const entries = await prisma.contextEntry.findMany({
-      where: { organizationId: orgId, type: "crm.module.installed" },
+      where: { organizationId: orgId, category: "crm.module" },
     });
     expect(entries).toHaveLength(1);
+    expect((entries[0] as any).entryType).toBe("ENTITY");
+    expect((entries[0] as any).key).toBe("installed");
   });
 
   it("full sales workflow: create contact -> log interaction -> create deal -> move to won", async () => {
-    await install({ prisma: prisma as any, organizationId: orgId, moduleInstallationId: installationId });
+    await install({ prisma: prisma as any, organizationId: orgId, orgModuleId });
     const ctx = { prisma: prisma as any, organizationId: orgId };
 
     // 1. Create contact
@@ -106,8 +107,15 @@ describe("CRM Integration", () => {
 
     // 6. Verify context entries were created throughout
     const allEntries = await prisma.contextEntry.findMany({
-      where: { organizationId: orgId, source: "crm" },
+      where: { organizationId: orgId },
     });
+    // All entries should use real fields
+    for (const entry of allEntries) {
+      expect((entry as any).entryType).toBeDefined();
+      expect((entry as any).category).toBeDefined();
+      expect((entry as any).key).toBeDefined();
+      expect((entry as any).sourceAgentType).toBe("MODULE");
+    }
     // install + contact.created + interaction.logged + 3x deal.moved + pipeline.report
     expect(allEntries.length).toBeGreaterThanOrEqual(6);
   });

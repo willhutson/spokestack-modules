@@ -13,12 +13,12 @@
     "schemaHash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   },
   "tier": {
-    "minimum": "growth",
-    "recommended": "scale"
+    "minimum": "PRO",
+    "recommended": "PRO"
   },
   "pricing": {
     "model": "flat",
-    "price": 4900,
+    "price": 900,
     "currency": "USD",
     "trialDays": 14
   },
@@ -174,11 +174,13 @@
     "coreRead": [
       "Organization",
       "User",
-      "Contact",
-      "Conversation",
-      "Message",
-      "ContextEntry",
-      "Tag"
+      "Team",
+      "TeamMember",
+      "Task",
+      "TaskList",
+      "Project",
+      "Brief",
+      "ContextEntry"
     ],
     "coreWrite": [
       "ContextEntry",

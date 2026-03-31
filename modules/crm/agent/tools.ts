@@ -2,6 +2,14 @@
  * CRM Agent Tools — implementations for each tool declared in the agent definition.
  * These execute via agent-builder's CoreToolkit (direct Prisma calls).
  * Each tool that creates/updates entities writes to ContextEntry.
+ *
+ * Real ContextEntry fields (from core schema):
+ *   entryType: ContextType (ENTITY | PATTERN | PREFERENCE | MILESTONE | INSIGHT)
+ *   category: string
+ *   key: string (unique per [organizationId, category, key])
+ *   value: Json
+ *   confidence: float (0-1)
+ *   sourceAgentType: AgentType? (MODULE for marketplace modules)
  */
 
 interface ToolContext {
@@ -39,21 +47,22 @@ export async function createContact(
     },
   });
 
-  // Write to ContextEntry
+  // Write to ContextEntry using real core schema fields
   await ctx.prisma.contextEntry.create({
     data: {
       organizationId: ctx.organizationId,
-      source: "crm",
-      type: "crm.contact.created",
-      entityType: "crm_Contact",
-      entityId: contact.id,
-      data: {
+      entryType: "ENTITY",
+      category: "crm.contact",
+      key: contact.id,
+      value: {
+        event: "created",
         name: `${params.firstName} ${params.lastName || ""}`.trim(),
         email: params.email,
         company: params.company,
         source: params.source,
       },
-      relevance: 0.8,
+      confidence: 0.8,
+      sourceAgentType: "MODULE",
     },
   });
 
@@ -88,12 +97,12 @@ export async function updateContact(
   await ctx.prisma.contextEntry.create({
     data: {
       organizationId: ctx.organizationId,
-      source: "crm",
-      type: "crm.contact.updated",
-      entityType: "crm_Contact",
-      entityId: contactId,
-      data: { updatedFields: Object.keys(filtered) },
-      relevance: 0.6,
+      entryType: "ENTITY",
+      category: "crm.contact",
+      key: `${contactId}:updated:${Date.now()}`,
+      value: { event: "updated", updatedFields: Object.keys(filtered) },
+      confidence: 0.6,
+      sourceAgentType: "MODULE",
     },
   });
 
@@ -137,17 +146,18 @@ export async function logInteraction(
   await ctx.prisma.contextEntry.create({
     data: {
       organizationId: ctx.organizationId,
-      source: "crm",
-      type: "crm.interaction.logged",
-      entityType: "crm_Interaction",
-      entityId: interaction.id,
-      data: {
+      entryType: "ENTITY",
+      category: "crm.interaction",
+      key: interaction.id,
+      value: {
+        event: "logged",
         contactId: params.contactId,
         interactionType: params.type,
         direction: params.direction,
         outcome: params.outcome,
       },
-      relevance: 0.7,
+      confidence: 0.7,
+      sourceAgentType: "MODULE",
     },
   });
 
@@ -189,16 +199,17 @@ export async function moveDeal(
   await ctx.prisma.contextEntry.create({
     data: {
       organizationId: ctx.organizationId,
-      source: "crm",
-      type: "crm.deal.moved",
-      entityType: "crm_Deal",
-      entityId: params.dealId,
-      data: {
+      entryType: "ENTITY",
+      category: "crm.deal",
+      key: `${params.dealId}:moved:${Date.now()}`,
+      value: {
+        event: "stage_changed",
         stage: params.stage,
         previousStage: deal.stage,
         value: deal.value,
       },
-      relevance: 0.9,
+      confidence: 0.9,
+      sourceAgentType: "MODULE",
     },
   });
 
@@ -309,16 +320,16 @@ export async function generatePipelineReport(
   await ctx.prisma.contextEntry.create({
     data: {
       organizationId: ctx.organizationId,
-      source: "crm",
-      type: "crm.pipeline.report",
-      entityType: "crm_Pipeline",
-      entityId: pipeline.id as string,
-      data: {
+      entryType: "INSIGHT",
+      category: "crm.pipeline.report",
+      key: `${pipeline.id as string}:report:${Date.now()}`,
+      value: {
         totalDeals: report.totalDeals,
         totalValue: report.totalValue,
         weightedForecast: report.weightedForecast,
       },
-      relevance: 0.5,
+      confidence: 0.5,
+      sourceAgentType: "MODULE",
     },
   });
 

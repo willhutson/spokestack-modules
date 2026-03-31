@@ -1,20 +1,23 @@
 /**
  * Module Installer — ASYNC installation flow.
  *
+ * Core uses OrgModule (with ModuleType enum) for module tracking.
+ * There is no separate ModuleInstallation model — we write to OrgModule.
+ *
  * Synchronous phase:
  *   1. Validate manifest
  *   2. Check conflicts
- *   3. Create ModuleInstallation record (status: "provisioning")
+ *   3. Create OrgModule record (active: false during provisioning)
  *   4. Activate Stripe billing
  *
  * Async phase (queued):
  *   5. Apply pre-built migration SQL
  *   6. Run install.ts seed
- *   7. Register agent with agent-builder (POST /agents/register)
+ *   7. Register agent with agent-builder
  *   8. Register surfaces
  *   9. Register milestones
- *   10. Update status to "active"
- *   11. Agent announces installation
+ *   10. Update OrgModule to active: true
+ *   11. Agent announces
  */
 
 import type { ModuleManifest } from "../sdk/types/manifest";
@@ -27,19 +30,21 @@ interface InstallContext {
   prisma: any;
   organizationId: string;
   organizationTier: string;
+  userId: string;
   agentBuilderUrl: string;
   installedModules: { name: string; version: string; schemaModels: string[] }[];
 }
 
 export interface InstallResult {
   success: boolean;
-  installationId?: string;
+  orgModuleId?: string;
   error?: string;
 }
 
 export interface AsyncInstallJob {
-  installationId: string;
+  orgModuleId: string;
   organizationId: string;
+  userId: string;
   manifest: ModuleManifest;
   migrationSql?: string;
   installScript?: () => Promise<void>;
@@ -61,13 +66,12 @@ export async function installModule(
     return { success: false, error: validation.errors.join("; ") };
   }
 
-  // 2. Create ModuleInstallation record
-  const installation = await ctx.prisma.moduleInstallation.create({
+  // 2. Create OrgModule record (core model)
+  const orgModule = await ctx.prisma.orgModule.create({
     data: {
       organizationId: ctx.organizationId,
-      moduleName: manifest.name,
-      moduleVersion: manifest.version,
-      status: "provisioning",
+      moduleType: manifest.name.replace("@spokestack/", "").toUpperCase().replace(/-/g, "_"),
+      active: false, // will be set to true after async phase
       config: {
         manifest: {
           name: manifest.name,
@@ -80,9 +84,8 @@ export async function installModule(
   });
 
   // 3. Activate Stripe billing
-  let billing: BillingActivation | undefined;
   try {
-    billing = await activateBilling({
+    await activateBilling({
       organizationId: ctx.organizationId,
       moduleName: manifest.name,
       pricing: manifest.pricing,
@@ -90,9 +93,9 @@ export async function installModule(
   } catch (err) {
     // Billing failure is non-blocking for free modules
     if (manifest.pricing.model !== "free") {
-      await ctx.prisma.moduleInstallation.update({
-        where: { id: installation.id },
-        data: { status: "suspended" },
+      await ctx.prisma.orgModule.update({
+        where: { id: orgModule.id },
+        data: { active: false },
       });
       return { success: false, error: `Billing activation failed: ${err}` };
     }
@@ -100,11 +103,12 @@ export async function installModule(
 
   // 4. Queue async installation
   const job: AsyncInstallJob = {
-    installationId: installation.id,
+    orgModuleId: orgModule.id,
     organizationId: ctx.organizationId,
+    userId: ctx.userId,
     manifest,
     agentPayload: {
-      moduleId: installation.id,
+      moduleId: orgModule.id,
       organizationId: ctx.organizationId,
       agent: {
         name: manifest.agent.name,
@@ -117,7 +121,7 @@ export async function installModule(
     },
     surfacePayload: {
       organizationId: ctx.organizationId,
-      moduleId: installation.id,
+      moduleId: orgModule.id,
       surfaces: {
         moduleId: manifest.name,
         dashboardWidgets: [],
@@ -131,7 +135,7 @@ export async function installModule(
   // For now, execute inline
   await executeAsyncInstall(job, ctx);
 
-  return { success: true, installationId: installation.id };
+  return { success: true, orgModuleId: orgModule.id };
 }
 
 // ---------------------------------------------------------------------------
@@ -167,33 +171,28 @@ async function executeAsyncInstall(job: AsyncInstallJob, ctx: InstallContext): P
 
     // 9. Register milestones (would POST to core's milestone API)
 
-    // 10. Update status to "active"
-    await ctx.prisma.moduleInstallation.update({
-      where: { id: job.installationId },
-      data: {
-        status: "active",
-        activatedAt: new Date().toISOString(),
-      },
+    // 10. Activate OrgModule
+    await ctx.prisma.orgModule.update({
+      where: { id: job.orgModuleId },
+      data: { active: true },
     });
 
-    // 11. Create notification for agent announcement
+    // 11. Create notification (using real Notification model fields)
     await ctx.prisma.notification.create({
       data: {
         organizationId: job.organizationId,
-        type: "module.activated",
+        userId: job.userId,
+        type: "AGENT_RECOMMENDATION",
         title: `${job.manifest.displayName} is ready!`,
         body: `The ${job.manifest.displayName} module has been installed and is now active. Your ${job.manifest.agent.name} agent is ready to help.`,
-        data: {
-          moduleName: job.manifest.name,
-          installationId: job.installationId,
-        },
+        channel: "IN_APP",
       },
     });
   } catch (err) {
     // Mark as failed
-    await ctx.prisma.moduleInstallation.update({
-      where: { id: job.installationId },
-      data: { status: "suspended" },
+    await ctx.prisma.orgModule.update({
+      where: { id: job.orgModuleId },
+      data: { active: false },
     });
     throw err;
   }

@@ -50,10 +50,10 @@ export interface ModuleCompatibility {
 }
 
 export interface ModuleTier {
-  /** Minimum tier required to install */
-  minimum: "starter" | "growth" | "scale" | "enterprise";
+  /** Minimum tier required to install (matches BillingTierType enum in core) */
+  minimum: "FREE" | "STARTER" | "PRO" | "BUSINESS" | "ENTERPRISE";
   /** Recommended tier for full functionality */
-  recommended: "starter" | "growth" | "scale" | "enterprise";
+  recommended: "FREE" | "STARTER" | "PRO" | "BUSINESS" | "ENTERPRISE";
 }
 
 export interface ModulePricing {

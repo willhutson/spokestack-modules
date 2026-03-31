@@ -13,8 +13,8 @@
     "schemaHash": ""
   },
   "tier": {
-    "minimum": "scale",
-    "recommended": "enterprise"
+    "minimum": "BUSINESS",
+    "recommended": "ENTERPRISE"
   },
   "pricing": {
     "model": "metered",
@@ -53,7 +53,7 @@
   "permissions": {
     "coreRead": [
       "Organization",
-      "Contact",
+      "User",
       "ContextEntry"
     ],
     "coreWrite": [

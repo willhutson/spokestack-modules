@@ -16,7 +16,7 @@ describe("CRM Agent Tools", () => {
   beforeEach(async () => {
     prisma = createMockPrismaClient(CRM_MODELS);
     const org = await prisma.organization.create({
-      data: { name: "Test Org", slug: "test-org", tier: "growth" },
+      data: { name: "Test Org", slug: "test-org" },
     });
     orgId = org.id as string;
     ctx = { prisma: prisma as any, organizationId: orgId };
@@ -35,12 +35,14 @@ describe("CRM Agent Tools", () => {
       expect(contact.firstName).toBe("Jane");
       expect(contact.email).toBe("jane@example.com");
 
-      // Verify context entry was written
+      // Verify context entry was written with real field names
       const entries = await prisma.contextEntry.findMany({
-        where: { organizationId: orgId, type: "crm.contact.created" },
+        where: { organizationId: orgId, category: "crm.contact" },
       });
       expect(entries).toHaveLength(1);
-      expect((entries[0] as any).entityId).toBe(contact.id);
+      expect((entries[0] as any).entryType).toBe("ENTITY");
+      expect((entries[0] as any).key).toBe(contact.id);
+      expect((entries[0] as any).sourceAgentType).toBe("MODULE");
     });
 
     it("defaults status to lead", async () => {
@@ -62,9 +64,10 @@ describe("CRM Agent Tools", () => {
       expect(updated.email).toBe("new@example.com");
 
       const entries = await prisma.contextEntry.findMany({
-        where: { type: "crm.contact.updated" },
+        where: { category: "crm.contact" },
       });
-      expect(entries).toHaveLength(1);
+      // One from create, one from update
+      expect(entries).toHaveLength(2);
     });
   });
 
@@ -84,9 +87,10 @@ describe("CRM Agent Tools", () => {
       expect(interaction.type).toBe("call");
 
       const entries = await prisma.contextEntry.findMany({
-        where: { type: "crm.interaction.logged" },
+        where: { category: "crm.interaction" },
       });
       expect(entries).toHaveLength(1);
+      expect((entries[0] as any).entryType).toBe("ENTITY");
     });
   });
 

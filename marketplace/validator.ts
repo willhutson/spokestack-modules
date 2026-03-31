@@ -18,7 +18,7 @@ interface InstalledModule {
   schemaModels: string[];
 }
 
-const TIER_ORDER = ["starter", "growth", "scale", "enterprise"] as const;
+const TIER_ORDER = ["FREE", "STARTER", "PRO", "BUSINESS", "ENTERPRISE"] as const;
 
 export function validatePreInstall(
   manifest: ModuleManifest,

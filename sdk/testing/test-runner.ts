@@ -58,7 +58,7 @@ export class ModuleTestRunner {
     for (const registration of this.tests) {
       const prisma = createMockPrismaClient(this.additionalModels);
       const org = await prisma.organization.create({
-        data: { name: "Test Org", slug: "test-org", tier: "growth" },
+        data: { name: "Test Org", slug: "test-org" },
       });
 
       const ctx: TestContext = {
