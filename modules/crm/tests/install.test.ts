@@ -19,6 +19,7 @@ describe("CRM Install Flow", () => {
   const coreUrl = "https://spokestack-core.vercel.app";
   const agentBuilderUrl = "https://ongoingagentbuilder-production.up.railway.app";
   const authToken = "test-token";
+  const agentBuilderSecret = "test-agent-secret";
 
   beforeEach(() => {
     installer = new ModuleInstaller();
@@ -63,6 +64,7 @@ describe("CRM Install Flow", () => {
       coreUrl,
       agentBuilderUrl,
       authToken,
+      agentBuilderSecret,
     });
 
     expect(result.success).toBe(true);
@@ -89,6 +91,7 @@ describe("CRM Install Flow", () => {
       coreUrl,
       agentBuilderUrl,
       authToken,
+      agentBuilderSecret,
     });
 
     expect(result.success).toBe(false);
@@ -118,6 +121,7 @@ describe("CRM Install Flow", () => {
       coreUrl,
       agentBuilderUrl,
       authToken,
+      agentBuilderSecret,
     });
 
     // Core succeeded, agent-builder failed

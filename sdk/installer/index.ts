@@ -17,6 +17,7 @@ export interface InstallOptions {
   coreUrl: string;
   agentBuilderUrl: string;
   authToken: string;
+  agentBuilderSecret: string;
 }
 
 export interface UninstallOptions {
@@ -25,6 +26,7 @@ export interface UninstallOptions {
   coreUrl: string;
   agentBuilderUrl: string;
   authToken: string;
+  agentBuilderSecret: string;
 }
 
 export class ModuleInstaller {
@@ -75,12 +77,11 @@ export class ModuleInstaller {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${opts.authToken}`,
+          "X-Agent-Secret": opts.agentBuilderSecret,
         },
         body: JSON.stringify({
-          orgId: opts.orgId,
-          moduleType: opts.moduleType,
-          orgModuleId: orgModule?.id,
+          org_id: opts.orgId,
+          module_type: opts.moduleType,
         }),
       });
 
@@ -108,17 +109,16 @@ export class ModuleInstaller {
 
     // Step 1: Deregister from agent-builder
     try {
-      await fetch(`${opts.agentBuilderUrl}/api/v1/core/modules/deregister`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${opts.authToken}`,
-        },
-        body: JSON.stringify({
-          orgId: opts.orgId,
-          moduleType: opts.moduleType,
-        }),
-      });
+      await fetch(
+        `${opts.agentBuilderUrl}/api/v1/core/modules/${encodeURIComponent(opts.orgId)}/${encodeURIComponent(opts.moduleType)}/deregister`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            "X-Agent-Secret": opts.agentBuilderSecret,
+          },
+        }
+      );
     } catch {
       errors.push("Agent-builder unreachable during deregistration");
     }
