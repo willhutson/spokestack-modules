@@ -51,5 +51,39 @@
   "migrations": {
     "install": "migrations/install.ts",
     "uninstall": "migrations/uninstall.ts"
+  },
+  "contextSchema": {
+    "categoryPrefix": "workflows",
+    "entityTypes": [
+      {
+        "category": "workflows.automation",
+        "keyFormat": "{automationId}",
+        "valueSchema": {
+          "type": "object",
+          "properties": {
+            "name": { "type": "string" },
+            "trigger": { "type": "string" },
+            "status": { "type": "string", "enum": ["active", "paused", "draft"] },
+            "lastRunAt": { "type": "string", "format": "date-time" }
+          },
+          "required": ["name", "trigger", "status"]
+        }
+      },
+      {
+        "category": "workflows.run",
+        "keyFormat": "{runId}",
+        "valueSchema": {
+          "type": "object",
+          "properties": {
+            "automationId": { "type": "string" },
+            "status": { "type": "string", "enum": ["success", "failed", "running"] },
+            "durationMs": { "type": "number" }
+          },
+          "required": ["automationId", "status"]
+        },
+        "relatedCategories": ["workflows.automation"]
+      }
+    ],
+    "patternTypes": ["automation_failure_spike", "workflow_bottleneck"]
   }
 }

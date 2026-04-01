@@ -65,5 +65,41 @@
   "migrations": {
     "install": "migrations/install.ts",
     "uninstall": "migrations/uninstall.ts"
+  },
+  "contextSchema": {
+    "categoryPrefix": "crm",
+    "entityTypes": [
+      {
+        "category": "crm.contact",
+        "keyFormat": "{contactId}",
+        "valueSchema": {
+          "type": "object",
+          "properties": {
+            "name": { "type": "string" },
+            "company": { "type": "string" },
+            "email": { "type": "string" },
+            "lastInteractionAt": { "type": "string", "format": "date-time" }
+          },
+          "required": ["name"]
+        },
+        "relatedCategories": ["crm.deal"]
+      },
+      {
+        "category": "crm.deal",
+        "keyFormat": "{dealId}",
+        "valueSchema": {
+          "type": "object",
+          "properties": {
+            "title": { "type": "string" },
+            "value": { "type": "number" },
+            "stage": { "type": "string", "enum": ["prospect", "proposal", "negotiation", "closed_won", "closed_lost"] },
+            "contactId": { "type": "string" }
+          },
+          "required": ["title", "stage"]
+        },
+        "relatedCategories": ["crm.contact"]
+      }
+    ],
+    "patternTypes": ["deal_velocity", "contact_frequency", "pipeline_stall"]
   }
 }

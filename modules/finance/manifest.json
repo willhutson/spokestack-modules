@@ -49,5 +49,43 @@
   "migrations": {
     "install": "migrations/install.ts",
     "uninstall": "migrations/uninstall.ts"
+  },
+  "contextSchema": {
+    "categoryPrefix": "finance",
+    "entityTypes": [
+      {
+        "category": "finance.budget",
+        "keyFormat": "{budgetId}",
+        "valueSchema": {
+          "type": "object",
+          "properties": {
+            "name": { "type": "string" },
+            "totalAmount": { "type": "number" },
+            "spentAmount": { "type": "number" },
+            "currency": { "type": "string" },
+            "periodStart": { "type": "string", "format": "date" },
+            "periodEnd": { "type": "string", "format": "date" }
+          },
+          "required": ["name", "totalAmount", "currency"]
+        },
+        "relatedCategories": ["content.campaign"]
+      },
+      {
+        "category": "finance.invoice",
+        "keyFormat": "{invoiceId}",
+        "valueSchema": {
+          "type": "object",
+          "properties": {
+            "vendorName": { "type": "string" },
+            "amount": { "type": "number" },
+            "currency": { "type": "string" },
+            "status": { "type": "string", "enum": ["pending", "approved", "paid", "rejected"] },
+            "dueDate": { "type": "string", "format": "date" }
+          },
+          "required": ["vendorName", "amount", "status"]
+        }
+      }
+    ],
+    "patternTypes": ["budget_overrun", "invoice_approval_delay"]
   }
 }

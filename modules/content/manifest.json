@@ -114,5 +114,41 @@
   "migrations": {
     "install": "migrations/install.ts",
     "uninstall": "migrations/uninstall.ts"
+  },
+  "contextSchema": {
+    "categoryPrefix": "content",
+    "entityTypes": [
+      {
+        "category": "content.brief",
+        "keyFormat": "{briefId}",
+        "valueSchema": {
+          "type": "object",
+          "properties": {
+            "title": { "type": "string" },
+            "status": { "type": "string", "enum": ["draft", "review", "approved", "published"] },
+            "assigneeId": { "type": "string" },
+            "dueDate": { "type": "string", "format": "date" }
+          },
+          "required": ["title", "status"]
+        },
+        "relatedCategories": ["content.campaign"]
+      },
+      {
+        "category": "content.campaign",
+        "keyFormat": "{campaignId}",
+        "valueSchema": {
+          "type": "object",
+          "properties": {
+            "name": { "type": "string" },
+            "channel": { "type": "string" },
+            "startDate": { "type": "string", "format": "date" },
+            "budget": { "type": "number" }
+          },
+          "required": ["name"]
+        },
+        "relatedCategories": ["content.brief", "finance.budget"]
+      }
+    ],
+    "patternTypes": ["approval_cycle_delay", "content_volume_spike"]
   }
 }
