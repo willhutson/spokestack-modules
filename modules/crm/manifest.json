@@ -4,9 +4,8 @@
   "name": "CRM",
   "version": "1.0.0",
   "description": "Full-featured CRM with contact management, deal pipelines, interaction tracking, and AI-powered sales intelligence.",
-  "category": "ops",
-  "minTier": "PRO",
-  "price": 900,
+  "category": "core",
+  "minTier": "STARTER",
   "agentDefinition": {
     "path": "src/agent/crm-agent.ts",
     "name": "crm-agent"
@@ -18,7 +17,25 @@
     "createDeal",
     "updateDeal",
     "listDeals",
-    "linkContactToDeal"
+    "linkContactToDeal",
+    "manageClients",
+    "trackClientActivity",
+    "handleComplaint",
+    "managePipeline",
+    "logInteraction",
+    "searchCRM",
+    "exportContacts",
+    "manageDealContacts",
+    "manageDealProducts",
+    "trackDealCompetitors",
+    "getDealStageHistory",
+    "manageContactNotes",
+    "manageContactActivities",
+    "manageCRMTasks",
+    "manageProducts",
+    "manageCompetitors",
+    "manageCRMCampaigns",
+    "manageRetainerPeriods"
   ],
   "surfaces": [
     {

@@ -1,16 +1,34 @@
 /**
- * CRM Agent Definition Tests
+ * CRM Agent Definition Tests — Phase 2
  *
  * Validates that the AgentDefinition structure is correct,
- * tool names match exported tools, and system_prompt is non-empty.
+ * tool names match exported tools, and all 25 tools are present.
  */
 
 import { describe, it, expect } from "vitest";
 import { crmAgentDefinition } from "../src/agent/crm-agent";
-import { allCrmTools, CRM_TOOL_NAMES } from "../src/tools/index";
+import { allCrmTools, CRM_TOOL_NAMES, allToolNames } from "../src/tools/index";
 import type { AgentDefinition } from "../../../sdk/types/index";
 
 describe("CRM Agent Definition", () => {
+  it("has required AgentDefinition fields", () => {
+    expect(crmAgentDefinition.name).toBe("crm-agent");
+    expect(crmAgentDefinition.system_prompt).toBeTruthy();
+    expect(Array.isArray(crmAgentDefinition.tools)).toBe(true);
+    expect(crmAgentDefinition.tools.length).toBeGreaterThan(0);
+  });
+
+  it("tool_names match exported tools", async () => {
+    const { allToolNames } = await import("../src/tools/index");
+    crmAgentDefinition.tools.forEach(name => {
+      expect(allToolNames).toContain(name);
+    });
+  });
+
+  it("includes all 25 tools", () => {
+    expect(crmAgentDefinition.tools.length).toBe(25);
+  });
+
   it("exports a valid AgentDefinition", () => {
     const agent: AgentDefinition = crmAgentDefinition;
     expect(agent).toBeDefined();
@@ -34,6 +52,10 @@ describe("CRM Agent Definition", () => {
 
   it("tool names in agent match CRM_TOOL_NAMES constant", () => {
     expect(crmAgentDefinition.tools).toEqual(CRM_TOOL_NAMES);
+  });
+
+  it("allToolNames alias matches CRM_TOOL_NAMES", () => {
+    expect(allToolNames).toEqual(CRM_TOOL_NAMES);
   });
 
   it("every exported tool has valid JSON schema parameters", () => {

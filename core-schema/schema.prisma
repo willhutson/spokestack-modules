@@ -218,6 +218,7 @@ enum ModuleType {
   FINANCE
   WORKFLOWS
   ADMIN
+  CLIENT_PORTAL
 }
 
 // ============================================================================
