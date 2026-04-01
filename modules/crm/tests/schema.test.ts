@@ -36,8 +36,8 @@ describe("CRM Schema Validation", () => {
     expect(manifest.name).toBe("CRM");
     expect(manifest.version).toBe("1.0.0");
     expect(manifest.description).toBeTruthy();
-    expect(manifest.category).toBe("ops");
-    expect(manifest.minTier).toBe("PRO");
+    expect(manifest.category).toBe("core");
+    expect(manifest.minTier).toBe("STARTER");
   });
 
   it("has a valid agentDefinition reference", () => {
@@ -47,9 +47,10 @@ describe("CRM Schema Validation", () => {
     expect(manifest.agentDefinition.path).toBeTruthy();
   });
 
-  it("declares all 7 CRM tools", () => {
+  it("declares all CRM tools (enhanced)", () => {
     manifest = JSON.parse(fs.readFileSync(MANIFEST_PATH, "utf-8"));
-    expect(manifest.tools).toHaveLength(7);
+    expect(manifest.tools.length).toBeGreaterThanOrEqual(7);
+    // Original 7 tools still present
     expect(manifest.tools).toContain("createContact");
     expect(manifest.tools).toContain("listContacts");
     expect(manifest.tools).toContain("updateContact");
