@@ -1,0 +1,28 @@
+{
+  "id": "time-leave",
+  "moduleType": "TIME_LEAVE",
+  "name": "Time & Leave",
+  "version": "1.0.0",
+  "description": "Time tracking, timesheet management, leave requests, and leave balance tracking for agencies.",
+  "category": "ops",
+  "minTier": "PRO",
+  "price": 800,
+  "agentDefinition": {
+    "path": "src/agent/time-leave-agent.ts",
+    "name": "time-leave-agent"
+  },
+  "tools": [
+    "logTime", "getTimesheetSummary", "approveTimeEntry", "listTimeEntries", "deleteTimeEntry",
+    "requestLeave", "approveLeave", "getLeaveBalance", "listLeaveRequests",
+    "manageLeaveTypes", "listHolidays", "addHoliday", "manageBlackoutPeriods", "manageEmployeeDocuments"
+  ],
+  "surfaces": [
+    { "id": "time-leave-home", "type": "full-page", "route": "/time-leave", "requiredTools": ["listTimeEntries", "listLeaveRequests"] },
+    { "id": "time-leave-timesheet", "type": "full-page", "route": "/time-leave/timesheet", "requiredTools": ["logTime", "getTimesheetSummary", "approveTimeEntry"] },
+    { "id": "time-leave-requests", "type": "full-page", "route": "/time-leave/requests", "requiredTools": ["requestLeave", "listLeaveRequests", "approveLeave"] }
+  ],
+  "migrations": {
+    "install": "migrations/install.ts",
+    "uninstall": "migrations/uninstall.ts"
+  }
+}

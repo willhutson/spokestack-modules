@@ -1,0 +1,53 @@
+{
+  "id": "finance",
+  "moduleType": "FINANCE",
+  "name": "Finance",
+  "version": "1.0.0",
+  "description": "Invoicing, payment tracking, budget management, and revenue forecasting for agencies.",
+  "category": "ops",
+  "minTier": "BUSINESS",
+  "price": 1500,
+  "agentDefinition": {
+    "path": "src/agent/finance-agent.ts",
+    "name": "finance-agent"
+  },
+  "tools": [
+    "createInvoice",
+    "listInvoices",
+    "getInvoice",
+    "updateInvoiceStatus",
+    "trackPayment",
+    "getFinancialSummary",
+    "setBudget",
+    "listBudgets",
+    "trackBudgetSpend",
+    "getBudgetSummary",
+    "forecastRevenue",
+    "getRevenueMetrics",
+    "listForecastScenarios"
+  ],
+  "surfaces": [
+    {
+      "id": "finance-home",
+      "type": "full-page",
+      "route": "/finance",
+      "requiredTools": ["getFinancialSummary", "getBudgetSummary"]
+    },
+    {
+      "id": "finance-invoices",
+      "type": "full-page",
+      "route": "/finance/invoices",
+      "requiredTools": ["createInvoice", "listInvoices", "getInvoice"]
+    },
+    {
+      "id": "finance-budgets",
+      "type": "full-page",
+      "route": "/finance/budgets",
+      "requiredTools": ["setBudget", "listBudgets", "getBudgetSummary"]
+    }
+  ],
+  "migrations": {
+    "install": "migrations/install.ts",
+    "uninstall": "migrations/uninstall.ts"
+  }
+}

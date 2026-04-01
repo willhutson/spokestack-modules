@@ -1,0 +1,55 @@
+{
+  "id": "workflows",
+  "moduleType": "WORKFLOWS",
+  "name": "Workflows",
+  "version": "1.0.0",
+  "description": "Automated workflow templates, instance management, task tracking, and nudge notifications.",
+  "category": "ops",
+  "minTier": "PRO",
+  "price": 1000,
+  "agentDefinition": {
+    "path": "src/agent/workflow-agent.ts",
+    "name": "workflow-agent"
+  },
+  "tools": [
+    "createWorkflow",
+    "listWorkflowTemplates",
+    "getWorkflowTemplate",
+    "publishWorkflow",
+    "archiveWorkflow",
+    "instantiateWorkflow",
+    "listActiveWorkflows",
+    "getWorkflowStatus",
+    "cancelWorkflow",
+    "completeTask",
+    "blockTask",
+    "reassignTask",
+    "listWorkflowTasks",
+    "triggerNudge",
+    "listNudges"
+  ],
+  "surfaces": [
+    {
+      "id": "workflows-home",
+      "type": "full-page",
+      "route": "/workflows",
+      "requiredTools": ["listWorkflowTemplates", "listActiveWorkflows"]
+    },
+    {
+      "id": "workflows-templates",
+      "type": "full-page",
+      "route": "/workflows/templates",
+      "requiredTools": ["createWorkflow", "listWorkflowTemplates", "publishWorkflow"]
+    },
+    {
+      "id": "workflows-active",
+      "type": "full-page",
+      "route": "/workflows/active",
+      "requiredTools": ["listActiveWorkflows", "getWorkflowStatus"]
+    }
+  ],
+  "migrations": {
+    "install": "migrations/install.ts",
+    "uninstall": "migrations/uninstall.ts"
+  }
+}

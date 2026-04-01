@@ -1,0 +1,53 @@
+{
+  "id": "nps",
+  "moduleType": "NPS",
+  "name": "NPS & Surveys",
+  "version": "1.0.0",
+  "description": "NPS survey management, client feedback analysis, and configurable form templates with submission workflows.",
+  "category": "marketing",
+  "minTier": "STARTER",
+  "price": 500,
+  "agentDefinition": {
+    "path": "src/agent/nps-agent.ts",
+    "name": "nps-agent"
+  },
+  "tools": [
+    "createSurvey",
+    "sendSurvey",
+    "listSurveys",
+    "getSurveyResults",
+    "analyzeNPS",
+    "submitNPSResponse",
+    "listResponses",
+    "createForm",
+    "listForms",
+    "submitForm",
+    "listSubmissions",
+    "reviewSubmission",
+    "getSubmission"
+  ],
+  "surfaces": [
+    {
+      "id": "nps-home",
+      "type": "full-page",
+      "route": "/surveys",
+      "requiredTools": ["listSurveys", "listForms"]
+    },
+    {
+      "id": "nps-surveys",
+      "type": "full-page",
+      "route": "/surveys/nps",
+      "requiredTools": ["createSurvey", "listSurveys", "getSurveyResults", "analyzeNPS"]
+    },
+    {
+      "id": "nps-forms",
+      "type": "full-page",
+      "route": "/surveys/forms",
+      "requiredTools": ["createForm", "listForms", "listSubmissions"]
+    }
+  ],
+  "migrations": {
+    "install": "migrations/install.ts",
+    "uninstall": "migrations/uninstall.ts"
+  }
+}
