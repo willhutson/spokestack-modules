@@ -32,7 +32,7 @@ describe("CRM Install Flow", () => {
 
     expect(manifest.id).toBe("crm");
     expect(manifest.moduleType).toBe("CRM");
-    expect(manifest.tools.length).toBe(7);
+    expect(manifest.tools.length).toBe(25);
     expect(manifest.surfaces.length).toBe(4);
     expect(manifest.migrations).toBeDefined();
     expect(manifest.migrations.install).toBeTruthy();

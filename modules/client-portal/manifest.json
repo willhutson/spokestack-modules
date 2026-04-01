@@ -1,0 +1,30 @@
+{
+  "id": "client-portal",
+  "moduleType": "CLIENT_PORTAL",
+  "name": "Client Portal",
+  "version": "1.0.0",
+  "description": "Client-facing portal with magic link auth, brief request submission, onboarding tracking, and portal comments.",
+  "category": "core",
+  "minTier": "BUSINESS",
+  "price": 1500,
+  "agentDefinition": {
+    "path": "src/agent/client-portal-agent.ts",
+    "name": "client-portal-agent"
+  },
+  "tools": [
+    "createPortalUser", "listPortalUsers", "deactivatePortalUser", "managePortalSessions",
+    "generateMagicLink", "validateMagicLink",
+    "listBriefRequests", "reviewBriefRequest", "convertBriefRequest",
+    "trackOnboarding", "updateOnboardingTask", "listOnboardingTasks",
+    "addPortalComment", "listPortalComments"
+  ],
+  "surfaces": [
+    { "id": "portal-overview", "type": "full-page", "route": "/portal/overview", "requiredTools": ["listPortalUsers", "listBriefRequests"] },
+    { "id": "portal-users", "type": "full-page", "route": "/portal/users", "requiredTools": ["createPortalUser", "listPortalUsers", "deactivatePortalUser"] },
+    { "id": "portal-requests", "type": "full-page", "route": "/portal/requests", "requiredTools": ["listBriefRequests", "reviewBriefRequest", "convertBriefRequest"] }
+  ],
+  "migrations": {
+    "install": "migrations/install.ts",
+    "uninstall": "migrations/uninstall.ts"
+  }
+}
