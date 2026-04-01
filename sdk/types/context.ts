@@ -107,3 +107,56 @@ export interface ContextWriter {
   write(entry: Omit<ContextEntry, "id" | "createdAt" | "updatedAt">): Promise<ContextEntry>;
   writeMany(entries: Omit<ContextEntry, "id" | "createdAt" | "updatedAt">[]): Promise<ContextEntry[]>;
 }
+
+// ---------------------------------------------------------------------------
+// Phase 3: Cross-Module Context Protocol
+// ---------------------------------------------------------------------------
+
+/**
+ * Describes what a module writes to and reads from the context graph.
+ * Added to ModuleManifest as an optional field in Phase 3.
+ */
+export interface ContextSchema {
+  /**
+   * Standard category prefix for all context entries this module writes.
+   * Must be lowercase, alphanumeric + dots only. Examples: "crm", "finance", "content"
+   */
+  categoryPrefix: string;
+
+  /** Entity types this module creates as ENTITY ContextEntries */
+  entityTypes: ContextEntityType[];
+
+  /**
+   * PATTERN category suffixes this module detects.
+   * Full category = `${categoryPrefix}.${patternType}`
+   * Example: ["deal_velocity", "contact_frequency"]
+   */
+  patternTypes: string[];
+}
+
+export interface ContextEntityType {
+  /**
+   * Full category string for this entity. Must start with the module's categoryPrefix.
+   * Example: "crm.contact"
+   */
+  category: string;
+
+  /**
+   * Template for the context entry key. Use {paramName} for dynamic parts.
+   * Example: "{contactId}" → actual key "abc123"
+   */
+  keyFormat: string;
+
+  /**
+   * JSON Schema describing the shape of the `value` field for entries of this type.
+   * Used for validation and documentation.
+   */
+  valueSchema: Record<string, unknown>;
+
+  /**
+   * Other context categories this entity type references or is commonly joined with.
+   * Used by compose-test to detect cross-module dependency chains.
+   * Example: ["crm.deal"] means this entity links to crm.deal entries
+   */
+  relatedCategories?: string[];
+}

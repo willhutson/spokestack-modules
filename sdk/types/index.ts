@@ -37,6 +37,14 @@ export interface ModuleManifest {
     install: string;
     uninstall: string;
   };
+
+  /**
+   * Phase 3: Describes the context graph contract for this module —
+   * what entity types it writes, what pattern types it detects,
+   * and the key/value format for each.
+   * Used by compose-test to detect inter-module conflicts.
+   */
+  contextSchema?: import('./context').ContextSchema;
 }
 
 export interface AgentDefinitionRef {
@@ -61,6 +69,39 @@ export interface AgentDefinition {
   tools: string[];
   /** Optional model override (defaults to agent-builder's default) */
   model?: string;
+
+  /**
+   * Phase 3: Declarative conditions that should trigger a handoff to another
+   * module's agent. The agent evaluates these using context entry data and
+   * calls delegate_to_agent when a condition is met.
+   */
+  handoffTriggers?: HandoffTrigger[];
+}
+
+export interface HandoffTrigger {
+  /**
+   * Human-readable condition that, when true, should prompt a handoff.
+   * Written in a natural DSL — not evaluated programmatically (yet).
+   * Example: "deal.value > 50000 AND deal.stage = negotiation"
+   */
+  condition: string;
+
+  /**
+   * The target module ID to hand off to. Must match a registered module's id field.
+   * Example: "FINANCE"
+   */
+  targetModule: string;
+
+  /**
+   * Human-readable reason for the handoff, shown to the user.
+   */
+  reason: string;
+
+  /**
+   * Which context fields to pass to the target module's agent as handoff context.
+   * Uses dot notation relative to the entity that triggered the condition.
+   */
+  contextFields: string[];
 }
 
 // ---------------------------------------------------------------------------
@@ -182,3 +223,6 @@ export interface RegistryModule {
 // Re-export Phase 1 types that are still used internally
 export type { ContextEntry, ContextEntryType, ContextQuery, MilestoneDefinition } from "./context";
 export type { ModuleAgent, AgentToolDefinition, AgentRegistrationPayload } from "./agent";
+
+// Phase 3 context protocol types
+export type { ContextSchema, ContextEntityType } from "./context";

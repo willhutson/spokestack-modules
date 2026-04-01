@@ -82,4 +82,25 @@ CONTEXT:
 - entryType ENTITY for records, INSIGHT for reports and analysis`,
 
   tools: CRM_TOOL_NAMES,
+
+  handoffTriggers: [
+    {
+      condition: "deal.value > 50000 AND deal.stage = negotiation",
+      targetModule: "FINANCE",
+      reason: "High-value deal — finance review recommended before closing",
+      contextFields: ["deal.title", "deal.value", "deal.stage", "contact.name", "contact.company"],
+    },
+    {
+      condition: "contact.lastInteractionAt > 90days AND contact.dealCount > 0",
+      targetModule: "NPS",
+      reason: "Dormant client with prior deals — NPS survey recommended",
+      contextFields: ["contact.name", "contact.company", "contact.email"],
+    },
+    {
+      condition: "deal.stage = closed_won AND deal.value > 10000",
+      targetModule: "FINANCE",
+      reason: "Won deal requires invoice creation",
+      contextFields: ["deal.title", "deal.value", "contact.name", "contact.company"],
+    },
+  ],
 };
