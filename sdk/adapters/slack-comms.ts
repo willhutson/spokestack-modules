@@ -4,6 +4,7 @@
  */
 
 import type { NangoAdapter, SyncResult } from "../types/adapter";
+import { CORE_API_URL, AGENT_SECRET } from "./config";
 
 interface SlackMessage {
   channel: string;
@@ -23,9 +24,24 @@ export const slackCommsAdapter: NangoAdapter<InternalNotification, SlackMessage>
   provider: "slack",
   moduleType: "COMMUNICATION",
 
-  async fetchExternal(connectionId, params): Promise<SlackMessage[]> {
-    // Phase 6C: call nango.proxy({ connectionId, method: 'GET', endpoint: '/api/conversations.history' })
-    return [];
+  async fetchExternal(connectionId: string, params: Record<string, unknown> = {}): Promise<SlackMessage[]> {
+    const res = await fetch(`${CORE_API_URL}/api/v1/integrations/proxy`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Agent-Secret': AGENT_SECRET,
+        'X-Org-Id': (params.organizationId as string) || '',
+      },
+      body: JSON.stringify({
+        provider: 'slack',
+        connectionId,
+        endpoint: '/api/conversations.list',
+        method: 'GET',
+      }),
+    });
+    if (!res.ok) return [];
+    const data = await res.json();
+    return data.channels ?? [];
   },
 
   toInternal(external: SlackMessage): InternalNotification {
@@ -52,8 +68,8 @@ export const slackCommsAdapter: NangoAdapter<InternalNotification, SlackMessage>
     };
   },
 
-  async sync(connectionId, orgId): Promise<SyncResult> {
-    // Write-only adapter — no sync from Slack to SpokeStack
-    return { created: 0, updated: 0, skipped: 0, errors: ["Phase 6C: implement real sync"] };
+  async sync(_connectionId: string, _orgId: string): Promise<SyncResult> {
+    // Write-only adapter — outbound only, no inbound sync
+    return { created: 0, updated: 0, skipped: 0, errors: [] };
   },
 };

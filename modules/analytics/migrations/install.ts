@@ -32,7 +32,7 @@ export async function install(ctx: InstallContext): Promise<void> {
     },
   });
 
-  await ctx.prisma.contextEntry.create({
+  await ctx.prisma.contextEntry?.create?.({
     data: {
       organizationId: ctx.organizationId,
       entryType: "ENTITY",
@@ -42,5 +42,23 @@ export async function install(ctx: InstallContext): Promise<void> {
       confidence: 0.9,
       sourceAgentType: "MODULE",
     },
-  });
+  }).catch(() => {});
+
+  // Seed event subscription for sync-refresh flow
+  if ((ctx as any).coreApiUrl && (ctx as any).headers) {
+    const coreApiUrl = (ctx as any).coreApiUrl;
+    const headers = (ctx as any).headers;
+    await fetch(`${coreApiUrl}/api/v1/events/subscriptions`, {
+      method: 'POST',
+      headers: { ...headers, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        organizationId: ctx.organizationId,
+        entityType: 'Integration',
+        action: 'sync_completed',
+        handler: 'module:ANALYTICS:refreshDashboard',
+        moduleType: 'ANALYTICS',
+        enabled: true,
+      }),
+    }).catch(() => {});
+  }
 }

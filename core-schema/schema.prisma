@@ -828,3 +828,214 @@ model FileVersion {
 
   fileAsset FileAsset @relation(fields: [fileAssetId], references: [id])
 }
+
+// ============================================================================
+// EVENT SYSTEM MODELS (Phase 7A)
+// ============================================================================
+
+enum EventHandlerStatus {
+  PENDING
+  PROCESSING
+  SUCCESS
+  FAILED
+  SKIPPED
+}
+
+model EntityEvent {
+  id             String   @id @default(cuid())
+  organizationId String
+  entityType     String
+  entityId       String
+  action         String
+  userId         String?
+  metadata       Json?
+  processedAt    DateTime?
+  createdAt      DateTime @default(now())
+
+  organization Organization     @relation(fields: [organizationId], references: [id])
+  handlerLogs  EventHandlerLog[]
+
+  @@index([organizationId, entityType, action])
+  @@index([organizationId, createdAt])
+}
+
+model EventSubscription {
+  id             String     @id @default(cuid())
+  organizationId String
+  entityType     String
+  action         String
+  handler        String
+  moduleType     ModuleType?
+  config         Json?
+  enabled        Boolean    @default(true)
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
+
+  organization Organization @relation(fields: [organizationId], references: [id])
+
+  @@unique([organizationId, entityType, action, handler])
+}
+
+model EventHandlerLog {
+  id          String             @id @default(cuid())
+  eventId     String
+  handler     String
+  status      EventHandlerStatus @default(PENDING)
+  result      Json?
+  error       String?
+  durationMs  Int?
+  startedAt   DateTime           @default(now())
+  completedAt DateTime?
+
+  event EntityEvent @relation(fields: [eventId], references: [id])
+}
+
+// ============================================================================
+// SYNC JOB MODELS (Phase 7A)
+// ============================================================================
+
+enum SyncJobStatus {
+  PENDING
+  RUNNING
+  COMPLETED
+  FAILED
+}
+
+model SyncJob {
+  id              String        @id @default(cuid())
+  organizationId  String
+  integrationId   String
+  provider        String
+  status          SyncJobStatus @default(PENDING)
+  recordsCreated  Int           @default(0)
+  recordsUpdated  Int           @default(0)
+  recordsSkipped  Int           @default(0)
+  errors          Json?
+  startedAt       DateTime      @default(now())
+  completedAt     DateTime?
+
+  organization Organization @relation(fields: [organizationId], references: [id])
+}
+
+// ============================================================================
+// DAM MODELS (Phase 7A)
+// ============================================================================
+
+enum LibraryType {
+  GENERAL
+  CLIENT
+  PROJECT
+  BRAND
+}
+
+enum LibraryVisibility {
+  PUBLIC
+  PRIVATE
+  TEAM
+}
+
+enum AssetType {
+  IMAGE
+  VIDEO
+  DOCUMENT
+  AUDIO
+  DESIGN
+  PRESENTATION
+  ARCHIVE
+  OTHER
+}
+
+enum AssetStatus {
+  ACTIVE
+  ARCHIVED
+  PROCESSING
+  FAILED
+}
+
+model AssetLibrary {
+  id             String            @id @default(cuid())
+  organizationId String
+  name           String
+  description    String?
+  libraryType    LibraryType       @default(GENERAL)
+  visibility     LibraryVisibility @default(PUBLIC)
+  clientId       String?
+  createdAt      DateTime          @default(now())
+  updatedAt      DateTime          @updatedAt
+
+  organization Organization  @relation(fields: [organizationId], references: [id])
+  folders      AssetFolder[]
+  assets       Asset[]
+}
+
+model AssetFolder {
+  id        String  @id @default(cuid())
+  libraryId String
+  parentId  String?
+  name      String
+  path      String
+  createdAt DateTime @default(now())
+
+  library  AssetLibrary  @relation(fields: [libraryId], references: [id])
+  parent   AssetFolder?  @relation("FolderHierarchy", fields: [parentId], references: [id])
+  children AssetFolder[] @relation("FolderHierarchy")
+  assets   Asset[]
+}
+
+model Asset {
+  id             String      @id @default(cuid())
+  organizationId String
+  libraryId      String
+  folderId       String?
+  name           String
+  assetType      AssetType
+  fileUrl        String
+  thumbnailUrl   String?
+  mimeType       String?
+  sizeBytes      Int?
+  status         AssetStatus @default(ACTIVE)
+  tags           String[]
+  metadata       Json?
+  sourceType     String?
+  sourceId       String?
+  uploadedById   String?
+  createdAt      DateTime    @default(now())
+  updatedAt      DateTime    @updatedAt
+
+  organization Organization   @relation(fields: [organizationId], references: [id])
+  library      AssetLibrary   @relation(fields: [libraryId], references: [id])
+  folder       AssetFolder?   @relation(fields: [folderId], references: [id])
+  versions     AssetVersion[]
+  comments     AssetComment[]
+}
+
+model AssetVersion {
+  id         String   @id @default(cuid())
+  assetId    String
+  version    Int
+  fileUrl    String
+  sizeBytes  Int?
+  changeNote String?
+  createdById String?
+  createdAt  DateTime @default(now())
+
+  asset Asset @relation(fields: [assetId], references: [id])
+}
+
+model AssetComment {
+  id             String  @id @default(cuid())
+  assetId        String
+  parentId       String?
+  userId         String
+  content        String
+  annotationType String?
+  annotationData Json?
+  resolved       Boolean @default(false)
+  resolvedById   String?
+  resolvedAt     DateTime?
+  createdAt      DateTime @default(now())
+
+  asset  Asset          @relation(fields: [assetId], references: [id])
+  parent AssetComment?  @relation("CommentThread", fields: [parentId], references: [id])
+  replies AssetComment[] @relation("CommentThread")
+}

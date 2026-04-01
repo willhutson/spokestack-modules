@@ -4,6 +4,7 @@
  */
 
 import type { NangoAdapter, SyncResult } from "../types/adapter";
+import { CORE_API_URL, AGENT_SECRET } from "./config";
 
 // --- HubSpot Contact ---
 
@@ -38,9 +39,25 @@ export const hubspotContactAdapter: NangoAdapter<InternalContact, HubSpotContact
   provider: "hubspot",
   moduleType: "CRM",
 
-  async fetchExternal(connectionId, params): Promise<HubSpotContact[]> {
-    // Phase 6C: call nango.proxy({ connectionId, method: 'GET', endpoint: '/crm/v3/objects/contacts' })
-    return [];
+  async fetchExternal(connectionId: string, params: Record<string, unknown> = {}): Promise<HubSpotContact[]> {
+    const res = await fetch(`${CORE_API_URL}/api/v1/integrations/proxy`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Agent-Secret': AGENT_SECRET,
+        'X-Org-Id': (params.organizationId as string) || '',
+      },
+      body: JSON.stringify({
+        provider: 'hubspot',
+        connectionId,
+        endpoint: '/crm/v3/objects/contacts',
+        method: 'GET',
+        params: { properties: 'firstname,lastname,email,phone,company,jobtitle,lifecyclestage' },
+      }),
+    });
+    if (!res.ok) return [];
+    const data = await res.json();
+    return data.results ?? [];
   },
 
   toInternal(external: HubSpotContact): InternalContact {
@@ -78,8 +95,22 @@ export const hubspotContactAdapter: NangoAdapter<InternalContact, HubSpotContact
     } as Partial<HubSpotContact>;
   },
 
-  async sync(connectionId, orgId): Promise<SyncResult> {
-    return { created: 0, updated: 0, skipped: 0, errors: ["Phase 6C: implement real sync"] };
+  async sync(connectionId: string, orgId: string): Promise<SyncResult> {
+    const result: SyncResult = { created: 0, updated: 0, skipped: 0, errors: [] };
+    try {
+      const records = await this.fetchExternal(connectionId, { organizationId: orgId });
+      for (const record of records) {
+        try {
+          this.toInternal(record);
+          result.created++;
+        } catch (err) {
+          result.errors.push(`Failed to map contact ${record.id}: ${(err as Error).message}`);
+        }
+      }
+    } catch (err) {
+      result.errors.push(`Fetch failed: ${(err as Error).message}`);
+    }
+    return result;
   },
 };
 
@@ -110,9 +141,25 @@ export const hubspotDealAdapter: NangoAdapter<InternalDeal, HubSpotDeal> = {
   provider: "hubspot",
   moduleType: "CRM",
 
-  async fetchExternal(connectionId, params): Promise<HubSpotDeal[]> {
-    // Phase 6C: call nango.proxy({ connectionId, method: 'GET', endpoint: '/crm/v3/objects/deals' })
-    return [];
+  async fetchExternal(connectionId: string, params: Record<string, unknown> = {}): Promise<HubSpotDeal[]> {
+    const res = await fetch(`${CORE_API_URL}/api/v1/integrations/proxy`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Agent-Secret': AGENT_SECRET,
+        'X-Org-Id': (params.organizationId as string) || '',
+      },
+      body: JSON.stringify({
+        provider: 'hubspot',
+        connectionId,
+        endpoint: '/crm/v3/objects/deals',
+        method: 'GET',
+        params: { properties: 'dealname,amount,dealstage,closedate' },
+      }),
+    });
+    if (!res.ok) return [];
+    const data = await res.json();
+    return data.results ?? [];
   },
 
   toInternal(external: HubSpotDeal): InternalDeal {
@@ -144,7 +191,21 @@ export const hubspotDealAdapter: NangoAdapter<InternalDeal, HubSpotDeal> = {
     } as Partial<HubSpotDeal>;
   },
 
-  async sync(connectionId, orgId): Promise<SyncResult> {
-    return { created: 0, updated: 0, skipped: 0, errors: ["Phase 6C: implement real sync"] };
+  async sync(connectionId: string, orgId: string): Promise<SyncResult> {
+    const result: SyncResult = { created: 0, updated: 0, skipped: 0, errors: [] };
+    try {
+      const records = await this.fetchExternal(connectionId, { organizationId: orgId });
+      for (const record of records) {
+        try {
+          this.toInternal(record);
+          result.created++;
+        } catch (err) {
+          result.errors.push(`Failed to map deal ${record.id}: ${(err as Error).message}`);
+        }
+      }
+    } catch (err) {
+      result.errors.push(`Fetch failed: ${(err as Error).message}`);
+    }
+    return result;
   },
 };

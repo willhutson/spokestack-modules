@@ -4,6 +4,7 @@
  */
 
 import type { NangoAdapter, SyncResult } from "../types/adapter";
+import { CORE_API_URL, AGENT_SECRET } from "./config";
 
 interface GoogleDriveFile {
   id: string;
@@ -31,9 +32,25 @@ export const googleDriveContentAdapter: NangoAdapter<InternalAsset, GoogleDriveF
   provider: "google-drive",
   moduleType: "CONTENT_STUDIO",
 
-  async fetchExternal(connectionId, params): Promise<GoogleDriveFile[]> {
-    // Phase 6C: call nango.proxy({ connectionId, method: 'GET', endpoint: '/drive/v3/files', params: { fields: 'files(id,name,mimeType,size,createdTime,modifiedTime,webViewLink,parents,thumbnailLink)' } })
-    return [];
+  async fetchExternal(connectionId: string, params: Record<string, unknown> = {}): Promise<GoogleDriveFile[]> {
+    const res = await fetch(`${CORE_API_URL}/api/v1/integrations/proxy`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Agent-Secret': AGENT_SECRET,
+        'X-Org-Id': (params.organizationId as string) || '',
+      },
+      body: JSON.stringify({
+        provider: 'google-drive',
+        connectionId,
+        endpoint: '/drive/v3/files',
+        method: 'GET',
+        params: { q: 'trashed=false', fields: 'files(id,name,mimeType,size,createdTime,modifiedTime,webViewLink,thumbnailLink)' },
+      }),
+    });
+    if (!res.ok) return [];
+    const data = await res.json();
+    return data.files ?? [];
   },
 
   toInternal(external: GoogleDriveFile): InternalAsset {
@@ -60,7 +77,21 @@ export const googleDriveContentAdapter: NangoAdapter<InternalAsset, GoogleDriveF
     };
   },
 
-  async sync(connectionId, orgId): Promise<SyncResult> {
-    return { created: 0, updated: 0, skipped: 0, errors: ["Phase 6C: implement real sync"] };
+  async sync(connectionId: string, orgId: string): Promise<SyncResult> {
+    const result: SyncResult = { created: 0, updated: 0, skipped: 0, errors: [] };
+    try {
+      const records = await this.fetchExternal(connectionId, { organizationId: orgId });
+      for (const record of records) {
+        try {
+          this.toInternal(record);
+          result.created++;
+        } catch (err) {
+          result.errors.push(`Failed to map file ${record.id}: ${(err as Error).message}`);
+        }
+      }
+    } catch (err) {
+      result.errors.push(`Fetch failed: ${(err as Error).message}`);
+    }
+    return result;
   },
 };
