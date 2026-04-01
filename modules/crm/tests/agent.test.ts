@@ -171,7 +171,7 @@ describe("CRM Agent Tools", () => {
         data: { organizationId: orgId, pipelineId: pipeline.id, title: "Deal 2", value: 10000, stage: "proposal", probability: 50 },
       });
 
-      const report = await generatePipelineReport(ctx, { includeDeals: true });
+      const report = await generatePipelineReport(ctx, { includeDeals: true }) as any;
 
       expect(report.totalDeals).toBe(2);
       expect(report.totalValue).toBe(15000);

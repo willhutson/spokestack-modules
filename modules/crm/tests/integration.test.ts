@@ -101,7 +101,7 @@ describe("CRM Integration", () => {
     expect(wonDeal.closedAt).toBeDefined();
 
     // 5. Generate pipeline report
-    const report = await generatePipelineReport(ctx, {});
+    const report = await generatePipelineReport(ctx, {}) as any;
     expect(report.totalDeals).toBe(1);
     expect(report.totalValue).toBe(50000);
 
