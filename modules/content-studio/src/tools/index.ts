@@ -7,6 +7,9 @@
 // DAM
 export { uploadAsset, listAssets, getAssetVersions, createAssetVersion, createFolder, listFolders, searchAssets, createAssetLibrary, addAssetComment, resolveAssetComment } from "./dam";
 
+// DAM v2
+export { listAssetLibraries, createAssetFolder, listFolderContents, getAssetDetails, updateAsset, uploadAssetVersion, moveAsset, archiveAsset, getAssetVersionHistory } from "./dam-v2";
+
 // Creative
 export { createMoodboard, listMoodboards, addToMoodboard, listMoodboardItems, generateShotList, exportMoodboard, saveMoodboardConversation } from "./creative";
 
@@ -42,6 +45,7 @@ export { createTrigger, listTriggers, enableTrigger, disableTrigger } from "./co
 // ---------------------------------------------------------------------------
 
 import { uploadAsset, listAssets, getAssetVersions, createAssetVersion, createFolder, listFolders, searchAssets, createAssetLibrary, addAssetComment, resolveAssetComment } from "./dam";
+import { listAssetLibraries, createAssetFolder, listFolderContents, getAssetDetails, updateAsset, uploadAssetVersion, moveAsset, archiveAsset, getAssetVersionHistory } from "./dam-v2";
 import { createMoodboard, listMoodboards, addToMoodboard, listMoodboardItems, generateShotList, exportMoodboard, saveMoodboardConversation } from "./creative";
 import { createVideoProject, listVideoProjects, getVideoProject, updateVideoStatus, writeScript, getScript, buildStoryboard, addStoryboardFrame, listStoryboardFrames, trackVideoStatus } from "./video";
 import { createDeck, listDecks, getDeck, addSlide, reorderSlides, deleteSlide, listTemplates, createTemplate, exportDeck, syncDeckToGoogleSlides } from "./presentations";
@@ -60,6 +64,9 @@ export const allContentTools: ToolDefinition[] = [
   uploadAsset, listAssets, getAssetVersions, createAssetVersion,
   createFolder, listFolders, searchAssets, createAssetLibrary,
   addAssetComment, resolveAssetComment,
+  // DAM v2
+  listAssetLibraries, createAssetFolder, listFolderContents, getAssetDetails,
+  updateAsset, uploadAssetVersion, moveAsset, archiveAsset, getAssetVersionHistory,
   // Creative (createMoodboard + listMoodboards replaced by moodboards.ts v2 below)
   addToMoodboard, listMoodboardItems,
   generateShotList, exportMoodboard, saveMoodboardConversation,

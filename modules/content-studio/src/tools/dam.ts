@@ -40,11 +40,13 @@ export const uploadAsset: ToolDefinition = {
         enum: ["IMAGE", "VIDEO", "AUDIO", "DOCUMENT", "OTHER"],
       },
       folderId: { type: "string", description: "Optional folder ID" },
+      fileUrl: { type: "string", description: "URL of the file to upload" },
       tags: { type: "array", items: { type: "string" }, description: "Tags for the asset" },
+      metadata: { type: "object", description: "Additional metadata key-value pairs" },
       description: { type: "string", description: "Asset description" },
       license: { type: "string", description: "License type" },
     },
-    required: ["orgId", "libraryId", "name", "assetType"],
+    required: ["libraryId", "name", "assetType", "fileUrl"],
   },
   handler: uploadAssetHandler,
 };
@@ -313,7 +315,7 @@ export const searchAssets: ToolDefinition = {
       tags: { type: "array", items: { type: "string" }, description: "Filter by tags" },
       limit: { type: "number", description: "Max results", minimum: 1, maximum: 100 },
     },
-    required: ["orgId", "query"],
+    required: [],
   },
   handler: searchAssetsHandler,
 };

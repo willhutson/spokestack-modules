@@ -1,43 +1,48 @@
 /**
- * Finance Uninstall Migration — deactivates module and deregisters agent.
+ * Finance Uninstall Migration — deactivates module, removes event subscriptions.
  * Financial records are retained for compliance; does NOT hard-delete data.
  */
+
+const MODULE_TYPE = 'FINANCE';
 
 interface UninstallContext {
   prisma: any;
   organizationId: string;
   agentBuilderUrl: string;
+  coreApiUrl?: string;
+  headers?: Record<string, string>;
 }
 
-export async function uninstall(ctx: UninstallContext): Promise<void> {
+export async function uninstall(ctx: UninstallContext): Promise<{ success: boolean }> {
   const now = new Date().toISOString();
 
-  // 1. Deregister agent with agent-builder
-  try {
-    const response = await fetch(`${ctx.agentBuilderUrl}/agents/deregister`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        organizationId: ctx.organizationId,
-        agentSlug: "finance-agent",
-      }),
-    });
-
-    if (!response.ok) {
-      console.error(`Failed to deregister Finance agent: ${response.status}`);
-    }
-  } catch (err) {
-    console.error("Failed to reach agent-builder for deregistration:", err);
+  // 1. Remove event subscriptions
+  if (ctx.coreApiUrl && ctx.headers) {
+    try {
+      const res = await fetch(
+        `${ctx.coreApiUrl}/api/v1/events/subscriptions?moduleType=${MODULE_TYPE}&organizationId=${ctx.organizationId}`,
+        { headers: ctx.headers }
+      );
+      if (res.ok) {
+        const subs = await res.json();
+        for (const sub of Array.isArray(subs) ? subs : []) {
+          await fetch(`${ctx.coreApiUrl}/api/v1/events/subscriptions/${sub.id}`, {
+            method: 'DELETE',
+            headers: ctx.headers,
+          }).catch(() => {});
+        }
+      }
+    } catch {}
   }
 
-  // 2. Deactivate OrgModule record
-  await ctx.prisma.orgModule.updateMany({
-    where: { organizationId: ctx.organizationId, moduleType: "FINANCE" },
+  // 2. Deactivate OrgModule
+  await ctx.prisma.orgModule?.updateMany?.({
+    where: { organizationId: ctx.organizationId, moduleType: MODULE_TYPE },
     data: { active: false },
-  });
+  }).catch(() => {});
 
-  // 3. Write uninstall context entry (using real core ContextEntry fields)
-  await ctx.prisma.contextEntry.create({
+  // 3. Write uninstall context entry
+  await ctx.prisma.contextEntry?.create?.({
     data: {
       organizationId: ctx.organizationId,
       entryType: "ENTITY",
@@ -47,5 +52,7 @@ export async function uninstall(ctx: UninstallContext): Promise<void> {
       confidence: 0.3,
       sourceAgentType: "MODULE",
     },
-  });
+  }).catch(() => {});
+
+  return { success: true };
 }

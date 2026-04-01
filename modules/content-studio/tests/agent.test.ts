@@ -24,7 +24,7 @@ describe("Content Studio Agent", () => {
   });
 
   it("allToolNames contains all 60 tools", () => {
-    expect(allToolNames.length).toBe(79);
+    expect(allToolNames.length).toBe(88);
   });
 
   it("every tool name is unique", () => {

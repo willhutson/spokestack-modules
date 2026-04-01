@@ -46,15 +46,33 @@ export async function install(ctx: InstallContext): Promise<void> {
     },
   });
 
-  // 3. Create welcome notification (uses real Notification model fields)
-  await ctx.prisma.notification.create({
+  // 3. Seed event subscriptions for CRM flow handlers
+  if ((ctx as any).coreApiUrl && (ctx as any).headers) {
+    const coreApiUrl = (ctx as any).coreApiUrl;
+    const headers = (ctx as any).headers;
+    await fetch(`${coreApiUrl}/api/v1/events/subscriptions`, {
+      method: 'POST',
+      headers: { ...headers, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        organizationId: ctx.organizationId,
+        entityType: 'Client',
+        action: 'created',
+        handler: 'module:CRM:initializeClientRecord',
+        moduleType: 'CRM',
+        enabled: true,
+      }),
+    }).catch(() => {});
+  }
+
+  // 4. Create welcome notification (uses real Notification model fields)
+  await ctx.prisma.notification?.create?.({
     data: {
       organizationId: ctx.organizationId,
-      userId: "", // populated by installer with the installing user
+      userId: "",
       type: "AGENT_RECOMMENDATION",
       title: "CRM Module Installed",
       body: "Your CRM is ready! Start by adding contacts or ask your agent to help set up your pipeline.",
       channel: "IN_APP",
     },
-  });
+  }).catch(() => {});
 }

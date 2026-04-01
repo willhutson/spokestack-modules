@@ -266,3 +266,6 @@ export type { ContextSchema, ContextEntityType } from "./context";
 
 // Phase 6B adapter types
 export type { NangoAdapter, SyncResult } from "./adapter";
+
+// Phase 7B flow handler types
+export type { FlowHandler, EntityEventPayload, FlowContext, FlowResult } from "./flow-handler";

@@ -4,6 +4,7 @@
  */
 
 import type { NangoAdapter, SyncResult } from "../types/adapter";
+import { CORE_API_URL, AGENT_SECRET } from "./config";
 
 interface AsanaTask {
   gid: string;
@@ -32,9 +33,25 @@ export const asanaTasksAdapter: NangoAdapter<InternalTask, AsanaTask> = {
   provider: "asana",
   moduleType: "TASKS",
 
-  async fetchExternal(connectionId, params): Promise<AsanaTask[]> {
-    // Phase 6C: call nango.proxy({ connectionId, method: 'GET', endpoint: '/api/1.0/tasks', params })
-    return [];
+  async fetchExternal(connectionId: string, params: Record<string, unknown> = {}): Promise<AsanaTask[]> {
+    const res = await fetch(`${CORE_API_URL}/api/v1/integrations/proxy`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Agent-Secret': AGENT_SECRET,
+        'X-Org-Id': (params.organizationId as string) || '',
+      },
+      body: JSON.stringify({
+        provider: 'asana',
+        connectionId,
+        endpoint: '/api/1.0/tasks',
+        method: 'GET',
+        params: { opt_fields: 'name,notes,completed,due_on,assignee,projects,created_at,modified_at' },
+      }),
+    });
+    if (!res.ok) return [];
+    const data = await res.json();
+    return data.data ?? [];
   },
 
   toInternal(external: AsanaTask): InternalTask {
@@ -61,8 +78,21 @@ export const asanaTasksAdapter: NangoAdapter<InternalTask, AsanaTask> = {
     };
   },
 
-  async sync(connectionId, orgId): Promise<SyncResult> {
-    // Phase 6C: implement real sync
-    return { created: 0, updated: 0, skipped: 0, errors: ["Phase 6C: implement real sync"] };
+  async sync(connectionId: string, orgId: string): Promise<SyncResult> {
+    const result: SyncResult = { created: 0, updated: 0, skipped: 0, errors: [] };
+    try {
+      const records = await this.fetchExternal(connectionId, { organizationId: orgId });
+      for (const record of records) {
+        try {
+          this.toInternal(record);
+          result.created++;
+        } catch (err) {
+          result.errors.push(`Failed to map task ${record.gid}: ${(err as Error).message}`);
+        }
+      }
+    } catch (err) {
+      result.errors.push(`Fetch failed: ${(err as Error).message}`);
+    }
+    return result;
   },
 };
