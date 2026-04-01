@@ -29,6 +29,8 @@ export {
 
 export { triggerNudge, listNudges } from "./nudges";
 
+export { getWorkflowActivity, getActivityTimeline } from "./activity";
+
 import {
   createWorkflow,
   listWorkflowTemplates,
@@ -53,6 +55,8 @@ import {
 
 import { triggerNudge, listNudges } from "./nudges";
 
+import { getWorkflowActivity, getActivityTimeline } from "./activity";
+
 import type { ToolDefinition } from "../../../../sdk/types/index";
 
 /** All workflow tools as an array for registration */
@@ -76,6 +80,9 @@ export const allWorkflowTools: ToolDefinition[] = [
   // Nudges
   triggerNudge,
   listNudges,
+  // Activity
+  getWorkflowActivity,
+  getActivityTimeline,
 ];
 
 /** Tool names for manifest and agent definition reference */

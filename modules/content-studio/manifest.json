@@ -1,0 +1,266 @@
+{
+  "id": "content-studio",
+  "moduleType": "CONTENT_STUDIO",
+  "name": "Content Studio",
+  "version": "1.0.0",
+  "description": "LMTD's full creative pipeline — DAM, video, moodboards, presentations, docs, and content approvals",
+  "category": "custom",
+  "minTier": "BUSINESS",
+  "price": null,
+  "agentDefinition": {
+    "path": "src/agent/content-agent.ts",
+    "name": "content_studio_agent"
+  },
+  "tools": [
+    "uploadAsset",
+    "listAssets",
+    "getAssetVersions",
+    "createAssetVersion",
+    "createFolder",
+    "listFolders",
+    "searchAssets",
+    "createAssetLibrary",
+    "addAssetComment",
+    "resolveAssetComment",
+    "addToMoodboard",
+    "listMoodboardItems",
+    "generateShotList",
+    "exportMoodboard",
+    "saveMoodboardConversation",
+    "createVideoProject",
+    "listVideoProjects",
+    "getVideoProject",
+    "updateVideoStatus",
+    "writeScript",
+    "getScript",
+    "buildStoryboard",
+    "addStoryboardFrame",
+    "listStoryboardFrames",
+    "trackVideoStatus",
+    "createDeck",
+    "listDecks",
+    "getDeck",
+    "addSlide",
+    "reorderSlides",
+    "deleteSlide",
+    "listTemplates",
+    "createTemplate",
+    "exportDeck",
+    "syncDeckToGoogleSlides",
+    "createDocument",
+    "listDocuments",
+    "getDocument",
+    "trackVersions",
+    "listDocumentVersions",
+    "searchKnowledge",
+    "createKnowledgeDoc",
+    "embedDocument",
+    "trackDocumentUsage",
+    "listDocTemplates",
+    "submitForApproval",
+    "reviewContent",
+    "listPendingReviews",
+    "trackContentStatus",
+    "addContentComment",
+    "listContentComments",
+    "resolveContentComment",
+    "createContentVersion",
+    "listContentVersions",
+    "setupContentTrigger",
+    "listContentTriggers",
+    "logContentEvent",
+    "addContentAsset",
+    "createMoodboardV2",
+    "addMoodboardItem",
+    "getMoodboard",
+    "listMoodboardsV2",
+    "generateMoodboardOutput",
+    "shareMoodboard",
+    "createStoryboard",
+    "addFrame",
+    "reorderFrames",
+    "getStoryboard",
+    "createDeckTemplate",
+    "listDeckTemplates",
+    "applyTemplate",
+    "createCalendarEntry",
+    "listCalendarEntries",
+    "updateCalendarEntry",
+    "getCalendarByDateRange",
+    "createTrigger",
+    "listTriggers",
+    "enableTrigger",
+    "disableTrigger"
+  ],
+  "surfaces": [
+    {
+      "id": "content-home",
+      "type": "full-page",
+      "route": "/content",
+      "requiredTools": [
+        "listAssets",
+        "listMoodboards",
+        "listVideoProjects",
+        "listDecks",
+        "listDocuments",
+        "listPendingReviews"
+      ]
+    },
+    {
+      "id": "content-assets",
+      "type": "full-page",
+      "route": "/content/assets",
+      "requiredTools": [
+        "uploadAsset",
+        "listAssets",
+        "searchAssets",
+        "createFolder",
+        "listFolders"
+      ]
+    },
+    {
+      "id": "content-video",
+      "type": "full-page",
+      "route": "/content/video",
+      "requiredTools": [
+        "createVideoProject",
+        "listVideoProjects",
+        "getVideoProject",
+        "writeScript",
+        "buildStoryboard"
+      ]
+    },
+    {
+      "id": "content-moodboards",
+      "type": "full-page",
+      "route": "/content/moodboards",
+      "requiredTools": [
+        "createMoodboard",
+        "listMoodboards",
+        "addToMoodboard",
+        "listMoodboardItems"
+      ]
+    },
+    {
+      "id": "content-docs",
+      "type": "full-page",
+      "route": "/content/docs",
+      "requiredTools": [
+        "createDocument",
+        "listDocuments",
+        "getDocument",
+        "searchKnowledge"
+      ]
+    },
+    {
+      "id": "content-approvals",
+      "type": "full-page",
+      "route": "/content/approvals",
+      "requiredTools": [
+        "submitForApproval",
+        "reviewContent",
+        "listPendingReviews",
+        "trackContentStatus"
+      ]
+    }
+  ],
+  "migrations": {
+    "install": "migrations/install.ts",
+    "uninstall": "migrations/uninstall.ts"
+  },
+  "contextSchema": {
+    "categoryPrefix": "content",
+    "entityTypes": [
+      {
+        "category": "content.brief",
+        "keyFormat": "{briefId}",
+        "valueSchema": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "status": {
+              "type": "string",
+              "enum": [
+                "draft",
+                "review",
+                "approved",
+                "published"
+              ]
+            },
+            "assigneeId": {
+              "type": "string"
+            },
+            "dueDate": {
+              "type": "string",
+              "format": "date"
+            }
+          },
+          "required": [
+            "title",
+            "status"
+          ]
+        },
+        "relatedCategories": [
+          "content.campaign"
+        ]
+      },
+      {
+        "category": "content.campaign",
+        "keyFormat": "{campaignId}",
+        "valueSchema": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "channel": {
+              "type": "string"
+            },
+            "startDate": {
+              "type": "string",
+              "format": "date"
+            },
+            "budget": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "name"
+          ]
+        },
+        "relatedCategories": [
+          "content.brief",
+          "finance.budget"
+        ]
+      }
+    ],
+    "patternTypes": [
+      "approval_cycle_delay",
+      "content_volume_spike"
+    ]
+  },
+  "canvasConfig": {
+    "nodeType": "ASSET",
+    "color": "#8B5CF6",
+    "icon": "image",
+    "entityLabel": "Asset",
+    "relationships": [
+      {
+        "sourceField": "briefId",
+        "targetModule": "BRIEFS",
+        "targetEntity": "brief",
+        "label": "from brief",
+        "edgeStyle": "solid"
+      },
+      {
+        "sourceField": "projectId",
+        "targetModule": "PROJECTS",
+        "targetEntity": "project",
+        "label": "part of",
+        "edgeStyle": "dashed"
+      }
+    ]
+  }
+}

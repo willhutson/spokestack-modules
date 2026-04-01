@@ -1,217 +1,25 @@
 [
-  {
-    "moduleType": "TASKS",
-    "name": "Tasks",
-    "description": "Task management with lists, comments, and team assignments.",
-    "category": "core",
-    "minTier": "FREE",
-    "price": 0,
-    "surfaces": [
-      { "id": "tasks-dashboard", "type": "dashboard", "requiredTools": ["listTasks"] },
-      { "id": "tasks-board", "type": "full-page", "route": "/tasks", "requiredTools": ["listTasks", "createTask", "updateTask"] }
-    ]
-  },
-  {
-    "moduleType": "PROJECTS",
-    "name": "Projects",
-    "description": "Project planning with phases, milestones, and workflow canvas.",
-    "category": "core",
-    "minTier": "STARTER",
-    "price": 0,
-    "surfaces": [
-      { "id": "projects-dashboard", "type": "dashboard", "requiredTools": ["listProjects"] },
-      { "id": "projects-board", "type": "full-page", "route": "/projects", "requiredTools": ["listProjects", "createProject"] }
-    ]
-  },
-  {
-    "moduleType": "BRIEFS",
-    "name": "Briefs",
-    "description": "Creative briefs with artifact versioning and review workflows.",
-    "category": "core",
-    "minTier": "STARTER",
-    "price": 0,
-    "surfaces": [
-      { "id": "briefs-dashboard", "type": "dashboard", "requiredTools": ["listBriefs"] },
-      { "id": "briefs-board", "type": "full-page", "route": "/briefs", "requiredTools": ["listBriefs", "createBrief"] }
-    ]
-  },
-  {
-    "moduleType": "ORDERS",
-    "name": "Orders",
-    "description": "Order management with customers, invoicing, and line items.",
-    "category": "core",
-    "minTier": "STARTER",
-    "price": 0,
-    "surfaces": [
-      { "id": "orders-dashboard", "type": "dashboard", "requiredTools": ["listOrders"] },
-      { "id": "orders-board", "type": "full-page", "route": "/orders", "requiredTools": ["listOrders", "createOrder"] }
-    ]
-  },
-  {
-    "moduleType": "CRM",
-    "name": "CRM",
-    "description": "Contact management, deal pipelines, interaction tracking, and sales intelligence.",
-    "category": "ops",
-    "minTier": "PRO",
-    "price": 900,
-    "surfaces": [
-      { "id": "crm-dashboard", "type": "dashboard", "requiredTools": ["listDeals", "listContacts"] },
-      { "id": "crm-overview", "type": "full-page", "route": "/crm", "requiredTools": ["listContacts", "listDeals"] },
-      { "id": "crm-contacts", "type": "full-page", "route": "/crm/contacts", "requiredTools": ["listContacts", "createContact", "updateContact"] },
-      { "id": "crm-deals", "type": "full-page", "route": "/crm/deals", "requiredTools": ["listDeals", "createDeal", "updateDeal", "linkContactToDeal"] }
-    ]
-  },
-  {
-    "moduleType": "SOCIAL_PUBLISHING",
-    "name": "Social Publishing",
-    "description": "Social media scheduling, publishing, and content calendar across platforms.",
-    "category": "marketing",
-    "minTier": "PRO",
-    "price": 2900,
-    "surfaces": [
-      { "id": "social-dashboard", "type": "dashboard", "requiredTools": ["listPosts"] },
-      { "id": "social-calendar", "type": "full-page", "route": "/social", "requiredTools": ["listPosts", "createPost", "schedulePost"] }
-    ]
-  },
-  {
-    "moduleType": "CONTENT_STUDIO",
-    "name": "Content Studio",
-    "description": "AI-powered content creation, brand voice management, and asset generation.",
-    "category": "marketing",
-    "minTier": "PRO",
-    "price": 3900,
-    "surfaces": [
-      { "id": "content-dashboard", "type": "dashboard", "requiredTools": ["listContent"] },
-      { "id": "content-studio", "type": "full-page", "route": "/content", "requiredTools": ["listContent", "createContent"] }
-    ]
-  },
-  {
-    "moduleType": "ANALYTICS",
-    "name": "Analytics",
-    "description": "Business analytics dashboards, custom reports, and KPI tracking.",
-    "category": "analytics",
-    "minTier": "PRO",
-    "price": 1900,
-    "surfaces": [
-      { "id": "analytics-dashboard", "type": "dashboard", "requiredTools": ["getMetrics"] },
-      { "id": "analytics-reports", "type": "full-page", "route": "/analytics", "requiredTools": ["getMetrics", "createReport"] }
-    ]
-  },
-  {
-    "moduleType": "SURVEYS",
-    "name": "Surveys",
-    "description": "Customer surveys, feedback collection, and response analysis.",
-    "category": "analytics",
-    "minTier": "PRO",
-    "price": 1900,
-    "surfaces": [
-      { "id": "surveys-dashboard", "type": "dashboard", "requiredTools": ["listSurveys"] },
-      { "id": "surveys-builder", "type": "full-page", "route": "/surveys", "requiredTools": ["listSurveys", "createSurvey"] }
-    ]
-  },
-  {
-    "moduleType": "LISTENING",
-    "name": "Social Listening",
-    "description": "Social media monitoring, brand mentions, and sentiment tracking.",
-    "category": "marketing",
-    "minTier": "PRO",
-    "price": 2900,
-    "surfaces": [
-      { "id": "listening-dashboard", "type": "dashboard", "requiredTools": ["getMentions"] },
-      { "id": "listening-monitor", "type": "full-page", "route": "/listening", "requiredTools": ["getMentions", "createMonitor"] }
-    ]
-  },
-  {
-    "moduleType": "MEDIA_BUYING",
-    "name": "Media Buying",
-    "description": "Ad campaign management, budget allocation, and ROAS tracking.",
-    "category": "marketing",
-    "minTier": "BUSINESS",
-    "price": 9900,
-    "surfaces": [
-      { "id": "media-dashboard", "type": "dashboard", "requiredTools": ["listCampaigns"] },
-      { "id": "media-campaigns", "type": "full-page", "route": "/media-buying", "requiredTools": ["listCampaigns", "createCampaign"] }
-    ]
-  },
-  {
-    "moduleType": "LMS",
-    "name": "LMS",
-    "description": "Learning management with courses, lessons, progress tracking, and certificates.",
-    "category": "ops",
-    "minTier": "PRO",
-    "price": 3900,
-    "surfaces": [
-      { "id": "lms-dashboard", "type": "dashboard", "requiredTools": ["listCourses"] },
-      { "id": "lms-courses", "type": "full-page", "route": "/lms", "requiredTools": ["listCourses", "createCourse"] }
-    ]
-  },
-  {
-    "moduleType": "NPS",
-    "name": "NPS Surveys",
-    "description": "Net Promoter Score surveys, feedback loops, and sentiment analysis.",
-    "category": "analytics",
-    "minTier": "STARTER",
-    "price": 900,
-    "surfaces": [
-      { "id": "nps-dashboard", "type": "dashboard", "requiredTools": ["getNpsScore"] },
-      { "id": "nps-surveys", "type": "full-page", "route": "/nps", "requiredTools": ["getNpsScore", "createNpsSurvey"] }
-    ]
-  },
-  {
-    "moduleType": "TIME_LEAVE",
-    "name": "Time & Leave",
-    "description": "Time tracking, leave management, and attendance for teams.",
-    "category": "ops",
-    "minTier": "STARTER",
-    "price": 900,
-    "surfaces": [
-      { "id": "time-dashboard", "type": "dashboard", "requiredTools": ["listTimeEntries"] },
-      { "id": "time-tracker", "type": "full-page", "route": "/time", "requiredTools": ["listTimeEntries", "logTime"] }
-    ]
-  },
-  {
-    "moduleType": "BOARDS",
-    "name": "Boards",
-    "description": "Kanban boards for visual workflow management across teams.",
-    "category": "core",
-    "minTier": "FREE",
-    "price": 0,
-    "surfaces": [
-      { "id": "boards-view", "type": "full-page", "route": "/boards", "requiredTools": ["listBoards", "createBoard"] }
-    ]
-  },
-  {
-    "moduleType": "FINANCE",
-    "name": "Finance",
-    "description": "Financial reporting, budgeting, forecasting, and expense tracking.",
-    "category": "ops",
-    "minTier": "BUSINESS",
-    "price": 4900,
-    "surfaces": [
-      { "id": "finance-dashboard", "type": "dashboard", "requiredTools": ["getFinancials"] },
-      { "id": "finance-reports", "type": "full-page", "route": "/finance", "requiredTools": ["getFinancials", "createBudget"] }
-    ]
-  },
-  {
-    "moduleType": "WORKFLOWS",
-    "name": "Workflows",
-    "description": "Visual workflow automation builder with triggers, conditions, and actions.",
-    "category": "ops",
-    "minTier": "PRO",
-    "price": 2900,
-    "surfaces": [
-      { "id": "workflows-builder", "type": "full-page", "route": "/workflows", "requiredTools": ["listWorkflows", "createWorkflow"] }
-    ]
-  },
-  {
-    "moduleType": "ADMIN",
-    "name": "Admin",
-    "description": "Organization administration, team management, and settings.",
-    "category": "core",
-    "minTier": "FREE",
-    "price": 0,
-    "surfaces": [
-      { "id": "admin-settings", "type": "full-page", "route": "/admin", "requiredTools": ["getOrgSettings"] }
-    ]
-  }
+  { "moduleType": "TASKS", "name": "Tasks", "description": "Task management with lists, comments, and team assignments.", "category": "core", "minTier": "FREE", "price": 0 },
+  { "moduleType": "PROJECTS", "name": "Projects", "description": "Project planning with phases, milestones, and workflow canvas.", "category": "core", "minTier": "STARTER", "price": 0 },
+  { "moduleType": "BRIEFS", "name": "Briefs", "description": "Creative briefs with artifact versioning and review workflows.", "category": "core", "minTier": "STARTER", "price": 0 },
+  { "moduleType": "ORDERS", "name": "Orders", "description": "Order management with clients, invoicing, and line items.", "category": "core", "minTier": "STARTER", "price": 0 },
+  { "moduleType": "CRM", "name": "CRM", "description": "Contact management, deal pipelines, interaction tracking, and sales intelligence.", "category": "ops", "minTier": "PRO", "price": 900 },
+  { "moduleType": "SOCIAL_PUBLISHING", "name": "Social Publishing", "description": "Social media scheduling, publishing, campaign tracking, and engagement analytics.", "category": "marketing", "minTier": "PRO", "price": 1200 },
+  { "moduleType": "CONTENT_STUDIO", "name": "Content Studio", "description": "Full creative pipeline — DAM, video, moodboards, presentations, docs, and approvals.", "category": "custom", "minTier": "BUSINESS", "price": 4900 },
+  { "moduleType": "ANALYTICS", "name": "Analytics", "description": "Business analytics dashboards, custom reports, KPI tracking, and snapshots.", "category": "analytics", "minTier": "PRO", "price": 1900 },
+  { "moduleType": "SURVEYS", "name": "Surveys", "description": "Custom surveys, form templates, question management, and response collection.", "category": "analytics", "minTier": "STARTER", "price": 900 },
+  { "moduleType": "LISTENING", "name": "Social Listening", "description": "Brand monitoring, mention tracking, sentiment analysis, and competitive intelligence.", "category": "marketing", "minTier": "PRO", "price": 1000 },
+  { "moduleType": "MEDIA_BUYING", "name": "Media Buying", "description": "Ad campaign management, creative assets, budget tracking, and ROAS reporting.", "category": "marketing", "minTier": "BUSINESS", "price": 9900 },
+  { "moduleType": "LMS", "name": "LMS", "description": "Learning management with courses, lessons, enrollment tracking, and quizzes.", "category": "ops", "minTier": "PRO", "price": 3900 },
+  { "moduleType": "NPS", "name": "NPS & Surveys", "description": "Net Promoter Score surveys, feedback loops, and sentiment analysis.", "category": "analytics", "minTier": "STARTER", "price": 900 },
+  { "moduleType": "TIME_LEAVE", "name": "Time & Leave", "description": "Time tracking, leave management, capacity planning, and holiday calendars.", "category": "ops", "minTier": "STARTER", "price": 900 },
+  { "moduleType": "BOARDS", "name": "Boards", "description": "Kanban boards for visual workflow management across teams.", "category": "ops", "minTier": "STARTER", "price": 0 },
+  { "moduleType": "FINANCE", "name": "Finance", "description": "Financial reporting, budgeting, forecasting, retainers, and expense tracking.", "category": "ops", "minTier": "BUSINESS", "price": 4900 },
+  { "moduleType": "WORKFLOWS", "name": "Workflows", "description": "Visual workflow automation builder with triggers, conditions, and actions.", "category": "ops", "minTier": "PRO", "price": 2900 },
+  { "moduleType": "CLIENT_PORTAL", "name": "Client Portal", "description": "Branded client-facing portal for project visibility, approvals, and communication.", "category": "ops", "minTier": "PRO", "price": 2900 },
+  { "moduleType": "SPOKECHAT", "name": "SpokeChat", "description": "Team messaging with channels, threads, reactions, presence, and direct messages.", "category": "enterprise", "minTier": "ENTERPRISE", "price": 0 },
+  { "moduleType": "DELEGATION", "name": "Delegation", "description": "Delegation profiles, escalation rules, handoff briefings, and activity logging.", "category": "enterprise", "minTier": "ENTERPRISE", "price": 0 },
+  { "moduleType": "ACCESS_CONTROL", "name": "Access Control", "description": "Policy-based access control with rules, versioning, and compliance audit trails.", "category": "enterprise", "minTier": "ENTERPRISE", "price": 0 },
+  { "moduleType": "API_MANAGEMENT", "name": "API Management", "description": "API key management, webhook configuration, delivery logs, and usage analytics.", "category": "enterprise", "minTier": "ENTERPRISE", "price": 0 },
+  { "moduleType": "BUILDER", "name": "Builder", "description": "Module template builder with permissions, versioning, and audit logging.", "category": "enterprise", "minTier": "ENTERPRISE", "price": 0 }
 ]

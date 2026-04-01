@@ -18,9 +18,6 @@
     "updateDeal",
     "listDeals",
     "linkContactToDeal",
-    "manageClients",
-    "trackClientActivity",
-    "handleComplaint",
     "managePipeline",
     "logInteraction",
     "searchCRM",
@@ -35,7 +32,9 @@
     "manageProducts",
     "manageCompetitors",
     "manageCRMCampaigns",
-    "manageRetainerPeriods"
+    "handleComplaint",
+    "listComplaints",
+    "getComplaintDetails"
   ],
   "surfaces": [
     {

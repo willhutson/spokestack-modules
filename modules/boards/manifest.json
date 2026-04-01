@@ -1,0 +1,24 @@
+{
+  "id": "boards",
+  "moduleType": "BOARDS",
+  "name": "Boards",
+  "version": "1.0.0",
+  "description": "Kanban-style boards with columns, cards, assignments, comments, and advanced filtering for project and task management.",
+  "category": "ops",
+  "minTier": "STARTER",
+  "agentDefinition": {
+    "path": "src/agent/boards-agent.ts",
+    "name": "boards-agent"
+  },
+  "tools": [
+    "createBoard", "listBoards", "getBoard", "updateBoard", "deleteBoard",
+    "addColumn", "updateColumn", "reorderColumns", "deleteColumn",
+    "createCard", "moveCard", "updateCard", "assignCard", "addCardComment",
+    "getCardActivity", "filterCards", "searchCards", "getCardsByAssignee"
+  ],
+  "surfaces": [
+    { "id": "boards-dashboard", "type": "dashboard", "requiredTools": ["listBoards", "filterCards"] },
+    { "id": "boards-home", "type": "full-page", "route": "/boards", "requiredTools": ["listBoards", "createBoard"] }
+  ],
+  "migrations": { "install": "migrations/install.ts", "uninstall": "migrations/uninstall.ts" }
+}

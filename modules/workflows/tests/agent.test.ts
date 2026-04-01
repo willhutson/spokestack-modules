@@ -21,12 +21,12 @@ describe("Workflow Agent Definition", () => {
     expect(workflowAgentDefinition.system_prompt.length).toBeGreaterThan(50);
   });
 
-  it("references exactly 15 tools", () => {
-    expect(workflowAgentDefinition.tools).toHaveLength(15);
+  it("references exactly 17 tools", () => {
+    expect(workflowAgentDefinition.tools).toHaveLength(17);
   });
 
-  it("exports exactly 15 tool definitions", () => {
-    expect(allWorkflowTools).toHaveLength(15);
+  it("exports exactly 17 tool definitions", () => {
+    expect(allWorkflowTools).toHaveLength(17);
   });
 
   it("WORKFLOW_TOOL_NAMES matches allToolNames alias", () => {

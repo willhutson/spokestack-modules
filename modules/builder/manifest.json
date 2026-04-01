@@ -1,0 +1,23 @@
+{
+  "id": "builder",
+  "moduleType": "BUILDER",
+  "name": "Builder",
+  "version": "1.0.0",
+  "description": "Template builder with versioning, permission management, and audit logging for enterprise content workflows.",
+  "category": "enterprise",
+  "minTier": "ENTERPRISE",
+  "agentDefinition": {
+    "path": "src/agent/builder-agent.ts",
+    "name": "builder-agent"
+  },
+  "tools": [
+    "createTemplate", "listTemplates", "updateTemplate", "publishTemplate",
+    "getTemplateVersions", "setPermissions", "getPermissions", "checkPermission",
+    "getAuditLog", "exportAuditLog"
+  ],
+  "surfaces": [
+    { "id": "builder-dashboard", "type": "dashboard", "requiredTools": ["listTemplates", "getAuditLog"] },
+    { "id": "builder-home", "type": "full-page", "route": "/builder", "requiredTools": ["listTemplates", "createTemplate"] }
+  ],
+  "migrations": { "install": "migrations/install.ts", "uninstall": "migrations/uninstall.ts" }
+}

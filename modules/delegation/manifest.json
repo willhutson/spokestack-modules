@@ -1,0 +1,24 @@
+{
+  "id": "delegation",
+  "moduleType": "DELEGATION",
+  "name": "Delegation",
+  "version": "1.0.0",
+  "description": "Agent delegation profiles, escalation rules, handoff briefings, and activity logging for enterprise workflow management.",
+  "category": "enterprise",
+  "minTier": "ENTERPRISE",
+  "agentDefinition": {
+    "path": "src/agent/delegation-agent.ts",
+    "name": "delegation-agent"
+  },
+  "tools": [
+    "createDelegationProfile", "getDelegationProfile", "updateProfile",
+    "setEscalationRules", "activateDelegation", "deactivateDelegation",
+    "getDelegationStatus", "listActiveDelegations", "getHandoffBriefing",
+    "logActivity", "getActivityLog", "getDelegationSummary"
+  ],
+  "surfaces": [
+    { "id": "delegation-dashboard", "type": "dashboard", "requiredTools": ["listActiveDelegations", "getDelegationStatus"] },
+    { "id": "delegation-home", "type": "full-page", "route": "/delegation", "requiredTools": ["listActiveDelegations", "createDelegationProfile"] }
+  ],
+  "migrations": { "install": "migrations/install.ts", "uninstall": "migrations/uninstall.ts" }
+}

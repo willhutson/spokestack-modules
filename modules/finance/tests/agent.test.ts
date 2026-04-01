@@ -10,13 +10,13 @@ describe("Finance Agent Definition", () => {
     expect(financeAgentDefinition.tools.length).toBeGreaterThan(0);
   });
 
-  it("includes all 13 tools", () => {
-    expect(financeAgentDefinition.tools.length).toBe(13);
+  it("includes all 18 tools", () => {
+    expect(financeAgentDefinition.tools.length).toBe(18);
   });
 
   it("tool_names match exported tools", async () => {
     const { allToolNames } = await import("../src/tools/index");
-    expect(allToolNames.length).toBe(13);
+    expect(allToolNames.length).toBe(18);
     financeAgentDefinition.tools.forEach((name) => {
       expect(allToolNames).toContain(name);
     });

@@ -1,0 +1,24 @@
+{
+  "id": "access-control",
+  "moduleType": "ACCESS_CONTROL",
+  "name": "Access Control",
+  "version": "1.0.0",
+  "description": "Policy-based access control with rules, assignments, version history, and real-time permission checking.",
+  "category": "enterprise",
+  "minTier": "ENTERPRISE",
+  "agentDefinition": {
+    "path": "src/agent/access-control-agent.ts",
+    "name": "access-control-agent"
+  },
+  "tools": [
+    "createPolicy", "listPolicies", "getPolicy", "updatePolicy", "archivePolicy", "clonePolicy",
+    "addRule", "updateRule", "deleteRule", "testRule",
+    "assignPolicy", "revokeAssignment", "listAssignments", "checkAccess",
+    "getPolicyVersions", "compareVersions", "rollbackPolicy"
+  ],
+  "surfaces": [
+    { "id": "access-control-dashboard", "type": "dashboard", "requiredTools": ["listPolicies", "listAssignments"] },
+    { "id": "access-control-home", "type": "full-page", "route": "/access-control", "requiredTools": ["listPolicies", "createPolicy"] }
+  ],
+  "migrations": { "install": "migrations/install.ts", "uninstall": "migrations/uninstall.ts" }
+}

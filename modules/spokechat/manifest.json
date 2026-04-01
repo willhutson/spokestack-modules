@@ -1,0 +1,25 @@
+{
+  "id": "spokechat",
+  "moduleType": "SPOKECHAT",
+  "name": "SpokeChat",
+  "version": "1.0.0",
+  "description": "Enterprise team messaging with channels, threads, reactions, presence tracking, pins, and direct messages.",
+  "category": "enterprise",
+  "minTier": "ENTERPRISE",
+  "agentDefinition": {
+    "path": "src/agent/spokechat-agent.ts",
+    "name": "spokechat-agent"
+  },
+  "tools": [
+    "createChannel", "listChannels", "getChannel", "updateChannel", "deleteChannel",
+    "joinChannel", "leaveChannel", "sendMessage", "listMessages", "editMessage",
+    "deleteMessage", "getThread", "searchMessages", "addReaction", "removeReaction",
+    "getReactions", "setPresence", "getUserPresence", "getOnlineUsers",
+    "pinMessage", "unpinMessage", "getPinnedMessages", "createDM", "listDMs"
+  ],
+  "surfaces": [
+    { "id": "spokechat-dashboard", "type": "dashboard", "requiredTools": ["listChannels", "getOnlineUsers"] },
+    { "id": "spokechat-home", "type": "full-page", "route": "/spokechat", "requiredTools": ["listChannels", "listMessages"] }
+  ],
+  "migrations": { "install": "migrations/install.ts", "uninstall": "migrations/uninstall.ts" }
+}
