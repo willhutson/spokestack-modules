@@ -263,3 +263,6 @@ export type { ModuleAgent, AgentToolDefinition, AgentRegistrationPayload } from 
 
 // Phase 3 context protocol types
 export type { ContextSchema, ContextEntityType } from "./context";
+
+// Phase 6B adapter types
+export type { NangoAdapter, SyncResult } from "./adapter";

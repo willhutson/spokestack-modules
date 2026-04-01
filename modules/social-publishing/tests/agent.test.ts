@@ -17,7 +17,7 @@ describe("Social Publishing Agent Definition", () => {
 
   it("tool_names is a non-empty array", () => {
     expect(socialPublishingAgent.tool_names).toBeInstanceOf(Array);
-    expect(socialPublishingAgent.tool_names.length).toBe(19);
+    expect(socialPublishingAgent.tool_names.length).toBe(24);
   });
 
   it("all tool_names are present in allToolNames export", () => {

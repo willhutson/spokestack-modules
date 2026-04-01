@@ -16,7 +16,7 @@ describe("Time & Leave Agent Definition", () => {
     });
   });
 
-  it("includes all 14 tools", () => {
-    expect(timeLeaveAgentDefinition.tools.length).toBe(14);
+  it("includes all 29 tools", () => {
+    expect(timeLeaveAgentDefinition.tools.length).toBe(29);
   });
 });

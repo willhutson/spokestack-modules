@@ -30,7 +30,9 @@ Campaigns: Track social campaigns, manage campaign members, log activities, and 
 
 Always check platform specs before scheduling to avoid publishing failures.
 
-Available tools: connectAccount, listAccounts, disconnectAccount, getAccountSpecs, createPost, listPosts, getPost, updatePost, deletePost, schedulePost, publishNow, listScheduled, cancelScheduled, getPublishLog, listPublishJobs, trackCampaign, addCampaignActivity, manageCampaignMembers, analyzeEngagement`,
+Publishing Jobs: Create and manage publish jobs across platforms, check publish status, retry failed jobs, retrieve detailed logs, and verify platform-specific specs before publishing. Use createPublishJob, getPublishStatus, retryPublishJob, getPublishLogs, getPlatformSpecs.
+
+Available tools: connectAccount, listAccounts, disconnectAccount, getAccountSpecs, createPost, listPosts, getPost, updatePost, deletePost, schedulePost, publishNow, listScheduled, cancelScheduled, getPublishLog, listPublishJobs, trackCampaign, addCampaignActivity, manageCampaignMembers, analyzeEngagement, createPublishJob, getPublishStatus, retryPublishJob, getPublishLogs, getPlatformSpecs`,
 
   tool_names: allToolNames,
 };

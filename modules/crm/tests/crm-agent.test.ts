@@ -2,7 +2,7 @@
  * CRM Agent Definition Tests — Phase 2
  *
  * Validates that the AgentDefinition structure is correct,
- * tool names match exported tools, and all 25 tools are present.
+ * tool names match exported tools, and all 24 tools are present (Phase 6B refactored).
  */
 
 import { describe, it, expect } from "vitest";
@@ -25,8 +25,8 @@ describe("CRM Agent Definition", () => {
     });
   });
 
-  it("includes all 25 tools", () => {
-    expect(crmAgentDefinition.tools.length).toBe(25);
+  it("includes all 24 tools (Phase 6B: removed clients + retainers, added feedback)", () => {
+    expect(crmAgentDefinition.tools.length).toBe(24);
   });
 
   it("exports a valid AgentDefinition", () => {

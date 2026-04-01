@@ -1,0 +1,46 @@
+{
+  "id": "surveys",
+  "moduleType": "SURVEYS",
+  "name": "Surveys",
+  "version": "1.0.0",
+  "description": "Create and distribute surveys with advanced question types, response collection, and analytics dashboards.",
+  "category": "analytics",
+  "minTier": "STARTER",
+  "agentDefinition": {
+    "path": "src/agent/surveys-agent.ts",
+    "name": "surveys-agent"
+  },
+  "tools": [
+    "createSurvey",
+    "listSurveys",
+    "getSurvey",
+    "updateSurvey",
+    "deleteSurvey",
+    "cloneSurvey",
+    "addQuestion",
+    "updateQuestion",
+    "reorderQuestions",
+    "deleteQuestion",
+    "submitResponse",
+    "listResponses",
+    "getResults",
+    "exportResults"
+  ],
+  "surfaces": [
+    {
+      "id": "surveys-dashboard",
+      "type": "dashboard",
+      "requiredTools": ["listSurveys", "getResults"]
+    },
+    {
+      "id": "surveys-home",
+      "type": "full-page",
+      "route": "/surveys",
+      "requiredTools": ["listSurveys", "createSurvey"]
+    }
+  ],
+  "migrations": {
+    "install": "migrations/install.ts",
+    "uninstall": "migrations/uninstall.ts"
+  }
+}

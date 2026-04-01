@@ -36,7 +36,7 @@ export const CORE_MODELS = [
   "Artifact",
   "ArtifactReview",
   // Orders (5)
-  "Customer",
+  "Client",
   "Order",
   "OrderItem",
   "Invoice",

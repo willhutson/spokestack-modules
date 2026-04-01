@@ -15,6 +15,7 @@ export {
 } from "./invoices";
 export { setBudget, listBudgets, trackBudgetSpend, getBudgetSummary } from "./budgets";
 export { forecastRevenue, getRevenueMetrics, listForecastScenarios } from "./forecast";
+export { createRetainerPeriod, getRetainerStatus, updateRetainerPeriod, getRetainerBurnRate, listRetainerPeriods } from "./retainers";
 
 import {
   createInvoice,
@@ -26,6 +27,7 @@ import {
 } from "./invoices";
 import { setBudget, listBudgets, trackBudgetSpend, getBudgetSummary } from "./budgets";
 import { forecastRevenue, getRevenueMetrics, listForecastScenarios } from "./forecast";
+import { createRetainerPeriod, getRetainerStatus, updateRetainerPeriod, getRetainerBurnRate, listRetainerPeriods } from "./retainers";
 import type { ToolDefinition } from "../../../../sdk/types/index";
 
 /** All Finance tools as an array for registration */
@@ -46,6 +48,12 @@ export const allFinanceTools: ToolDefinition[] = [
   forecastRevenue,
   getRevenueMetrics,
   listForecastScenarios,
+  // Retainers
+  createRetainerPeriod,
+  getRetainerStatus,
+  updateRetainerPeriod,
+  getRetainerBurnRate,
+  listRetainerPeriods,
 ];
 
 /** Tool names for manifest and agent definition reference */

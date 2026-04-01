@@ -16,7 +16,7 @@ describe("Analytics Agent Definition", () => {
     });
   });
 
-  it("includes all 14 tools", () => {
-    expect(analyticsAgentDefinition.tools.length).toBe(14);
+  it("includes all 20 tools", () => {
+    expect(analyticsAgentDefinition.tools.length).toBe(20);
   });
 });
