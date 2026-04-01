@@ -1,0 +1,30 @@
+{
+  "id": "social-publishing",
+  "moduleType": "SOCIAL_PUBLISHING",
+  "name": "Social Publishing",
+  "version": "1.0.0",
+  "description": "Social media account management, content creation, scheduling, publishing, campaign tracking, and engagement analytics across platforms.",
+  "category": "marketing",
+  "minTier": "PRO",
+  "price": 1200,
+  "agentDefinition": {
+    "path": "src/agent/social-publishing-agent.ts",
+    "name": "social_publishing_agent"
+  },
+  "tools": [
+    "connectAccount", "listAccounts", "disconnectAccount", "getAccountSpecs",
+    "createPost", "listPosts", "getPost", "updatePost", "deletePost",
+    "schedulePost", "publishNow", "listScheduled", "cancelScheduled", "getPublishLog", "listPublishJobs",
+    "trackCampaign", "addCampaignActivity", "manageCampaignMembers", "analyzeEngagement"
+  ],
+  "surfaces": [
+    { "id": "social-home", "path": "/social", "label": "Social", "icon": "share-2" },
+    { "id": "social-calendar", "path": "/social/calendar", "label": "Calendar", "icon": "calendar" },
+    { "id": "social-accounts", "path": "/social/accounts", "label": "Accounts", "icon": "at-sign" },
+    { "id": "social-campaigns", "path": "/social/campaigns", "label": "Campaigns", "icon": "megaphone" }
+  ],
+  "migrations": {
+    "install": "migrations/install.ts",
+    "uninstall": "migrations/uninstall.ts"
+  }
+}

@@ -109,11 +109,15 @@ describe("CRM Schema Validation", () => {
     const schemaPath = path.join(__dirname, "..", "prisma", "schema.prisma");
     const schema = fs.readFileSync(schemaPath, "utf-8");
 
-    const modelBlocks = schema.match(/model\s+crm_\w+\s*\{[^}]+\}/g) || [];
-    expect(modelBlocks.length).toBeGreaterThan(0);
+    // Use multiline match to capture full model blocks
+    const modelNames = [...schema.matchAll(/model\s+(crm_\w+)/g)].map((m) => m[1]);
+    expect(modelNames.length).toBeGreaterThan(0);
 
-    for (const block of modelBlocks) {
-      expect(block).toContain("deletedAt");
+    for (const modelName of modelNames) {
+      const blockRegex = new RegExp(`model\\s+${modelName}\\s*\\{[\\s\\S]*?^\\}`, "m");
+      const match = schema.match(blockRegex);
+      expect(match).not.toBeNull();
+      expect(match![0]).toContain("deletedAt");
     }
   });
 });

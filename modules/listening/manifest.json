@@ -1,0 +1,30 @@
+{
+  "id": "listening",
+  "moduleType": "LISTENING",
+  "name": "Social Listening",
+  "version": "1.0.0",
+  "description": "Social media monitoring, brand mention tracking, sentiment analysis, competitive intelligence, and automated alerting across platforms.",
+  "category": "marketing",
+  "minTier": "PRO",
+  "price": 1000,
+  "agentDefinition": {
+    "path": "src/agent/listening-agent.ts",
+    "name": "social_listening_agent"
+  },
+  "tools": [
+    "setupMonitor", "listMonitors", "updateMonitor", "pauseMonitor", "deleteMonitor",
+    "listMentions", "getMention", "flagMention", "dismissMention",
+    "analyzeSentiment", "getSentimentTrend",
+    "trackCompetitors", "compareCompetitors",
+    "generateReport", "listReports", "alertOnMention"
+  ],
+  "surfaces": [
+    { "id": "listening-home", "path": "/listening", "label": "Listening", "icon": "radio" },
+    { "id": "listening-monitors", "path": "/listening/monitors", "label": "Monitors", "icon": "eye" },
+    { "id": "listening-reports", "path": "/listening/reports", "label": "Reports", "icon": "bar-chart-2" }
+  ],
+  "migrations": {
+    "install": "migrations/install.ts",
+    "uninstall": "migrations/uninstall.ts"
+  }
+}
