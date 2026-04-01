@@ -26,5 +26,12 @@
   "migrations": {
     "install": "migrations/install.ts",
     "uninstall": "migrations/uninstall.ts"
+  },
+  "canvasConfig": {
+    "nodeType": "MONITOR",
+    "color": "#14B8A6",
+    "icon": "radio",
+    "entityLabel": "Monitor",
+    "relationships": []
   }
 }

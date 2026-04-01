@@ -24,5 +24,12 @@
   "migrations": {
     "install": "migrations/install.ts",
     "uninstall": "migrations/uninstall.ts"
+  },
+  "canvasConfig": {
+    "nodeType": "DASHBOARD",
+    "color": "#6366F1",
+    "icon": "activity",
+    "entityLabel": "Dashboard",
+    "relationships": []
   }
 }

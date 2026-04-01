@@ -101,5 +101,15 @@
       }
     ],
     "patternTypes": ["deal_velocity", "contact_frequency", "pipeline_stall"]
+  },
+  "canvasConfig": {
+    "nodeType": "DEAL",
+    "color": "#10B981",
+    "icon": "handshake",
+    "entityLabel": "Deal",
+    "relationships": [
+      { "sourceField": "contactId", "targetModule": "CRM", "targetEntity": "contact", "label": "contact", "edgeStyle": "solid" },
+      { "sourceField": "projectId", "targetModule": "PROJECTS", "targetEntity": "project", "label": "linked to", "edgeStyle": "dashed" }
+    ]
   }
 }
