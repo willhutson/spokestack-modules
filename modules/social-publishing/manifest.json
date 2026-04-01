@@ -26,5 +26,14 @@
   "migrations": {
     "install": "migrations/install.ts",
     "uninstall": "migrations/uninstall.ts"
+  },
+  "canvasConfig": {
+    "nodeType": "POST",
+    "color": "#3B82F6",
+    "icon": "send",
+    "entityLabel": "Scheduled Post",
+    "relationships": [
+      { "sourceField": "campaignId", "targetModule": "SOCIAL_PUBLISHING", "targetEntity": "campaign", "label": "part of", "edgeStyle": "solid" }
+    ]
   }
 }

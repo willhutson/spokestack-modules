@@ -150,5 +150,15 @@
       }
     ],
     "patternTypes": ["approval_cycle_delay", "content_volume_spike"]
+  },
+  "canvasConfig": {
+    "nodeType": "ASSET",
+    "color": "#8B5CF6",
+    "icon": "image",
+    "entityLabel": "Asset",
+    "relationships": [
+      { "sourceField": "briefId", "targetModule": "BRIEFS", "targetEntity": "brief", "label": "from brief", "edgeStyle": "solid" },
+      { "sourceField": "projectId", "targetModule": "PROJECTS", "targetEntity": "project", "label": "part of", "edgeStyle": "dashed" }
+    ]
   }
 }

@@ -24,5 +24,15 @@
   "migrations": {
     "install": "migrations/install.ts",
     "uninstall": "migrations/uninstall.ts"
+  },
+  "canvasConfig": {
+    "nodeType": "TIME_ENTRY",
+    "color": "#06B6D4",
+    "icon": "clock",
+    "entityLabel": "Time Entry",
+    "relationships": [
+      { "sourceField": "projectId", "targetModule": "PROJECTS", "targetEntity": "project", "label": "logged on", "edgeStyle": "dotted" },
+      { "sourceField": "briefId", "targetModule": "BRIEFS", "targetEntity": "brief", "label": "logged on", "edgeStyle": "dotted" }
+    ]
   }
 }

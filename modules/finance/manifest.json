@@ -87,5 +87,15 @@
       }
     ],
     "patternTypes": ["budget_overrun", "invoice_approval_delay"]
+  },
+  "canvasConfig": {
+    "nodeType": "INVOICE",
+    "color": "#EF4444",
+    "icon": "receipt",
+    "entityLabel": "Invoice",
+    "relationships": [
+      { "sourceField": "orderId", "targetModule": "ORDERS", "targetEntity": "order", "label": "invoices", "edgeStyle": "solid" },
+      { "sourceField": "customerId", "targetModule": "CRM", "targetEntity": "customer", "label": "billed to", "edgeStyle": "dashed" }
+    ]
   }
 }

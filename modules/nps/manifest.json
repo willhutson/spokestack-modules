@@ -49,5 +49,14 @@
   "migrations": {
     "install": "migrations/install.ts",
     "uninstall": "migrations/uninstall.ts"
+  },
+  "canvasConfig": {
+    "nodeType": "SURVEY",
+    "color": "#EC4899",
+    "icon": "bar-chart",
+    "entityLabel": "Survey",
+    "relationships": [
+      { "sourceField": "clientId", "targetModule": "CRM", "targetEntity": "client", "label": "sent to", "edgeStyle": "solid" }
+    ]
   }
 }

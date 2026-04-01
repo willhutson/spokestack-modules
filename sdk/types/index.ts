@@ -45,6 +45,13 @@ export interface ModuleManifest {
    * Used by compose-test to detect inter-module conflicts.
    */
   contextSchema?: import('./context').ContextSchema;
+
+  /**
+   * Phase 4: Configuration for how this module's entities appear on the
+   * Mission Control canvas. Optional — modules without canvasConfig
+   * will not appear on the canvas.
+   */
+  canvasConfig?: CanvasConfig;
 }
 
 export interface AgentDefinitionRef {
@@ -204,6 +211,36 @@ export interface ComposedModule {
   agent: AgentDefinition;
   tools: ToolDefinition[];
   surfaces: SurfaceDefinition[];
+}
+
+// ---------------------------------------------------------------------------
+// Phase 4: Canvas Configuration — Mission Control integration
+// ---------------------------------------------------------------------------
+
+export interface CanvasRelationship {
+  /** Field on this module's entity that holds the foreign key. */
+  sourceField: string;
+  /** Module type of the target entity. Must match another module's moduleType. */
+  targetModule: string;
+  /** Entity type within the target module. */
+  targetEntity: string;
+  /** Human-readable label shown on the canvas edge. */
+  label: string;
+  /** Visual style of the edge line on the canvas. @default "solid" */
+  edgeStyle?: "solid" | "dashed" | "dotted";
+}
+
+export interface CanvasConfig {
+  /** Node type identifier used on the Mission Control canvas. */
+  nodeType: string;
+  /** Hex color for the node's border/accent. Must be "#RRGGBB". */
+  color: string;
+  /** Icon name from the lucide-react icon set. */
+  icon: string;
+  /** Human-readable label for this module's entity type. */
+  entityLabel: string;
+  /** Relationships to other modules' entities — drives edge rendering. */
+  relationships: CanvasRelationship[];
 }
 
 // ---------------------------------------------------------------------------

@@ -85,5 +85,14 @@
       }
     ],
     "patternTypes": ["automation_failure_spike", "workflow_bottleneck"]
+  },
+  "canvasConfig": {
+    "nodeType": "WORKFLOW",
+    "color": "#F59E0B",
+    "icon": "git-branch",
+    "entityLabel": "Workflow",
+    "relationships": [
+      { "sourceField": "triggerEntityId", "targetModule": "BRIEFS", "targetEntity": "brief", "label": "triggered by", "edgeStyle": "solid" }
+    ]
   }
 }
