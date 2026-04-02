@@ -9,3 +9,10 @@ export * from "./types/index";
 export { ModuleInstaller } from "./installer/index";
 export { validateManifest } from "./validator/index";
 export { composeModule } from "./composer/index";
+
+// Phase 10C: Module factory, registration, discovery, hooks
+export { createModule, type ModuleOptions, type ModuleBundle } from "./factory/index";
+export { validateModuleConfig } from "./factory/validate";
+export { registerModule, deregisterModule, type RegistrationConfig, type RegistrationResult } from "./registration/index";
+export { discoverModules, buildModuleRegistry, getModulesForTier, type DiscoveredModule } from "./discovery/index";
+export { executeModuleAgent, streamModuleAgent, getAgentChatHint, type ModuleContext, type AgentResponse } from "./hooks/index";
