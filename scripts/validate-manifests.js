@@ -7,7 +7,7 @@ const fs = require('fs');
 const path = require('path');
 
 const MODULES_DIR = path.resolve(__dirname, '../modules');
-const VALID_PRICING_TYPES = ['free', 'subscription', 'paid'];
+const VALID_PRICING_TYPES = ['free', 'paid', 'subscription', 'included'];
 
 let valid = 0;
 let invalid = 0;
