@@ -1,0 +1,22 @@
+{
+  "sidebar": {
+    "label": "Media Relations",
+    "icon": "newspaper",
+    "route": "/media-relations",
+    "badge": null
+  },
+  "surfaces": [
+    {
+      "id": "media-relations-dashboard",
+      "type": "dashboard",
+      "route": null,
+      "label": "media-relations-dashboard"
+    },
+    {
+      "id": "media-relations-home",
+      "type": "full-page",
+      "route": "/media-relations",
+      "label": "media-relations-home"
+    }
+  ]
+}

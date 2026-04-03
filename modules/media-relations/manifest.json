@@ -1,0 +1,21 @@
+{
+  "id": "media-relations",
+  "moduleType": "MEDIA_RELATIONS",
+  "name": "Media Relations",
+  "version": "1.0.0",
+  "description": "Manage journalist databases, media lists, pitch tracking, and coverage reporting for PR agencies.",
+  "category": "ops",
+  "minTier": "PRO",
+  "agentDefinition": {
+    "path": "src/agent/media-relations-agent.ts",
+    "name": "media-relations-agent"
+  },
+  "tools": [
+    "addJournalist", "searchJournalists", "createMediaList", "createPitch", "logCoverage", "getCoverageReport"
+  ],
+  "surfaces": [
+    { "id": "media-relations-dashboard", "type": "dashboard", "requiredTools": ["searchJournalists", "getCoverageReport"] },
+    { "id": "media-relations-home", "type": "full-page", "route": "/media-relations", "requiredTools": ["searchJournalists", "addJournalist"] }
+  ],
+  "migrations": { "install": "migrations/install.ts", "uninstall": "migrations/uninstall.ts" }
+}

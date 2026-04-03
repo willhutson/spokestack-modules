@@ -1,0 +1,22 @@
+{
+  "sidebar": {
+    "label": "Press Releases",
+    "icon": "file-text",
+    "route": "/press-releases",
+    "badge": null
+  },
+  "surfaces": [
+    {
+      "id": "press-releases-dashboard",
+      "type": "dashboard",
+      "route": null,
+      "label": "press-releases-dashboard"
+    },
+    {
+      "id": "press-releases-home",
+      "type": "full-page",
+      "route": "/press-releases",
+      "label": "press-releases-home"
+    }
+  ]
+}

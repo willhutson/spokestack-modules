@@ -1,0 +1,22 @@
+{
+  "sidebar": {
+    "label": "Influencer Management",
+    "icon": "users",
+    "route": "/influencer-management",
+    "badge": null
+  },
+  "surfaces": [
+    {
+      "id": "influencer-management-dashboard",
+      "type": "dashboard",
+      "route": null,
+      "label": "influencer-management-dashboard"
+    },
+    {
+      "id": "influencer-management-home",
+      "type": "full-page",
+      "route": "/influencer-management",
+      "label": "influencer-management-home"
+    }
+  ]
+}

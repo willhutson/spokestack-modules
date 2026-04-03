@@ -1,0 +1,22 @@
+{
+  "sidebar": {
+    "label": "Events",
+    "icon": "calendar",
+    "route": "/events",
+    "badge": null
+  },
+  "surfaces": [
+    {
+      "id": "events-dashboard",
+      "type": "dashboard",
+      "route": null,
+      "label": "events-dashboard"
+    },
+    {
+      "id": "events-home",
+      "type": "full-page",
+      "route": "/events",
+      "label": "events-home"
+    }
+  ]
+}

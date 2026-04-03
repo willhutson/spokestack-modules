@@ -1,0 +1,13 @@
+{
+  "moduleType": "MEDIA_RELATIONS",
+  "name": "Media Relations",
+  "description": "Manage journalist databases, media lists, pitch tracking, and coverage reporting for PR agencies.",
+  "category": "ops",
+  "minTier": "PRO",
+  "price": 1500,
+  "icon": "newspaper",
+  "surfaces": [
+    "media-relations-dashboard",
+    "media-relations-home"
+  ]
+}

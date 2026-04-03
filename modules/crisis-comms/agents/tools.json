@@ -1,0 +1,47 @@
+{
+  "agentType": "crisis-comms-agent",
+  "tools": [
+    {
+      "name": "activateCrisis",
+      "description": "Activate a new crisis protocol with severity level and description.",
+      "method": "POST",
+      "path": "/api/v1/modules/crisis_comms/activateCrisis",
+      "parameters": {}
+    },
+    {
+      "name": "loadPlaybook",
+      "description": "Load a crisis playbook by type for step-by-step guidance.",
+      "method": "POST",
+      "path": "/api/v1/modules/crisis_comms/loadPlaybook",
+      "parameters": {}
+    },
+    {
+      "name": "mapStakeholders",
+      "description": "Map stakeholders for a crisis with roles, contacts, and priorities.",
+      "method": "POST",
+      "path": "/api/v1/modules/crisis_comms/mapStakeholders",
+      "parameters": {}
+    },
+    {
+      "name": "draftHoldingStatement",
+      "description": "Draft a holding statement for a specific audience during a crisis.",
+      "method": "POST",
+      "path": "/api/v1/modules/crisis_comms/draftHoldingStatement",
+      "parameters": {}
+    },
+    {
+      "name": "escalateCrisis",
+      "description": "Escalate a crisis to a higher severity level with documented reason.",
+      "method": "POST",
+      "path": "/api/v1/modules/crisis_comms/escalateCrisis",
+      "parameters": {}
+    },
+    {
+      "name": "getCrisisStatus",
+      "description": "Get status of active crises with last update and assigned team.",
+      "method": "POST",
+      "path": "/api/v1/modules/crisis_comms/getCrisisStatus",
+      "parameters": {}
+    }
+  ]
+}

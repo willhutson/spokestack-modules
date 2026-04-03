@@ -21,7 +21,8 @@ export type IndustryVertical =
   | "event_management"
   | "translation_services"
   | "training_development"
-  | "in_house_team";
+  | "in_house_team"
+  | "comms_agency";
 
 export interface SuiteDefinition {
   id: string;

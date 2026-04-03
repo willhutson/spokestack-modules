@@ -1,0 +1,68 @@
+{
+  "agentType": "events-agent",
+  "tools": [
+    {
+      "name": "createEvent",
+      "description": "Create a new event with venue, date, capacity, budget, and format.",
+      "method": "POST",
+      "path": "/api/v1/modules/events/createEvent",
+      "parameters": {}
+    },
+    {
+      "name": "addGuest",
+      "description": "Add a guest to an event with tier and dietary preferences.",
+      "method": "POST",
+      "path": "/api/v1/modules/events/addGuest",
+      "parameters": {}
+    },
+    {
+      "name": "importGuestList",
+      "description": "Bulk import a guest list to an event.",
+      "method": "POST",
+      "path": "/api/v1/modules/events/importGuestList",
+      "parameters": {}
+    },
+    {
+      "name": "sendRSVPInvitation",
+      "description": "Send RSVP invitations to guests for an event.",
+      "method": "POST",
+      "path": "/api/v1/modules/events/sendRSVPInvitation",
+      "parameters": {}
+    },
+    {
+      "name": "createRunOfShowItem",
+      "description": "Create a run of show item for an event.",
+      "method": "POST",
+      "path": "/api/v1/modules/events/createRunOfShowItem",
+      "parameters": {}
+    },
+    {
+      "name": "reorderRunOfShow",
+      "description": "Reorder run of show items for an event.",
+      "method": "POST",
+      "path": "/api/v1/modules/events/reorderRunOfShow",
+      "parameters": {}
+    },
+    {
+      "name": "addVendor",
+      "description": "Add a vendor to an event with service and cost.",
+      "method": "POST",
+      "path": "/api/v1/modules/events/addVendor",
+      "parameters": {}
+    },
+    {
+      "name": "trackBudget",
+      "description": "Track event budget with spend breakdown by vendor.",
+      "method": "POST",
+      "path": "/api/v1/modules/events/trackBudget",
+      "parameters": {}
+    },
+    {
+      "name": "generatePostEventReport",
+      "description": "Generate a post-event report with attendance and performance stats.",
+      "method": "POST",
+      "path": "/api/v1/modules/events/generatePostEventReport",
+      "parameters": {}
+    }
+  ]
+}

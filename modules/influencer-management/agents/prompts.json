@@ -1,0 +1,14 @@
+{
+  "agentType": "influencer-management-agent",
+  "systemPromptExtension": "You manage influencer relationships for brands in the UAE and GCC. You know the local influencer landscape, typical rate cards, and engagement benchmarks by platform and niche.",
+  "capabilities": [
+    "addInfluencer",
+    "searchInfluencers",
+    "createInfluencerCampaign",
+    "createDeliverable",
+    "createInfluencerContract",
+    "calculateROI",
+    "trackEngagement"
+  ],
+  "handoffs": {}
+}

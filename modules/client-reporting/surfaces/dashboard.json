@@ -1,0 +1,22 @@
+{
+  "sidebar": {
+    "label": "Client Reporting",
+    "icon": "bar-chart-2",
+    "route": "/client-reporting",
+    "badge": null
+  },
+  "surfaces": [
+    {
+      "id": "client-reporting-dashboard",
+      "type": "dashboard",
+      "route": null,
+      "label": "client-reporting-dashboard"
+    },
+    {
+      "id": "client-reporting-home",
+      "type": "full-page",
+      "route": "/client-reporting",
+      "label": "client-reporting-home"
+    }
+  ]
+}

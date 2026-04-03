@@ -1,0 +1,33 @@
+{
+  "agentType": "press-release-agent",
+  "tools": [
+    {
+      "name": "draftPressRelease",
+      "description": "Draft a press release with title, body, optional embargo, and distribution list.",
+      "method": "POST",
+      "path": "/api/v1/modules/press_releases/draftPressRelease",
+      "parameters": {}
+    },
+    {
+      "name": "generatePRContent",
+      "description": "Generate press release content from topic and key messages.",
+      "method": "POST",
+      "path": "/api/v1/modules/press_releases/generatePRContent",
+      "parameters": {}
+    },
+    {
+      "name": "scheduleDistribution",
+      "description": "Schedule press release distribution to a media list on a specific date.",
+      "method": "POST",
+      "path": "/api/v1/modules/press_releases/scheduleDistribution",
+      "parameters": {}
+    },
+    {
+      "name": "trackPickups",
+      "description": "Track press release pickups across outlets with sentiment breakdown.",
+      "method": "POST",
+      "path": "/api/v1/modules/press_releases/trackPickups",
+      "parameters": {}
+    }
+  ]
+}

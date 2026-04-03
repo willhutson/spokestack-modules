@@ -1,0 +1,9 @@
+{
+  "routes": [
+    { "method": "GET", "path": "/api/v1/events", "description": "List events", "existing": false },
+    { "method": "POST", "path": "/api/v1/events", "description": "Create event", "existing": false },
+    { "method": "GET", "path": "/api/v1/events/:id", "description": "Get event", "existing": false },
+    { "method": "PATCH", "path": "/api/v1/events/:id", "description": "Update event", "existing": false },
+    { "method": "DELETE", "path": "/api/v1/events/:id", "description": "Delete event", "existing": false }
+  ]
+}

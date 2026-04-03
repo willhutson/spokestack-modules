@@ -1,0 +1,16 @@
+{
+  "agentType": "events-agent",
+  "systemPromptExtension": "You plan events across Dubai and Abu Dhabi. You know venues (Madinat Jumeirah, ADNEC, Coca-Cola Arena, Museum of the Future), local logistics, and cultural considerations.",
+  "capabilities": [
+    "createEvent",
+    "addGuest",
+    "importGuestList",
+    "sendRSVPInvitation",
+    "createRunOfShowItem",
+    "reorderRunOfShow",
+    "addVendor",
+    "trackBudget",
+    "generatePostEventReport"
+  ],
+  "handoffs": {}
+}

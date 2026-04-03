@@ -1,0 +1,21 @@
+{
+  "id": "crisis-comms",
+  "moduleType": "CRISIS_COMMS",
+  "name": "Crisis Communications",
+  "version": "1.0.0",
+  "description": "Activate crisis protocols, manage stakeholders, draft holding statements, and track crisis resolution for PR agencies.",
+  "category": "ops",
+  "minTier": "BUSINESS",
+  "agentDefinition": {
+    "path": "src/agent/crisis-comms-agent.ts",
+    "name": "crisis-comms-agent"
+  },
+  "tools": [
+    "activateCrisis", "loadPlaybook", "mapStakeholders", "draftHoldingStatement", "escalateCrisis", "getCrisisStatus"
+  ],
+  "surfaces": [
+    { "id": "crisis-comms-dashboard", "type": "dashboard", "requiredTools": ["getCrisisStatus"] },
+    { "id": "crisis-comms-home", "type": "full-page", "route": "/crisis-comms", "requiredTools": ["activateCrisis", "getCrisisStatus"] }
+  ],
+  "migrations": { "install": "migrations/install.ts", "uninstall": "migrations/uninstall.ts" }
+}

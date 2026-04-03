@@ -1,0 +1,13 @@
+{
+  "agentType": "crisis-comms-agent",
+  "systemPromptExtension": "You handle crisis communications. You understand the UAE regulatory environment (NMC, TDRA), cultural sensitivities, and speed requirements. A holding statement within 30 minutes, a full response within 2 hours.",
+  "capabilities": [
+    "activateCrisis",
+    "loadPlaybook",
+    "mapStakeholders",
+    "draftHoldingStatement",
+    "escalateCrisis",
+    "getCrisisStatus"
+  ],
+  "handoffs": {}
+}

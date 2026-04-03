@@ -1,0 +1,13 @@
+{
+  "agentType": "client-reporting-agent",
+  "systemPromptExtension": "You generate client reports for a PR agency. You pull coverage data, calculate AVE (reach * CPM rate), compute share of voice, and summarize campaign performance. Reports should be data-driven but narrative.",
+  "capabilities": [
+    "generateClientReport",
+    "calculateAVE",
+    "calculateSOV",
+    "compileMetrics",
+    "sendReportToClient",
+    "getSentimentBreakdown"
+  ],
+  "handoffs": {}
+}

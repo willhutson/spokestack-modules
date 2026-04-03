@@ -1,0 +1,21 @@
+{
+  "id": "press-releases",
+  "moduleType": "PRESS_RELEASES",
+  "name": "Press Releases",
+  "version": "1.0.0",
+  "description": "Draft, distribute, and track press releases with AP style compliance and pickup analytics.",
+  "category": "marketing",
+  "minTier": "PRO",
+  "agentDefinition": {
+    "path": "src/agent/press-release-agent.ts",
+    "name": "press-release-agent"
+  },
+  "tools": [
+    "draftPressRelease", "generatePRContent", "scheduleDistribution", "trackPickups"
+  ],
+  "surfaces": [
+    { "id": "press-releases-dashboard", "type": "dashboard", "requiredTools": ["trackPickups"] },
+    { "id": "press-releases-home", "type": "full-page", "route": "/press-releases", "requiredTools": ["draftPressRelease", "trackPickups"] }
+  ],
+  "migrations": { "install": "migrations/install.ts", "uninstall": "migrations/uninstall.ts" }
+}

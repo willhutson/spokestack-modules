@@ -1,0 +1,13 @@
+{
+  "moduleType": "INFLUENCER_MGMT",
+  "name": "Influencer Management",
+  "description": "Manage influencer relationships, campaigns, contracts, deliverables, and ROI tracking for PR and marketing agencies.",
+  "category": "marketing",
+  "minTier": "PRO",
+  "price": 1500,
+  "icon": "users",
+  "surfaces": [
+    "influencer-management-dashboard",
+    "influencer-management-home"
+  ]
+}

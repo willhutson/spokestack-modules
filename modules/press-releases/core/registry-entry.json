@@ -1,0 +1,13 @@
+{
+  "moduleType": "PRESS_RELEASES",
+  "name": "Press Releases",
+  "description": "Draft, distribute, and track press releases with AP style compliance and pickup analytics.",
+  "category": "marketing",
+  "minTier": "PRO",
+  "price": 1000,
+  "icon": "file-text",
+  "surfaces": [
+    "press-releases-dashboard",
+    "press-releases-home"
+  ]
+}

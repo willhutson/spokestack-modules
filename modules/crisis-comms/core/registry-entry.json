@@ -1,0 +1,13 @@
+{
+  "moduleType": "CRISIS_COMMS",
+  "name": "Crisis Communications",
+  "description": "Activate crisis protocols, manage stakeholders, draft holding statements, and track crisis resolution for PR agencies.",
+  "category": "ops",
+  "minTier": "BUSINESS",
+  "price": 2000,
+  "icon": "alert-triangle",
+  "surfaces": [
+    "crisis-comms-dashboard",
+    "crisis-comms-home"
+  ]
+}

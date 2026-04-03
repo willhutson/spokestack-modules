@@ -1,0 +1,21 @@
+{
+  "id": "events",
+  "moduleType": "EVENTS",
+  "name": "Events",
+  "version": "1.0.0",
+  "description": "Plan and manage events with guest lists, RSVP tracking, run of show, vendor management, and budget tracking for PR agencies.",
+  "category": "ops",
+  "minTier": "PRO",
+  "agentDefinition": {
+    "path": "src/agent/events-agent.ts",
+    "name": "events-agent"
+  },
+  "tools": [
+    "createEvent", "addGuest", "importGuestList", "sendRSVPInvitation", "createRunOfShowItem", "reorderRunOfShow", "addVendor", "trackBudget", "generatePostEventReport"
+  ],
+  "surfaces": [
+    { "id": "events-dashboard", "type": "dashboard", "requiredTools": ["trackBudget"] },
+    { "id": "events-home", "type": "full-page", "route": "/events", "requiredTools": ["createEvent", "addGuest", "trackBudget"] }
+  ],
+  "migrations": { "install": "migrations/install.ts", "uninstall": "migrations/uninstall.ts" }
+}

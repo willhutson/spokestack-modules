@@ -1,0 +1,9 @@
+{
+  "routes": [
+    { "method": "GET", "path": "/api/v1/press_releases", "description": "List press releases", "existing": false },
+    { "method": "POST", "path": "/api/v1/press_releases", "description": "Create press release", "existing": false },
+    { "method": "GET", "path": "/api/v1/press_releases/:id", "description": "Get press release", "existing": false },
+    { "method": "PATCH", "path": "/api/v1/press_releases/:id", "description": "Update press release", "existing": false },
+    { "method": "DELETE", "path": "/api/v1/press_releases/:id", "description": "Delete press release", "existing": false }
+  ]
+}

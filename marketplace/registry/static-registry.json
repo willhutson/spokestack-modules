@@ -34,5 +34,11 @@
   { "moduleType": "COMPLIANCE", "name": "Compliance", "description": "Compliance tracking, audit trails, and regulatory reporting.", "category": "enterprise", "minTier": "BUSINESS", "price": 3900 },
   { "moduleType": "CERTIFICATIONS", "name": "Certifications", "description": "Professional certification tracking and renewal management.", "category": "ops", "minTier": "PRO", "price": 1200 },
   { "moduleType": "INVENTORY", "name": "Inventory", "description": "Asset and inventory tracking with locations, stock levels, and transfers.", "category": "ops", "minTier": "STARTER", "price": 900 },
-  { "moduleType": "RFP", "name": "RFP", "description": "Request for proposal management with scoring and comparison.", "category": "ops", "minTier": "PRO", "price": 1900 }
+  { "moduleType": "RFP", "name": "RFP", "description": "Request for proposal management with scoring and comparison.", "category": "ops", "minTier": "PRO", "price": 1900 },
+  { "moduleType": "MEDIA_RELATIONS", "name": "Media Relations", "description": "Journalist database, media lists, pitch tracking, and coverage reporting.", "category": "ops", "minTier": "PRO", "price": 1500 },
+  { "moduleType": "PRESS_RELEASES", "name": "Press Releases", "description": "Draft, approve, distribute, and track press release pickups.", "category": "marketing", "minTier": "PRO", "price": 1000 },
+  { "moduleType": "CRISIS_COMMS", "name": "Crisis Communications", "description": "Crisis playbooks, stakeholder mapping, holding statements, and escalation management.", "category": "ops", "minTier": "BUSINESS", "price": 2000 },
+  { "moduleType": "CLIENT_REPORTING", "name": "Client Reporting", "description": "Monthly retainer reports, coverage analysis, share of voice, and AVE calculations.", "category": "analytics", "minTier": "PRO", "price": 1000 },
+  { "moduleType": "INFLUENCER_MGMT", "name": "Influencer Management", "description": "Influencer database, campaign tracking, deliverables, and ROI analytics.", "category": "marketing", "minTier": "PRO", "price": 1500 },
+  { "moduleType": "EVENTS", "name": "Events", "description": "Event planning, guest lists, RSVP tracking, run-of-show, and vendor management.", "category": "ops", "minTier": "PRO", "price": 1500 }
 ]

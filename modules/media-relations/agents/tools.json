@@ -1,0 +1,47 @@
+{
+  "agentType": "media-relations-agent",
+  "tools": [
+    {
+      "name": "addJournalist",
+      "description": "Add a journalist to the media database with contact details and beat information.",
+      "method": "POST",
+      "path": "/api/v1/modules/media_relations/addJournalist",
+      "parameters": {}
+    },
+    {
+      "name": "searchJournalists",
+      "description": "Search the journalist database by beat, outlet, region, or free-text query.",
+      "method": "POST",
+      "path": "/api/v1/modules/media_relations/searchJournalists",
+      "parameters": {}
+    },
+    {
+      "name": "createMediaList",
+      "description": "Create a curated media list from selected journalists.",
+      "method": "POST",
+      "path": "/api/v1/modules/media_relations/createMediaList",
+      "parameters": {}
+    },
+    {
+      "name": "createPitch",
+      "description": "Create a pitch brief targeting specific journalists or media lists.",
+      "method": "POST",
+      "path": "/api/v1/modules/media_relations/createPitch",
+      "parameters": {}
+    },
+    {
+      "name": "logCoverage",
+      "description": "Log a media coverage entry with outlet, headline, sentiment, and reach.",
+      "method": "POST",
+      "path": "/api/v1/modules/media_relations/logCoverage",
+      "parameters": {}
+    },
+    {
+      "name": "getCoverageReport",
+      "description": "Generate a coverage report for a client over a given period.",
+      "method": "POST",
+      "path": "/api/v1/modules/media_relations/getCoverageReport",
+      "parameters": {}
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "name": "@spokestack/client-reporting",
+  "version": "1.0.0",
+  "description": "Client Reporting module for SpokeStack — AVE, SOV, sentiment analysis, and automated report generation",
+  "main": "src/agent/client-reporting-agent.ts",
+  "scripts": {
+    "build": "tsc --noEmit",
+    "test": "vitest run",
+    "validate": "node -e \"require('@spokestack/module-sdk/cli/validate').validateModule('.')\"",
+    "lint": "tsc --noEmit"
+  },
+  "dependencies": { "@spokestack/module-sdk": "workspace:*", "@spokestack/core-schema": "workspace:*" },
+  "devDependencies": { "typescript": "^5.3.0", "vitest": "^1.2.0" }
+}

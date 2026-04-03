@@ -1,0 +1,47 @@
+{
+  "agentType": "client-reporting-agent",
+  "tools": [
+    {
+      "name": "generateClientReport",
+      "description": "Generate a comprehensive client report for a given period.",
+      "method": "POST",
+      "path": "/api/v1/modules/client_reporting/generateClientReport",
+      "parameters": {}
+    },
+    {
+      "name": "calculateAVE",
+      "description": "Calculate Advertising Value Equivalent for client coverage.",
+      "method": "POST",
+      "path": "/api/v1/modules/client_reporting/calculateAVE",
+      "parameters": {}
+    },
+    {
+      "name": "calculateSOV",
+      "description": "Calculate Share of Voice against competitors.",
+      "method": "POST",
+      "path": "/api/v1/modules/client_reporting/calculateSOV",
+      "parameters": {}
+    },
+    {
+      "name": "compileMetrics",
+      "description": "Compile all key PR metrics for a client and period.",
+      "method": "POST",
+      "path": "/api/v1/modules/client_reporting/compileMetrics",
+      "parameters": {}
+    },
+    {
+      "name": "sendReportToClient",
+      "description": "Send a finalized report to the client.",
+      "method": "POST",
+      "path": "/api/v1/modules/client_reporting/sendReportToClient",
+      "parameters": {}
+    },
+    {
+      "name": "getSentimentBreakdown",
+      "description": "Get sentiment breakdown for a client over a period.",
+      "method": "POST",
+      "path": "/api/v1/modules/client_reporting/getSentimentBreakdown",
+      "parameters": {}
+    }
+  ]
+}

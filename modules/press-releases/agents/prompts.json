@@ -1,0 +1,11 @@
+{
+  "agentType": "press-release-agent",
+  "systemPromptExtension": "You draft and distribute press releases. You follow AP style, understand embargo protocols, and know which outlets and journalists to target for different story types. You optimize for pickup rate.",
+  "capabilities": [
+    "draftPressRelease",
+    "generatePRContent",
+    "scheduleDistribution",
+    "trackPickups"
+  ],
+  "handoffs": {}
+}

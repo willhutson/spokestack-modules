@@ -1,0 +1,54 @@
+{
+  "agentType": "influencer-management-agent",
+  "tools": [
+    {
+      "name": "addInfluencer",
+      "description": "Add an influencer to the database with platform, followers, and rate card.",
+      "method": "POST",
+      "path": "/api/v1/modules/influencer_mgmt/addInfluencer",
+      "parameters": {}
+    },
+    {
+      "name": "searchInfluencers",
+      "description": "Search influencers by platform, niche, location, and follower count.",
+      "method": "POST",
+      "path": "/api/v1/modules/influencer_mgmt/searchInfluencers",
+      "parameters": {}
+    },
+    {
+      "name": "createInfluencerCampaign",
+      "description": "Create an influencer marketing campaign with budget and target reach.",
+      "method": "POST",
+      "path": "/api/v1/modules/influencer_mgmt/createInfluencerCampaign",
+      "parameters": {}
+    },
+    {
+      "name": "createDeliverable",
+      "description": "Create a deliverable task for an influencer in a campaign.",
+      "method": "POST",
+      "path": "/api/v1/modules/influencer_mgmt/createDeliverable",
+      "parameters": {}
+    },
+    {
+      "name": "createInfluencerContract",
+      "description": "Create a contract for influencer fees in a campaign.",
+      "method": "POST",
+      "path": "/api/v1/modules/influencer_mgmt/createInfluencerContract",
+      "parameters": {}
+    },
+    {
+      "name": "calculateROI",
+      "description": "Calculate return on investment for an influencer campaign.",
+      "method": "POST",
+      "path": "/api/v1/modules/influencer_mgmt/calculateROI",
+      "parameters": {}
+    },
+    {
+      "name": "trackEngagement",
+      "description": "Track engagement metrics for a deliverable.",
+      "method": "POST",
+      "path": "/api/v1/modules/influencer_mgmt/trackEngagement",
+      "parameters": {}
+    }
+  ]
+}

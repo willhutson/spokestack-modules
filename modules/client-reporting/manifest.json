@@ -1,0 +1,21 @@
+{
+  "id": "client-reporting",
+  "moduleType": "CLIENT_REPORTING",
+  "name": "Client Reporting",
+  "version": "1.0.0",
+  "description": "Generate data-driven client reports with AVE calculations, share of voice analysis, and sentiment breakdowns for PR agencies.",
+  "category": "analytics",
+  "minTier": "PRO",
+  "agentDefinition": {
+    "path": "src/agent/client-reporting-agent.ts",
+    "name": "client-reporting-agent"
+  },
+  "tools": [
+    "generateClientReport", "calculateAVE", "calculateSOV", "compileMetrics", "sendReportToClient", "getSentimentBreakdown"
+  ],
+  "surfaces": [
+    { "id": "client-reporting-dashboard", "type": "dashboard", "requiredTools": ["compileMetrics", "getSentimentBreakdown"] },
+    { "id": "client-reporting-home", "type": "full-page", "route": "/client-reporting", "requiredTools": ["generateClientReport", "compileMetrics"] }
+  ],
+  "migrations": { "install": "migrations/install.ts", "uninstall": "migrations/uninstall.ts" }
+}

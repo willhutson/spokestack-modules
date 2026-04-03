@@ -1,0 +1,21 @@
+{
+  "id": "influencer-management",
+  "moduleType": "INFLUENCER_MGMT",
+  "name": "Influencer Management",
+  "version": "1.0.0",
+  "description": "Manage influencer relationships, campaigns, contracts, deliverables, and ROI tracking for PR and marketing agencies.",
+  "category": "marketing",
+  "minTier": "PRO",
+  "agentDefinition": {
+    "path": "src/agent/influencer-management-agent.ts",
+    "name": "influencer-management-agent"
+  },
+  "tools": [
+    "addInfluencer", "searchInfluencers", "createInfluencerCampaign", "createDeliverable", "createInfluencerContract", "calculateROI", "trackEngagement"
+  ],
+  "surfaces": [
+    { "id": "influencer-management-dashboard", "type": "dashboard", "requiredTools": ["searchInfluencers", "calculateROI"] },
+    { "id": "influencer-management-home", "type": "full-page", "route": "/influencer-management", "requiredTools": ["searchInfluencers", "addInfluencer", "createInfluencerCampaign"] }
+  ],
+  "migrations": { "install": "migrations/install.ts", "uninstall": "migrations/uninstall.ts" }
+}

@@ -1,0 +1,9 @@
+{
+  "routes": [
+    { "method": "GET", "path": "/api/v1/client_reporting", "description": "List client reports", "existing": false },
+    { "method": "POST", "path": "/api/v1/client_reporting", "description": "Create client report", "existing": false },
+    { "method": "GET", "path": "/api/v1/client_reporting/:id", "description": "Get client report", "existing": false },
+    { "method": "PATCH", "path": "/api/v1/client_reporting/:id", "description": "Update client report", "existing": false },
+    { "method": "DELETE", "path": "/api/v1/client_reporting/:id", "description": "Delete client report", "existing": false }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "sidebar": {
+    "label": "Crisis Comms",
+    "icon": "alert-triangle",
+    "route": "/crisis-comms",
+    "badge": null
+  },
+  "surfaces": [
+    {
+      "id": "crisis-comms-dashboard",
+      "type": "dashboard",
+      "route": null,
+      "label": "crisis-comms-dashboard"
+    },
+    {
+      "id": "crisis-comms-home",
+      "type": "full-page",
+      "route": "/crisis-comms",
+      "label": "crisis-comms-home"
+    }
+  ]
+}

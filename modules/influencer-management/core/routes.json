@@ -1,0 +1,9 @@
+{
+  "routes": [
+    { "method": "GET", "path": "/api/v1/influencer_mgmt", "description": "List influencer records", "existing": false },
+    { "method": "POST", "path": "/api/v1/influencer_mgmt", "description": "Create influencer record", "existing": false },
+    { "method": "GET", "path": "/api/v1/influencer_mgmt/:id", "description": "Get influencer record", "existing": false },
+    { "method": "PATCH", "path": "/api/v1/influencer_mgmt/:id", "description": "Update influencer record", "existing": false },
+    { "method": "DELETE", "path": "/api/v1/influencer_mgmt/:id", "description": "Delete influencer record", "existing": false }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "moduleType": "EVENTS",
+  "name": "Events",
+  "description": "Plan and manage events with guest lists, RSVP tracking, run of show, vendor management, and budget tracking for PR agencies.",
+  "category": "ops",
+  "minTier": "PRO",
+  "price": 1500,
+  "icon": "calendar",
+  "surfaces": [
+    "events-dashboard",
+    "events-home"
+  ]
+}

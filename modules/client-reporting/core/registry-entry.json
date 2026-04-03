@@ -1,0 +1,13 @@
+{
+  "moduleType": "CLIENT_REPORTING",
+  "name": "Client Reporting",
+  "description": "Generate data-driven client reports with AVE calculations, share of voice analysis, and sentiment breakdowns for PR agencies.",
+  "category": "analytics",
+  "minTier": "PRO",
+  "price": 1000,
+  "icon": "bar-chart-2",
+  "surfaces": [
+    "client-reporting-dashboard",
+    "client-reporting-home"
+  ]
+}

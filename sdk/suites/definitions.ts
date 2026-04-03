@@ -238,6 +238,61 @@ export const SUITES: SuiteDefinition[] = [
       questions: ["How large is your team?", "What's your primary workflow — projects, tasks, or briefs?"],
     },
   },
+  {
+    id: "comms-agency-uae",
+    name: "UAE Comms Agency",
+    version: "1.0.0",
+    description: "Complete PR/communications agency setup for the UAE market",
+    industry: "comms_agency",
+    region: "MENA",
+    modules: [
+      "CRM", "BRIEFS", "CONTENT_STUDIO", "SOCIAL_PUBLISHING",
+      "LISTENING", "ANALYTICS", "CLIENT_PORTAL", "TIME_LEAVE",
+      "MEDIA_RELATIONS", "PRESS_RELEASES", "CRISIS_COMMS",
+      "CLIENT_REPORTING", "INFLUENCER_MGMT", "EVENTS",
+    ],
+    config: { timezone: "Asia/Dubai", currency: "AED", workWeek: [1, 2, 3, 4, 5], language: "en" },
+    moduleOverrides: {
+      CRM: {
+        pipelineStages: ["Prospect", "Pitch", "Proposal", "Retainer", "Active Client", "Dormant"],
+        defaultCurrency: "AED",
+        clientTypes: ["Brand", "Government Entity", "Semi-Government", "SME", "Startup"],
+      },
+      BRIEFS: {
+        types: ["Media Pitch", "Press Release", "Holding Statement", "Campaign Brief", "Client Report", "Event Brief"],
+        reviewStages: ["Internal Review", "Client Review", "Legal Review", "Final Approval"],
+      },
+      LISTENING: {
+        defaultMonitors: ["Client brand names", "Competitor brands", "Industry keywords"],
+        sources: ["Gulf News", "The National", "Khaleej Times", "Arabian Business", "Campaign ME"],
+      },
+      TIME_LEAVE: {
+        leaveTypes: ["Annual", "Sick", "Hajj", "Compassionate", "Maternity/Paternity"],
+      },
+    },
+    workflows: [
+      { entityType: "Brief", action: "status_changed", handler: "agent:media_relations_agent", config: { conditions: { "metadata.type": "pitch", toStatus: "ACTIVE" } } },
+      { entityType: "ContextEntry", action: "created", handler: "webhook:notify_client", config: { conditions: { category: "coverage" } } },
+      { entityType: "Project", action: "status_changed", handler: "agent:crisis_comms_agent", config: { conditions: { "metadata.type": "crisis" } } },
+      { entityType: "Project", action: "updated", handler: "agent:events_agent", config: { conditions: { "metadata.type": "event", daysUntilEvent: 7 } } },
+    ],
+    agentPrompts: {
+      crm_manager: "You manage client relationships for a PR/communications agency in the UAE. Clients include brands, government entities (tourism boards, economic zones), semi-government organizations, and regional companies. Currency is AED. Retainer agreements are standard — most clients are on monthly retainers of AED 15,000-75,000.",
+      media_relations_agent: "You are the media relations specialist for a UAE comms agency. You know the Gulf media landscape: The National, Gulf News, Khaleej Times, Arabian Business, Campaign Middle East, Communicate. You track journalist relationships, manage media lists, and ensure timely pitch follow-ups.",
+      crisis_comms_agent: "You handle crisis communications for clients in the UAE. You understand the regulatory environment (NMC, TDRA), cultural sensitivities, and the speed required. A holding statement within 30 minutes, a full response within 2 hours.",
+      events_agent: "You plan events across Dubai and Abu Dhabi. You know venues (Madinat Jumeirah, ADNEC, Coca-Cola Arena, Museum of the Future), local logistics, and cultural considerations. You manage guest lists with VIP/media/influencer tiers.",
+    },
+    onboarding: {
+      welcomeMessage: "Welcome to SpokeStack for Comms Agencies! I'll help you set up your workspace for PR and communications. Let's start — who are your current clients?",
+      questions: [
+        "Who are your top 3 clients right now?",
+        "What's your typical retainer structure — monthly, project-based, or a mix?",
+        "Do you handle crisis comms, or is that a separate service?",
+        "How many journalists are in your regular media outreach?",
+        "Do you manage influencer campaigns for clients?",
+      ],
+    },
+  },
 ];
 
 export function getSuiteById(id: string): SuiteDefinition | undefined {
