@@ -20,3 +20,12 @@ export { executeModuleAgent, streamModuleAgent, getAgentChatHint, type ModuleCon
 // Suite system
 export { SUITES, getSuiteById, getAllSuites, installSuite, planSuiteInstall } from "./suites/index";
 export type { SuiteDefinition, SuiteInstallResult, SuitePlanResult, IndustryVertical } from "./suites/types";
+
+// Phase 12B: Marketplace publish SDK
+export * from "./types/marketplace";
+export { packageModule, serializePackage, deserializePackage } from "./packaging/index";
+export { validateModuleForPublish, validateModuleSecurity } from "./validation/publish";
+export { publishModule, updateModule, unpublishModule, PublishError } from "./publishing/index";
+export { createCrudModule } from "./templates/crud";
+export { createWorkflowModule } from "./templates/workflow";
+export { createDashboardModule } from "./templates/dashboard";
