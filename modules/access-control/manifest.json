@@ -11,14 +11,56 @@
     "name": "access-control-agent"
   },
   "tools": [
-    "createPolicy", "listPolicies", "getPolicy", "updatePolicy", "archivePolicy", "clonePolicy",
-    "addRule", "updateRule", "deleteRule", "testRule",
-    "assignPolicy", "revokeAssignment", "listAssignments", "checkAccess",
-    "getPolicyVersions", "compareVersions", "rollbackPolicy"
+    "createPolicy",
+    "listPolicies",
+    "getPolicy",
+    "updatePolicy",
+    "archivePolicy",
+    "clonePolicy",
+    "addRule",
+    "updateRule",
+    "deleteRule",
+    "testRule",
+    "assignPolicy",
+    "revokeAssignment",
+    "listAssignments",
+    "checkAccess",
+    "getPolicyVersions",
+    "compareVersions",
+    "rollbackPolicy"
   ],
   "surfaces": [
-    { "id": "access-control-dashboard", "type": "dashboard", "requiredTools": ["listPolicies", "listAssignments"] },
-    { "id": "access-control-home", "type": "full-page", "route": "/access-control", "requiredTools": ["listPolicies", "createPolicy"] }
+    {
+      "id": "access-control-dashboard",
+      "type": "dashboard",
+      "requiredTools": [
+        "listPolicies",
+        "listAssignments"
+      ]
+    },
+    {
+      "id": "access-control-home",
+      "type": "full-page",
+      "route": "/access-control",
+      "requiredTools": [
+        "listPolicies",
+        "createPolicy"
+      ]
+    }
   ],
-  "migrations": { "install": "migrations/install.ts", "uninstall": "migrations/uninstall.ts" }
+  "migrations": {
+    "install": "migrations/install.ts",
+    "uninstall": "migrations/uninstall.ts"
+  },
+  "type": "ACCESS_CONTROL",
+  "slug": "access-control",
+  "agentType": "access_admin",
+  "pricing": {
+    "type": "subscription",
+    "monthlyPriceCents": 1000
+  },
+  "author": {
+    "name": "SpokeStack",
+    "url": "https://spokestack.dev"
+  }
 }

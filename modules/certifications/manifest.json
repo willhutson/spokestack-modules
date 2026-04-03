@@ -11,18 +11,33 @@
     "path": "src/agent/certifications-agent.ts",
     "name": "certifications-agent"
   },
-  "tools": ["addCertification", "listCertifications", "setRenewalReminder", "verifyCredential", "getExpiringCerts", "updateStatus", "generateReport", "bulkImport"],
+  "tools": [
+    "addCertification",
+    "listCertifications",
+    "setRenewalReminder",
+    "verifyCredential",
+    "getExpiringCerts",
+    "updateStatus",
+    "generateReport",
+    "bulkImport"
+  ],
   "surfaces": [
     {
       "id": "certifications-dashboard",
       "type": "dashboard",
-      "requiredTools": ["addCertification", "listCertifications"]
+      "requiredTools": [
+        "addCertification",
+        "listCertifications"
+      ]
     },
     {
       "id": "certifications-overview",
       "type": "full-page",
       "route": "/certifications",
-      "requiredTools": ["addCertification", "listCertifications"]
+      "requiredTools": [
+        "addCertification",
+        "listCertifications"
+      ]
     }
   ],
   "migrations": {
@@ -38,15 +53,38 @@
         "valueSchema": {
           "type": "object",
           "properties": {
-            "name": { "type": "string" },
-            "status": { "type": "string" },
-            "createdAt": { "type": "string", "format": "date-time" }
+            "name": {
+              "type": "string"
+            },
+            "status": {
+              "type": "string"
+            },
+            "createdAt": {
+              "type": "string",
+              "format": "date-time"
+            }
           },
-          "required": ["name"]
+          "required": [
+            "name"
+          ]
         },
         "relatedCategories": []
       }
     ],
-    "patternTypes": ["certifications_activity", "certifications_trend"]
+    "patternTypes": [
+      "certifications_activity",
+      "certifications_trend"
+    ]
+  },
+  "type": "CERTIFICATIONS",
+  "slug": "certifications",
+  "agentType": "assistant",
+  "pricing": {
+    "type": "subscription",
+    "monthlyPriceCents": 500
+  },
+  "author": {
+    "name": "SpokeStack",
+    "url": "https://spokestack.dev"
   }
 }

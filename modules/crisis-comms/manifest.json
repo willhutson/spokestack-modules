@@ -11,11 +11,44 @@
     "name": "crisis-comms-agent"
   },
   "tools": [
-    "activateCrisis", "loadPlaybook", "mapStakeholders", "draftHoldingStatement", "escalateCrisis", "getCrisisStatus"
+    "activateCrisis",
+    "loadPlaybook",
+    "mapStakeholders",
+    "draftHoldingStatement",
+    "escalateCrisis",
+    "getCrisisStatus"
   ],
   "surfaces": [
-    { "id": "crisis-comms-dashboard", "type": "dashboard", "requiredTools": ["getCrisisStatus"] },
-    { "id": "crisis-comms-home", "type": "full-page", "route": "/crisis-comms", "requiredTools": ["activateCrisis", "getCrisisStatus"] }
+    {
+      "id": "crisis-comms-dashboard",
+      "type": "dashboard",
+      "requiredTools": [
+        "getCrisisStatus"
+      ]
+    },
+    {
+      "id": "crisis-comms-home",
+      "type": "full-page",
+      "route": "/crisis-comms",
+      "requiredTools": [
+        "activateCrisis",
+        "getCrisisStatus"
+      ]
+    }
   ],
-  "migrations": { "install": "migrations/install.ts", "uninstall": "migrations/uninstall.ts" }
+  "migrations": {
+    "install": "migrations/install.ts",
+    "uninstall": "migrations/uninstall.ts"
+  },
+  "type": "CRISIS_COMMS",
+  "slug": "crisis-comms",
+  "agentType": "crisis_manager",
+  "pricing": {
+    "type": "subscription",
+    "monthlyPriceCents": 2000
+  },
+  "author": {
+    "name": "SpokeStack",
+    "url": "https://spokestack.dev"
+  }
 }

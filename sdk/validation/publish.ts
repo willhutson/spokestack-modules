@@ -99,8 +99,8 @@ export function validateModuleForPublish(pkg: ModulePackage): ValidationReport {
   }
 
   // ── Pricing ───────────────────────────────────────────────────────────────
-  if (!["free", "paid", "subscription"].includes(pkg.pricing.type)) {
-    issues.push({ severity: "BLOCKER", field: "pricing.type", message: "pricing.type must be 'free', 'paid', or 'subscription'" });
+  if (!["free", "paid", "subscription", "included"].includes(pkg.pricing.type)) {
+    issues.push({ severity: "BLOCKER", field: "pricing.type", message: "pricing.type must be 'free', 'paid', 'subscription', or 'included'" });
   }
   if (pkg.pricing.type === "paid") {
     if (!pkg.pricing.priceCents || pkg.pricing.priceCents < 100) {

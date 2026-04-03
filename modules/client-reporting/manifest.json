@@ -11,11 +11,45 @@
     "name": "client-reporting-agent"
   },
   "tools": [
-    "generateClientReport", "calculateAVE", "calculateSOV", "compileMetrics", "sendReportToClient", "getSentimentBreakdown"
+    "generateClientReport",
+    "calculateAVE",
+    "calculateSOV",
+    "compileMetrics",
+    "sendReportToClient",
+    "getSentimentBreakdown"
   ],
   "surfaces": [
-    { "id": "client-reporting-dashboard", "type": "dashboard", "requiredTools": ["compileMetrics", "getSentimentBreakdown"] },
-    { "id": "client-reporting-home", "type": "full-page", "route": "/client-reporting", "requiredTools": ["generateClientReport", "compileMetrics"] }
+    {
+      "id": "client-reporting-dashboard",
+      "type": "dashboard",
+      "requiredTools": [
+        "compileMetrics",
+        "getSentimentBreakdown"
+      ]
+    },
+    {
+      "id": "client-reporting-home",
+      "type": "full-page",
+      "route": "/client-reporting",
+      "requiredTools": [
+        "generateClientReport",
+        "compileMetrics"
+      ]
+    }
   ],
-  "migrations": { "install": "migrations/install.ts", "uninstall": "migrations/uninstall.ts" }
+  "migrations": {
+    "install": "migrations/install.ts",
+    "uninstall": "migrations/uninstall.ts"
+  },
+  "type": "CLIENT_REPORTING",
+  "slug": "client-reporting",
+  "agentType": "client_reporter",
+  "pricing": {
+    "type": "subscription",
+    "monthlyPriceCents": 2000
+  },
+  "author": {
+    "name": "SpokeStack",
+    "url": "https://spokestack.dev"
+  }
 }

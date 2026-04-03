@@ -12,14 +12,51 @@
     "name": "time-leave-agent"
   },
   "tools": [
-    "logTime", "getTimesheetSummary", "approveTimeEntry", "listTimeEntries", "deleteTimeEntry",
-    "requestLeave", "approveLeave", "getLeaveBalance", "listLeaveRequests",
-    "manageLeaveTypes", "listHolidays", "addHoliday", "manageBlackoutPeriods", "manageEmployeeDocuments"
+    "logTime",
+    "getTimesheetSummary",
+    "approveTimeEntry",
+    "listTimeEntries",
+    "deleteTimeEntry",
+    "requestLeave",
+    "approveLeave",
+    "getLeaveBalance",
+    "listLeaveRequests",
+    "manageLeaveTypes",
+    "listHolidays",
+    "addHoliday",
+    "manageBlackoutPeriods",
+    "manageEmployeeDocuments"
   ],
   "surfaces": [
-    { "id": "time-leave-home", "type": "full-page", "route": "/time-leave", "requiredTools": ["listTimeEntries", "listLeaveRequests"] },
-    { "id": "time-leave-timesheet", "type": "full-page", "route": "/time-leave/timesheet", "requiredTools": ["logTime", "getTimesheetSummary", "approveTimeEntry"] },
-    { "id": "time-leave-requests", "type": "full-page", "route": "/time-leave/requests", "requiredTools": ["requestLeave", "listLeaveRequests", "approveLeave"] }
+    {
+      "id": "time-leave-home",
+      "type": "full-page",
+      "route": "/time-leave",
+      "requiredTools": [
+        "listTimeEntries",
+        "listLeaveRequests"
+      ]
+    },
+    {
+      "id": "time-leave-timesheet",
+      "type": "full-page",
+      "route": "/time-leave/timesheet",
+      "requiredTools": [
+        "logTime",
+        "getTimesheetSummary",
+        "approveTimeEntry"
+      ]
+    },
+    {
+      "id": "time-leave-requests",
+      "type": "full-page",
+      "route": "/time-leave/requests",
+      "requiredTools": [
+        "requestLeave",
+        "listLeaveRequests",
+        "approveLeave"
+      ]
+    }
   ],
   "migrations": {
     "install": "migrations/install.ts",
@@ -31,8 +68,31 @@
     "icon": "clock",
     "entityLabel": "Time Entry",
     "relationships": [
-      { "sourceField": "projectId", "targetModule": "PROJECTS", "targetEntity": "project", "label": "logged on", "edgeStyle": "dotted" },
-      { "sourceField": "briefId", "targetModule": "BRIEFS", "targetEntity": "brief", "label": "logged on", "edgeStyle": "dotted" }
+      {
+        "sourceField": "projectId",
+        "targetModule": "PROJECTS",
+        "targetEntity": "project",
+        "label": "logged on",
+        "edgeStyle": "dotted"
+      },
+      {
+        "sourceField": "briefId",
+        "targetModule": "BRIEFS",
+        "targetEntity": "brief",
+        "label": "logged on",
+        "edgeStyle": "dotted"
+      }
     ]
+  },
+  "type": "TIME_LEAVE",
+  "slug": "time-leave",
+  "agentType": "assistant",
+  "pricing": {
+    "type": "subscription",
+    "monthlyPriceCents": 500
+  },
+  "author": {
+    "name": "SpokeStack",
+    "url": "https://spokestack.dev"
   }
 }

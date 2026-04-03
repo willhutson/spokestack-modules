@@ -271,5 +271,16 @@
         "edgeStyle": "dashed"
       }
     ]
+  },
+  "type": "CONTENT_STUDIO",
+  "slug": "content-studio",
+  "agentType": "content_creator",
+  "pricing": {
+    "type": "subscription",
+    "monthlyPriceCents": 1500
+  },
+  "author": {
+    "name": "SpokeStack",
+    "url": "https://spokestack.dev"
   }
 }

@@ -30,17 +30,34 @@
     {
       "id": "surveys-dashboard",
       "type": "dashboard",
-      "requiredTools": ["listSurveys", "getResults"]
+      "requiredTools": [
+        "listSurveys",
+        "getResults"
+      ]
     },
     {
       "id": "surveys-home",
       "type": "full-page",
       "route": "/surveys",
-      "requiredTools": ["listSurveys", "createSurvey"]
+      "requiredTools": [
+        "listSurveys",
+        "createSurvey"
+      ]
     }
   ],
   "migrations": {
     "install": "migrations/install.ts",
     "uninstall": "migrations/uninstall.ts"
+  },
+  "type": "SURVEYS",
+  "slug": "surveys",
+  "agentType": "assistant",
+  "pricing": {
+    "type": "subscription",
+    "monthlyPriceCents": 500
+  },
+  "author": {
+    "name": "SpokeStack",
+    "url": "https://spokestack.dev"
   }
 }

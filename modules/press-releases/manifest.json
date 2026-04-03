@@ -11,11 +11,42 @@
     "name": "press-release-agent"
   },
   "tools": [
-    "draftPressRelease", "generatePRContent", "scheduleDistribution", "trackPickups"
+    "draftPressRelease",
+    "generatePRContent",
+    "scheduleDistribution",
+    "trackPickups"
   ],
   "surfaces": [
-    { "id": "press-releases-dashboard", "type": "dashboard", "requiredTools": ["trackPickups"] },
-    { "id": "press-releases-home", "type": "full-page", "route": "/press-releases", "requiredTools": ["draftPressRelease", "trackPickups"] }
+    {
+      "id": "press-releases-dashboard",
+      "type": "dashboard",
+      "requiredTools": [
+        "trackPickups"
+      ]
+    },
+    {
+      "id": "press-releases-home",
+      "type": "full-page",
+      "route": "/press-releases",
+      "requiredTools": [
+        "draftPressRelease",
+        "trackPickups"
+      ]
+    }
   ],
-  "migrations": { "install": "migrations/install.ts", "uninstall": "migrations/uninstall.ts" }
+  "migrations": {
+    "install": "migrations/install.ts",
+    "uninstall": "migrations/uninstall.ts"
+  },
+  "type": "PRESS_RELEASES",
+  "slug": "press-releases",
+  "agentType": "press_release_writer",
+  "pricing": {
+    "type": "subscription",
+    "monthlyPriceCents": 2000
+  },
+  "author": {
+    "name": "SpokeStack",
+    "url": "https://spokestack.dev"
+  }
 }

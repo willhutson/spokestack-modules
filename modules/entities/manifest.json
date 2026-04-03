@@ -11,18 +11,33 @@
     "path": "src/agent/entities-agent.ts",
     "name": "entities-agent"
   },
-  "tools": ["createEntity", "listEntities", "updateEntity", "deleteEntity", "createEntityType", "listEntityTypes", "addRelation", "searchEntities"],
+  "tools": [
+    "createEntity",
+    "listEntities",
+    "updateEntity",
+    "deleteEntity",
+    "createEntityType",
+    "listEntityTypes",
+    "addRelation",
+    "searchEntities"
+  ],
   "surfaces": [
     {
       "id": "entities-dashboard",
       "type": "dashboard",
-      "requiredTools": ["createEntity", "listEntities"]
+      "requiredTools": [
+        "createEntity",
+        "listEntities"
+      ]
     },
     {
       "id": "entities-overview",
       "type": "full-page",
       "route": "/entities",
-      "requiredTools": ["createEntity", "listEntities"]
+      "requiredTools": [
+        "createEntity",
+        "listEntities"
+      ]
     }
   ],
   "migrations": {
@@ -38,15 +53,38 @@
         "valueSchema": {
           "type": "object",
           "properties": {
-            "name": { "type": "string" },
-            "status": { "type": "string" },
-            "createdAt": { "type": "string", "format": "date-time" }
+            "name": {
+              "type": "string"
+            },
+            "status": {
+              "type": "string"
+            },
+            "createdAt": {
+              "type": "string",
+              "format": "date-time"
+            }
           },
-          "required": ["name"]
+          "required": [
+            "name"
+          ]
         },
         "relatedCategories": []
       }
     ],
-    "patternTypes": ["entities_activity", "entities_trend"]
+    "patternTypes": [
+      "entities_activity",
+      "entities_trend"
+    ]
+  },
+  "type": "ENTITIES",
+  "slug": "entities",
+  "agentType": "assistant",
+  "pricing": {
+    "type": "subscription",
+    "monthlyPriceCents": 500
+  },
+  "author": {
+    "name": "SpokeStack",
+    "url": "https://spokestack.dev"
   }
 }

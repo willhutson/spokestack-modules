@@ -33,19 +33,29 @@
       "id": "workflows-home",
       "type": "full-page",
       "route": "/workflows",
-      "requiredTools": ["listWorkflowTemplates", "listActiveWorkflows"]
+      "requiredTools": [
+        "listWorkflowTemplates",
+        "listActiveWorkflows"
+      ]
     },
     {
       "id": "workflows-templates",
       "type": "full-page",
       "route": "/workflows/templates",
-      "requiredTools": ["createWorkflow", "listWorkflowTemplates", "publishWorkflow"]
+      "requiredTools": [
+        "createWorkflow",
+        "listWorkflowTemplates",
+        "publishWorkflow"
+      ]
     },
     {
       "id": "workflows-active",
       "type": "full-page",
       "route": "/workflows/active",
-      "requiredTools": ["listActiveWorkflows", "getWorkflowStatus"]
+      "requiredTools": [
+        "listActiveWorkflows",
+        "getWorkflowStatus"
+      ]
     }
   ],
   "migrations": {
@@ -61,12 +71,30 @@
         "valueSchema": {
           "type": "object",
           "properties": {
-            "name": { "type": "string" },
-            "trigger": { "type": "string" },
-            "status": { "type": "string", "enum": ["active", "paused", "draft"] },
-            "lastRunAt": { "type": "string", "format": "date-time" }
+            "name": {
+              "type": "string"
+            },
+            "trigger": {
+              "type": "string"
+            },
+            "status": {
+              "type": "string",
+              "enum": [
+                "active",
+                "paused",
+                "draft"
+              ]
+            },
+            "lastRunAt": {
+              "type": "string",
+              "format": "date-time"
+            }
           },
-          "required": ["name", "trigger", "status"]
+          "required": [
+            "name",
+            "trigger",
+            "status"
+          ]
         }
       },
       {
@@ -75,16 +103,35 @@
         "valueSchema": {
           "type": "object",
           "properties": {
-            "automationId": { "type": "string" },
-            "status": { "type": "string", "enum": ["success", "failed", "running"] },
-            "durationMs": { "type": "number" }
+            "automationId": {
+              "type": "string"
+            },
+            "status": {
+              "type": "string",
+              "enum": [
+                "success",
+                "failed",
+                "running"
+              ]
+            },
+            "durationMs": {
+              "type": "number"
+            }
           },
-          "required": ["automationId", "status"]
+          "required": [
+            "automationId",
+            "status"
+          ]
         },
-        "relatedCategories": ["workflows.automation"]
+        "relatedCategories": [
+          "workflows.automation"
+        ]
       }
     ],
-    "patternTypes": ["automation_failure_spike", "workflow_bottleneck"]
+    "patternTypes": [
+      "automation_failure_spike",
+      "workflow_bottleneck"
+    ]
   },
   "canvasConfig": {
     "nodeType": "WORKFLOW",
@@ -92,7 +139,24 @@
     "icon": "git-branch",
     "entityLabel": "Workflow",
     "relationships": [
-      { "sourceField": "triggerEntityId", "targetModule": "BRIEFS", "targetEntity": "brief", "label": "triggered by", "edgeStyle": "solid" }
+      {
+        "sourceField": "triggerEntityId",
+        "targetModule": "BRIEFS",
+        "targetEntity": "brief",
+        "label": "triggered by",
+        "edgeStyle": "solid"
+      }
     ]
+  },
+  "type": "WORKFLOWS",
+  "slug": "workflows",
+  "agentType": "workflow_designer",
+  "pricing": {
+    "type": "subscription",
+    "monthlyPriceCents": 1500
+  },
+  "author": {
+    "name": "SpokeStack",
+    "url": "https://spokestack.dev"
   }
 }

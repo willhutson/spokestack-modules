@@ -40,25 +40,40 @@
     {
       "id": "crm-dashboard",
       "type": "dashboard",
-      "requiredTools": ["listDeals", "listContacts"]
+      "requiredTools": [
+        "listDeals",
+        "listContacts"
+      ]
     },
     {
       "id": "crm-overview",
       "type": "full-page",
       "route": "/crm",
-      "requiredTools": ["listContacts", "listDeals"]
+      "requiredTools": [
+        "listContacts",
+        "listDeals"
+      ]
     },
     {
       "id": "crm-contacts",
       "type": "full-page",
       "route": "/crm/contacts",
-      "requiredTools": ["listContacts", "createContact", "updateContact"]
+      "requiredTools": [
+        "listContacts",
+        "createContact",
+        "updateContact"
+      ]
     },
     {
       "id": "crm-deals",
       "type": "full-page",
       "route": "/crm/deals",
-      "requiredTools": ["listDeals", "createDeal", "updateDeal", "linkContactToDeal"]
+      "requiredTools": [
+        "listDeals",
+        "createDeal",
+        "updateDeal",
+        "linkContactToDeal"
+      ]
     }
   ],
   "migrations": {
@@ -74,14 +89,27 @@
         "valueSchema": {
           "type": "object",
           "properties": {
-            "name": { "type": "string" },
-            "company": { "type": "string" },
-            "email": { "type": "string" },
-            "lastInteractionAt": { "type": "string", "format": "date-time" }
+            "name": {
+              "type": "string"
+            },
+            "company": {
+              "type": "string"
+            },
+            "email": {
+              "type": "string"
+            },
+            "lastInteractionAt": {
+              "type": "string",
+              "format": "date-time"
+            }
           },
-          "required": ["name"]
+          "required": [
+            "name"
+          ]
         },
-        "relatedCategories": ["crm.deal"]
+        "relatedCategories": [
+          "crm.deal"
+        ]
       },
       {
         "category": "crm.deal",
@@ -89,17 +117,41 @@
         "valueSchema": {
           "type": "object",
           "properties": {
-            "title": { "type": "string" },
-            "value": { "type": "number" },
-            "stage": { "type": "string", "enum": ["prospect", "proposal", "negotiation", "closed_won", "closed_lost"] },
-            "contactId": { "type": "string" }
+            "title": {
+              "type": "string"
+            },
+            "value": {
+              "type": "number"
+            },
+            "stage": {
+              "type": "string",
+              "enum": [
+                "prospect",
+                "proposal",
+                "negotiation",
+                "closed_won",
+                "closed_lost"
+              ]
+            },
+            "contactId": {
+              "type": "string"
+            }
           },
-          "required": ["title", "stage"]
+          "required": [
+            "title",
+            "stage"
+          ]
         },
-        "relatedCategories": ["crm.contact"]
+        "relatedCategories": [
+          "crm.contact"
+        ]
       }
     ],
-    "patternTypes": ["deal_velocity", "contact_frequency", "pipeline_stall"]
+    "patternTypes": [
+      "deal_velocity",
+      "contact_frequency",
+      "pipeline_stall"
+    ]
   },
   "canvasConfig": {
     "nodeType": "DEAL",
@@ -107,8 +159,31 @@
     "icon": "handshake",
     "entityLabel": "Deal",
     "relationships": [
-      { "sourceField": "contactId", "targetModule": "CRM", "targetEntity": "contact", "label": "contact", "edgeStyle": "solid" },
-      { "sourceField": "projectId", "targetModule": "PROJECTS", "targetEntity": "project", "label": "linked to", "edgeStyle": "dashed" }
+      {
+        "sourceField": "contactId",
+        "targetModule": "CRM",
+        "targetEntity": "contact",
+        "label": "contact",
+        "edgeStyle": "solid"
+      },
+      {
+        "sourceField": "projectId",
+        "targetModule": "PROJECTS",
+        "targetEntity": "project",
+        "label": "linked to",
+        "edgeStyle": "dashed"
+      }
     ]
+  },
+  "type": "CRM",
+  "slug": "crm",
+  "agentType": "crm_manager",
+  "pricing": {
+    "type": "subscription",
+    "monthlyPriceCents": 1000
+  },
+  "author": {
+    "name": "SpokeStack",
+    "url": "https://spokestack.dev"
   }
 }

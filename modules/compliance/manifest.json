@@ -11,18 +11,33 @@
     "path": "src/agent/compliance-agent.ts",
     "name": "compliance-agent"
   },
-  "tools": ["createRequirement", "listRequirements", "logEvidence", "scheduleAudit", "getAuditReport", "trackViolation", "setPolicy", "getComplianceScore"],
+  "tools": [
+    "createRequirement",
+    "listRequirements",
+    "logEvidence",
+    "scheduleAudit",
+    "getAuditReport",
+    "trackViolation",
+    "setPolicy",
+    "getComplianceScore"
+  ],
   "surfaces": [
     {
       "id": "compliance-dashboard",
       "type": "dashboard",
-      "requiredTools": ["createRequirement", "listRequirements"]
+      "requiredTools": [
+        "createRequirement",
+        "listRequirements"
+      ]
     },
     {
       "id": "compliance-overview",
       "type": "full-page",
       "route": "/compliance",
-      "requiredTools": ["createRequirement", "listRequirements"]
+      "requiredTools": [
+        "createRequirement",
+        "listRequirements"
+      ]
     }
   ],
   "migrations": {
@@ -38,15 +53,38 @@
         "valueSchema": {
           "type": "object",
           "properties": {
-            "name": { "type": "string" },
-            "status": { "type": "string" },
-            "createdAt": { "type": "string", "format": "date-time" }
+            "name": {
+              "type": "string"
+            },
+            "status": {
+              "type": "string"
+            },
+            "createdAt": {
+              "type": "string",
+              "format": "date-time"
+            }
           },
-          "required": ["name"]
+          "required": [
+            "name"
+          ]
         },
         "relatedCategories": []
       }
     ],
-    "patternTypes": ["compliance_activity", "compliance_trend"]
+    "patternTypes": [
+      "compliance_activity",
+      "compliance_trend"
+    ]
+  },
+  "type": "COMPLIANCE",
+  "slug": "compliance",
+  "agentType": "assistant",
+  "pricing": {
+    "type": "subscription",
+    "monthlyPriceCents": 1000
+  },
+  "author": {
+    "name": "SpokeStack",
+    "url": "https://spokestack.dev"
   }
 }

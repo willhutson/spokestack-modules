@@ -11,15 +11,63 @@
     "name": "spokechat-agent"
   },
   "tools": [
-    "createChannel", "listChannels", "getChannel", "updateChannel", "deleteChannel",
-    "joinChannel", "leaveChannel", "sendMessage", "listMessages", "editMessage",
-    "deleteMessage", "getThread", "searchMessages", "addReaction", "removeReaction",
-    "getReactions", "setPresence", "getUserPresence", "getOnlineUsers",
-    "pinMessage", "unpinMessage", "getPinnedMessages", "createDM", "listDMs"
+    "createChannel",
+    "listChannels",
+    "getChannel",
+    "updateChannel",
+    "deleteChannel",
+    "joinChannel",
+    "leaveChannel",
+    "sendMessage",
+    "listMessages",
+    "editMessage",
+    "deleteMessage",
+    "getThread",
+    "searchMessages",
+    "addReaction",
+    "removeReaction",
+    "getReactions",
+    "setPresence",
+    "getUserPresence",
+    "getOnlineUsers",
+    "pinMessage",
+    "unpinMessage",
+    "getPinnedMessages",
+    "createDM",
+    "listDMs"
   ],
   "surfaces": [
-    { "id": "spokechat-dashboard", "type": "dashboard", "requiredTools": ["listChannels", "getOnlineUsers"] },
-    { "id": "spokechat-home", "type": "full-page", "route": "/spokechat", "requiredTools": ["listChannels", "listMessages"] }
+    {
+      "id": "spokechat-dashboard",
+      "type": "dashboard",
+      "requiredTools": [
+        "listChannels",
+        "getOnlineUsers"
+      ]
+    },
+    {
+      "id": "spokechat-home",
+      "type": "full-page",
+      "route": "/spokechat",
+      "requiredTools": [
+        "listChannels",
+        "listMessages"
+      ]
+    }
   ],
-  "migrations": { "install": "migrations/install.ts", "uninstall": "migrations/uninstall.ts" }
+  "migrations": {
+    "install": "migrations/install.ts",
+    "uninstall": "migrations/uninstall.ts"
+  },
+  "type": "SPOKECHAT",
+  "slug": "spokechat",
+  "agentType": "chat_operator",
+  "pricing": {
+    "type": "subscription",
+    "monthlyPriceCents": 1500
+  },
+  "author": {
+    "name": "SpokeStack",
+    "url": "https://spokestack.dev"
+  }
 }

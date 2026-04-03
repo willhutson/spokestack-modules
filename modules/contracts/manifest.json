@@ -11,18 +11,33 @@
     "path": "src/agent/contracts-agent.ts",
     "name": "contracts-agent"
   },
-  "tools": ["createContract", "listContracts", "updateContract", "addVersion", "sendForSignature", "getSignatureStatus", "generateFromTemplate", "archiveContract"],
+  "tools": [
+    "createContract",
+    "listContracts",
+    "updateContract",
+    "addVersion",
+    "sendForSignature",
+    "getSignatureStatus",
+    "generateFromTemplate",
+    "archiveContract"
+  ],
   "surfaces": [
     {
       "id": "contracts-dashboard",
       "type": "dashboard",
-      "requiredTools": ["createContract", "listContracts"]
+      "requiredTools": [
+        "createContract",
+        "listContracts"
+      ]
     },
     {
       "id": "contracts-overview",
       "type": "full-page",
       "route": "/contracts",
-      "requiredTools": ["createContract", "listContracts"]
+      "requiredTools": [
+        "createContract",
+        "listContracts"
+      ]
     }
   ],
   "migrations": {
@@ -38,15 +53,38 @@
         "valueSchema": {
           "type": "object",
           "properties": {
-            "name": { "type": "string" },
-            "status": { "type": "string" },
-            "createdAt": { "type": "string", "format": "date-time" }
+            "name": {
+              "type": "string"
+            },
+            "status": {
+              "type": "string"
+            },
+            "createdAt": {
+              "type": "string",
+              "format": "date-time"
+            }
           },
-          "required": ["name"]
+          "required": [
+            "name"
+          ]
         },
         "relatedCategories": []
       }
     ],
-    "patternTypes": ["contracts_activity", "contracts_trend"]
+    "patternTypes": [
+      "contracts_activity",
+      "contracts_trend"
+    ]
+  },
+  "type": "CONTRACTS",
+  "slug": "contracts",
+  "agentType": "assistant",
+  "pricing": {
+    "type": "subscription",
+    "monthlyPriceCents": 1000
+  },
+  "author": {
+    "name": "SpokeStack",
+    "url": "https://spokestack.dev"
   }
 }

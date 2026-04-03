@@ -38,7 +38,9 @@ export interface MarketplaceManifest {
 }
 
 export interface ModulePricing {
-  type: "free" | "paid" | "subscription";
+  type: "free" | "paid" | "subscription" | "included";
+  /** For type=included: minimum billing tier required */
+  minTier?: "FREE" | "STARTER" | "PRO" | "BUSINESS" | "ENTERPRISE";
   priceCents?: number;
   monthlyPriceCents?: number;
   currency?: string;

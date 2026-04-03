@@ -11,11 +11,47 @@
     "name": "influencer-management-agent"
   },
   "tools": [
-    "addInfluencer", "searchInfluencers", "createInfluencerCampaign", "createDeliverable", "createInfluencerContract", "calculateROI", "trackEngagement"
+    "addInfluencer",
+    "searchInfluencers",
+    "createInfluencerCampaign",
+    "createDeliverable",
+    "createInfluencerContract",
+    "calculateROI",
+    "trackEngagement"
   ],
   "surfaces": [
-    { "id": "influencer-management-dashboard", "type": "dashboard", "requiredTools": ["searchInfluencers", "calculateROI"] },
-    { "id": "influencer-management-home", "type": "full-page", "route": "/influencer-management", "requiredTools": ["searchInfluencers", "addInfluencer", "createInfluencerCampaign"] }
+    {
+      "id": "influencer-management-dashboard",
+      "type": "dashboard",
+      "requiredTools": [
+        "searchInfluencers",
+        "calculateROI"
+      ]
+    },
+    {
+      "id": "influencer-management-home",
+      "type": "full-page",
+      "route": "/influencer-management",
+      "requiredTools": [
+        "searchInfluencers",
+        "addInfluencer",
+        "createInfluencerCampaign"
+      ]
+    }
   ],
-  "migrations": { "install": "migrations/install.ts", "uninstall": "migrations/uninstall.ts" }
+  "migrations": {
+    "install": "migrations/install.ts",
+    "uninstall": "migrations/uninstall.ts"
+  },
+  "type": "INFLUENCER_MGMT",
+  "slug": "influencer-management",
+  "agentType": "influencer_manager",
+  "pricing": {
+    "type": "subscription",
+    "monthlyPriceCents": 2000
+  },
+  "author": {
+    "name": "SpokeStack",
+    "url": "https://spokestack.dev"
+  }
 }

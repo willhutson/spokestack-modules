@@ -12,16 +12,42 @@
     "name": "social_listening_agent"
   },
   "tools": [
-    "setupMonitor", "listMonitors", "updateMonitor", "pauseMonitor", "deleteMonitor",
-    "listMentions", "getMention", "flagMention", "dismissMention",
-    "analyzeSentiment", "getSentimentTrend",
-    "trackCompetitors", "compareCompetitors",
-    "generateReport", "listReports", "alertOnMention"
+    "setupMonitor",
+    "listMonitors",
+    "updateMonitor",
+    "pauseMonitor",
+    "deleteMonitor",
+    "listMentions",
+    "getMention",
+    "flagMention",
+    "dismissMention",
+    "analyzeSentiment",
+    "getSentimentTrend",
+    "trackCompetitors",
+    "compareCompetitors",
+    "generateReport",
+    "listReports",
+    "alertOnMention"
   ],
   "surfaces": [
-    { "id": "listening-home", "path": "/listening", "label": "Listening", "icon": "radio" },
-    { "id": "listening-monitors", "path": "/listening/monitors", "label": "Monitors", "icon": "eye" },
-    { "id": "listening-reports", "path": "/listening/reports", "label": "Reports", "icon": "bar-chart-2" }
+    {
+      "id": "listening-home",
+      "path": "/listening",
+      "label": "Listening",
+      "icon": "radio"
+    },
+    {
+      "id": "listening-monitors",
+      "path": "/listening/monitors",
+      "label": "Monitors",
+      "icon": "eye"
+    },
+    {
+      "id": "listening-reports",
+      "path": "/listening/reports",
+      "label": "Reports",
+      "icon": "bar-chart-2"
+    }
   ],
   "migrations": {
     "install": "migrations/install.ts",
@@ -33,5 +59,16 @@
     "icon": "radio",
     "entityLabel": "Monitor",
     "relationships": []
+  },
+  "type": "LISTENING",
+  "slug": "listening",
+  "agentType": "social_listener",
+  "pricing": {
+    "type": "subscription",
+    "monthlyPriceCents": 1000
+  },
+  "author": {
+    "name": "SpokeStack",
+    "url": "https://spokestack.dev"
   }
 }

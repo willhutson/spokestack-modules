@@ -5,8 +5,7 @@
   "version": "0.1.0",
   "author": {
     "name": "SpokeStack",
-    "email": "modules@spokestack.io",
-    "url": "https://spokestack.io"
+    "url": "https://spokestack.dev"
   },
   "compatibility": {
     "coreVersion": "1.0.0",
@@ -17,10 +16,8 @@
     "recommended": "BUSINESS"
   },
   "pricing": {
-    "model": "flat",
-    "price": 3900,
-    "currency": "USD",
-    "trialDays": 14
+    "type": "subscription",
+    "monthlyPriceCents": 1500
   },
   "schema": {
     "models": [
@@ -62,5 +59,9 @@
     "ownModels": true
   },
   "conflicts": [],
-  "enhances": []
+  "enhances": [],
+  "type": "LMS",
+  "slug": "lms",
+  "agentType": "assistant",
+  "category": "operations"
 }
