@@ -1,0 +1,13 @@
+{
+  "moduleType": "REPLY",
+  "name": "Reply",
+  "description": "Unified customer service inbox across Meta, X, LinkedIn, Google Business, and email channels.",
+  "category": "marketing",
+  "minTier": "PRO",
+  "price": 1900,
+  "icon": "message-square",
+  "surfaces": [
+    "reply-dashboard",
+    "reply-overview"
+  ]
+}

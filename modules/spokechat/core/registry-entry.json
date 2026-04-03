@@ -1,0 +1,13 @@
+{
+  "moduleType": "SPOKECHAT",
+  "name": "SpokeChat",
+  "description": "Enterprise team messaging with channels, threads, reactions, presence tracking, pins, and direct messages.",
+  "category": "enterprise",
+  "minTier": "ENTERPRISE",
+  "price": 0,
+  "icon": "box",
+  "surfaces": [
+    "spokechat-dashboard",
+    "spokechat-home"
+  ]
+}

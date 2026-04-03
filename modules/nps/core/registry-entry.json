@@ -1,0 +1,14 @@
+{
+  "moduleType": "NPS",
+  "name": "NPS & Surveys",
+  "description": "NPS survey management, client feedback analysis, and configurable form templates with submission workflows.",
+  "category": "marketing",
+  "minTier": "STARTER",
+  "price": 500,
+  "icon": "bar-chart",
+  "surfaces": [
+    "nps-home",
+    "nps-surveys",
+    "nps-forms"
+  ]
+}

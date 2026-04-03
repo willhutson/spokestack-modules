@@ -1,0 +1,52 @@
+{
+  "id": "rfp",
+  "moduleType": "RFP",
+  "name": "RFP",
+  "version": "1.0.0",
+  "description": "Request for proposal management with response scoring, comparison, and contract award tracking.",
+  "category": "ops",
+  "minTier": "PRO",
+  "price": 1900,
+  "agentDefinition": {
+    "path": "src/agent/rfp-agent.ts",
+    "name": "rfp-agent"
+  },
+  "tools": ["createRFP", "listRFPs", "submitResponse", "scoreResponse", "compareResponses", "awardContract", "getTimeline", "exportRFP"],
+  "surfaces": [
+    {
+      "id": "rfp-dashboard",
+      "type": "dashboard",
+      "requiredTools": ["createRFP", "listRFPs"]
+    },
+    {
+      "id": "rfp-overview",
+      "type": "full-page",
+      "route": "/rfp",
+      "requiredTools": ["createRFP", "listRFPs"]
+    }
+  ],
+  "migrations": {
+    "install": "migrations/install.ts",
+    "uninstall": "migrations/uninstall.ts"
+  },
+  "contextSchema": {
+    "categoryPrefix": "rfp",
+    "entityTypes": [
+      {
+        "category": "rfp.record",
+        "keyFormat": "{recordId}",
+        "valueSchema": {
+          "type": "object",
+          "properties": {
+            "name": { "type": "string" },
+            "status": { "type": "string" },
+            "createdAt": { "type": "string", "format": "date-time" }
+          },
+          "required": ["name"]
+        },
+        "relatedCategories": []
+      }
+    ],
+    "patternTypes": ["rfp_activity", "rfp_trend"]
+  }
+}

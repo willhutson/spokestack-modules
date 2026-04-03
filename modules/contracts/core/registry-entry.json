@@ -1,0 +1,13 @@
+{
+  "moduleType": "CONTRACTS",
+  "name": "Contracts",
+  "description": "Contract management with templates, versioning, e-signatures, and archival.",
+  "category": "ops",
+  "minTier": "PRO",
+  "price": 1900,
+  "icon": "file-signature",
+  "surfaces": [
+    "contracts-dashboard",
+    "contracts-overview"
+  ]
+}

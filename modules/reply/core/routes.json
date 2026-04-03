@@ -1,0 +1,34 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/api/v1/reply",
+      "description": "List Reply records",
+      "existing": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/reply",
+      "description": "Create Reply record",
+      "existing": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/reply/:id",
+      "description": "Get Reply record",
+      "existing": false
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/reply/:id",
+      "description": "Update Reply record",
+      "existing": false
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/reply/:id",
+      "description": "Delete Reply record",
+      "existing": false
+    }
+  ]
+}

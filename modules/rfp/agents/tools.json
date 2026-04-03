@@ -1,0 +1,61 @@
+{
+  "agentType": "rfp-agent",
+  "tools": [
+    {
+      "name": "createRFP",
+      "description": "createRFP operation for RFP module.",
+      "method": "POST",
+      "path": "/api/v1/modules/rfp/createRFP",
+      "parameters": {}
+    },
+    {
+      "name": "listRFPs",
+      "description": "listRFPs operation for RFP module.",
+      "method": "POST",
+      "path": "/api/v1/modules/rfp/listRFPs",
+      "parameters": {}
+    },
+    {
+      "name": "submitResponse",
+      "description": "submitResponse operation for RFP module.",
+      "method": "POST",
+      "path": "/api/v1/modules/rfp/submitResponse",
+      "parameters": {}
+    },
+    {
+      "name": "scoreResponse",
+      "description": "scoreResponse operation for RFP module.",
+      "method": "POST",
+      "path": "/api/v1/modules/rfp/scoreResponse",
+      "parameters": {}
+    },
+    {
+      "name": "compareResponses",
+      "description": "compareResponses operation for RFP module.",
+      "method": "POST",
+      "path": "/api/v1/modules/rfp/compareResponses",
+      "parameters": {}
+    },
+    {
+      "name": "awardContract",
+      "description": "awardContract operation for RFP module.",
+      "method": "POST",
+      "path": "/api/v1/modules/rfp/awardContract",
+      "parameters": {}
+    },
+    {
+      "name": "getTimeline",
+      "description": "getTimeline operation for RFP module.",
+      "method": "POST",
+      "path": "/api/v1/modules/rfp/getTimeline",
+      "parameters": {}
+    },
+    {
+      "name": "exportRFP",
+      "description": "exportRFP operation for RFP module.",
+      "method": "POST",
+      "path": "/api/v1/modules/rfp/exportRFP",
+      "parameters": {}
+    }
+  ]
+}

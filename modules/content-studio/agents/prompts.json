@@ -1,0 +1,12 @@
+{
+  "agentType": "content_studio_agent",
+  "systemPromptExtension": "You manage Content Studio functionality.",
+  "capabilities": [
+    "uploadAsset",
+    "listAssets",
+    "getAssetVersions",
+    "createAssetVersion",
+    "createFolder"
+  ],
+  "handoffs": {}
+}

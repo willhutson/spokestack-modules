@@ -1,0 +1,28 @@
+{
+  "sidebar": {
+    "label": "Social Listening",
+    "icon": "radio",
+    "route": "/listening",
+    "badge": null
+  },
+  "surfaces": [
+    {
+      "id": "listening-home",
+      "type": "full-page",
+      "route": "/listening",
+      "label": "Listening"
+    },
+    {
+      "id": "listening-monitors",
+      "type": "full-page",
+      "route": "/listening/monitors",
+      "label": "Monitors"
+    },
+    {
+      "id": "listening-reports",
+      "type": "full-page",
+      "route": "/listening/reports",
+      "label": "Reports"
+    }
+  ]
+}

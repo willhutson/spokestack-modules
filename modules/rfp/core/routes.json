@@ -1,0 +1,34 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/api/v1/rfp",
+      "description": "List RFP records",
+      "existing": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/rfp",
+      "description": "Create RFP record",
+      "existing": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/rfp/:id",
+      "description": "Get RFP record",
+      "existing": false
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/rfp/:id",
+      "description": "Update RFP record",
+      "existing": false
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/rfp/:id",
+      "description": "Delete RFP record",
+      "existing": false
+    }
+  ]
+}

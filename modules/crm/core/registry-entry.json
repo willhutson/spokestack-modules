@@ -1,0 +1,15 @@
+{
+  "moduleType": "CRM",
+  "name": "CRM",
+  "description": "Full-featured CRM with contact management, deal pipelines, interaction tracking, and AI-powered sales intelligence.",
+  "category": "core",
+  "minTier": "STARTER",
+  "price": 0,
+  "icon": "handshake",
+  "surfaces": [
+    "crm-dashboard",
+    "crm-overview",
+    "crm-contacts",
+    "crm-deals"
+  ]
+}

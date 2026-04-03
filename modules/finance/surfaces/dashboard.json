@@ -1,0 +1,28 @@
+{
+  "sidebar": {
+    "label": "Finance",
+    "icon": "receipt",
+    "route": "/finance",
+    "badge": null
+  },
+  "surfaces": [
+    {
+      "id": "finance-home",
+      "type": "full-page",
+      "route": "/finance",
+      "label": "finance-home"
+    },
+    {
+      "id": "finance-invoices",
+      "type": "full-page",
+      "route": "/finance/invoices",
+      "label": "finance-invoices"
+    },
+    {
+      "id": "finance-budgets",
+      "type": "full-page",
+      "route": "/finance/budgets",
+      "label": "finance-budgets"
+    }
+  ]
+}

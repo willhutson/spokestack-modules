@@ -1,0 +1,61 @@
+{
+  "agentType": "contracts-agent",
+  "tools": [
+    {
+      "name": "createContract",
+      "description": "createContract operation for Contracts module.",
+      "method": "POST",
+      "path": "/api/v1/modules/contracts/createContract",
+      "parameters": {}
+    },
+    {
+      "name": "listContracts",
+      "description": "listContracts operation for Contracts module.",
+      "method": "POST",
+      "path": "/api/v1/modules/contracts/listContracts",
+      "parameters": {}
+    },
+    {
+      "name": "updateContract",
+      "description": "updateContract operation for Contracts module.",
+      "method": "POST",
+      "path": "/api/v1/modules/contracts/updateContract",
+      "parameters": {}
+    },
+    {
+      "name": "addVersion",
+      "description": "addVersion operation for Contracts module.",
+      "method": "POST",
+      "path": "/api/v1/modules/contracts/addVersion",
+      "parameters": {}
+    },
+    {
+      "name": "sendForSignature",
+      "description": "sendForSignature operation for Contracts module.",
+      "method": "POST",
+      "path": "/api/v1/modules/contracts/sendForSignature",
+      "parameters": {}
+    },
+    {
+      "name": "getSignatureStatus",
+      "description": "getSignatureStatus operation for Contracts module.",
+      "method": "POST",
+      "path": "/api/v1/modules/contracts/getSignatureStatus",
+      "parameters": {}
+    },
+    {
+      "name": "generateFromTemplate",
+      "description": "generateFromTemplate operation for Contracts module.",
+      "method": "POST",
+      "path": "/api/v1/modules/contracts/generateFromTemplate",
+      "parameters": {}
+    },
+    {
+      "name": "archiveContract",
+      "description": "archiveContract operation for Contracts module.",
+      "method": "POST",
+      "path": "/api/v1/modules/contracts/archiveContract",
+      "parameters": {}
+    }
+  ]
+}

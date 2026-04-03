@@ -1,0 +1,117 @@
+{
+  "agentType": "social_listening_agent",
+  "tools": [
+    {
+      "name": "setupMonitor",
+      "description": "Create a listening monitor configuration with keywords and platforms",
+      "method": "POST",
+      "path": "/api/v1/modules/listening/setupMonitor",
+      "parameters": {}
+    },
+    {
+      "name": "listMonitors",
+      "description": "List monitoring configurations",
+      "method": "POST",
+      "path": "/api/v1/modules/listening/listMonitors",
+      "parameters": {}
+    },
+    {
+      "name": "updateMonitor",
+      "description": "Update monitor keywords, platforms, or threshold",
+      "method": "POST",
+      "path": "/api/v1/modules/listening/updateMonitor",
+      "parameters": {}
+    },
+    {
+      "name": "pauseMonitor",
+      "description": "Pause a monitor",
+      "method": "POST",
+      "path": "/api/v1/modules/listening/pauseMonitor",
+      "parameters": {}
+    },
+    {
+      "name": "deleteMonitor",
+      "description": "Archive a monitor",
+      "method": "POST",
+      "path": "/api/v1/modules/listening/deleteMonitor",
+      "parameters": {}
+    },
+    {
+      "name": "listMentions",
+      "description": "List mentions captured by a monitor with optional filters",
+      "method": "POST",
+      "path": "/api/v1/modules/listening/listMentions",
+      "parameters": {}
+    },
+    {
+      "name": "getMention",
+      "description": "Get a single mention with full context and engagement breakdown",
+      "method": "POST",
+      "path": "/api/v1/modules/listening/getMention",
+      "parameters": {}
+    },
+    {
+      "name": "flagMention",
+      "description": "Flag a mention for follow-up",
+      "method": "POST",
+      "path": "/api/v1/modules/listening/flagMention",
+      "parameters": {}
+    },
+    {
+      "name": "dismissMention",
+      "description": "Mark a mention as reviewed/dismissed",
+      "method": "POST",
+      "path": "/api/v1/modules/listening/dismissMention",
+      "parameters": {}
+    },
+    {
+      "name": "analyzeSentiment",
+      "description": "Run sentiment analysis on a set of mentions for a monitor",
+      "method": "POST",
+      "path": "/api/v1/modules/listening/analyzeSentiment",
+      "parameters": {}
+    },
+    {
+      "name": "getSentimentTrend",
+      "description": "Return time-series sentiment data for trend analysis",
+      "method": "POST",
+      "path": "/api/v1/modules/listening/getSentimentTrend",
+      "parameters": {}
+    },
+    {
+      "name": "trackCompetitors",
+      "description": "List competitor monitoring data and share of voice",
+      "method": "POST",
+      "path": "/api/v1/modules/listening/trackCompetitors",
+      "parameters": {}
+    },
+    {
+      "name": "compareCompetitors",
+      "description": "compareCompetitors tool for Social Listening",
+      "method": "POST",
+      "path": "/api/v1/modules/listening/compareCompetitors",
+      "parameters": {}
+    },
+    {
+      "name": "generateReport",
+      "description": "Generate a listening report (summary, detailed, or competitive)",
+      "method": "POST",
+      "path": "/api/v1/modules/listening/generateReport",
+      "parameters": {}
+    },
+    {
+      "name": "listReports",
+      "description": "List previously generated listening reports",
+      "method": "POST",
+      "path": "/api/v1/modules/listening/listReports",
+      "parameters": {}
+    },
+    {
+      "name": "alertOnMention",
+      "description": "Configure alert rules for a monitor",
+      "method": "POST",
+      "path": "/api/v1/modules/listening/alertOnMention",
+      "parameters": {}
+    }
+  ]
+}

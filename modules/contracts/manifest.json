@@ -1,0 +1,52 @@
+{
+  "id": "contracts",
+  "moduleType": "CONTRACTS",
+  "name": "Contracts",
+  "version": "1.0.0",
+  "description": "Contract management with templates, versioning, e-signatures, and archival.",
+  "category": "ops",
+  "minTier": "PRO",
+  "price": 1900,
+  "agentDefinition": {
+    "path": "src/agent/contracts-agent.ts",
+    "name": "contracts-agent"
+  },
+  "tools": ["createContract", "listContracts", "updateContract", "addVersion", "sendForSignature", "getSignatureStatus", "generateFromTemplate", "archiveContract"],
+  "surfaces": [
+    {
+      "id": "contracts-dashboard",
+      "type": "dashboard",
+      "requiredTools": ["createContract", "listContracts"]
+    },
+    {
+      "id": "contracts-overview",
+      "type": "full-page",
+      "route": "/contracts",
+      "requiredTools": ["createContract", "listContracts"]
+    }
+  ],
+  "migrations": {
+    "install": "migrations/install.ts",
+    "uninstall": "migrations/uninstall.ts"
+  },
+  "contextSchema": {
+    "categoryPrefix": "contracts",
+    "entityTypes": [
+      {
+        "category": "contracts.record",
+        "keyFormat": "{recordId}",
+        "valueSchema": {
+          "type": "object",
+          "properties": {
+            "name": { "type": "string" },
+            "status": { "type": "string" },
+            "createdAt": { "type": "string", "format": "date-time" }
+          },
+          "required": ["name"]
+        },
+        "relatedCategories": []
+      }
+    ],
+    "patternTypes": ["contracts_activity", "contracts_trend"]
+  }
+}

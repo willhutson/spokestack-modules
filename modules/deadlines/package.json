@@ -1,0 +1,20 @@
+{
+  "name": "@spokestack/deadlines",
+  "version": "1.0.0",
+  "description": "Deadlines module for SpokeStack — Legal and compliance deadline tracking with escalation rules and upcoming deadline alerts.",
+  "main": "src/tools/index.ts",
+  "scripts": {
+    "build": "tsc --noEmit",
+    "test": "vitest run",
+    "validate": "node -e \"require('@spokestack/module-sdk/cli/validate').validateModule('.')\"",
+    "lint": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@spokestack/module-sdk": "workspace:*",
+    "@spokestack/core-schema": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.0",
+    "vitest": "^1.2.0"
+  }
+}

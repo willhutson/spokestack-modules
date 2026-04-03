@@ -1,0 +1,22 @@
+{
+  "sidebar": {
+    "label": "Compliance",
+    "icon": "shield-check",
+    "route": "/compliance",
+    "badge": null
+  },
+  "surfaces": [
+    {
+      "id": "compliance-dashboard",
+      "type": "dashboard",
+      "route": null,
+      "label": "compliance-dashboard"
+    },
+    {
+      "id": "compliance-overview",
+      "type": "full-page",
+      "route": "/compliance",
+      "label": "compliance-overview"
+    }
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "agentType": "api-management-agent",
+  "tools": [
+    {
+      "name": "createApiKey",
+      "description": "Create a new API key with a name, scopes, and optional expiration.",
+      "method": "POST",
+      "path": "/api/v1/modules/api_management/createApiKey",
+      "parameters": {}
+    },
+    {
+      "name": "listApiKeys",
+      "description": "List all API keys with their status, scopes, and last usage time.",
+      "method": "POST",
+      "path": "/api/v1/modules/api_management/listApiKeys",
+      "parameters": {}
+    },
+    {
+      "name": "revokeApiKey",
+      "description": "Revoke an API key immediately, disabling all future requests with it.",
+      "method": "POST",
+      "path": "/api/v1/modules/api_management/revokeApiKey",
+      "parameters": {}
+    },
+    {
+      "name": "rotateApiKey",
+      "description": "Rotate an API key, creating a new one and scheduling the old one for expiration.",
+      "method": "POST",
+      "path": "/api/v1/modules/api_management/rotateApiKey",
+      "parameters": {}
+    },
+    {
+      "name": "getKeyUsage",
+      "description": "Get usage statistics for a specific API key.",
+      "method": "POST",
+      "path": "/api/v1/modules/api_management/getKeyUsage",
+      "parameters": {}
+    },
+    {
+      "name": "createWebhook",
+      "description": "Create a new webhook endpoint with a URL and event subscriptions.",
+      "method": "POST",
+      "path": "/api/v1/modules/api_management/createWebhook",
+      "parameters": {}
+    },
+    {
+      "name": "listWebhooks",
+      "description": "List all configured webhooks with their status and success rates.",
+      "method": "POST",
+      "path": "/api/v1/modules/api_management/listWebhooks",
+      "parameters": {}
+    },
+    {
+      "name": "updateWebhook",
+      "description": "Update a webhook",
+      "method": "POST",
+      "path": "/api/v1/modules/api_management/updateWebhook",
+      "parameters": {}
+    },
+    {
+      "name": "deleteWebhook",
+      "description": "Delete a webhook endpoint.",
+      "method": "POST",
+      "path": "/api/v1/modules/api_management/deleteWebhook",
+      "parameters": {}
+    },
+    {
+      "name": "testWebhook",
+      "description": "Send a test event to a webhook endpoint to verify it",
+      "method": "POST",
+      "path": "/api/v1/modules/api_management/testWebhook",
+      "parameters": {}
+    },
+    {
+      "name": "getDeliveryLogs",
+      "description": "Get delivery logs for a webhook showing status, response time, and retries.",
+      "method": "POST",
+      "path": "/api/v1/modules/api_management/getDeliveryLogs",
+      "parameters": {}
+    },
+    {
+      "name": "getRequestLogs",
+      "description": "Get API request logs with method, path, status, and latency.",
+      "method": "POST",
+      "path": "/api/v1/modules/api_management/getRequestLogs",
+      "parameters": {}
+    },
+    {
+      "name": "getUsageStats",
+      "description": "Get aggregated API usage statistics with endpoint breakdowns.",
+      "method": "POST",
+      "path": "/api/v1/modules/api_management/getUsageStats",
+      "parameters": {}
+    },
+    {
+      "name": "exportLogs",
+      "description": "Export request or delivery logs in CSV or JSON format.",
+      "method": "POST",
+      "path": "/api/v1/modules/api_management/exportLogs",
+      "parameters": {}
+    }
+  ]
+}

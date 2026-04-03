@@ -1,0 +1,34 @@
+{
+  "sidebar": {
+    "label": "CRM",
+    "icon": "handshake",
+    "route": "/crm",
+    "badge": null
+  },
+  "surfaces": [
+    {
+      "id": "crm-dashboard",
+      "type": "dashboard",
+      "route": null,
+      "label": "crm-dashboard"
+    },
+    {
+      "id": "crm-overview",
+      "type": "full-page",
+      "route": "/crm",
+      "label": "crm-overview"
+    },
+    {
+      "id": "crm-contacts",
+      "type": "full-page",
+      "route": "/crm/contacts",
+      "label": "crm-contacts"
+    },
+    {
+      "id": "crm-deals",
+      "type": "full-page",
+      "route": "/crm/deals",
+      "label": "crm-deals"
+    }
+  ]
+}

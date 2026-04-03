@@ -1,0 +1,52 @@
+{
+  "id": "reply",
+  "moduleType": "REPLY",
+  "name": "Reply",
+  "version": "1.0.0",
+  "description": "Unified customer service inbox across Meta, X, LinkedIn, Google Business, and email channels.",
+  "category": "marketing",
+  "minTier": "PRO",
+  "price": 1900,
+  "agentDefinition": {
+    "path": "src/agent/reply-agent.ts",
+    "name": "reply-agent"
+  },
+  "tools": ["listInboxes", "getMessages", "replyToMessage", "assignConversation", "setAutoResponder", "getConversationHistory", "escalateConversation", "getSentimentReport"],
+  "surfaces": [
+    {
+      "id": "reply-dashboard",
+      "type": "dashboard",
+      "requiredTools": ["listInboxes", "getMessages"]
+    },
+    {
+      "id": "reply-overview",
+      "type": "full-page",
+      "route": "/reply",
+      "requiredTools": ["listInboxes", "getMessages"]
+    }
+  ],
+  "migrations": {
+    "install": "migrations/install.ts",
+    "uninstall": "migrations/uninstall.ts"
+  },
+  "contextSchema": {
+    "categoryPrefix": "reply",
+    "entityTypes": [
+      {
+        "category": "reply.record",
+        "keyFormat": "{recordId}",
+        "valueSchema": {
+          "type": "object",
+          "properties": {
+            "name": { "type": "string" },
+            "status": { "type": "string" },
+            "createdAt": { "type": "string", "format": "date-time" }
+          },
+          "required": ["name"]
+        },
+        "relatedCategories": []
+      }
+    ],
+    "patternTypes": ["reply_activity", "reply_trend"]
+  }
+}

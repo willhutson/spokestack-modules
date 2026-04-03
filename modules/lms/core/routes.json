@@ -1,0 +1,34 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/api/v1/lms",
+      "description": "List @spokestack/lms records",
+      "existing": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/lms",
+      "description": "Create @spokestack/lms record",
+      "existing": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/lms/:id",
+      "description": "Get @spokestack/lms record",
+      "existing": false
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/lms/:id",
+      "description": "Update @spokestack/lms record",
+      "existing": false
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/lms/:id",
+      "description": "Delete @spokestack/lms record",
+      "existing": false
+    }
+  ]
+}

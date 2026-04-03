@@ -1,0 +1,22 @@
+{
+  "sidebar": {
+    "label": "Inventory",
+    "icon": "package",
+    "route": "/inventory",
+    "badge": null
+  },
+  "surfaces": [
+    {
+      "id": "inventory-dashboard",
+      "type": "dashboard",
+      "route": null,
+      "label": "inventory-dashboard"
+    },
+    {
+      "id": "inventory-overview",
+      "type": "full-page",
+      "route": "/inventory",
+      "label": "inventory-overview"
+    }
+  ]
+}

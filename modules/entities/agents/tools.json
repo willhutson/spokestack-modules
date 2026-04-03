@@ -1,0 +1,61 @@
+{
+  "agentType": "entities-agent",
+  "tools": [
+    {
+      "name": "createEntity",
+      "description": "createEntity operation for Entities module.",
+      "method": "POST",
+      "path": "/api/v1/modules/entities/createEntity",
+      "parameters": {}
+    },
+    {
+      "name": "listEntities",
+      "description": "listEntities operation for Entities module.",
+      "method": "POST",
+      "path": "/api/v1/modules/entities/listEntities",
+      "parameters": {}
+    },
+    {
+      "name": "updateEntity",
+      "description": "updateEntity operation for Entities module.",
+      "method": "POST",
+      "path": "/api/v1/modules/entities/updateEntity",
+      "parameters": {}
+    },
+    {
+      "name": "deleteEntity",
+      "description": "deleteEntity operation for Entities module.",
+      "method": "POST",
+      "path": "/api/v1/modules/entities/deleteEntity",
+      "parameters": {}
+    },
+    {
+      "name": "createEntityType",
+      "description": "createEntityType operation for Entities module.",
+      "method": "POST",
+      "path": "/api/v1/modules/entities/createEntityType",
+      "parameters": {}
+    },
+    {
+      "name": "listEntityTypes",
+      "description": "listEntityTypes operation for Entities module.",
+      "method": "POST",
+      "path": "/api/v1/modules/entities/listEntityTypes",
+      "parameters": {}
+    },
+    {
+      "name": "addRelation",
+      "description": "addRelation operation for Entities module.",
+      "method": "POST",
+      "path": "/api/v1/modules/entities/addRelation",
+      "parameters": {}
+    },
+    {
+      "name": "searchEntities",
+      "description": "searchEntities operation for Entities module.",
+      "method": "POST",
+      "path": "/api/v1/modules/entities/searchEntities",
+      "parameters": {}
+    }
+  ]
+}

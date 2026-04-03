@@ -1,0 +1,22 @@
+{
+  "sidebar": {
+    "label": "Tickets",
+    "icon": "ticket",
+    "route": "/tickets",
+    "badge": null
+  },
+  "surfaces": [
+    {
+      "id": "tickets-dashboard",
+      "type": "dashboard",
+      "route": null,
+      "label": "tickets-dashboard"
+    },
+    {
+      "id": "tickets-overview",
+      "type": "full-page",
+      "route": "/tickets",
+      "label": "tickets-overview"
+    }
+  ]
+}

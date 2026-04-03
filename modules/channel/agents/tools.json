@@ -1,0 +1,61 @@
+{
+  "agentType": "channel-agent",
+  "tools": [
+    {
+      "name": "listChannels",
+      "description": "listChannels operation for Channel module.",
+      "method": "POST",
+      "path": "/api/v1/modules/channel/listChannels",
+      "parameters": {}
+    },
+    {
+      "name": "sendMessage",
+      "description": "sendMessage operation for Channel module.",
+      "method": "POST",
+      "path": "/api/v1/modules/channel/sendMessage",
+      "parameters": {}
+    },
+    {
+      "name": "createBroadcast",
+      "description": "createBroadcast operation for Channel module.",
+      "method": "POST",
+      "path": "/api/v1/modules/channel/createBroadcast",
+      "parameters": {}
+    },
+    {
+      "name": "getDeliveryReport",
+      "description": "getDeliveryReport operation for Channel module.",
+      "method": "POST",
+      "path": "/api/v1/modules/channel/getDeliveryReport",
+      "parameters": {}
+    },
+    {
+      "name": "createFlow",
+      "description": "createFlow operation for Channel module.",
+      "method": "POST",
+      "path": "/api/v1/modules/channel/createFlow",
+      "parameters": {}
+    },
+    {
+      "name": "listFlows",
+      "description": "listFlows operation for Channel module.",
+      "method": "POST",
+      "path": "/api/v1/modules/channel/listFlows",
+      "parameters": {}
+    },
+    {
+      "name": "configureAutoReply",
+      "description": "configureAutoReply operation for Channel module.",
+      "method": "POST",
+      "path": "/api/v1/modules/channel/configureAutoReply",
+      "parameters": {}
+    },
+    {
+      "name": "getChannelAnalytics",
+      "description": "getChannelAnalytics operation for Channel module.",
+      "method": "POST",
+      "path": "/api/v1/modules/channel/getChannelAnalytics",
+      "parameters": {}
+    }
+  ]
+}

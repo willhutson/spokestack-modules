@@ -1,0 +1,34 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/api/v1/analytics",
+      "description": "List Analytics records",
+      "existing": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/analytics",
+      "description": "Create Analytics record",
+      "existing": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/analytics/:id",
+      "description": "Get Analytics record",
+      "existing": false
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/analytics/:id",
+      "description": "Update Analytics record",
+      "existing": false
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/analytics/:id",
+      "description": "Delete Analytics record",
+      "existing": false
+    }
+  ]
+}

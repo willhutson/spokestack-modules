@@ -1,0 +1,96 @@
+{
+  "agentType": "finance-agent",
+  "tools": [
+    {
+      "name": "createInvoice",
+      "description": "Create a new invoice with line items for a client",
+      "method": "POST",
+      "path": "/api/v1/modules/finance/createInvoice",
+      "parameters": {}
+    },
+    {
+      "name": "listInvoices",
+      "description": "List invoices with optional status and date filters",
+      "method": "POST",
+      "path": "/api/v1/modules/finance/listInvoices",
+      "parameters": {}
+    },
+    {
+      "name": "getInvoice",
+      "description": "Get a single invoice with full line item details",
+      "method": "POST",
+      "path": "/api/v1/modules/finance/getInvoice",
+      "parameters": {}
+    },
+    {
+      "name": "updateInvoiceStatus",
+      "description": "Update the status of an invoice (DRAFT, SENT, PAID, OVERDUE, CANCELLED)",
+      "method": "POST",
+      "path": "/api/v1/modules/finance/updateInvoiceStatus",
+      "parameters": {}
+    },
+    {
+      "name": "trackPayment",
+      "description": "Record a payment against an invoice",
+      "method": "POST",
+      "path": "/api/v1/modules/finance/trackPayment",
+      "parameters": {}
+    },
+    {
+      "name": "getFinancialSummary",
+      "description": "Get financial overview with total revenue, outstanding amounts, and top clients",
+      "method": "POST",
+      "path": "/api/v1/modules/finance/getFinancialSummary",
+      "parameters": {}
+    },
+    {
+      "name": "setBudget",
+      "description": "Create or update a budget record for an organization or department",
+      "method": "POST",
+      "path": "/api/v1/modules/finance/setBudget",
+      "parameters": {}
+    },
+    {
+      "name": "listBudgets",
+      "description": "List budgets with optional category and period filters",
+      "method": "POST",
+      "path": "/api/v1/modules/finance/listBudgets",
+      "parameters": {}
+    },
+    {
+      "name": "trackBudgetSpend",
+      "description": "Record spend against a budget and get updated utilization",
+      "method": "POST",
+      "path": "/api/v1/modules/finance/trackBudgetSpend",
+      "parameters": {}
+    },
+    {
+      "name": "getBudgetSummary",
+      "description": "Get budget utilization overview across all categories",
+      "method": "POST",
+      "path": "/api/v1/modules/finance/getBudgetSummary",
+      "parameters": {}
+    },
+    {
+      "name": "forecastRevenue",
+      "description": "Generate a revenue forecast for upcoming months based on retainers and pipeline",
+      "method": "POST",
+      "path": "/api/v1/modules/finance/forecastRevenue",
+      "parameters": {}
+    },
+    {
+      "name": "getRevenueMetrics",
+      "description": "Get actual revenue metrics including MRR, ARR, churn rate, and deal size",
+      "method": "POST",
+      "path": "/api/v1/modules/finance/getRevenueMetrics",
+      "parameters": {}
+    },
+    {
+      "name": "listForecastScenarios",
+      "description": "Get conservative, base, and optimistic revenue forecast scenarios",
+      "method": "POST",
+      "path": "/api/v1/modules/finance/listForecastScenarios",
+      "parameters": {}
+    }
+  ]
+}

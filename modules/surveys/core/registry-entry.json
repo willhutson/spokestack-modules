@@ -1,0 +1,13 @@
+{
+  "moduleType": "SURVEYS",
+  "name": "Surveys",
+  "description": "Create and distribute surveys with advanced question types, response collection, and analytics dashboards.",
+  "category": "analytics",
+  "minTier": "STARTER",
+  "price": 0,
+  "icon": "box",
+  "surfaces": [
+    "surveys-dashboard",
+    "surveys-home"
+  ]
+}

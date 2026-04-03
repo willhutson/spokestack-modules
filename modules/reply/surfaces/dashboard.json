@@ -1,0 +1,22 @@
+{
+  "sidebar": {
+    "label": "Reply",
+    "icon": "message-square",
+    "route": "/reply",
+    "badge": null
+  },
+  "surfaces": [
+    {
+      "id": "reply-dashboard",
+      "type": "dashboard",
+      "route": null,
+      "label": "reply-dashboard"
+    },
+    {
+      "id": "reply-overview",
+      "type": "full-page",
+      "route": "/reply",
+      "label": "reply-overview"
+    }
+  ]
+}

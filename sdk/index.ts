@@ -16,3 +16,7 @@ export { validateModuleConfig } from "./factory/validate";
 export { registerModule, deregisterModule, type RegistrationConfig, type RegistrationResult } from "./registration/index";
 export { discoverModules, buildModuleRegistry, getModulesForTier, type DiscoveredModule } from "./discovery/index";
 export { executeModuleAgent, streamModuleAgent, getAgentChatHint, type ModuleContext, type AgentResponse } from "./hooks/index";
+
+// Suite system
+export { SUITES, getSuiteById, getAllSuites, installSuite, planSuiteInstall } from "./suites/index";
+export type { SuiteDefinition, SuiteInstallResult, SuitePlanResult, IndustryVertical } from "./suites/types";

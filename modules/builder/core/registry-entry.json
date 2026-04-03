@@ -1,0 +1,13 @@
+{
+  "moduleType": "BUILDER",
+  "name": "Builder",
+  "description": "Template builder with versioning, permission management, and audit logging for enterprise content workflows.",
+  "category": "enterprise",
+  "minTier": "ENTERPRISE",
+  "price": 0,
+  "icon": "box",
+  "surfaces": [
+    "builder-dashboard",
+    "builder-home"
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "id": "tickets",
+  "moduleType": "TICKETS",
+  "name": "Tickets",
+  "version": "1.0.0",
+  "description": "Support ticket management with SLA tracking, escalation rules, and performance metrics.",
+  "category": "ops",
+  "minTier": "STARTER",
+  "price": 900,
+  "agentDefinition": {
+    "path": "src/agent/tickets-agent.ts",
+    "name": "tickets-agent"
+  },
+  "tools": ["createTicket", "listTickets", "assignTicket", "updateTicketStatus", "addComment", "setPriority", "getSLAStatus", "getTicketMetrics"],
+  "surfaces": [
+    {
+      "id": "tickets-dashboard",
+      "type": "dashboard",
+      "requiredTools": ["createTicket", "listTickets"]
+    },
+    {
+      "id": "tickets-overview",
+      "type": "full-page",
+      "route": "/tickets",
+      "requiredTools": ["createTicket", "listTickets"]
+    }
+  ],
+  "migrations": {
+    "install": "migrations/install.ts",
+    "uninstall": "migrations/uninstall.ts"
+  },
+  "contextSchema": {
+    "categoryPrefix": "tickets",
+    "entityTypes": [
+      {
+        "category": "tickets.record",
+        "keyFormat": "{recordId}",
+        "valueSchema": {
+          "type": "object",
+          "properties": {
+            "name": { "type": "string" },
+            "status": { "type": "string" },
+            "createdAt": { "type": "string", "format": "date-time" }
+          },
+          "required": ["name"]
+        },
+        "relatedCategories": []
+      }
+    ],
+    "patternTypes": ["tickets_activity", "tickets_trend"]
+  }
+}

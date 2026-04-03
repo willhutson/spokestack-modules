@@ -1,0 +1,22 @@
+{
+  "sidebar": {
+    "label": "Channel",
+    "icon": "radio",
+    "route": "/channel",
+    "badge": null
+  },
+  "surfaces": [
+    {
+      "id": "channel-dashboard",
+      "type": "dashboard",
+      "route": null,
+      "label": "channel-dashboard"
+    },
+    {
+      "id": "channel-overview",
+      "type": "full-page",
+      "route": "/channel",
+      "label": "channel-overview"
+    }
+  ]
+}

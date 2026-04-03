@@ -1,0 +1,173 @@
+{
+  "agentType": "crm-agent",
+  "tools": [
+    {
+      "name": "createContact",
+      "description": "Create a new contact in the CRM with name, email, phone, company, and other details.",
+      "method": "POST",
+      "path": "/api/v1/modules/crm/createContact",
+      "parameters": {}
+    },
+    {
+      "name": "listContacts",
+      "description": "List and search CRM contacts with optional filters for status, company, and text search.",
+      "method": "POST",
+      "path": "/api/v1/modules/crm/listContacts",
+      "parameters": {}
+    },
+    {
+      "name": "updateContact",
+      "description": "Update an existing contact",
+      "method": "POST",
+      "path": "/api/v1/modules/crm/updateContact",
+      "parameters": {}
+    },
+    {
+      "name": "createDeal",
+      "description": "Create a new deal in the sales pipeline with title, value, stage, and optional contact link.",
+      "method": "POST",
+      "path": "/api/v1/modules/crm/createDeal",
+      "parameters": {}
+    },
+    {
+      "name": "updateDeal",
+      "description": "Update a deal",
+      "method": "POST",
+      "path": "/api/v1/modules/crm/updateDeal",
+      "parameters": {}
+    },
+    {
+      "name": "listDeals",
+      "description": "List and filter deals in the pipeline by stage, value range, or associated contact.",
+      "method": "POST",
+      "path": "/api/v1/modules/crm/listDeals",
+      "parameters": {}
+    },
+    {
+      "name": "linkContactToDeal",
+      "description": "Associate a contact with a deal to track the relationship.",
+      "method": "POST",
+      "path": "/api/v1/modules/crm/linkContactToDeal",
+      "parameters": {}
+    },
+    {
+      "name": "managePipeline",
+      "description": "Create, update, or list SalesPipeline configurations.",
+      "method": "POST",
+      "path": "/api/v1/modules/crm/managePipeline",
+      "parameters": {}
+    },
+    {
+      "name": "logInteraction",
+      "description": "Log a DealActivity or ContactActivity interaction record.",
+      "method": "POST",
+      "path": "/api/v1/modules/crm/logInteraction",
+      "parameters": {}
+    },
+    {
+      "name": "searchCRM",
+      "description": "Full-text search across CRM entities including contacts, deals, clients, and campaigns.",
+      "method": "POST",
+      "path": "/api/v1/modules/crm/searchCRM",
+      "parameters": {}
+    },
+    {
+      "name": "exportContacts",
+      "description": "Export a paginated contact list in JSON or CSV format.",
+      "method": "POST",
+      "path": "/api/v1/modules/crm/exportContacts",
+      "parameters": {}
+    },
+    {
+      "name": "manageDealContacts",
+      "description": "Add, remove, or list contacts associated with a deal, including their roles.",
+      "method": "POST",
+      "path": "/api/v1/modules/crm/manageDealContacts",
+      "parameters": {}
+    },
+    {
+      "name": "manageDealProducts",
+      "description": "Add, remove, or list products associated with a deal.",
+      "method": "POST",
+      "path": "/api/v1/modules/crm/manageDealProducts",
+      "parameters": {}
+    },
+    {
+      "name": "trackDealCompetitors",
+      "description": "Add, update, or list competitors associated with a deal.",
+      "method": "POST",
+      "path": "/api/v1/modules/crm/trackDealCompetitors",
+      "parameters": {}
+    },
+    {
+      "name": "getDealStageHistory",
+      "description": "Retrieve the stage transition history for a deal.",
+      "method": "POST",
+      "path": "/api/v1/modules/crm/getDealStageHistory",
+      "parameters": {}
+    },
+    {
+      "name": "manageContactNotes",
+      "description": "Create, list, or pin notes on a contact record.",
+      "method": "POST",
+      "path": "/api/v1/modules/crm/manageContactNotes",
+      "parameters": {}
+    },
+    {
+      "name": "manageContactActivities",
+      "description": "Log or list activities associated with a contact.",
+      "method": "POST",
+      "path": "/api/v1/modules/crm/manageContactActivities",
+      "parameters": {}
+    },
+    {
+      "name": "manageCRMTasks",
+      "description": "Create, update, or list CRM tasks such as to-dos, calls, emails, and meetings.",
+      "method": "POST",
+      "path": "/api/v1/modules/crm/manageCRMTasks",
+      "parameters": {}
+    },
+    {
+      "name": "manageProducts",
+      "description": "Create, update, or list products in the CRM product catalog.",
+      "method": "POST",
+      "path": "/api/v1/modules/crm/manageProducts",
+      "parameters": {}
+    },
+    {
+      "name": "manageCompetitors",
+      "description": "Create, update, or list competitor records in the CRM.",
+      "method": "POST",
+      "path": "/api/v1/modules/crm/manageCompetitors",
+      "parameters": {}
+    },
+    {
+      "name": "manageCRMCampaigns",
+      "description": "Create, update, or list marketing campaigns in the CRM.",
+      "method": "POST",
+      "path": "/api/v1/modules/crm/manageCRMCampaigns",
+      "parameters": {}
+    },
+    {
+      "name": "handleComplaint",
+      "description": "Create or update a complaint record for tracking and resolution.",
+      "method": "POST",
+      "path": "/api/v1/modules/crm/handleComplaint",
+      "parameters": {}
+    },
+    {
+      "name": "listComplaints",
+      "description": "List complaints with optional filters for client, status, and severity.",
+      "method": "POST",
+      "path": "/api/v1/modules/crm/listComplaints",
+      "parameters": {}
+    },
+    {
+      "name": "getComplaintDetails",
+      "description": "Get full details of a complaint including timeline and resolution history.",
+      "method": "POST",
+      "path": "/api/v1/modules/crm/getComplaintDetails",
+      "parameters": {}
+    }
+  ]
+}

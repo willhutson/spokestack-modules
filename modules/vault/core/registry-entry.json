@@ -1,0 +1,13 @@
+{
+  "moduleType": "VAULT",
+  "name": "Vault",
+  "description": "Secure document storage with encryption, granular access control, and audit logging.",
+  "category": "ops",
+  "minTier": "BUSINESS",
+  "price": 2900,
+  "icon": "lock",
+  "surfaces": [
+    "vault-dashboard",
+    "vault-overview"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "moduleType": "MEDIA_BUYING",
+  "name": "@spokestack/media-buying",
+  "description": "Ad campaign management, budget allocation, and ROAS tracking.",
+  "category": "custom",
+  "minTier": "STARTER",
+  "price": 0,
+  "icon": "box",
+  "surfaces": []
+}

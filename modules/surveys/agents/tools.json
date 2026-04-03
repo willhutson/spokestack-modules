@@ -1,0 +1,103 @@
+{
+  "agentType": "surveys-agent",
+  "tools": [
+    {
+      "name": "createSurvey",
+      "description": "Create a new survey with a title, description, and optional settings.",
+      "method": "POST",
+      "path": "/api/v1/modules/surveys/createSurvey",
+      "parameters": {}
+    },
+    {
+      "name": "listSurveys",
+      "description": "List all surveys with optional status filter and pagination.",
+      "method": "POST",
+      "path": "/api/v1/modules/surveys/listSurveys",
+      "parameters": {}
+    },
+    {
+      "name": "getSurvey",
+      "description": "Get a survey by ID including its questions and response count.",
+      "method": "POST",
+      "path": "/api/v1/modules/surveys/getSurvey",
+      "parameters": {}
+    },
+    {
+      "name": "updateSurvey",
+      "description": "Update a survey",
+      "method": "POST",
+      "path": "/api/v1/modules/surveys/updateSurvey",
+      "parameters": {}
+    },
+    {
+      "name": "deleteSurvey",
+      "description": "Soft-delete a survey by ID.",
+      "method": "POST",
+      "path": "/api/v1/modules/surveys/deleteSurvey",
+      "parameters": {}
+    },
+    {
+      "name": "cloneSurvey",
+      "description": "Clone an existing survey with all its questions into a new draft.",
+      "method": "POST",
+      "path": "/api/v1/modules/surveys/cloneSurvey",
+      "parameters": {}
+    },
+    {
+      "name": "addQuestion",
+      "description": "Add a question to a survey with type, text, and optional choices.",
+      "method": "POST",
+      "path": "/api/v1/modules/surveys/addQuestion",
+      "parameters": {}
+    },
+    {
+      "name": "updateQuestion",
+      "description": "Update a question",
+      "method": "POST",
+      "path": "/api/v1/modules/surveys/updateQuestion",
+      "parameters": {}
+    },
+    {
+      "name": "reorderQuestions",
+      "description": "Reorder questions in a survey by providing the new question ID sequence.",
+      "method": "POST",
+      "path": "/api/v1/modules/surveys/reorderQuestions",
+      "parameters": {}
+    },
+    {
+      "name": "deleteQuestion",
+      "description": "Delete a question from a survey.",
+      "method": "POST",
+      "path": "/api/v1/modules/surveys/deleteQuestion",
+      "parameters": {}
+    },
+    {
+      "name": "submitResponse",
+      "description": "Submit a response to a survey with answers to each question.",
+      "method": "POST",
+      "path": "/api/v1/modules/surveys/submitResponse",
+      "parameters": {}
+    },
+    {
+      "name": "listResponses",
+      "description": "List all responses for a survey with optional pagination.",
+      "method": "POST",
+      "path": "/api/v1/modules/surveys/listResponses",
+      "parameters": {}
+    },
+    {
+      "name": "getResults",
+      "description": "Get aggregated results and analytics for a survey.",
+      "method": "POST",
+      "path": "/api/v1/modules/surveys/getResults",
+      "parameters": {}
+    },
+    {
+      "name": "exportResults",
+      "description": "Export survey results in CSV or JSON format.",
+      "method": "POST",
+      "path": "/api/v1/modules/surveys/exportResults",
+      "parameters": {}
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "sidebar": {
+    "label": "Entities",
+    "icon": "database",
+    "route": "/entities",
+    "badge": null
+  },
+  "surfaces": [
+    {
+      "id": "entities-dashboard",
+      "type": "dashboard",
+      "route": null,
+      "label": "entities-dashboard"
+    },
+    {
+      "id": "entities-overview",
+      "type": "full-page",
+      "route": "/entities",
+      "label": "entities-overview"
+    }
+  ]
+}

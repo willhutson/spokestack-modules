@@ -1,0 +1,13 @@
+{
+  "moduleType": "TICKETS",
+  "name": "Tickets",
+  "description": "Support ticket management with SLA tracking, escalation rules, and performance metrics.",
+  "category": "ops",
+  "minTier": "STARTER",
+  "price": 900,
+  "icon": "ticket",
+  "surfaces": [
+    "tickets-dashboard",
+    "tickets-overview"
+  ]
+}

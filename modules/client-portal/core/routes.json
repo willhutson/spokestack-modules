@@ -1,0 +1,34 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/api/v1/client_portal",
+      "description": "List Client Portal records",
+      "existing": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/client_portal",
+      "description": "Create Client Portal record",
+      "existing": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/client_portal/:id",
+      "description": "Get Client Portal record",
+      "existing": false
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/client_portal/:id",
+      "description": "Update Client Portal record",
+      "existing": false
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/client_portal/:id",
+      "description": "Delete Client Portal record",
+      "existing": false
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "sidebar": {
+    "label": "NPS & Surveys",
+    "icon": "bar-chart",
+    "route": "/nps",
+    "badge": null
+  },
+  "surfaces": [
+    {
+      "id": "nps-home",
+      "type": "full-page",
+      "route": "/surveys",
+      "label": "nps-home"
+    },
+    {
+      "id": "nps-surveys",
+      "type": "full-page",
+      "route": "/surveys/nps",
+      "label": "nps-surveys"
+    },
+    {
+      "id": "nps-forms",
+      "type": "full-page",
+      "route": "/surveys/forms",
+      "label": "nps-forms"
+    }
+  ]
+}

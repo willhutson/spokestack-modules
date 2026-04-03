@@ -1,0 +1,22 @@
+{
+  "sidebar": {
+    "label": "Boards",
+    "icon": "box",
+    "route": "/boards",
+    "badge": null
+  },
+  "surfaces": [
+    {
+      "id": "boards-dashboard",
+      "type": "dashboard",
+      "route": null,
+      "label": "boards-dashboard"
+    },
+    {
+      "id": "boards-home",
+      "type": "full-page",
+      "route": "/boards",
+      "label": "boards-home"
+    }
+  ]
+}

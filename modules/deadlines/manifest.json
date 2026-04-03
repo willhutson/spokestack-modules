@@ -1,0 +1,52 @@
+{
+  "id": "deadlines",
+  "moduleType": "DEADLINES",
+  "name": "Deadlines",
+  "version": "1.0.0",
+  "description": "Legal and compliance deadline tracking with escalation rules and upcoming deadline alerts.",
+  "category": "ops",
+  "minTier": "PRO",
+  "price": 1200,
+  "agentDefinition": {
+    "path": "src/agent/deadlines-agent.ts",
+    "name": "deadlines-agent"
+  },
+  "tools": ["createDeadline", "listDeadlines", "updateDeadline", "setReminder", "escalateDeadline", "getUpcoming", "markComplete", "getComplianceReport"],
+  "surfaces": [
+    {
+      "id": "deadlines-dashboard",
+      "type": "dashboard",
+      "requiredTools": ["createDeadline", "listDeadlines"]
+    },
+    {
+      "id": "deadlines-overview",
+      "type": "full-page",
+      "route": "/deadlines",
+      "requiredTools": ["createDeadline", "listDeadlines"]
+    }
+  ],
+  "migrations": {
+    "install": "migrations/install.ts",
+    "uninstall": "migrations/uninstall.ts"
+  },
+  "contextSchema": {
+    "categoryPrefix": "deadlines",
+    "entityTypes": [
+      {
+        "category": "deadlines.record",
+        "keyFormat": "{recordId}",
+        "valueSchema": {
+          "type": "object",
+          "properties": {
+            "name": { "type": "string" },
+            "status": { "type": "string" },
+            "createdAt": { "type": "string", "format": "date-time" }
+          },
+          "required": ["name"]
+        },
+        "relatedCategories": []
+      }
+    ],
+    "patternTypes": ["deadlines_activity", "deadlines_trend"]
+  }
+}

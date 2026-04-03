@@ -1,0 +1,110 @@
+{
+  "agentType": "workflow-agent",
+  "tools": [
+    {
+      "name": "createWorkflow",
+      "description": "Create a new workflow template with trigger type, task definitions, nudge rules, and stage gates.",
+      "method": "POST",
+      "path": "/api/v1/modules/workflows/createWorkflow",
+      "parameters": {}
+    },
+    {
+      "name": "listWorkflowTemplates",
+      "description": "List workflow templates filtered by module, status, or trigger type.",
+      "method": "POST",
+      "path": "/api/v1/modules/workflows/listWorkflowTemplates",
+      "parameters": {}
+    },
+    {
+      "name": "getWorkflowTemplate",
+      "description": "Get a single workflow template by ID with full task definitions, nudge rules, and stage gates.",
+      "method": "POST",
+      "path": "/api/v1/modules/workflows/getWorkflowTemplate",
+      "parameters": {}
+    },
+    {
+      "name": "publishWorkflow",
+      "description": "Publish a draft workflow template, making it available for instantiation.",
+      "method": "POST",
+      "path": "/api/v1/modules/workflows/publishWorkflow",
+      "parameters": {}
+    },
+    {
+      "name": "archiveWorkflow",
+      "description": "Archive a workflow template so it can no longer be instantiated.",
+      "method": "POST",
+      "path": "/api/v1/modules/workflows/archiveWorkflow",
+      "parameters": {}
+    },
+    {
+      "name": "instantiateWorkflow",
+      "description": "Create a workflow instance from a published template, triggered by an entity event.",
+      "method": "POST",
+      "path": "/api/v1/modules/workflows/instantiateWorkflow",
+      "parameters": {}
+    },
+    {
+      "name": "listActiveWorkflows",
+      "description": "List workflow instances with status, progress, and optional filters.",
+      "method": "POST",
+      "path": "/api/v1/modules/workflows/listActiveWorkflows",
+      "parameters": {}
+    },
+    {
+      "name": "getWorkflowStatus",
+      "description": "Get detailed workflow instance status including tasks, activity log, and nudge history.",
+      "method": "POST",
+      "path": "/api/v1/modules/workflows/getWorkflowStatus",
+      "parameters": {}
+    },
+    {
+      "name": "cancelWorkflow",
+      "description": "Cancel an active workflow instance with an optional reason.",
+      "method": "POST",
+      "path": "/api/v1/modules/workflows/cancelWorkflow",
+      "parameters": {}
+    },
+    {
+      "name": "completeTask",
+      "description": "Mark a workflow task as completed by a specific user, with optional notes.",
+      "method": "POST",
+      "path": "/api/v1/modules/workflows/completeTask",
+      "parameters": {}
+    },
+    {
+      "name": "blockTask",
+      "description": "Block a workflow task with a reason, preventing it from being completed.",
+      "method": "POST",
+      "path": "/api/v1/modules/workflows/blockTask",
+      "parameters": {}
+    },
+    {
+      "name": "reassignTask",
+      "description": "Reassign a workflow task to a different user.",
+      "method": "POST",
+      "path": "/api/v1/modules/workflows/reassignTask",
+      "parameters": {}
+    },
+    {
+      "name": "listWorkflowTasks",
+      "description": "List workflow tasks filtered by instance, assignee, status, or due date.",
+      "method": "POST",
+      "path": "/api/v1/modules/workflows/listWorkflowTasks",
+      "parameters": {}
+    },
+    {
+      "name": "triggerNudge",
+      "description": "Send a nudge notification to a task assignee through a specified channel.",
+      "method": "POST",
+      "path": "/api/v1/modules/workflows/triggerNudge",
+      "parameters": {}
+    },
+    {
+      "name": "listNudges",
+      "description": "List nudge notification records filtered by instance, task, or recipient.",
+      "method": "POST",
+      "path": "/api/v1/modules/workflows/listNudges",
+      "parameters": {}
+    }
+  ]
+}

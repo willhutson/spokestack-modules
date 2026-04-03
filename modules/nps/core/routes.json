@@ -1,0 +1,34 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/api/v1/nps",
+      "description": "List NPS & Surveys records",
+      "existing": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/nps",
+      "description": "Create NPS & Surveys record",
+      "existing": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/nps/:id",
+      "description": "Get NPS & Surveys record",
+      "existing": false
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/nps/:id",
+      "description": "Update NPS & Surveys record",
+      "existing": false
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/nps/:id",
+      "description": "Delete NPS & Surveys record",
+      "existing": false
+    }
+  ]
+}

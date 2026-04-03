@@ -1,0 +1,12 @@
+{
+  "agentType": "workflow-agent",
+  "systemPromptExtension": "You manage Workflows functionality.",
+  "capabilities": [
+    "createWorkflow",
+    "listWorkflowTemplates",
+    "getWorkflowTemplate",
+    "publishWorkflow",
+    "archiveWorkflow"
+  ],
+  "handoffs": {}
+}

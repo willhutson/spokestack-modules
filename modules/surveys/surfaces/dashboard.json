@@ -1,0 +1,22 @@
+{
+  "sidebar": {
+    "label": "Surveys",
+    "icon": "box",
+    "route": "/surveys",
+    "badge": null
+  },
+  "surfaces": [
+    {
+      "id": "surveys-dashboard",
+      "type": "dashboard",
+      "route": null,
+      "label": "surveys-dashboard"
+    },
+    {
+      "id": "surveys-home",
+      "type": "full-page",
+      "route": "/surveys",
+      "label": "surveys-home"
+    }
+  ]
+}

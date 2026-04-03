@@ -1,0 +1,34 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/api/v1/crm",
+      "description": "List CRM records",
+      "existing": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/crm",
+      "description": "Create CRM record",
+      "existing": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/crm/:id",
+      "description": "Get CRM record",
+      "existing": false
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/crm/:id",
+      "description": "Update CRM record",
+      "existing": false
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/crm/:id",
+      "description": "Delete CRM record",
+      "existing": false
+    }
+  ]
+}

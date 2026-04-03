@@ -1,0 +1,28 @@
+{
+  "sidebar": {
+    "label": "Client Portal",
+    "icon": "box",
+    "route": "/client-portal",
+    "badge": null
+  },
+  "surfaces": [
+    {
+      "id": "portal-overview",
+      "type": "full-page",
+      "route": "/portal/overview",
+      "label": "portal-overview"
+    },
+    {
+      "id": "portal-users",
+      "type": "full-page",
+      "route": "/portal/users",
+      "label": "portal-users"
+    },
+    {
+      "id": "portal-requests",
+      "type": "full-page",
+      "route": "/portal/requests",
+      "label": "portal-requests"
+    }
+  ]
+}

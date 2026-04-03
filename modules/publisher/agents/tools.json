@@ -1,0 +1,61 @@
+{
+  "agentType": "publisher-agent",
+  "tools": [
+    {
+      "name": "createArticle",
+      "description": "createArticle operation for Publisher module.",
+      "method": "POST",
+      "path": "/api/v1/modules/publisher/createArticle",
+      "parameters": {}
+    },
+    {
+      "name": "listArticles",
+      "description": "listArticles operation for Publisher module.",
+      "method": "POST",
+      "path": "/api/v1/modules/publisher/listArticles",
+      "parameters": {}
+    },
+    {
+      "name": "updateArticle",
+      "description": "updateArticle operation for Publisher module.",
+      "method": "POST",
+      "path": "/api/v1/modules/publisher/updateArticle",
+      "parameters": {}
+    },
+    {
+      "name": "publishArticle",
+      "description": "publishArticle operation for Publisher module.",
+      "method": "POST",
+      "path": "/api/v1/modules/publisher/publishArticle",
+      "parameters": {}
+    },
+    {
+      "name": "scheduleArticle",
+      "description": "scheduleArticle operation for Publisher module.",
+      "method": "POST",
+      "path": "/api/v1/modules/publisher/scheduleArticle",
+      "parameters": {}
+    },
+    {
+      "name": "createLandingPage",
+      "description": "createLandingPage operation for Publisher module.",
+      "method": "POST",
+      "path": "/api/v1/modules/publisher/createLandingPage",
+      "parameters": {}
+    },
+    {
+      "name": "getAnalytics",
+      "description": "getAnalytics operation for Publisher module.",
+      "method": "POST",
+      "path": "/api/v1/modules/publisher/getAnalytics",
+      "parameters": {}
+    },
+    {
+      "name": "manageSEO",
+      "description": "manageSEO operation for Publisher module.",
+      "method": "POST",
+      "path": "/api/v1/modules/publisher/manageSEO",
+      "parameters": {}
+    }
+  ]
+}

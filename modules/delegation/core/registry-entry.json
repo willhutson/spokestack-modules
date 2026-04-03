@@ -1,0 +1,13 @@
+{
+  "moduleType": "DELEGATION",
+  "name": "Delegation",
+  "description": "Agent delegation profiles, escalation rules, handoff briefings, and activity logging for enterprise workflow management.",
+  "category": "enterprise",
+  "minTier": "ENTERPRISE",
+  "price": 0,
+  "icon": "box",
+  "surfaces": [
+    "delegation-dashboard",
+    "delegation-home"
+  ]
+}

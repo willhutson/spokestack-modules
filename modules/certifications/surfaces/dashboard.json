@@ -1,0 +1,22 @@
+{
+  "sidebar": {
+    "label": "Certifications",
+    "icon": "award",
+    "route": "/certifications",
+    "badge": null
+  },
+  "surfaces": [
+    {
+      "id": "certifications-dashboard",
+      "type": "dashboard",
+      "route": null,
+      "label": "certifications-dashboard"
+    },
+    {
+      "id": "certifications-overview",
+      "type": "full-page",
+      "route": "/certifications",
+      "label": "certifications-overview"
+    }
+  ]
+}

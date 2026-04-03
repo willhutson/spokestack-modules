@@ -1,0 +1,52 @@
+{
+  "id": "publisher",
+  "moduleType": "PUBLISHER",
+  "name": "Publisher",
+  "version": "1.0.0",
+  "description": "WYSIWYG publishing platform for blogs, articles, landing pages with SEO optimization and analytics.",
+  "category": "marketing",
+  "minTier": "PRO",
+  "price": 2900,
+  "agentDefinition": {
+    "path": "src/agent/publisher-agent.ts",
+    "name": "publisher-agent"
+  },
+  "tools": ["createArticle", "listArticles", "updateArticle", "publishArticle", "scheduleArticle", "createLandingPage", "getAnalytics", "manageSEO"],
+  "surfaces": [
+    {
+      "id": "publisher-dashboard",
+      "type": "dashboard",
+      "requiredTools": ["createArticle", "listArticles"]
+    },
+    {
+      "id": "publisher-overview",
+      "type": "full-page",
+      "route": "/publisher",
+      "requiredTools": ["createArticle", "listArticles"]
+    }
+  ],
+  "migrations": {
+    "install": "migrations/install.ts",
+    "uninstall": "migrations/uninstall.ts"
+  },
+  "contextSchema": {
+    "categoryPrefix": "publisher",
+    "entityTypes": [
+      {
+        "category": "publisher.record",
+        "keyFormat": "{recordId}",
+        "valueSchema": {
+          "type": "object",
+          "properties": {
+            "name": { "type": "string" },
+            "status": { "type": "string" },
+            "createdAt": { "type": "string", "format": "date-time" }
+          },
+          "required": ["name"]
+        },
+        "relatedCategories": []
+      }
+    ],
+    "patternTypes": ["publisher_activity", "publisher_trend"]
+  }
+}

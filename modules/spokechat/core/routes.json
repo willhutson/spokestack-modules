@@ -1,0 +1,34 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/api/v1/spokechat",
+      "description": "List SpokeChat records",
+      "existing": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/spokechat",
+      "description": "Create SpokeChat record",
+      "existing": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/spokechat/:id",
+      "description": "Get SpokeChat record",
+      "existing": false
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/spokechat/:id",
+      "description": "Update SpokeChat record",
+      "existing": false
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/spokechat/:id",
+      "description": "Delete SpokeChat record",
+      "existing": false
+    }
+  ]
+}

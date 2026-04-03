@@ -1,0 +1,124 @@
+{
+  "agentType": "access-control-agent",
+  "tools": [
+    {
+      "name": "createPolicy",
+      "description": "Create a new access control policy with a name and description.",
+      "method": "POST",
+      "path": "/api/v1/modules/access_control/createPolicy",
+      "parameters": {}
+    },
+    {
+      "name": "listPolicies",
+      "description": "listPolicies tool for Access Control",
+      "method": "POST",
+      "path": "/api/v1/modules/access_control/listPolicies",
+      "parameters": {}
+    },
+    {
+      "name": "getPolicy",
+      "description": "Get a policy by ID with all rules and metadata.",
+      "method": "POST",
+      "path": "/api/v1/modules/access_control/getPolicy",
+      "parameters": {}
+    },
+    {
+      "name": "updatePolicy",
+      "description": "Update a policy",
+      "method": "POST",
+      "path": "/api/v1/modules/access_control/updatePolicy",
+      "parameters": {}
+    },
+    {
+      "name": "archivePolicy",
+      "description": "Archive a policy, removing it from active use while preserving history.",
+      "method": "POST",
+      "path": "/api/v1/modules/access_control/archivePolicy",
+      "parameters": {}
+    },
+    {
+      "name": "clonePolicy",
+      "description": "Clone a policy with all its rules into a new draft policy.",
+      "method": "POST",
+      "path": "/api/v1/modules/access_control/clonePolicy",
+      "parameters": {}
+    },
+    {
+      "name": "addRule",
+      "description": "Add an access control rule to a policy specifying resource, action, and effect.",
+      "method": "POST",
+      "path": "/api/v1/modules/access_control/addRule",
+      "parameters": {}
+    },
+    {
+      "name": "updateRule",
+      "description": "Update a rule",
+      "method": "POST",
+      "path": "/api/v1/modules/access_control/updateRule",
+      "parameters": {}
+    },
+    {
+      "name": "deleteRule",
+      "description": "Delete a rule from a policy.",
+      "method": "POST",
+      "path": "/api/v1/modules/access_control/deleteRule",
+      "parameters": {}
+    },
+    {
+      "name": "testRule",
+      "description": "Test whether a specific resource/action combination would be allowed for a user.",
+      "method": "POST",
+      "path": "/api/v1/modules/access_control/testRule",
+      "parameters": {}
+    },
+    {
+      "name": "assignPolicy",
+      "description": "Assign a policy to a user, team, or role.",
+      "method": "POST",
+      "path": "/api/v1/modules/access_control/assignPolicy",
+      "parameters": {}
+    },
+    {
+      "name": "revokeAssignment",
+      "description": "Revoke a policy assignment.",
+      "method": "POST",
+      "path": "/api/v1/modules/access_control/revokeAssignment",
+      "parameters": {}
+    },
+    {
+      "name": "listAssignments",
+      "description": "List all policy assignments with optional filtering by policy or target.",
+      "method": "POST",
+      "path": "/api/v1/modules/access_control/listAssignments",
+      "parameters": {}
+    },
+    {
+      "name": "checkAccess",
+      "description": "Check whether a user has access to perform an action on a resource.",
+      "method": "POST",
+      "path": "/api/v1/modules/access_control/checkAccess",
+      "parameters": {}
+    },
+    {
+      "name": "getPolicyVersions",
+      "description": "Get the version history of a policy.",
+      "method": "POST",
+      "path": "/api/v1/modules/access_control/getPolicyVersions",
+      "parameters": {}
+    },
+    {
+      "name": "compareVersions",
+      "description": "Compare two versions of a policy to see what rules changed.",
+      "method": "POST",
+      "path": "/api/v1/modules/access_control/compareVersions",
+      "parameters": {}
+    },
+    {
+      "name": "rollbackPolicy",
+      "description": "Rollback a policy to a previous version.",
+      "method": "POST",
+      "path": "/api/v1/modules/access_control/rollbackPolicy",
+      "parameters": {}
+    }
+  ]
+}

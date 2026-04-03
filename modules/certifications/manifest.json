@@ -1,0 +1,52 @@
+{
+  "id": "certifications",
+  "moduleType": "CERTIFICATIONS",
+  "name": "Certifications",
+  "version": "1.0.0",
+  "description": "Professional certification tracking with renewal management and credential verification.",
+  "category": "ops",
+  "minTier": "PRO",
+  "price": 1200,
+  "agentDefinition": {
+    "path": "src/agent/certifications-agent.ts",
+    "name": "certifications-agent"
+  },
+  "tools": ["addCertification", "listCertifications", "setRenewalReminder", "verifyCredential", "getExpiringCerts", "updateStatus", "generateReport", "bulkImport"],
+  "surfaces": [
+    {
+      "id": "certifications-dashboard",
+      "type": "dashboard",
+      "requiredTools": ["addCertification", "listCertifications"]
+    },
+    {
+      "id": "certifications-overview",
+      "type": "full-page",
+      "route": "/certifications",
+      "requiredTools": ["addCertification", "listCertifications"]
+    }
+  ],
+  "migrations": {
+    "install": "migrations/install.ts",
+    "uninstall": "migrations/uninstall.ts"
+  },
+  "contextSchema": {
+    "categoryPrefix": "certifications",
+    "entityTypes": [
+      {
+        "category": "certifications.record",
+        "keyFormat": "{recordId}",
+        "valueSchema": {
+          "type": "object",
+          "properties": {
+            "name": { "type": "string" },
+            "status": { "type": "string" },
+            "createdAt": { "type": "string", "format": "date-time" }
+          },
+          "required": ["name"]
+        },
+        "relatedCategories": []
+      }
+    ],
+    "patternTypes": ["certifications_activity", "certifications_trend"]
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "moduleType": "API_MANAGEMENT",
+  "name": "API Management",
+  "description": "API key management, webhook configuration, delivery logs, request logging, and usage statistics.",
+  "category": "enterprise",
+  "minTier": "ENTERPRISE",
+  "price": 0,
+  "icon": "box",
+  "surfaces": [
+    "api-management-dashboard",
+    "api-management-home"
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "agentType": "deadlines-agent",
+  "tools": [
+    {
+      "name": "createDeadline",
+      "description": "createDeadline operation for Deadlines module.",
+      "method": "POST",
+      "path": "/api/v1/modules/deadlines/createDeadline",
+      "parameters": {}
+    },
+    {
+      "name": "listDeadlines",
+      "description": "listDeadlines operation for Deadlines module.",
+      "method": "POST",
+      "path": "/api/v1/modules/deadlines/listDeadlines",
+      "parameters": {}
+    },
+    {
+      "name": "updateDeadline",
+      "description": "updateDeadline operation for Deadlines module.",
+      "method": "POST",
+      "path": "/api/v1/modules/deadlines/updateDeadline",
+      "parameters": {}
+    },
+    {
+      "name": "setReminder",
+      "description": "setReminder operation for Deadlines module.",
+      "method": "POST",
+      "path": "/api/v1/modules/deadlines/setReminder",
+      "parameters": {}
+    },
+    {
+      "name": "escalateDeadline",
+      "description": "escalateDeadline operation for Deadlines module.",
+      "method": "POST",
+      "path": "/api/v1/modules/deadlines/escalateDeadline",
+      "parameters": {}
+    },
+    {
+      "name": "getUpcoming",
+      "description": "getUpcoming operation for Deadlines module.",
+      "method": "POST",
+      "path": "/api/v1/modules/deadlines/getUpcoming",
+      "parameters": {}
+    },
+    {
+      "name": "markComplete",
+      "description": "markComplete operation for Deadlines module.",
+      "method": "POST",
+      "path": "/api/v1/modules/deadlines/markComplete",
+      "parameters": {}
+    },
+    {
+      "name": "getComplianceReport",
+      "description": "getComplianceReport operation for Deadlines module.",
+      "method": "POST",
+      "path": "/api/v1/modules/deadlines/getComplianceReport",
+      "parameters": {}
+    }
+  ]
+}

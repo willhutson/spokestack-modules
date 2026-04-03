@@ -1,0 +1,103 @@
+{
+  "agentType": "time-leave-agent",
+  "tools": [
+    {
+      "name": "logTime",
+      "description": "Log a time entry for a user with hours, date, and billing status.",
+      "method": "POST",
+      "path": "/api/v1/modules/time_leave/logTime",
+      "parameters": {}
+    },
+    {
+      "name": "getTimesheetSummary",
+      "description": "Aggregate time entries for a user over a date range to produce a timesheet summary.",
+      "method": "POST",
+      "path": "/api/v1/modules/time_leave/getTimesheetSummary",
+      "parameters": {}
+    },
+    {
+      "name": "approveTimeEntry",
+      "description": "Approve a pending time entry.",
+      "method": "POST",
+      "path": "/api/v1/modules/time_leave/approveTimeEntry",
+      "parameters": {}
+    },
+    {
+      "name": "listTimeEntries",
+      "description": "List and filter time entries by user, project, brief, or date range.",
+      "method": "POST",
+      "path": "/api/v1/modules/time_leave/listTimeEntries",
+      "parameters": {}
+    },
+    {
+      "name": "deleteTimeEntry",
+      "description": "Remove a time entry.",
+      "method": "POST",
+      "path": "/api/v1/modules/time_leave/deleteTimeEntry",
+      "parameters": {}
+    },
+    {
+      "name": "requestLeave",
+      "description": "Create a new leave request for a user.",
+      "method": "POST",
+      "path": "/api/v1/modules/time_leave/requestLeave",
+      "parameters": {}
+    },
+    {
+      "name": "approveLeave",
+      "description": "Approve, reject, or cancel a leave request.",
+      "method": "POST",
+      "path": "/api/v1/modules/time_leave/approveLeave",
+      "parameters": {}
+    },
+    {
+      "name": "getLeaveBalance",
+      "description": "Get leave balance for a user by year.",
+      "method": "POST",
+      "path": "/api/v1/modules/time_leave/getLeaveBalance",
+      "parameters": {}
+    },
+    {
+      "name": "listLeaveRequests",
+      "description": "List leave requests with optional status filters.",
+      "method": "POST",
+      "path": "/api/v1/modules/time_leave/listLeaveRequests",
+      "parameters": {}
+    },
+    {
+      "name": "manageLeaveTypes",
+      "description": "Create, update, or list leave types for the organization.",
+      "method": "POST",
+      "path": "/api/v1/modules/time_leave/manageLeaveTypes",
+      "parameters": {}
+    },
+    {
+      "name": "listHolidays",
+      "description": "List public holidays for the organization.",
+      "method": "POST",
+      "path": "/api/v1/modules/time_leave/listHolidays",
+      "parameters": {}
+    },
+    {
+      "name": "addHoliday",
+      "description": "Add a new public holiday for the organization.",
+      "method": "POST",
+      "path": "/api/v1/modules/time_leave/addHoliday",
+      "parameters": {}
+    },
+    {
+      "name": "manageBlackoutPeriods",
+      "description": "Create or list blackout periods during which leave is restricted.",
+      "method": "POST",
+      "path": "/api/v1/modules/time_leave/manageBlackoutPeriods",
+      "parameters": {}
+    },
+    {
+      "name": "manageEmployeeDocuments",
+      "description": "Upload or list employee documents such as contracts, IDs, and certifications.",
+      "method": "POST",
+      "path": "/api/v1/modules/time_leave/manageEmployeeDocuments",
+      "parameters": {}
+    }
+  ]
+}

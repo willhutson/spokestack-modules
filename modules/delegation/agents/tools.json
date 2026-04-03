@@ -1,0 +1,89 @@
+{
+  "agentType": "delegation-agent",
+  "tools": [
+    {
+      "name": "createDelegationProfile",
+      "description": "Create a delegation profile defining who can act on behalf of whom and with what permissions.",
+      "method": "POST",
+      "path": "/api/v1/modules/delegation/createDelegationProfile",
+      "parameters": {}
+    },
+    {
+      "name": "getDelegationProfile",
+      "description": "Get a delegation profile by ID with full details.",
+      "method": "POST",
+      "path": "/api/v1/modules/delegation/getDelegationProfile",
+      "parameters": {}
+    },
+    {
+      "name": "updateProfile",
+      "description": "Update a delegation profile",
+      "method": "POST",
+      "path": "/api/v1/modules/delegation/updateProfile",
+      "parameters": {}
+    },
+    {
+      "name": "setEscalationRules",
+      "description": "Set escalation rules for a delegation profile defining when to escalate back to the delegator.",
+      "method": "POST",
+      "path": "/api/v1/modules/delegation/setEscalationRules",
+      "parameters": {}
+    },
+    {
+      "name": "activateDelegation",
+      "description": "Activate a delegation profile to start the delegation period.",
+      "method": "POST",
+      "path": "/api/v1/modules/delegation/activateDelegation",
+      "parameters": {}
+    },
+    {
+      "name": "deactivateDelegation",
+      "description": "Deactivate a delegation profile to end the delegation period.",
+      "method": "POST",
+      "path": "/api/v1/modules/delegation/deactivateDelegation",
+      "parameters": {}
+    },
+    {
+      "name": "getDelegationStatus",
+      "description": "Get the current status and statistics for a delegation profile.",
+      "method": "POST",
+      "path": "/api/v1/modules/delegation/getDelegationStatus",
+      "parameters": {}
+    },
+    {
+      "name": "listActiveDelegations",
+      "description": "List all currently active delegations in the organization.",
+      "method": "POST",
+      "path": "/api/v1/modules/delegation/listActiveDelegations",
+      "parameters": {}
+    },
+    {
+      "name": "getHandoffBriefing",
+      "description": "Get a handoff briefing summarizing pending actions, recent activity, and upcoming deadlines.",
+      "method": "POST",
+      "path": "/api/v1/modules/delegation/getHandoffBriefing",
+      "parameters": {}
+    },
+    {
+      "name": "logActivity",
+      "description": "Log an activity performed under a delegation profile.",
+      "method": "POST",
+      "path": "/api/v1/modules/delegation/logActivity",
+      "parameters": {}
+    },
+    {
+      "name": "getActivityLog",
+      "description": "Get the activity log for a delegation profile with optional date filtering.",
+      "method": "POST",
+      "path": "/api/v1/modules/delegation/getActivityLog",
+      "parameters": {}
+    },
+    {
+      "name": "getDelegationSummary",
+      "description": "Get a summary report of delegation activity over a time period.",
+      "method": "POST",
+      "path": "/api/v1/modules/delegation/getDelegationSummary",
+      "parameters": {}
+    }
+  ]
+}

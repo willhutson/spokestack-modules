@@ -1,0 +1,13 @@
+{
+  "moduleType": "INVENTORY",
+  "name": "Inventory",
+  "description": "Asset and inventory tracking with locations, stock levels, and reorder management.",
+  "category": "ops",
+  "minTier": "STARTER",
+  "price": 900,
+  "icon": "package",
+  "surfaces": [
+    "inventory-dashboard",
+    "inventory-overview"
+  ]
+}

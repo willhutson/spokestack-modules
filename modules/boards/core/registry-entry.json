@@ -1,0 +1,13 @@
+{
+  "moduleType": "BOARDS",
+  "name": "Boards",
+  "description": "Kanban-style boards with columns, cards, assignments, comments, and advanced filtering for project and task management.",
+  "category": "ops",
+  "minTier": "STARTER",
+  "price": 0,
+  "icon": "box",
+  "surfaces": [
+    "boards-dashboard",
+    "boards-home"
+  ]
+}

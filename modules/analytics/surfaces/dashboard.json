@@ -1,0 +1,28 @@
+{
+  "sidebar": {
+    "label": "Analytics",
+    "icon": "activity",
+    "route": "/analytics",
+    "badge": null
+  },
+  "surfaces": [
+    {
+      "id": "analytics-home",
+      "type": "full-page",
+      "route": "/analytics",
+      "label": "analytics-home"
+    },
+    {
+      "id": "analytics-dashboards",
+      "type": "full-page",
+      "route": "/analytics/dashboards",
+      "label": "analytics-dashboards"
+    },
+    {
+      "id": "analytics-metrics",
+      "type": "full-page",
+      "route": "/analytics/metrics",
+      "label": "analytics-metrics"
+    }
+  ]
+}

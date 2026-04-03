@@ -1,0 +1,46 @@
+{
+  "sidebar": {
+    "label": "Content Studio",
+    "icon": "image",
+    "route": "/content-studio",
+    "badge": null
+  },
+  "surfaces": [
+    {
+      "id": "content-home",
+      "type": "full-page",
+      "route": "/content",
+      "label": "content-home"
+    },
+    {
+      "id": "content-assets",
+      "type": "full-page",
+      "route": "/content/assets",
+      "label": "content-assets"
+    },
+    {
+      "id": "content-video",
+      "type": "full-page",
+      "route": "/content/video",
+      "label": "content-video"
+    },
+    {
+      "id": "content-moodboards",
+      "type": "full-page",
+      "route": "/content/moodboards",
+      "label": "content-moodboards"
+    },
+    {
+      "id": "content-docs",
+      "type": "full-page",
+      "route": "/content/docs",
+      "label": "content-docs"
+    },
+    {
+      "id": "content-approvals",
+      "type": "full-page",
+      "route": "/content/approvals",
+      "label": "content-approvals"
+    }
+  ]
+}

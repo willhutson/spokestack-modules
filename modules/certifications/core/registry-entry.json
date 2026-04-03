@@ -1,0 +1,13 @@
+{
+  "moduleType": "CERTIFICATIONS",
+  "name": "Certifications",
+  "description": "Professional certification tracking with renewal management and credential verification.",
+  "category": "ops",
+  "minTier": "PRO",
+  "price": 1200,
+  "icon": "award",
+  "surfaces": [
+    "certifications-dashboard",
+    "certifications-overview"
+  ]
+}

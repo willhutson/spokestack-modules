@@ -1,0 +1,13 @@
+{
+  "moduleType": "ACCESS_CONTROL",
+  "name": "Access Control",
+  "description": "Policy-based access control with rules, assignments, version history, and real-time permission checking.",
+  "category": "enterprise",
+  "minTier": "ENTERPRISE",
+  "price": 0,
+  "icon": "box",
+  "surfaces": [
+    "access-control-dashboard",
+    "access-control-home"
+  ]
+}

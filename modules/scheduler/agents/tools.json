@@ -1,0 +1,61 @@
+{
+  "agentType": "scheduler-agent",
+  "tools": [
+    {
+      "name": "createAppointment",
+      "description": "createAppointment operation for Scheduler module.",
+      "method": "POST",
+      "path": "/api/v1/modules/scheduler/createAppointment",
+      "parameters": {}
+    },
+    {
+      "name": "listAppointments",
+      "description": "listAppointments operation for Scheduler module.",
+      "method": "POST",
+      "path": "/api/v1/modules/scheduler/listAppointments",
+      "parameters": {}
+    },
+    {
+      "name": "cancelAppointment",
+      "description": "cancelAppointment operation for Scheduler module.",
+      "method": "POST",
+      "path": "/api/v1/modules/scheduler/cancelAppointment",
+      "parameters": {}
+    },
+    {
+      "name": "setAvailability",
+      "description": "setAvailability operation for Scheduler module.",
+      "method": "POST",
+      "path": "/api/v1/modules/scheduler/setAvailability",
+      "parameters": {}
+    },
+    {
+      "name": "getAvailability",
+      "description": "getAvailability operation for Scheduler module.",
+      "method": "POST",
+      "path": "/api/v1/modules/scheduler/getAvailability",
+      "parameters": {}
+    },
+    {
+      "name": "sendReminder",
+      "description": "sendReminder operation for Scheduler module.",
+      "method": "POST",
+      "path": "/api/v1/modules/scheduler/sendReminder",
+      "parameters": {}
+    },
+    {
+      "name": "createBookingPage",
+      "description": "createBookingPage operation for Scheduler module.",
+      "method": "POST",
+      "path": "/api/v1/modules/scheduler/createBookingPage",
+      "parameters": {}
+    },
+    {
+      "name": "getBookingStats",
+      "description": "getBookingStats operation for Scheduler module.",
+      "method": "POST",
+      "path": "/api/v1/modules/scheduler/getBookingStats",
+      "parameters": {}
+    }
+  ]
+}

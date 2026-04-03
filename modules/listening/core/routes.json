@@ -1,0 +1,34 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/api/v1/listening",
+      "description": "List Social Listening records",
+      "existing": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/listening",
+      "description": "Create Social Listening record",
+      "existing": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/listening/:id",
+      "description": "Get Social Listening record",
+      "existing": false
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/listening/:id",
+      "description": "Update Social Listening record",
+      "existing": false
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/listening/:id",
+      "description": "Delete Social Listening record",
+      "existing": false
+    }
+  ]
+}

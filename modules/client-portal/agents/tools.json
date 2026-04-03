@@ -1,0 +1,103 @@
+{
+  "agentType": "client-portal-agent",
+  "tools": [
+    {
+      "name": "createPortalUser",
+      "description": "Create a new portal user linked to a client and optional contact. Returns the user object without password hash.",
+      "method": "POST",
+      "path": "/api/v1/modules/client_portal/createPortalUser",
+      "parameters": {}
+    },
+    {
+      "name": "listPortalUsers",
+      "description": "List portal users for a client with activity information including last login.",
+      "method": "POST",
+      "path": "/api/v1/modules/client_portal/listPortalUsers",
+      "parameters": {}
+    },
+    {
+      "name": "deactivatePortalUser",
+      "description": "Deactivate a portal user account. The user will no longer be able to log in.",
+      "method": "POST",
+      "path": "/api/v1/modules/client_portal/deactivatePortalUser",
+      "parameters": {}
+    },
+    {
+      "name": "managePortalSessions",
+      "description": "List or revoke active portal sessions for a user.",
+      "method": "POST",
+      "path": "/api/v1/modules/client_portal/managePortalSessions",
+      "parameters": {}
+    },
+    {
+      "name": "generateMagicLink",
+      "description": "Create a magic link for passwordless authentication. The link expires after the specified duration (default 15 minutes).",
+      "method": "POST",
+      "path": "/api/v1/modules/client_portal/generateMagicLink",
+      "parameters": {}
+    },
+    {
+      "name": "validateMagicLink",
+      "description": "Validate and consume a magic link token. Returns the associated user ID if valid.",
+      "method": "POST",
+      "path": "/api/v1/modules/client_portal/validateMagicLink",
+      "parameters": {}
+    },
+    {
+      "name": "listBriefRequests",
+      "description": "List brief requests submitted by clients, optionally filtered by client or status.",
+      "method": "POST",
+      "path": "/api/v1/modules/client_portal/listBriefRequests",
+      "parameters": {}
+    },
+    {
+      "name": "reviewBriefRequest",
+      "description": "Review and update the status of a brief request. Can mark as REVIEWED, ACCEPTED, or REJECTED.",
+      "method": "POST",
+      "path": "/api/v1/modules/client_portal/reviewBriefRequest",
+      "parameters": {}
+    },
+    {
+      "name": "convertBriefRequest",
+      "description": "Convert an approved brief request into an actual brief. The request status is set to CONVERTED.",
+      "method": "POST",
+      "path": "/api/v1/modules/client_portal/convertBriefRequest",
+      "parameters": {}
+    },
+    {
+      "name": "trackOnboarding",
+      "description": "Get or create the client onboarding status including progress percentage and task list.",
+      "method": "POST",
+      "path": "/api/v1/modules/client_portal/trackOnboarding",
+      "parameters": {}
+    },
+    {
+      "name": "updateOnboardingTask",
+      "description": "Update the status of an onboarding task.",
+      "method": "POST",
+      "path": "/api/v1/modules/client_portal/updateOnboardingTask",
+      "parameters": {}
+    },
+    {
+      "name": "listOnboardingTasks",
+      "description": "List onboarding tasks, optionally filtered by category.",
+      "method": "POST",
+      "path": "/api/v1/modules/client_portal/listOnboardingTasks",
+      "parameters": {}
+    },
+    {
+      "name": "addPortalComment",
+      "description": "Add a comment on a brief or approval in the client portal.",
+      "method": "POST",
+      "path": "/api/v1/modules/client_portal/addPortalComment",
+      "parameters": {}
+    },
+    {
+      "name": "listPortalComments",
+      "description": "List portal comments for a brief or approval, with pagination.",
+      "method": "POST",
+      "path": "/api/v1/modules/client_portal/listPortalComments",
+      "parameters": {}
+    }
+  ]
+}

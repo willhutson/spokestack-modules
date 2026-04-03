@@ -1,0 +1,138 @@
+{
+  "agentType": "social_publishing_agent",
+  "tools": [
+    {
+      "name": "connectAccount",
+      "description": "Connect a social media account for a client",
+      "method": "POST",
+      "path": "/api/v1/modules/social_publishing/connectAccount",
+      "parameters": {}
+    },
+    {
+      "name": "listAccounts",
+      "description": "List connected social media accounts",
+      "method": "POST",
+      "path": "/api/v1/modules/social_publishing/listAccounts",
+      "parameters": {}
+    },
+    {
+      "name": "disconnectAccount",
+      "description": "Disconnect (deactivate) a social media account",
+      "method": "POST",
+      "path": "/api/v1/modules/social_publishing/disconnectAccount",
+      "parameters": {}
+    },
+    {
+      "name": "getAccountSpecs",
+      "description": "Get platform specifications (character limits, supported features) for a social platform",
+      "method": "POST",
+      "path": "/api/v1/modules/social_publishing/getAccountSpecs",
+      "parameters": {}
+    },
+    {
+      "name": "createPost",
+      "description": "Create a new content post for scheduling or immediate publishing",
+      "method": "POST",
+      "path": "/api/v1/modules/social_publishing/createPost",
+      "parameters": {}
+    },
+    {
+      "name": "listPosts",
+      "description": "List content posts with optional filters",
+      "method": "POST",
+      "path": "/api/v1/modules/social_publishing/listPosts",
+      "parameters": {}
+    },
+    {
+      "name": "getPost",
+      "description": "Get a single content post with assets, versions, and approvals",
+      "method": "POST",
+      "path": "/api/v1/modules/social_publishing/getPost",
+      "parameters": {}
+    },
+    {
+      "name": "updatePost",
+      "description": "Update a content post",
+      "method": "POST",
+      "path": "/api/v1/modules/social_publishing/updatePost",
+      "parameters": {}
+    },
+    {
+      "name": "deletePost",
+      "description": "Soft-delete or cancel a content post",
+      "method": "POST",
+      "path": "/api/v1/modules/social_publishing/deletePost",
+      "parameters": {}
+    },
+    {
+      "name": "schedulePost",
+      "description": "Schedule a post to publish at a specific time, creating PublishJobs per platform",
+      "method": "POST",
+      "path": "/api/v1/modules/social_publishing/schedulePost",
+      "parameters": {}
+    },
+    {
+      "name": "publishNow",
+      "description": "Publish a post immediately with high priority",
+      "method": "POST",
+      "path": "/api/v1/modules/social_publishing/publishNow",
+      "parameters": {}
+    },
+    {
+      "name": "listScheduled",
+      "description": "List scheduled posts as a calendar view",
+      "method": "POST",
+      "path": "/api/v1/modules/social_publishing/listScheduled",
+      "parameters": {}
+    },
+    {
+      "name": "cancelScheduled",
+      "description": "Cancel a scheduled post or a specific publish job",
+      "method": "POST",
+      "path": "/api/v1/modules/social_publishing/cancelScheduled",
+      "parameters": {}
+    },
+    {
+      "name": "getPublishLog",
+      "description": "Get detailed publish log entries for a publish job",
+      "method": "POST",
+      "path": "/api/v1/modules/social_publishing/getPublishLog",
+      "parameters": {}
+    },
+    {
+      "name": "listPublishJobs",
+      "description": "List publish jobs with optional filters",
+      "method": "POST",
+      "path": "/api/v1/modules/social_publishing/listPublishJobs",
+      "parameters": {}
+    },
+    {
+      "name": "trackCampaign",
+      "description": "Create, update, or list social campaigns",
+      "method": "POST",
+      "path": "/api/v1/modules/social_publishing/trackCampaign",
+      "parameters": {}
+    },
+    {
+      "name": "addCampaignActivity",
+      "description": "Log an activity on a campaign",
+      "method": "POST",
+      "path": "/api/v1/modules/social_publishing/addCampaignActivity",
+      "parameters": {}
+    },
+    {
+      "name": "manageCampaignMembers",
+      "description": "Add, list, or update campaign members",
+      "method": "POST",
+      "path": "/api/v1/modules/social_publishing/manageCampaignMembers",
+      "parameters": {}
+    },
+    {
+      "name": "analyzeEngagement",
+      "description": "Analyze engagement metrics for published social posts",
+      "method": "POST",
+      "path": "/api/v1/modules/social_publishing/analyzeEngagement",
+      "parameters": {}
+    }
+  ]
+}

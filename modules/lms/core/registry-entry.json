@@ -1,0 +1,10 @@
+{
+  "moduleType": "LMS",
+  "name": "@spokestack/lms",
+  "description": "Learning management system with courses, lessons, and progress tracking.",
+  "category": "custom",
+  "minTier": "STARTER",
+  "price": 0,
+  "icon": "box",
+  "surfaces": []
+}

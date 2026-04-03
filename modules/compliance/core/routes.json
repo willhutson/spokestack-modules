@@ -1,0 +1,34 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/api/v1/compliance",
+      "description": "List Compliance records",
+      "existing": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/compliance",
+      "description": "Create Compliance record",
+      "existing": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/compliance/:id",
+      "description": "Get Compliance record",
+      "existing": false
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/compliance/:id",
+      "description": "Update Compliance record",
+      "existing": false
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/compliance/:id",
+      "description": "Delete Compliance record",
+      "existing": false
+    }
+  ]
+}

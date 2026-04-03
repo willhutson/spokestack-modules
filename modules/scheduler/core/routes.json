@@ -1,0 +1,34 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/api/v1/scheduler",
+      "description": "List Scheduler records",
+      "existing": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/scheduler",
+      "description": "Create Scheduler record",
+      "existing": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/scheduler/:id",
+      "description": "Get Scheduler record",
+      "existing": false
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/scheduler/:id",
+      "description": "Update Scheduler record",
+      "existing": false
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/scheduler/:id",
+      "description": "Delete Scheduler record",
+      "existing": false
+    }
+  ]
+}

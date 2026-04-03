@@ -1,0 +1,13 @@
+{
+  "moduleType": "CHANNEL",
+  "name": "Channel",
+  "description": "Omnichannel orchestration across Slack, email, WhatsApp, SMS, and Teams with automated flows.",
+  "category": "marketing",
+  "minTier": "PRO",
+  "price": 2900,
+  "icon": "radio",
+  "surfaces": [
+    "channel-dashboard",
+    "channel-overview"
+  ]
+}

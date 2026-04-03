@@ -1,0 +1,13 @@
+{
+  "moduleType": "ENTITIES",
+  "name": "Entities",
+  "description": "Custom entity management for candidates, vendors, events, and any structured data.",
+  "category": "ops",
+  "minTier": "STARTER",
+  "price": 900,
+  "icon": "database",
+  "surfaces": [
+    "entities-dashboard",
+    "entities-overview"
+  ]
+}

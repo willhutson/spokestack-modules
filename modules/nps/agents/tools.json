@@ -1,0 +1,96 @@
+{
+  "agentType": "nps-agent",
+  "tools": [
+    {
+      "name": "createSurvey",
+      "description": "Create a new NPS survey for a client. Sets initial status to DRAFT.",
+      "method": "POST",
+      "path": "/api/v1/modules/nps/createSurvey",
+      "parameters": {}
+    },
+    {
+      "name": "sendSurvey",
+      "description": "Mark an NPS survey as sent and record the send date.",
+      "method": "POST",
+      "path": "/api/v1/modules/nps/sendSurvey",
+      "parameters": {}
+    },
+    {
+      "name": "listSurveys",
+      "description": "List NPS surveys with status, client, and date filters.",
+      "method": "POST",
+      "path": "/api/v1/modules/nps/listSurveys",
+      "parameters": {}
+    },
+    {
+      "name": "getSurveyResults",
+      "description": "Get survey details with all responses and NPS summary statistics.",
+      "method": "POST",
+      "path": "/api/v1/modules/nps/getSurveyResults",
+      "parameters": {}
+    },
+    {
+      "name": "analyzeNPS",
+      "description": "Aggregate NPS scores across clients with trends and insights. Identifies at-risk clients (detractors) and top promoters.",
+      "method": "POST",
+      "path": "/api/v1/modules/nps/analyzeNPS",
+      "parameters": {}
+    },
+    {
+      "name": "submitNPSResponse",
+      "description": "Record a client NPS response with score and feedback. Automatically categorizes as PROMOTER (9-10), PASSIVE (7-8), or DETRACTOR (0-6).",
+      "method": "POST",
+      "path": "/api/v1/modules/nps/submitNPSResponse",
+      "parameters": {}
+    },
+    {
+      "name": "listResponses",
+      "description": "List NPS responses with category and date filters.",
+      "method": "POST",
+      "path": "/api/v1/modules/nps/listResponses",
+      "parameters": {}
+    },
+    {
+      "name": "createForm",
+      "description": "Create a configurable form template with sections, fields, and quality rules.",
+      "method": "POST",
+      "path": "/api/v1/modules/nps/createForm",
+      "parameters": {}
+    },
+    {
+      "name": "listForms",
+      "description": "List form templates with active status and menu visibility filters.",
+      "method": "POST",
+      "path": "/api/v1/modules/nps/listForms",
+      "parameters": {}
+    },
+    {
+      "name": "submitForm",
+      "description": "Submit form data against a template. Validates data against the template configuration.",
+      "method": "POST",
+      "path": "/api/v1/modules/nps/submitForm",
+      "parameters": {}
+    },
+    {
+      "name": "listSubmissions",
+      "description": "List form submissions with status, date, and assignee filters.",
+      "method": "POST",
+      "path": "/api/v1/modules/nps/listSubmissions",
+      "parameters": {}
+    },
+    {
+      "name": "reviewSubmission",
+      "description": "Review and update a form submission status. Supports approval, rejection, and completion workflows.",
+      "method": "POST",
+      "path": "/api/v1/modules/nps/reviewSubmission",
+      "parameters": {}
+    },
+    {
+      "name": "getSubmission",
+      "description": "Get a single form submission with template metadata and submitted data.",
+      "method": "POST",
+      "path": "/api/v1/modules/nps/getSubmission",
+      "parameters": {}
+    }
+  ]
+}

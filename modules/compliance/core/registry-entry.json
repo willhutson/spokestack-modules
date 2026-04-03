@@ -1,0 +1,13 @@
+{
+  "moduleType": "COMPLIANCE",
+  "name": "Compliance",
+  "description": "Compliance tracking, audit trails, regulatory reporting, and policy management.",
+  "category": "enterprise",
+  "minTier": "BUSINESS",
+  "price": 3900,
+  "icon": "shield-check",
+  "surfaces": [
+    "compliance-dashboard",
+    "compliance-overview"
+  ]
+}

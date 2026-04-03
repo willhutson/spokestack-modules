@@ -1,0 +1,14 @@
+{
+  "moduleType": "CLIENT_PORTAL",
+  "name": "Client Portal",
+  "description": "Client-facing portal with magic link auth, brief request submission, onboarding tracking, and portal comments.",
+  "category": "core",
+  "minTier": "BUSINESS",
+  "price": 1500,
+  "icon": "box",
+  "surfaces": [
+    "portal-overview",
+    "portal-users",
+    "portal-requests"
+  ]
+}

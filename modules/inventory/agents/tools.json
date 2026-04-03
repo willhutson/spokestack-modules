@@ -1,0 +1,61 @@
+{
+  "agentType": "inventory-agent",
+  "tools": [
+    {
+      "name": "addItem",
+      "description": "addItem operation for Inventory module.",
+      "method": "POST",
+      "path": "/api/v1/modules/inventory/addItem",
+      "parameters": {}
+    },
+    {
+      "name": "listItems",
+      "description": "listItems operation for Inventory module.",
+      "method": "POST",
+      "path": "/api/v1/modules/inventory/listItems",
+      "parameters": {}
+    },
+    {
+      "name": "updateStock",
+      "description": "updateStock operation for Inventory module.",
+      "method": "POST",
+      "path": "/api/v1/modules/inventory/updateStock",
+      "parameters": {}
+    },
+    {
+      "name": "transferItem",
+      "description": "transferItem operation for Inventory module.",
+      "method": "POST",
+      "path": "/api/v1/modules/inventory/transferItem",
+      "parameters": {}
+    },
+    {
+      "name": "getStockLevel",
+      "description": "getStockLevel operation for Inventory module.",
+      "method": "POST",
+      "path": "/api/v1/modules/inventory/getStockLevel",
+      "parameters": {}
+    },
+    {
+      "name": "setReorderPoint",
+      "description": "setReorderPoint operation for Inventory module.",
+      "method": "POST",
+      "path": "/api/v1/modules/inventory/setReorderPoint",
+      "parameters": {}
+    },
+    {
+      "name": "createLocation",
+      "description": "createLocation operation for Inventory module.",
+      "method": "POST",
+      "path": "/api/v1/modules/inventory/createLocation",
+      "parameters": {}
+    },
+    {
+      "name": "getInventoryReport",
+      "description": "getInventoryReport operation for Inventory module.",
+      "method": "POST",
+      "path": "/api/v1/modules/inventory/getInventoryReport",
+      "parameters": {}
+    }
+  ]
+}

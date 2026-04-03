@@ -1,0 +1,22 @@
+{
+  "sidebar": {
+    "label": "Deadlines",
+    "icon": "alarm-clock",
+    "route": "/deadlines",
+    "badge": null
+  },
+  "surfaces": [
+    {
+      "id": "deadlines-dashboard",
+      "type": "dashboard",
+      "route": null,
+      "label": "deadlines-dashboard"
+    },
+    {
+      "id": "deadlines-overview",
+      "type": "full-page",
+      "route": "/deadlines",
+      "label": "deadlines-overview"
+    }
+  ]
+}

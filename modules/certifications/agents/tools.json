@@ -1,0 +1,61 @@
+{
+  "agentType": "certifications-agent",
+  "tools": [
+    {
+      "name": "addCertification",
+      "description": "addCertification operation for Certifications module.",
+      "method": "POST",
+      "path": "/api/v1/modules/certifications/addCertification",
+      "parameters": {}
+    },
+    {
+      "name": "listCertifications",
+      "description": "listCertifications operation for Certifications module.",
+      "method": "POST",
+      "path": "/api/v1/modules/certifications/listCertifications",
+      "parameters": {}
+    },
+    {
+      "name": "setRenewalReminder",
+      "description": "setRenewalReminder operation for Certifications module.",
+      "method": "POST",
+      "path": "/api/v1/modules/certifications/setRenewalReminder",
+      "parameters": {}
+    },
+    {
+      "name": "verifyCredential",
+      "description": "verifyCredential operation for Certifications module.",
+      "method": "POST",
+      "path": "/api/v1/modules/certifications/verifyCredential",
+      "parameters": {}
+    },
+    {
+      "name": "getExpiringCerts",
+      "description": "getExpiringCerts operation for Certifications module.",
+      "method": "POST",
+      "path": "/api/v1/modules/certifications/getExpiringCerts",
+      "parameters": {}
+    },
+    {
+      "name": "updateStatus",
+      "description": "updateStatus operation for Certifications module.",
+      "method": "POST",
+      "path": "/api/v1/modules/certifications/updateStatus",
+      "parameters": {}
+    },
+    {
+      "name": "generateReport",
+      "description": "generateReport operation for Certifications module.",
+      "method": "POST",
+      "path": "/api/v1/modules/certifications/generateReport",
+      "parameters": {}
+    },
+    {
+      "name": "bulkImport",
+      "description": "bulkImport operation for Certifications module.",
+      "method": "POST",
+      "path": "/api/v1/modules/certifications/bulkImport",
+      "parameters": {}
+    }
+  ]
+}

@@ -1,0 +1,131 @@
+{
+  "agentType": "boards-agent",
+  "tools": [
+    {
+      "name": "createBoard",
+      "description": "Create a new kanban board with a name and optional description.",
+      "method": "POST",
+      "path": "/api/v1/modules/boards/createBoard",
+      "parameters": {}
+    },
+    {
+      "name": "listBoards",
+      "description": "List all boards for the organization with card and column counts.",
+      "method": "POST",
+      "path": "/api/v1/modules/boards/listBoards",
+      "parameters": {}
+    },
+    {
+      "name": "getBoard",
+      "description": "getBoard tool for Boards",
+      "method": "POST",
+      "path": "/api/v1/modules/boards/getBoard",
+      "parameters": {}
+    },
+    {
+      "name": "updateBoard",
+      "description": "Update a board",
+      "method": "POST",
+      "path": "/api/v1/modules/boards/updateBoard",
+      "parameters": {}
+    },
+    {
+      "name": "deleteBoard",
+      "description": "Soft-delete a board and all its columns and cards.",
+      "method": "POST",
+      "path": "/api/v1/modules/boards/deleteBoard",
+      "parameters": {}
+    },
+    {
+      "name": "addColumn",
+      "description": "Add a new column to a board with a name and optional WIP limit.",
+      "method": "POST",
+      "path": "/api/v1/modules/boards/addColumn",
+      "parameters": {}
+    },
+    {
+      "name": "updateColumn",
+      "description": "Update a column",
+      "method": "POST",
+      "path": "/api/v1/modules/boards/updateColumn",
+      "parameters": {}
+    },
+    {
+      "name": "reorderColumns",
+      "description": "Reorder columns on a board by providing the new column ID sequence.",
+      "method": "POST",
+      "path": "/api/v1/modules/boards/reorderColumns",
+      "parameters": {}
+    },
+    {
+      "name": "deleteColumn",
+      "description": "Delete a column from a board. Cards in the column must be moved first.",
+      "method": "POST",
+      "path": "/api/v1/modules/boards/deleteColumn",
+      "parameters": {}
+    },
+    {
+      "name": "createCard",
+      "description": "Create a new card in a specific column with title, description, and priority.",
+      "method": "POST",
+      "path": "/api/v1/modules/boards/createCard",
+      "parameters": {}
+    },
+    {
+      "name": "moveCard",
+      "description": "Move a card to a different column or position within the same column.",
+      "method": "POST",
+      "path": "/api/v1/modules/boards/moveCard",
+      "parameters": {}
+    },
+    {
+      "name": "updateCard",
+      "description": "Update a card",
+      "method": "POST",
+      "path": "/api/v1/modules/boards/updateCard",
+      "parameters": {}
+    },
+    {
+      "name": "assignCard",
+      "description": "Assign a card to a user or unassign it.",
+      "method": "POST",
+      "path": "/api/v1/modules/boards/assignCard",
+      "parameters": {}
+    },
+    {
+      "name": "addCardComment",
+      "description": "Add a comment to a card.",
+      "method": "POST",
+      "path": "/api/v1/modules/boards/addCardComment",
+      "parameters": {}
+    },
+    {
+      "name": "getCardActivity",
+      "description": "Get the activity log for a card including moves, comments, and assignments.",
+      "method": "POST",
+      "path": "/api/v1/modules/boards/getCardActivity",
+      "parameters": {}
+    },
+    {
+      "name": "filterCards",
+      "description": "Filter cards on a board by priority, assignee, label, or due date range.",
+      "method": "POST",
+      "path": "/api/v1/modules/boards/filterCards",
+      "parameters": {}
+    },
+    {
+      "name": "searchCards",
+      "description": "Full-text search across all cards in all boards.",
+      "method": "POST",
+      "path": "/api/v1/modules/boards/searchCards",
+      "parameters": {}
+    },
+    {
+      "name": "getCardsByAssignee",
+      "description": "Get all cards assigned to a specific user across all boards.",
+      "method": "POST",
+      "path": "/api/v1/modules/boards/getCardsByAssignee",
+      "parameters": {}
+    }
+  ]
+}

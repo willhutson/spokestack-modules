@@ -1,0 +1,22 @@
+{
+  "sidebar": {
+    "label": "Publisher",
+    "icon": "edit-3",
+    "route": "/publisher",
+    "badge": null
+  },
+  "surfaces": [
+    {
+      "id": "publisher-dashboard",
+      "type": "dashboard",
+      "route": null,
+      "label": "publisher-dashboard"
+    },
+    {
+      "id": "publisher-overview",
+      "type": "full-page",
+      "route": "/publisher",
+      "label": "publisher-overview"
+    }
+  ]
+}

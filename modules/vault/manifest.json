@@ -1,0 +1,52 @@
+{
+  "id": "vault",
+  "moduleType": "VAULT",
+  "name": "Vault",
+  "version": "1.0.0",
+  "description": "Secure document storage with encryption, granular access control, and audit logging.",
+  "category": "ops",
+  "minTier": "BUSINESS",
+  "price": 2900,
+  "agentDefinition": {
+    "path": "src/agent/vault-agent.ts",
+    "name": "vault-agent"
+  },
+  "tools": ["uploadDocument", "listDocuments", "getDocument", "shareDocument", "revokeAccess", "getAccessLog", "setRetentionPolicy", "archiveDocument"],
+  "surfaces": [
+    {
+      "id": "vault-dashboard",
+      "type": "dashboard",
+      "requiredTools": ["uploadDocument", "listDocuments"]
+    },
+    {
+      "id": "vault-overview",
+      "type": "full-page",
+      "route": "/vault",
+      "requiredTools": ["uploadDocument", "listDocuments"]
+    }
+  ],
+  "migrations": {
+    "install": "migrations/install.ts",
+    "uninstall": "migrations/uninstall.ts"
+  },
+  "contextSchema": {
+    "categoryPrefix": "vault",
+    "entityTypes": [
+      {
+        "category": "vault.record",
+        "keyFormat": "{recordId}",
+        "valueSchema": {
+          "type": "object",
+          "properties": {
+            "name": { "type": "string" },
+            "status": { "type": "string" },
+            "createdAt": { "type": "string", "format": "date-time" }
+          },
+          "required": ["name"]
+        },
+        "relatedCategories": []
+      }
+    ],
+    "patternTypes": ["vault_activity", "vault_trend"]
+  }
+}

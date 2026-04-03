@@ -1,0 +1,173 @@
+{
+  "agentType": "spokechat-agent",
+  "tools": [
+    {
+      "name": "createChannel",
+      "description": "Create a new messaging channel with a name, description, and privacy setting.",
+      "method": "POST",
+      "path": "/api/v1/modules/spokechat/createChannel",
+      "parameters": {}
+    },
+    {
+      "name": "listChannels",
+      "description": "listChannels tool for SpokeChat",
+      "method": "POST",
+      "path": "/api/v1/modules/spokechat/listChannels",
+      "parameters": {}
+    },
+    {
+      "name": "getChannel",
+      "description": "Get channel details including members and pinned message count.",
+      "method": "POST",
+      "path": "/api/v1/modules/spokechat/getChannel",
+      "parameters": {}
+    },
+    {
+      "name": "updateChannel",
+      "description": "Update a channel",
+      "method": "POST",
+      "path": "/api/v1/modules/spokechat/updateChannel",
+      "parameters": {}
+    },
+    {
+      "name": "deleteChannel",
+      "description": "Archive and soft-delete a channel.",
+      "method": "POST",
+      "path": "/api/v1/modules/spokechat/deleteChannel",
+      "parameters": {}
+    },
+    {
+      "name": "joinChannel",
+      "description": "Join a channel.",
+      "method": "POST",
+      "path": "/api/v1/modules/spokechat/joinChannel",
+      "parameters": {}
+    },
+    {
+      "name": "leaveChannel",
+      "description": "Leave a channel.",
+      "method": "POST",
+      "path": "/api/v1/modules/spokechat/leaveChannel",
+      "parameters": {}
+    },
+    {
+      "name": "sendMessage",
+      "description": "Send a message to a channel, optionally as a reply in a thread.",
+      "method": "POST",
+      "path": "/api/v1/modules/spokechat/sendMessage",
+      "parameters": {}
+    },
+    {
+      "name": "listMessages",
+      "description": "List messages in a channel with pagination.",
+      "method": "POST",
+      "path": "/api/v1/modules/spokechat/listMessages",
+      "parameters": {}
+    },
+    {
+      "name": "editMessage",
+      "description": "Edit an existing message",
+      "method": "POST",
+      "path": "/api/v1/modules/spokechat/editMessage",
+      "parameters": {}
+    },
+    {
+      "name": "deleteMessage",
+      "description": "Delete a message.",
+      "method": "POST",
+      "path": "/api/v1/modules/spokechat/deleteMessage",
+      "parameters": {}
+    },
+    {
+      "name": "getThread",
+      "description": "Get a message thread with all replies.",
+      "method": "POST",
+      "path": "/api/v1/modules/spokechat/getThread",
+      "parameters": {}
+    },
+    {
+      "name": "searchMessages",
+      "description": "Search messages across all channels by text, author, or date range.",
+      "method": "POST",
+      "path": "/api/v1/modules/spokechat/searchMessages",
+      "parameters": {}
+    },
+    {
+      "name": "addReaction",
+      "description": "Add an emoji reaction to a message.",
+      "method": "POST",
+      "path": "/api/v1/modules/spokechat/addReaction",
+      "parameters": {}
+    },
+    {
+      "name": "removeReaction",
+      "description": "Remove an emoji reaction from a message.",
+      "method": "POST",
+      "path": "/api/v1/modules/spokechat/removeReaction",
+      "parameters": {}
+    },
+    {
+      "name": "getReactions",
+      "description": "Get all reactions on a message with user lists.",
+      "method": "POST",
+      "path": "/api/v1/modules/spokechat/getReactions",
+      "parameters": {}
+    },
+    {
+      "name": "setPresence",
+      "description": "Set the current user",
+      "method": "POST",
+      "path": "/api/v1/modules/spokechat/setPresence",
+      "parameters": {}
+    },
+    {
+      "name": "getUserPresence",
+      "description": "Get a specific user",
+      "method": "POST",
+      "path": "/api/v1/modules/spokechat/getUserPresence",
+      "parameters": {}
+    },
+    {
+      "name": "getOnlineUsers",
+      "description": "Get a list of all currently online users with their presence status.",
+      "method": "POST",
+      "path": "/api/v1/modules/spokechat/getOnlineUsers",
+      "parameters": {}
+    },
+    {
+      "name": "pinMessage",
+      "description": "Pin a message to a channel.",
+      "method": "POST",
+      "path": "/api/v1/modules/spokechat/pinMessage",
+      "parameters": {}
+    },
+    {
+      "name": "unpinMessage",
+      "description": "Unpin a message from a channel.",
+      "method": "POST",
+      "path": "/api/v1/modules/spokechat/unpinMessage",
+      "parameters": {}
+    },
+    {
+      "name": "getPinnedMessages",
+      "description": "Get all pinned messages in a channel.",
+      "method": "POST",
+      "path": "/api/v1/modules/spokechat/getPinnedMessages",
+      "parameters": {}
+    },
+    {
+      "name": "createDM",
+      "description": "Create or open a direct message conversation with another user.",
+      "method": "POST",
+      "path": "/api/v1/modules/spokechat/createDM",
+      "parameters": {}
+    },
+    {
+      "name": "listDMs",
+      "description": "List all direct message conversations with unread counts.",
+      "method": "POST",
+      "path": "/api/v1/modules/spokechat/listDMs",
+      "parameters": {}
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "sidebar": {
+    "label": "Access Control",
+    "icon": "box",
+    "route": "/access-control",
+    "badge": null
+  },
+  "surfaces": [
+    {
+      "id": "access-control-dashboard",
+      "type": "dashboard",
+      "route": null,
+      "label": "access-control-dashboard"
+    },
+    {
+      "id": "access-control-home",
+      "type": "full-page",
+      "route": "/access-control",
+      "label": "access-control-home"
+    }
+  ]
+}

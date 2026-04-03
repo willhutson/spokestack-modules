@@ -1,0 +1,61 @@
+{
+  "agentType": "tickets-agent",
+  "tools": [
+    {
+      "name": "createTicket",
+      "description": "createTicket operation for Tickets module.",
+      "method": "POST",
+      "path": "/api/v1/modules/tickets/createTicket",
+      "parameters": {}
+    },
+    {
+      "name": "listTickets",
+      "description": "listTickets operation for Tickets module.",
+      "method": "POST",
+      "path": "/api/v1/modules/tickets/listTickets",
+      "parameters": {}
+    },
+    {
+      "name": "assignTicket",
+      "description": "assignTicket operation for Tickets module.",
+      "method": "POST",
+      "path": "/api/v1/modules/tickets/assignTicket",
+      "parameters": {}
+    },
+    {
+      "name": "updateTicketStatus",
+      "description": "updateTicketStatus operation for Tickets module.",
+      "method": "POST",
+      "path": "/api/v1/modules/tickets/updateTicketStatus",
+      "parameters": {}
+    },
+    {
+      "name": "addComment",
+      "description": "addComment operation for Tickets module.",
+      "method": "POST",
+      "path": "/api/v1/modules/tickets/addComment",
+      "parameters": {}
+    },
+    {
+      "name": "setPriority",
+      "description": "setPriority operation for Tickets module.",
+      "method": "POST",
+      "path": "/api/v1/modules/tickets/setPriority",
+      "parameters": {}
+    },
+    {
+      "name": "getSLAStatus",
+      "description": "getSLAStatus operation for Tickets module.",
+      "method": "POST",
+      "path": "/api/v1/modules/tickets/getSLAStatus",
+      "parameters": {}
+    },
+    {
+      "name": "getTicketMetrics",
+      "description": "getTicketMetrics operation for Tickets module.",
+      "method": "POST",
+      "path": "/api/v1/modules/tickets/getTicketMetrics",
+      "parameters": {}
+    }
+  ]
+}

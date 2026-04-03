@@ -1,0 +1,34 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/api/v1/surveys",
+      "description": "List Surveys records",
+      "existing": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/surveys",
+      "description": "Create Surveys record",
+      "existing": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/surveys/:id",
+      "description": "Get Surveys record",
+      "existing": false
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/surveys/:id",
+      "description": "Update Surveys record",
+      "existing": false
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/surveys/:id",
+      "description": "Delete Surveys record",
+      "existing": false
+    }
+  ]
+}

@@ -21,5 +21,18 @@
   { "moduleType": "DELEGATION", "name": "Delegation", "description": "Delegation profiles, escalation rules, handoff briefings, and activity logging.", "category": "enterprise", "minTier": "ENTERPRISE", "price": 0 },
   { "moduleType": "ACCESS_CONTROL", "name": "Access Control", "description": "Policy-based access control with rules, versioning, and compliance audit trails.", "category": "enterprise", "minTier": "ENTERPRISE", "price": 0 },
   { "moduleType": "API_MANAGEMENT", "name": "API Management", "description": "API key management, webhook configuration, delivery logs, and usage analytics.", "category": "enterprise", "minTier": "ENTERPRISE", "price": 0 },
-  { "moduleType": "BUILDER", "name": "Builder", "description": "Module template builder with permissions, versioning, and audit logging.", "category": "enterprise", "minTier": "ENTERPRISE", "price": 0 }
+  { "moduleType": "BUILDER", "name": "Builder", "description": "Module template builder with permissions, versioning, and audit logging.", "category": "enterprise", "minTier": "ENTERPRISE", "price": 0 },
+  { "moduleType": "PUBLISHER", "name": "Publisher", "description": "WYSIWYG publishing platform for blogs, articles, and landing pages.", "category": "marketing", "minTier": "PRO", "price": 2900 },
+  { "moduleType": "REPLY", "name": "Reply", "description": "Unified customer service inbox across Meta, X, LinkedIn, Google Business, and email.", "category": "marketing", "minTier": "PRO", "price": 1900 },
+  { "moduleType": "CHANNEL", "name": "Channel", "description": "Omnichannel orchestration across Slack, email, WhatsApp, SMS, and Teams.", "category": "marketing", "minTier": "PRO", "price": 2900 },
+  { "moduleType": "ENTITIES", "name": "Entities", "description": "Custom entity management for candidates, vendors, events, and more.", "category": "ops", "minTier": "STARTER", "price": 900 },
+  { "moduleType": "SCHEDULER", "name": "Scheduler", "description": "Appointment scheduling with availability, booking pages, and reminders.", "category": "ops", "minTier": "STARTER", "price": 900 },
+  { "moduleType": "DEADLINES", "name": "Deadlines", "description": "Legal and compliance deadline tracking with escalation and reminders.", "category": "ops", "minTier": "PRO", "price": 1200 },
+  { "moduleType": "CONTRACTS", "name": "Contracts", "description": "Contract management with templates, versioning, and e-signatures.", "category": "ops", "minTier": "PRO", "price": 1900 },
+  { "moduleType": "VAULT", "name": "Vault", "description": "Secure document storage with encryption, access control, and audit trails.", "category": "ops", "minTier": "BUSINESS", "price": 2900 },
+  { "moduleType": "TICKETS", "name": "Tickets", "description": "Support ticket management with SLAs, escalation, and metrics.", "category": "ops", "minTier": "STARTER", "price": 900 },
+  { "moduleType": "COMPLIANCE", "name": "Compliance", "description": "Compliance tracking, audit trails, and regulatory reporting.", "category": "enterprise", "minTier": "BUSINESS", "price": 3900 },
+  { "moduleType": "CERTIFICATIONS", "name": "Certifications", "description": "Professional certification tracking and renewal management.", "category": "ops", "minTier": "PRO", "price": 1200 },
+  { "moduleType": "INVENTORY", "name": "Inventory", "description": "Asset and inventory tracking with locations, stock levels, and transfers.", "category": "ops", "minTier": "STARTER", "price": 900 },
+  { "moduleType": "RFP", "name": "RFP", "description": "Request for proposal management with scoring and comparison.", "category": "ops", "minTier": "PRO", "price": 1900 }
 ]

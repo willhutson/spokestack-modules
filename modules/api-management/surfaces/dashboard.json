@@ -1,0 +1,22 @@
+{
+  "sidebar": {
+    "label": "API Management",
+    "icon": "box",
+    "route": "/api-management",
+    "badge": null
+  },
+  "surfaces": [
+    {
+      "id": "api-management-dashboard",
+      "type": "dashboard",
+      "route": null,
+      "label": "api-management-dashboard"
+    },
+    {
+      "id": "api-management-home",
+      "type": "full-page",
+      "route": "/api-management",
+      "label": "api-management-home"
+    }
+  ]
+}

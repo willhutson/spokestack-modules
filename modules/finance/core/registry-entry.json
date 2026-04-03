@@ -1,0 +1,14 @@
+{
+  "moduleType": "FINANCE",
+  "name": "Finance",
+  "description": "Invoicing, payment tracking, budget management, and revenue forecasting for agencies.",
+  "category": "ops",
+  "minTier": "BUSINESS",
+  "price": 1500,
+  "icon": "receipt",
+  "surfaces": [
+    "finance-home",
+    "finance-invoices",
+    "finance-budgets"
+  ]
+}

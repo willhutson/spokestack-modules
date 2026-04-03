@@ -1,0 +1,52 @@
+{
+  "id": "compliance",
+  "moduleType": "COMPLIANCE",
+  "name": "Compliance",
+  "version": "1.0.0",
+  "description": "Compliance tracking, audit trails, regulatory reporting, and policy management.",
+  "category": "enterprise",
+  "minTier": "BUSINESS",
+  "price": 3900,
+  "agentDefinition": {
+    "path": "src/agent/compliance-agent.ts",
+    "name": "compliance-agent"
+  },
+  "tools": ["createRequirement", "listRequirements", "logEvidence", "scheduleAudit", "getAuditReport", "trackViolation", "setPolicy", "getComplianceScore"],
+  "surfaces": [
+    {
+      "id": "compliance-dashboard",
+      "type": "dashboard",
+      "requiredTools": ["createRequirement", "listRequirements"]
+    },
+    {
+      "id": "compliance-overview",
+      "type": "full-page",
+      "route": "/compliance",
+      "requiredTools": ["createRequirement", "listRequirements"]
+    }
+  ],
+  "migrations": {
+    "install": "migrations/install.ts",
+    "uninstall": "migrations/uninstall.ts"
+  },
+  "contextSchema": {
+    "categoryPrefix": "compliance",
+    "entityTypes": [
+      {
+        "category": "compliance.record",
+        "keyFormat": "{recordId}",
+        "valueSchema": {
+          "type": "object",
+          "properties": {
+            "name": { "type": "string" },
+            "status": { "type": "string" },
+            "createdAt": { "type": "string", "format": "date-time" }
+          },
+          "required": ["name"]
+        },
+        "relatedCategories": []
+      }
+    ],
+    "patternTypes": ["compliance_activity", "compliance_trend"]
+  }
+}

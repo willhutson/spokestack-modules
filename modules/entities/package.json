@@ -1,0 +1,20 @@
+{
+  "name": "@spokestack/entities",
+  "version": "1.0.0",
+  "description": "Entities module for SpokeStack — Custom entity management for candidates, vendors, events, and any structured data.",
+  "main": "src/tools/index.ts",
+  "scripts": {
+    "build": "tsc --noEmit",
+    "test": "vitest run",
+    "validate": "node -e \"require('@spokestack/module-sdk/cli/validate').validateModule('.')\"",
+    "lint": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@spokestack/module-sdk": "workspace:*",
+    "@spokestack/core-schema": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.0",
+    "vitest": "^1.2.0"
+  }
+}

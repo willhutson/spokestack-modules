@@ -1,0 +1,61 @@
+{
+  "agentType": "compliance-agent",
+  "tools": [
+    {
+      "name": "createRequirement",
+      "description": "createRequirement operation for Compliance module.",
+      "method": "POST",
+      "path": "/api/v1/modules/compliance/createRequirement",
+      "parameters": {}
+    },
+    {
+      "name": "listRequirements",
+      "description": "listRequirements operation for Compliance module.",
+      "method": "POST",
+      "path": "/api/v1/modules/compliance/listRequirements",
+      "parameters": {}
+    },
+    {
+      "name": "logEvidence",
+      "description": "logEvidence operation for Compliance module.",
+      "method": "POST",
+      "path": "/api/v1/modules/compliance/logEvidence",
+      "parameters": {}
+    },
+    {
+      "name": "scheduleAudit",
+      "description": "scheduleAudit operation for Compliance module.",
+      "method": "POST",
+      "path": "/api/v1/modules/compliance/scheduleAudit",
+      "parameters": {}
+    },
+    {
+      "name": "getAuditReport",
+      "description": "getAuditReport operation for Compliance module.",
+      "method": "POST",
+      "path": "/api/v1/modules/compliance/getAuditReport",
+      "parameters": {}
+    },
+    {
+      "name": "trackViolation",
+      "description": "trackViolation operation for Compliance module.",
+      "method": "POST",
+      "path": "/api/v1/modules/compliance/trackViolation",
+      "parameters": {}
+    },
+    {
+      "name": "setPolicy",
+      "description": "setPolicy operation for Compliance module.",
+      "method": "POST",
+      "path": "/api/v1/modules/compliance/setPolicy",
+      "parameters": {}
+    },
+    {
+      "name": "getComplianceScore",
+      "description": "getComplianceScore operation for Compliance module.",
+      "method": "POST",
+      "path": "/api/v1/modules/compliance/getComplianceScore",
+      "parameters": {}
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "moduleType": "WORKFLOWS",
+  "name": "Workflows",
+  "description": "Automated workflow templates, instance management, task tracking, and nudge notifications.",
+  "category": "ops",
+  "minTier": "PRO",
+  "price": 1000,
+  "icon": "git-branch",
+  "surfaces": [
+    "workflows-home",
+    "workflows-templates",
+    "workflows-active"
+  ]
+}

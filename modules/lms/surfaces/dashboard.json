@@ -1,0 +1,9 @@
+{
+  "sidebar": {
+    "label": "@spokestack/lms",
+    "icon": "box",
+    "route": "/lms",
+    "badge": null
+  },
+  "surfaces": []
+}

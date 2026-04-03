@@ -1,0 +1,34 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/api/v1/time_leave",
+      "description": "List Time & Leave records",
+      "existing": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/time_leave",
+      "description": "Create Time & Leave record",
+      "existing": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/time_leave/:id",
+      "description": "Get Time & Leave record",
+      "existing": false
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/time_leave/:id",
+      "description": "Update Time & Leave record",
+      "existing": false
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/time_leave/:id",
+      "description": "Delete Time & Leave record",
+      "existing": false
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "sidebar": {
+    "label": "SpokeChat",
+    "icon": "box",
+    "route": "/spokechat",
+    "badge": null
+  },
+  "surfaces": [
+    {
+      "id": "spokechat-dashboard",
+      "type": "dashboard",
+      "route": null,
+      "label": "spokechat-dashboard"
+    },
+    {
+      "id": "spokechat-home",
+      "type": "full-page",
+      "route": "/spokechat",
+      "label": "spokechat-home"
+    }
+  ]
+}

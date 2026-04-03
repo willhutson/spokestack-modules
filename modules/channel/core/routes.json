@@ -1,0 +1,34 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/api/v1/channel",
+      "description": "List Channel records",
+      "existing": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/channel",
+      "description": "Create Channel record",
+      "existing": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/channel/:id",
+      "description": "Get Channel record",
+      "existing": false
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/channel/:id",
+      "description": "Update Channel record",
+      "existing": false
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/channel/:id",
+      "description": "Delete Channel record",
+      "existing": false
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "moduleType": "LISTENING",
+  "name": "Social Listening",
+  "description": "Social media monitoring, brand mention tracking, sentiment analysis, competitive intelligence, and automated alerting across platforms.",
+  "category": "marketing",
+  "minTier": "PRO",
+  "price": 1000,
+  "icon": "radio",
+  "surfaces": [
+    "listening-home",
+    "listening-monitors",
+    "listening-reports"
+  ]
+}

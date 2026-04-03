@@ -1,0 +1,22 @@
+{
+  "sidebar": {
+    "label": "Scheduler",
+    "icon": "calendar-clock",
+    "route": "/scheduler",
+    "badge": null
+  },
+  "surfaces": [
+    {
+      "id": "scheduler-dashboard",
+      "type": "dashboard",
+      "route": null,
+      "label": "scheduler-dashboard"
+    },
+    {
+      "id": "scheduler-overview",
+      "type": "full-page",
+      "route": "/scheduler",
+      "label": "scheduler-overview"
+    }
+  ]
+}

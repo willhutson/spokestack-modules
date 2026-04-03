@@ -1,0 +1,61 @@
+{
+  "agentType": "vault-agent",
+  "tools": [
+    {
+      "name": "uploadDocument",
+      "description": "uploadDocument operation for Vault module.",
+      "method": "POST",
+      "path": "/api/v1/modules/vault/uploadDocument",
+      "parameters": {}
+    },
+    {
+      "name": "listDocuments",
+      "description": "listDocuments operation for Vault module.",
+      "method": "POST",
+      "path": "/api/v1/modules/vault/listDocuments",
+      "parameters": {}
+    },
+    {
+      "name": "getDocument",
+      "description": "getDocument operation for Vault module.",
+      "method": "POST",
+      "path": "/api/v1/modules/vault/getDocument",
+      "parameters": {}
+    },
+    {
+      "name": "shareDocument",
+      "description": "shareDocument operation for Vault module.",
+      "method": "POST",
+      "path": "/api/v1/modules/vault/shareDocument",
+      "parameters": {}
+    },
+    {
+      "name": "revokeAccess",
+      "description": "revokeAccess operation for Vault module.",
+      "method": "POST",
+      "path": "/api/v1/modules/vault/revokeAccess",
+      "parameters": {}
+    },
+    {
+      "name": "getAccessLog",
+      "description": "getAccessLog operation for Vault module.",
+      "method": "POST",
+      "path": "/api/v1/modules/vault/getAccessLog",
+      "parameters": {}
+    },
+    {
+      "name": "setRetentionPolicy",
+      "description": "setRetentionPolicy operation for Vault module.",
+      "method": "POST",
+      "path": "/api/v1/modules/vault/setRetentionPolicy",
+      "parameters": {}
+    },
+    {
+      "name": "archiveDocument",
+      "description": "archiveDocument operation for Vault module.",
+      "method": "POST",
+      "path": "/api/v1/modules/vault/archiveDocument",
+      "parameters": {}
+    }
+  ]
+}

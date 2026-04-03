@@ -1,0 +1,52 @@
+{
+  "id": "channel",
+  "moduleType": "CHANNEL",
+  "name": "Channel",
+  "version": "1.0.0",
+  "description": "Omnichannel orchestration across Slack, email, WhatsApp, SMS, and Teams with automated flows.",
+  "category": "marketing",
+  "minTier": "PRO",
+  "price": 2900,
+  "agentDefinition": {
+    "path": "src/agent/channel-agent.ts",
+    "name": "channel-agent"
+  },
+  "tools": ["listChannels", "sendMessage", "createBroadcast", "getDeliveryReport", "createFlow", "listFlows", "configureAutoReply", "getChannelAnalytics"],
+  "surfaces": [
+    {
+      "id": "channel-dashboard",
+      "type": "dashboard",
+      "requiredTools": ["listChannels", "sendMessage"]
+    },
+    {
+      "id": "channel-overview",
+      "type": "full-page",
+      "route": "/channel",
+      "requiredTools": ["listChannels", "sendMessage"]
+    }
+  ],
+  "migrations": {
+    "install": "migrations/install.ts",
+    "uninstall": "migrations/uninstall.ts"
+  },
+  "contextSchema": {
+    "categoryPrefix": "channel",
+    "entityTypes": [
+      {
+        "category": "channel.record",
+        "keyFormat": "{recordId}",
+        "valueSchema": {
+          "type": "object",
+          "properties": {
+            "name": { "type": "string" },
+            "status": { "type": "string" },
+            "createdAt": { "type": "string", "format": "date-time" }
+          },
+          "required": ["name"]
+        },
+        "relatedCategories": []
+      }
+    ],
+    "patternTypes": ["channel_activity", "channel_trend"]
+  }
+}

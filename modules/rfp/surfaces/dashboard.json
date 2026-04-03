@@ -1,0 +1,22 @@
+{
+  "sidebar": {
+    "label": "RFP",
+    "icon": "file-text",
+    "route": "/rfp",
+    "badge": null
+  },
+  "surfaces": [
+    {
+      "id": "rfp-dashboard",
+      "type": "dashboard",
+      "route": null,
+      "label": "rfp-dashboard"
+    },
+    {
+      "id": "rfp-overview",
+      "type": "full-page",
+      "route": "/rfp",
+      "label": "rfp-overview"
+    }
+  ]
+}

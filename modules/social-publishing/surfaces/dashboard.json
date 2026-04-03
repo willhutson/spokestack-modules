@@ -1,0 +1,34 @@
+{
+  "sidebar": {
+    "label": "Social Publishing",
+    "icon": "send",
+    "route": "/social-publishing",
+    "badge": null
+  },
+  "surfaces": [
+    {
+      "id": "social-home",
+      "type": "full-page",
+      "route": "/social",
+      "label": "Social"
+    },
+    {
+      "id": "social-calendar",
+      "type": "full-page",
+      "route": "/social/calendar",
+      "label": "Calendar"
+    },
+    {
+      "id": "social-accounts",
+      "type": "full-page",
+      "route": "/social/accounts",
+      "label": "Accounts"
+    },
+    {
+      "id": "social-campaigns",
+      "type": "full-page",
+      "route": "/social/campaigns",
+      "label": "Campaigns"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "sidebar": {
+    "label": "Delegation",
+    "icon": "box",
+    "route": "/delegation",
+    "badge": null
+  },
+  "surfaces": [
+    {
+      "id": "delegation-dashboard",
+      "type": "dashboard",
+      "route": null,
+      "label": "delegation-dashboard"
+    },
+    {
+      "id": "delegation-home",
+      "type": "full-page",
+      "route": "/delegation",
+      "label": "delegation-home"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "moduleType": "PUBLISHER",
+  "name": "Publisher",
+  "description": "WYSIWYG publishing platform for blogs, articles, landing pages with SEO optimization and analytics.",
+  "category": "marketing",
+  "minTier": "PRO",
+  "price": 2900,
+  "icon": "edit-3",
+  "surfaces": [
+    "publisher-dashboard",
+    "publisher-overview"
+  ]
+}

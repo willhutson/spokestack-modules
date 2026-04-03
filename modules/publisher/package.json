@@ -1,0 +1,20 @@
+{
+  "name": "@spokestack/publisher",
+  "version": "1.0.0",
+  "description": "Publisher module for SpokeStack — WYSIWYG publishing platform for blogs, articles, landing pages with SEO optimization and analytics.",
+  "main": "src/tools/index.ts",
+  "scripts": {
+    "build": "tsc --noEmit",
+    "test": "vitest run",
+    "validate": "node -e \"require('@spokestack/module-sdk/cli/validate').validateModule('.')\"",
+    "lint": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@spokestack/module-sdk": "workspace:*",
+    "@spokestack/core-schema": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.0",
+    "vitest": "^1.2.0"
+  }
+}

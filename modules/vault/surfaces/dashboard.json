@@ -1,0 +1,22 @@
+{
+  "sidebar": {
+    "label": "Vault",
+    "icon": "lock",
+    "route": "/vault",
+    "badge": null
+  },
+  "surfaces": [
+    {
+      "id": "vault-dashboard",
+      "type": "dashboard",
+      "route": null,
+      "label": "vault-dashboard"
+    },
+    {
+      "id": "vault-overview",
+      "type": "full-page",
+      "route": "/vault",
+      "label": "vault-overview"
+    }
+  ]
+}

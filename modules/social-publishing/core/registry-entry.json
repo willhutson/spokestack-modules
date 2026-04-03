@@ -1,0 +1,15 @@
+{
+  "moduleType": "SOCIAL_PUBLISHING",
+  "name": "Social Publishing",
+  "description": "Social media account management, content creation, scheduling, publishing, campaign tracking, and engagement analytics across platforms.",
+  "category": "marketing",
+  "minTier": "PRO",
+  "price": 1200,
+  "icon": "send",
+  "surfaces": [
+    "social-home",
+    "social-calendar",
+    "social-accounts",
+    "social-campaigns"
+  ]
+}

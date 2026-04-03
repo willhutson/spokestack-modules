@@ -1,0 +1,621 @@
+{
+  "agentType": "content_studio_agent",
+  "tools": [
+    {
+      "name": "uploadAsset",
+      "description": "Upload a file to the DAM and register it as an Asset",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/uploadAsset",
+      "parameters": {}
+    },
+    {
+      "name": "listAssets",
+      "description": "List assets in a library with optional filters",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/listAssets",
+      "parameters": {}
+    },
+    {
+      "name": "getAssetVersions",
+      "description": "List all version records for an asset",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/getAssetVersions",
+      "parameters": {}
+    },
+    {
+      "name": "createAssetVersion",
+      "description": "Create a new version for an existing asset",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/createAssetVersion",
+      "parameters": {}
+    },
+    {
+      "name": "createFolder",
+      "description": "Create an asset folder in a library",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/createFolder",
+      "parameters": {}
+    },
+    {
+      "name": "listFolders",
+      "description": "listFolders tool for Content Studio",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/listFolders",
+      "parameters": {}
+    },
+    {
+      "name": "searchAssets",
+      "description": "Cross-library search for assets",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/searchAssets",
+      "parameters": {}
+    },
+    {
+      "name": "createAssetLibrary",
+      "description": "Create a new asset library",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/createAssetLibrary",
+      "parameters": {}
+    },
+    {
+      "name": "addAssetComment",
+      "description": "Add a comment to an asset",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/addAssetComment",
+      "parameters": {}
+    },
+    {
+      "name": "resolveAssetComment",
+      "description": "Resolve an asset comment",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/resolveAssetComment",
+      "parameters": {}
+    },
+    {
+      "name": "listAssetLibraries",
+      "description": "List all asset libraries accessible to the current user",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/listAssetLibraries",
+      "parameters": {}
+    },
+    {
+      "name": "createAssetFolder",
+      "description": "Create a new folder inside an asset library",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/createAssetFolder",
+      "parameters": {}
+    },
+    {
+      "name": "listFolderContents",
+      "description": "listFolderContents tool for Content Studio",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/listFolderContents",
+      "parameters": {}
+    },
+    {
+      "name": "getAssetDetails",
+      "description": "Get full details for a single asset including metadata, tags, and file info",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/getAssetDetails",
+      "parameters": {}
+    },
+    {
+      "name": "updateAsset",
+      "description": "Update an asset",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/updateAsset",
+      "parameters": {}
+    },
+    {
+      "name": "uploadAssetVersion",
+      "description": "Upload a new version of an existing asset by providing a file URL",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/uploadAssetVersion",
+      "parameters": {}
+    },
+    {
+      "name": "moveAsset",
+      "description": "Move an asset to a different folder or library",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/moveAsset",
+      "parameters": {}
+    },
+    {
+      "name": "archiveAsset",
+      "description": "Archive an asset, removing it from active views while preserving history",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/archiveAsset",
+      "parameters": {}
+    },
+    {
+      "name": "getAssetVersionHistory",
+      "description": "Retrieve the full version history of an asset",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/getAssetVersionHistory",
+      "parameters": {}
+    },
+    {
+      "name": "addToMoodboard",
+      "description": "Add an item to a moodboard",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/addToMoodboard",
+      "parameters": {}
+    },
+    {
+      "name": "listMoodboardItems",
+      "description": "List items in a moodboard sorted by zIndex",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/listMoodboardItems",
+      "parameters": {}
+    },
+    {
+      "name": "generateShotList",
+      "description": "Generate shot list items for a video project from a moodboard",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/generateShotList",
+      "parameters": {}
+    },
+    {
+      "name": "exportMoodboard",
+      "description": "Export a moodboard as a creative output",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/exportMoodboard",
+      "parameters": {}
+    },
+    {
+      "name": "saveMoodboardConversation",
+      "description": "Persist a moodboard conversation",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/saveMoodboardConversation",
+      "parameters": {}
+    },
+    {
+      "name": "createVideoProject",
+      "description": "Create a new video project",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/createVideoProject",
+      "parameters": {}
+    },
+    {
+      "name": "listVideoProjects",
+      "description": "List video projects with optional filters",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/listVideoProjects",
+      "parameters": {}
+    },
+    {
+      "name": "getVideoProject",
+      "description": "Get a single video project with script and storyboard summary",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/getVideoProject",
+      "parameters": {}
+    },
+    {
+      "name": "updateVideoStatus",
+      "description": "Update a video project",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/updateVideoStatus",
+      "parameters": {}
+    },
+    {
+      "name": "writeScript",
+      "description": "Create or update a video script",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/writeScript",
+      "parameters": {}
+    },
+    {
+      "name": "getScript",
+      "description": "Get the video script for a project",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/getScript",
+      "parameters": {}
+    },
+    {
+      "name": "buildStoryboard",
+      "description": "Create a storyboard with initial frames for a video project",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/buildStoryboard",
+      "parameters": {}
+    },
+    {
+      "name": "addStoryboardFrame",
+      "description": "Add a single frame to a storyboard",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/addStoryboardFrame",
+      "parameters": {}
+    },
+    {
+      "name": "listStoryboardFrames",
+      "description": "List frames for a storyboard in order",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/listStoryboardFrames",
+      "parameters": {}
+    },
+    {
+      "name": "trackVideoStatus",
+      "description": "Update video project status and log an activity note",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/trackVideoStatus",
+      "parameters": {}
+    },
+    {
+      "name": "createDeck",
+      "description": "Create a new pitch deck",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/createDeck",
+      "parameters": {}
+    },
+    {
+      "name": "listDecks",
+      "description": "List pitch decks with optional filters",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/listDecks",
+      "parameters": {}
+    },
+    {
+      "name": "getDeck",
+      "description": "Get a deck with all its slides",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/getDeck",
+      "parameters": {}
+    },
+    {
+      "name": "addSlide",
+      "description": "Add a slide to a deck",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/addSlide",
+      "parameters": {}
+    },
+    {
+      "name": "reorderSlides",
+      "description": "Reorder slides in a deck",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/reorderSlides",
+      "parameters": {}
+    },
+    {
+      "name": "deleteSlide",
+      "description": "Remove a slide from a deck",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/deleteSlide",
+      "parameters": {}
+    },
+    {
+      "name": "listTemplates",
+      "description": "List deck templates",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/listTemplates",
+      "parameters": {}
+    },
+    {
+      "name": "createTemplate",
+      "description": "Create a new deck template",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/createTemplate",
+      "parameters": {}
+    },
+    {
+      "name": "exportDeck",
+      "description": "Export a deck to a downloadable format",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/exportDeck",
+      "parameters": {}
+    },
+    {
+      "name": "syncDeckToGoogleSlides",
+      "description": "Sync a deck to Google Slides",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/syncDeckToGoogleSlides",
+      "parameters": {}
+    },
+    {
+      "name": "createDocument",
+      "description": "Create a new studio document",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/createDocument",
+      "parameters": {}
+    },
+    {
+      "name": "listDocuments",
+      "description": "List studio documents with optional filters",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/listDocuments",
+      "parameters": {}
+    },
+    {
+      "name": "getDocument",
+      "description": "Get a document with latest version info",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/getDocument",
+      "parameters": {}
+    },
+    {
+      "name": "trackVersions",
+      "description": "Create a version snapshot for a studio document",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/trackVersions",
+      "parameters": {}
+    },
+    {
+      "name": "listDocumentVersions",
+      "description": "List version history for a studio document",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/listDocumentVersions",
+      "parameters": {}
+    },
+    {
+      "name": "searchKnowledge",
+      "description": "Search knowledge base documents",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/searchKnowledge",
+      "parameters": {}
+    },
+    {
+      "name": "createKnowledgeDoc",
+      "description": "Create a knowledge base document",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/createKnowledgeDoc",
+      "parameters": {}
+    },
+    {
+      "name": "embedDocument",
+      "description": "Chunk and embed a knowledge document for semantic search",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/embedDocument",
+      "parameters": {}
+    },
+    {
+      "name": "trackDocumentUsage",
+      "description": "Log a document usage record",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/trackDocumentUsage",
+      "parameters": {}
+    },
+    {
+      "name": "listDocTemplates",
+      "description": "List document templates",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/listDocTemplates",
+      "parameters": {}
+    },
+    {
+      "name": "submitForApproval",
+      "description": "Submit content for approval",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/submitForApproval",
+      "parameters": {}
+    },
+    {
+      "name": "reviewContent",
+      "description": "Review and respond to a content approval request",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/reviewContent",
+      "parameters": {}
+    },
+    {
+      "name": "listPendingReviews",
+      "description": "List pending content approval requests",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/listPendingReviews",
+      "parameters": {}
+    },
+    {
+      "name": "trackContentStatus",
+      "description": "Get current approval and version status for a content post",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/trackContentStatus",
+      "parameters": {}
+    },
+    {
+      "name": "addContentComment",
+      "description": "Add a comment to a content post",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/addContentComment",
+      "parameters": {}
+    },
+    {
+      "name": "listContentComments",
+      "description": "List comments on a content post",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/listContentComments",
+      "parameters": {}
+    },
+    {
+      "name": "resolveContentComment",
+      "description": "Resolve a content comment",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/resolveContentComment",
+      "parameters": {}
+    },
+    {
+      "name": "createContentVersion",
+      "description": "Create a content version snapshot for a post",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/createContentVersion",
+      "parameters": {}
+    },
+    {
+      "name": "listContentVersions",
+      "description": "List version history for a content post",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/listContentVersions",
+      "parameters": {}
+    },
+    {
+      "name": "setupContentTrigger",
+      "description": "Create a content automation trigger",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/setupContentTrigger",
+      "parameters": {}
+    },
+    {
+      "name": "listContentTriggers",
+      "description": "List content automation triggers",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/listContentTriggers",
+      "parameters": {}
+    },
+    {
+      "name": "logContentEvent",
+      "description": "Log a content event record",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/logContentEvent",
+      "parameters": {}
+    },
+    {
+      "name": "addContentAsset",
+      "description": "Add a media asset to a content post",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/addContentAsset",
+      "parameters": {}
+    },
+    {
+      "name": "createMoodboardV2",
+      "description": "Create a new moodboard with theme and layout settings",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/createMoodboardV2",
+      "parameters": {}
+    },
+    {
+      "name": "addMoodboardItem",
+      "description": "Add an image, color swatch, text note, or link to a moodboard",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/addMoodboardItem",
+      "parameters": {}
+    },
+    {
+      "name": "getMoodboard",
+      "description": "Get a moodboard with all its items",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/getMoodboard",
+      "parameters": {}
+    },
+    {
+      "name": "listMoodboardsV2",
+      "description": "List moodboards with optional filters by project or status",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/listMoodboardsV2",
+      "parameters": {}
+    },
+    {
+      "name": "generateMoodboardOutput",
+      "description": "Generate a deliverable output from a moodboard (PDF, style guide, color palette)",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/generateMoodboardOutput",
+      "parameters": {}
+    },
+    {
+      "name": "shareMoodboard",
+      "description": "Share a moodboard with team members or external stakeholders via link",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/shareMoodboard",
+      "parameters": {}
+    },
+    {
+      "name": "createStoryboard",
+      "description": "Create a new storyboard for a video or campaign project",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/createStoryboard",
+      "parameters": {}
+    },
+    {
+      "name": "addFrame",
+      "description": "Add a frame to a storyboard with visual description and dialogue",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/addFrame",
+      "parameters": {}
+    },
+    {
+      "name": "reorderFrames",
+      "description": "Reorder frames within a storyboard",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/reorderFrames",
+      "parameters": {}
+    },
+    {
+      "name": "getStoryboard",
+      "description": "Get a storyboard with all its frames",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/getStoryboard",
+      "parameters": {}
+    },
+    {
+      "name": "createDeckTemplate",
+      "description": "Create a reusable deck template with slide layouts and branding",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/createDeckTemplate",
+      "parameters": {}
+    },
+    {
+      "name": "listDeckTemplates",
+      "description": "List available deck templates with optional category filter",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/listDeckTemplates",
+      "parameters": {}
+    },
+    {
+      "name": "applyTemplate",
+      "description": "Apply a deck template to an existing or new presentation",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/applyTemplate",
+      "parameters": {}
+    },
+    {
+      "name": "createCalendarEntry",
+      "description": "Create a content calendar entry for scheduling content production",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/createCalendarEntry",
+      "parameters": {}
+    },
+    {
+      "name": "listCalendarEntries",
+      "description": "List content calendar entries with optional filters",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/listCalendarEntries",
+      "parameters": {}
+    },
+    {
+      "name": "updateCalendarEntry",
+      "description": "Update a content calendar entry",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/updateCalendarEntry",
+      "parameters": {}
+    },
+    {
+      "name": "getCalendarByDateRange",
+      "description": "Get calendar view with entries grouped by date for a date range",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/getCalendarByDateRange",
+      "parameters": {}
+    },
+    {
+      "name": "createTrigger",
+      "description": "Create an automated content trigger that fires on specified events",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/createTrigger",
+      "parameters": {}
+    },
+    {
+      "name": "listTriggers",
+      "description": "List content triggers with optional filters",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/listTriggers",
+      "parameters": {}
+    },
+    {
+      "name": "enableTrigger",
+      "description": "Enable a content trigger",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/enableTrigger",
+      "parameters": {}
+    },
+    {
+      "name": "disableTrigger",
+      "description": "Disable a content trigger",
+      "method": "POST",
+      "path": "/api/v1/modules/content_studio/disableTrigger",
+      "parameters": {}
+    }
+  ]
+}

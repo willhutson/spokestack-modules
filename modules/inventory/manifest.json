@@ -1,0 +1,52 @@
+{
+  "id": "inventory",
+  "moduleType": "INVENTORY",
+  "name": "Inventory",
+  "version": "1.0.0",
+  "description": "Asset and inventory tracking with locations, stock levels, and reorder management.",
+  "category": "ops",
+  "minTier": "STARTER",
+  "price": 900,
+  "agentDefinition": {
+    "path": "src/agent/inventory-agent.ts",
+    "name": "inventory-agent"
+  },
+  "tools": ["addItem", "listItems", "updateStock", "transferItem", "getStockLevel", "setReorderPoint", "createLocation", "getInventoryReport"],
+  "surfaces": [
+    {
+      "id": "inventory-dashboard",
+      "type": "dashboard",
+      "requiredTools": ["addItem", "listItems"]
+    },
+    {
+      "id": "inventory-overview",
+      "type": "full-page",
+      "route": "/inventory",
+      "requiredTools": ["addItem", "listItems"]
+    }
+  ],
+  "migrations": {
+    "install": "migrations/install.ts",
+    "uninstall": "migrations/uninstall.ts"
+  },
+  "contextSchema": {
+    "categoryPrefix": "inventory",
+    "entityTypes": [
+      {
+        "category": "inventory.record",
+        "keyFormat": "{recordId}",
+        "valueSchema": {
+          "type": "object",
+          "properties": {
+            "name": { "type": "string" },
+            "status": { "type": "string" },
+            "createdAt": { "type": "string", "format": "date-time" }
+          },
+          "required": ["name"]
+        },
+        "relatedCategories": []
+      }
+    ],
+    "patternTypes": ["inventory_activity", "inventory_trend"]
+  }
+}

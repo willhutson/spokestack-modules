@@ -1,0 +1,22 @@
+{
+  "sidebar": {
+    "label": "Contracts",
+    "icon": "file-signature",
+    "route": "/contracts",
+    "badge": null
+  },
+  "surfaces": [
+    {
+      "id": "contracts-dashboard",
+      "type": "dashboard",
+      "route": null,
+      "label": "contracts-dashboard"
+    },
+    {
+      "id": "contracts-overview",
+      "type": "full-page",
+      "route": "/contracts",
+      "label": "contracts-overview"
+    }
+  ]
+}

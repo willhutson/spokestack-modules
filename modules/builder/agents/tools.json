@@ -1,0 +1,75 @@
+{
+  "agentType": "builder-agent",
+  "tools": [
+    {
+      "name": "createTemplate",
+      "description": "Create a new template with a name, type, and initial content.",
+      "method": "POST",
+      "path": "/api/v1/modules/builder/createTemplate",
+      "parameters": {}
+    },
+    {
+      "name": "listTemplates",
+      "description": "List all templates with optional type and status filtering.",
+      "method": "POST",
+      "path": "/api/v1/modules/builder/listTemplates",
+      "parameters": {}
+    },
+    {
+      "name": "updateTemplate",
+      "description": "Update a template",
+      "method": "POST",
+      "path": "/api/v1/modules/builder/updateTemplate",
+      "parameters": {}
+    },
+    {
+      "name": "publishTemplate",
+      "description": "Publish a template version, making it available for use.",
+      "method": "POST",
+      "path": "/api/v1/modules/builder/publishTemplate",
+      "parameters": {}
+    },
+    {
+      "name": "getTemplateVersions",
+      "description": "Get the version history of a template.",
+      "method": "POST",
+      "path": "/api/v1/modules/builder/getTemplateVersions",
+      "parameters": {}
+    },
+    {
+      "name": "setPermissions",
+      "description": "Set permissions for a template defining who can view, edit, or publish it.",
+      "method": "POST",
+      "path": "/api/v1/modules/builder/setPermissions",
+      "parameters": {}
+    },
+    {
+      "name": "getPermissions",
+      "description": "Get the current permissions for a template.",
+      "method": "POST",
+      "path": "/api/v1/modules/builder/getPermissions",
+      "parameters": {}
+    },
+    {
+      "name": "checkPermission",
+      "description": "Check whether a user has permission to perform a specific action on a template.",
+      "method": "POST",
+      "path": "/api/v1/modules/builder/checkPermission",
+      "parameters": {}
+    },
+    {
+      "name": "getAuditLog",
+      "description": "Get the audit log for templates with optional filtering by template, user, or action.",
+      "method": "POST",
+      "path": "/api/v1/modules/builder/getAuditLog",
+      "parameters": {}
+    },
+    {
+      "name": "exportAuditLog",
+      "description": "Export the audit log in CSV or JSON format.",
+      "method": "POST",
+      "path": "/api/v1/modules/builder/exportAuditLog",
+      "parameters": {}
+    }
+  ]
+}

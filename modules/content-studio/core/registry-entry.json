@@ -1,0 +1,17 @@
+{
+  "moduleType": "CONTENT_STUDIO",
+  "name": "Content Studio",
+  "description": "LMTD's full creative pipeline — DAM, video, moodboards, presentations, docs, and content approvals",
+  "category": "custom",
+  "minTier": "BUSINESS",
+  "price": 0,
+  "icon": "image",
+  "surfaces": [
+    "content-home",
+    "content-assets",
+    "content-video",
+    "content-moodboards",
+    "content-docs",
+    "content-approvals"
+  ]
+}

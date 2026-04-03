@@ -1,0 +1,14 @@
+{
+  "moduleType": "TIME_LEAVE",
+  "name": "Time & Leave",
+  "description": "Time tracking, timesheet management, leave requests, and leave balance tracking for agencies.",
+  "category": "ops",
+  "minTier": "PRO",
+  "price": 800,
+  "icon": "clock",
+  "surfaces": [
+    "time-leave-home",
+    "time-leave-timesheet",
+    "time-leave-requests"
+  ]
+}

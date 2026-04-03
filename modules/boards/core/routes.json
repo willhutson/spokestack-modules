@@ -1,0 +1,34 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/api/v1/boards",
+      "description": "List Boards records",
+      "existing": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/boards",
+      "description": "Create Boards record",
+      "existing": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/boards/:id",
+      "description": "Get Boards record",
+      "existing": false
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/boards/:id",
+      "description": "Update Boards record",
+      "existing": false
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/boards/:id",
+      "description": "Delete Boards record",
+      "existing": false
+    }
+  ]
+}

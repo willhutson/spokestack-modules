@@ -1,0 +1,28 @@
+{
+  "sidebar": {
+    "label": "Workflows",
+    "icon": "git-branch",
+    "route": "/workflows",
+    "badge": null
+  },
+  "surfaces": [
+    {
+      "id": "workflows-home",
+      "type": "full-page",
+      "route": "/workflows",
+      "label": "workflows-home"
+    },
+    {
+      "id": "workflows-templates",
+      "type": "full-page",
+      "route": "/workflows/templates",
+      "label": "workflows-templates"
+    },
+    {
+      "id": "workflows-active",
+      "type": "full-page",
+      "route": "/workflows/active",
+      "label": "workflows-active"
+    }
+  ]
+}

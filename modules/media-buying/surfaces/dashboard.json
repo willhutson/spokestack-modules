@@ -1,0 +1,9 @@
+{
+  "sidebar": {
+    "label": "@spokestack/media-buying",
+    "icon": "box",
+    "route": "/media-buying",
+    "badge": null
+  },
+  "surfaces": []
+}

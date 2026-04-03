@@ -1,0 +1,13 @@
+{
+  "moduleType": "SCHEDULER",
+  "name": "Scheduler",
+  "description": "Appointment scheduling with availability management, booking pages, and automated reminders.",
+  "category": "ops",
+  "minTier": "STARTER",
+  "price": 900,
+  "icon": "calendar-clock",
+  "surfaces": [
+    "scheduler-dashboard",
+    "scheduler-overview"
+  ]
+}

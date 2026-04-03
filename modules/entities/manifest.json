@@ -1,0 +1,52 @@
+{
+  "id": "entities",
+  "moduleType": "ENTITIES",
+  "name": "Entities",
+  "version": "1.0.0",
+  "description": "Custom entity management for candidates, vendors, events, and any structured data.",
+  "category": "ops",
+  "minTier": "STARTER",
+  "price": 900,
+  "agentDefinition": {
+    "path": "src/agent/entities-agent.ts",
+    "name": "entities-agent"
+  },
+  "tools": ["createEntity", "listEntities", "updateEntity", "deleteEntity", "createEntityType", "listEntityTypes", "addRelation", "searchEntities"],
+  "surfaces": [
+    {
+      "id": "entities-dashboard",
+      "type": "dashboard",
+      "requiredTools": ["createEntity", "listEntities"]
+    },
+    {
+      "id": "entities-overview",
+      "type": "full-page",
+      "route": "/entities",
+      "requiredTools": ["createEntity", "listEntities"]
+    }
+  ],
+  "migrations": {
+    "install": "migrations/install.ts",
+    "uninstall": "migrations/uninstall.ts"
+  },
+  "contextSchema": {
+    "categoryPrefix": "entities",
+    "entityTypes": [
+      {
+        "category": "entities.record",
+        "keyFormat": "{recordId}",
+        "valueSchema": {
+          "type": "object",
+          "properties": {
+            "name": { "type": "string" },
+            "status": { "type": "string" },
+            "createdAt": { "type": "string", "format": "date-time" }
+          },
+          "required": ["name"]
+        },
+        "relatedCategories": []
+      }
+    ],
+    "patternTypes": ["entities_activity", "entities_trend"]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "sidebar": {
+    "label": "Time & Leave",
+    "icon": "clock",
+    "route": "/time-leave",
+    "badge": null
+  },
+  "surfaces": [
+    {
+      "id": "time-leave-home",
+      "type": "full-page",
+      "route": "/time-leave",
+      "label": "time-leave-home"
+    },
+    {
+      "id": "time-leave-timesheet",
+      "type": "full-page",
+      "route": "/time-leave/timesheet",
+      "label": "time-leave-timesheet"
+    },
+    {
+      "id": "time-leave-requests",
+      "type": "full-page",
+      "route": "/time-leave/requests",
+      "label": "time-leave-requests"
+    }
+  ]
+}

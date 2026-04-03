@@ -1,0 +1,14 @@
+{
+  "moduleType": "ANALYTICS",
+  "name": "Analytics",
+  "description": "Dashboards, widgets, and metric definitions for agency performance tracking and reporting.",
+  "category": "analytics",
+  "minTier": "PRO",
+  "price": 1200,
+  "icon": "activity",
+  "surfaces": [
+    "analytics-home",
+    "analytics-dashboards",
+    "analytics-metrics"
+  ]
+}

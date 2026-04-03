@@ -1,0 +1,22 @@
+{
+  "sidebar": {
+    "label": "Builder",
+    "icon": "box",
+    "route": "/builder",
+    "badge": null
+  },
+  "surfaces": [
+    {
+      "id": "builder-dashboard",
+      "type": "dashboard",
+      "route": null,
+      "label": "builder-dashboard"
+    },
+    {
+      "id": "builder-home",
+      "type": "full-page",
+      "route": "/builder",
+      "label": "builder-home"
+    }
+  ]
+}

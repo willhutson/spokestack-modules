@@ -1,0 +1,61 @@
+{
+  "agentType": "reply-agent",
+  "tools": [
+    {
+      "name": "listInboxes",
+      "description": "listInboxes operation for Reply module.",
+      "method": "POST",
+      "path": "/api/v1/modules/reply/listInboxes",
+      "parameters": {}
+    },
+    {
+      "name": "getMessages",
+      "description": "getMessages operation for Reply module.",
+      "method": "POST",
+      "path": "/api/v1/modules/reply/getMessages",
+      "parameters": {}
+    },
+    {
+      "name": "replyToMessage",
+      "description": "replyToMessage operation for Reply module.",
+      "method": "POST",
+      "path": "/api/v1/modules/reply/replyToMessage",
+      "parameters": {}
+    },
+    {
+      "name": "assignConversation",
+      "description": "assignConversation operation for Reply module.",
+      "method": "POST",
+      "path": "/api/v1/modules/reply/assignConversation",
+      "parameters": {}
+    },
+    {
+      "name": "setAutoResponder",
+      "description": "setAutoResponder operation for Reply module.",
+      "method": "POST",
+      "path": "/api/v1/modules/reply/setAutoResponder",
+      "parameters": {}
+    },
+    {
+      "name": "getConversationHistory",
+      "description": "getConversationHistory operation for Reply module.",
+      "method": "POST",
+      "path": "/api/v1/modules/reply/getConversationHistory",
+      "parameters": {}
+    },
+    {
+      "name": "escalateConversation",
+      "description": "escalateConversation operation for Reply module.",
+      "method": "POST",
+      "path": "/api/v1/modules/reply/escalateConversation",
+      "parameters": {}
+    },
+    {
+      "name": "getSentimentReport",
+      "description": "getSentimentReport operation for Reply module.",
+      "method": "POST",
+      "path": "/api/v1/modules/reply/getSentimentReport",
+      "parameters": {}
+    }
+  ]
+}

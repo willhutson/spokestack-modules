@@ -1,0 +1,13 @@
+{
+  "moduleType": "DEADLINES",
+  "name": "Deadlines",
+  "description": "Legal and compliance deadline tracking with escalation rules and upcoming deadline alerts.",
+  "category": "ops",
+  "minTier": "PRO",
+  "price": 1200,
+  "icon": "alarm-clock",
+  "surfaces": [
+    "deadlines-dashboard",
+    "deadlines-overview"
+  ]
+}

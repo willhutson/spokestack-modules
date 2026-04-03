@@ -1,0 +1,34 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/api/v1/finance",
+      "description": "List Finance records",
+      "existing": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/finance",
+      "description": "Create Finance record",
+      "existing": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/finance/:id",
+      "description": "Get Finance record",
+      "existing": false
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/finance/:id",
+      "description": "Update Finance record",
+      "existing": false
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/finance/:id",
+      "description": "Delete Finance record",
+      "existing": false
+    }
+  ]
+}

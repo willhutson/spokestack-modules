@@ -1,0 +1,103 @@
+{
+  "agentType": "analytics-agent",
+  "tools": [
+    {
+      "name": "createDashboard",
+      "description": "Create a new analytics dashboard with a name, type, and optional default filters.",
+      "method": "POST",
+      "path": "/api/v1/modules/analytics/createDashboard",
+      "parameters": {}
+    },
+    {
+      "name": "listDashboards",
+      "description": "listDashboards tool for Analytics",
+      "method": "POST",
+      "path": "/api/v1/modules/analytics/listDashboards",
+      "parameters": {}
+    },
+    {
+      "name": "getDashboard",
+      "description": "Get a single dashboard by ID, including all its widgets and layout.",
+      "method": "POST",
+      "path": "/api/v1/modules/analytics/getDashboard",
+      "parameters": {}
+    },
+    {
+      "name": "updateDashboard",
+      "description": "Update a dashboard",
+      "method": "POST",
+      "path": "/api/v1/modules/analytics/updateDashboard",
+      "parameters": {}
+    },
+    {
+      "name": "deleteDashboard",
+      "description": "Soft-delete a dashboard by ID.",
+      "method": "POST",
+      "path": "/api/v1/modules/analytics/deleteDashboard",
+      "parameters": {}
+    },
+    {
+      "name": "saveDashboardLayout",
+      "description": "Save or update a personalized dashboard layout for a specific user.",
+      "method": "POST",
+      "path": "/api/v1/modules/analytics/saveDashboardLayout",
+      "parameters": {}
+    },
+    {
+      "name": "addWidget",
+      "description": "Add a widget to a dashboard with chart type, metric, dimensions, and filters.",
+      "method": "POST",
+      "path": "/api/v1/modules/analytics/addWidget",
+      "parameters": {}
+    },
+    {
+      "name": "updateWidget",
+      "description": "Update any field of a widget by its widget ID.",
+      "method": "POST",
+      "path": "/api/v1/modules/analytics/updateWidget",
+      "parameters": {}
+    },
+    {
+      "name": "removeWidget",
+      "description": "Remove a widget from a dashboard by its widget ID.",
+      "method": "POST",
+      "path": "/api/v1/modules/analytics/removeWidget",
+      "parameters": {}
+    },
+    {
+      "name": "listWidgets",
+      "description": "List all widgets for a given dashboard.",
+      "method": "POST",
+      "path": "/api/v1/modules/analytics/listWidgets",
+      "parameters": {}
+    },
+    {
+      "name": "defineMetric",
+      "description": "Create a metric definition with a formula, aggregation method, display format, and optional thresholds.",
+      "method": "POST",
+      "path": "/api/v1/modules/analytics/defineMetric",
+      "parameters": {}
+    },
+    {
+      "name": "listMetrics",
+      "description": "List metric definitions, optionally filtered by category or active status.",
+      "method": "POST",
+      "path": "/api/v1/modules/analytics/listMetrics",
+      "parameters": {}
+    },
+    {
+      "name": "snapshotMetrics",
+      "description": "Get current metric values for a list of metric codes within a date range, including period-over-period change.",
+      "method": "POST",
+      "path": "/api/v1/modules/analytics/snapshotMetrics",
+      "parameters": {}
+    },
+    {
+      "name": "getMetricHistory",
+      "description": "Get time-series data for a metric code over a 7-day, 30-day, or 90-day period.",
+      "method": "POST",
+      "path": "/api/v1/modules/analytics/getMetricHistory",
+      "parameters": {}
+    }
+  ]
+}

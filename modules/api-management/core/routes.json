@@ -1,0 +1,34 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/api/v1/api_management",
+      "description": "List API Management records",
+      "existing": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/api_management",
+      "description": "Create API Management record",
+      "existing": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/api_management/:id",
+      "description": "Get API Management record",
+      "existing": false
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/api_management/:id",
+      "description": "Update API Management record",
+      "existing": false
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/api_management/:id",
+      "description": "Delete API Management record",
+      "existing": false
+    }
+  ]
+}

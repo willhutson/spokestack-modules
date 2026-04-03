@@ -1,0 +1,52 @@
+{
+  "id": "scheduler",
+  "moduleType": "SCHEDULER",
+  "name": "Scheduler",
+  "version": "1.0.0",
+  "description": "Appointment scheduling with availability management, booking pages, and automated reminders.",
+  "category": "ops",
+  "minTier": "STARTER",
+  "price": 900,
+  "agentDefinition": {
+    "path": "src/agent/scheduler-agent.ts",
+    "name": "scheduler-agent"
+  },
+  "tools": ["createAppointment", "listAppointments", "cancelAppointment", "setAvailability", "getAvailability", "sendReminder", "createBookingPage", "getBookingStats"],
+  "surfaces": [
+    {
+      "id": "scheduler-dashboard",
+      "type": "dashboard",
+      "requiredTools": ["createAppointment", "listAppointments"]
+    },
+    {
+      "id": "scheduler-overview",
+      "type": "full-page",
+      "route": "/scheduler",
+      "requiredTools": ["createAppointment", "listAppointments"]
+    }
+  ],
+  "migrations": {
+    "install": "migrations/install.ts",
+    "uninstall": "migrations/uninstall.ts"
+  },
+  "contextSchema": {
+    "categoryPrefix": "scheduler",
+    "entityTypes": [
+      {
+        "category": "scheduler.record",
+        "keyFormat": "{recordId}",
+        "valueSchema": {
+          "type": "object",
+          "properties": {
+            "name": { "type": "string" },
+            "status": { "type": "string" },
+            "createdAt": { "type": "string", "format": "date-time" }
+          },
+          "required": ["name"]
+        },
+        "relatedCategories": []
+      }
+    ],
+    "patternTypes": ["scheduler_activity", "scheduler_trend"]
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "moduleType": "RFP",
+  "name": "RFP",
+  "description": "Request for proposal management with response scoring, comparison, and contract award tracking.",
+  "category": "ops",
+  "minTier": "PRO",
+  "price": 1900,
+  "icon": "file-text",
+  "surfaces": [
+    "rfp-dashboard",
+    "rfp-overview"
+  ]
+}
