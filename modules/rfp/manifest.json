@@ -11,18 +11,33 @@
     "path": "src/agent/rfp-agent.ts",
     "name": "rfp-agent"
   },
-  "tools": ["createRFP", "listRFPs", "submitResponse", "scoreResponse", "compareResponses", "awardContract", "getTimeline", "exportRFP"],
+  "tools": [
+    "createRFP",
+    "listRFPs",
+    "submitResponse",
+    "scoreResponse",
+    "compareResponses",
+    "awardContract",
+    "getTimeline",
+    "exportRFP"
+  ],
   "surfaces": [
     {
       "id": "rfp-dashboard",
       "type": "dashboard",
-      "requiredTools": ["createRFP", "listRFPs"]
+      "requiredTools": [
+        "createRFP",
+        "listRFPs"
+      ]
     },
     {
       "id": "rfp-overview",
       "type": "full-page",
       "route": "/rfp",
-      "requiredTools": ["createRFP", "listRFPs"]
+      "requiredTools": [
+        "createRFP",
+        "listRFPs"
+      ]
     }
   ],
   "migrations": {
@@ -38,15 +53,38 @@
         "valueSchema": {
           "type": "object",
           "properties": {
-            "name": { "type": "string" },
-            "status": { "type": "string" },
-            "createdAt": { "type": "string", "format": "date-time" }
+            "name": {
+              "type": "string"
+            },
+            "status": {
+              "type": "string"
+            },
+            "createdAt": {
+              "type": "string",
+              "format": "date-time"
+            }
           },
-          "required": ["name"]
+          "required": [
+            "name"
+          ]
         },
         "relatedCategories": []
       }
     ],
-    "patternTypes": ["rfp_activity", "rfp_trend"]
+    "patternTypes": [
+      "rfp_activity",
+      "rfp_trend"
+    ]
+  },
+  "type": "RFP",
+  "slug": "rfp",
+  "agentType": "assistant",
+  "pricing": {
+    "type": "subscription",
+    "monthlyPriceCents": 1500
+  },
+  "author": {
+    "name": "SpokeStack",
+    "url": "https://spokestack.dev"
   }
 }

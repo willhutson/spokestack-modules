@@ -31,19 +31,30 @@
       "id": "finance-home",
       "type": "full-page",
       "route": "/finance",
-      "requiredTools": ["getFinancialSummary", "getBudgetSummary"]
+      "requiredTools": [
+        "getFinancialSummary",
+        "getBudgetSummary"
+      ]
     },
     {
       "id": "finance-invoices",
       "type": "full-page",
       "route": "/finance/invoices",
-      "requiredTools": ["createInvoice", "listInvoices", "getInvoice"]
+      "requiredTools": [
+        "createInvoice",
+        "listInvoices",
+        "getInvoice"
+      ]
     },
     {
       "id": "finance-budgets",
       "type": "full-page",
       "route": "/finance/budgets",
-      "requiredTools": ["setBudget", "listBudgets", "getBudgetSummary"]
+      "requiredTools": [
+        "setBudget",
+        "listBudgets",
+        "getBudgetSummary"
+      ]
     }
   ],
   "migrations": {
@@ -59,16 +70,36 @@
         "valueSchema": {
           "type": "object",
           "properties": {
-            "name": { "type": "string" },
-            "totalAmount": { "type": "number" },
-            "spentAmount": { "type": "number" },
-            "currency": { "type": "string" },
-            "periodStart": { "type": "string", "format": "date" },
-            "periodEnd": { "type": "string", "format": "date" }
+            "name": {
+              "type": "string"
+            },
+            "totalAmount": {
+              "type": "number"
+            },
+            "spentAmount": {
+              "type": "number"
+            },
+            "currency": {
+              "type": "string"
+            },
+            "periodStart": {
+              "type": "string",
+              "format": "date"
+            },
+            "periodEnd": {
+              "type": "string",
+              "format": "date"
+            }
           },
-          "required": ["name", "totalAmount", "currency"]
+          "required": [
+            "name",
+            "totalAmount",
+            "currency"
+          ]
         },
-        "relatedCategories": ["content.campaign"]
+        "relatedCategories": [
+          "content.campaign"
+        ]
       },
       {
         "category": "finance.invoice",
@@ -76,17 +107,41 @@
         "valueSchema": {
           "type": "object",
           "properties": {
-            "vendorName": { "type": "string" },
-            "amount": { "type": "number" },
-            "currency": { "type": "string" },
-            "status": { "type": "string", "enum": ["pending", "approved", "paid", "rejected"] },
-            "dueDate": { "type": "string", "format": "date" }
+            "vendorName": {
+              "type": "string"
+            },
+            "amount": {
+              "type": "number"
+            },
+            "currency": {
+              "type": "string"
+            },
+            "status": {
+              "type": "string",
+              "enum": [
+                "pending",
+                "approved",
+                "paid",
+                "rejected"
+              ]
+            },
+            "dueDate": {
+              "type": "string",
+              "format": "date"
+            }
           },
-          "required": ["vendorName", "amount", "status"]
+          "required": [
+            "vendorName",
+            "amount",
+            "status"
+          ]
         }
       }
     ],
-    "patternTypes": ["budget_overrun", "invoice_approval_delay"]
+    "patternTypes": [
+      "budget_overrun",
+      "invoice_approval_delay"
+    ]
   },
   "canvasConfig": {
     "nodeType": "INVOICE",
@@ -94,8 +149,31 @@
     "icon": "receipt",
     "entityLabel": "Invoice",
     "relationships": [
-      { "sourceField": "orderId", "targetModule": "ORDERS", "targetEntity": "order", "label": "invoices", "edgeStyle": "solid" },
-      { "sourceField": "customerId", "targetModule": "CRM", "targetEntity": "customer", "label": "billed to", "edgeStyle": "dashed" }
+      {
+        "sourceField": "orderId",
+        "targetModule": "ORDERS",
+        "targetEntity": "order",
+        "label": "invoices",
+        "edgeStyle": "solid"
+      },
+      {
+        "sourceField": "customerId",
+        "targetModule": "CRM",
+        "targetEntity": "customer",
+        "label": "billed to",
+        "edgeStyle": "dashed"
+      }
     ]
+  },
+  "type": "FINANCE",
+  "slug": "finance",
+  "agentType": "order_manager",
+  "pricing": {
+    "type": "subscription",
+    "monthlyPriceCents": 1000
+  },
+  "author": {
+    "name": "SpokeStack",
+    "url": "https://spokestack.dev"
   }
 }

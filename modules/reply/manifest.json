@@ -11,18 +11,33 @@
     "path": "src/agent/reply-agent.ts",
     "name": "reply-agent"
   },
-  "tools": ["listInboxes", "getMessages", "replyToMessage", "assignConversation", "setAutoResponder", "getConversationHistory", "escalateConversation", "getSentimentReport"],
+  "tools": [
+    "listInboxes",
+    "getMessages",
+    "replyToMessage",
+    "assignConversation",
+    "setAutoResponder",
+    "getConversationHistory",
+    "escalateConversation",
+    "getSentimentReport"
+  ],
   "surfaces": [
     {
       "id": "reply-dashboard",
       "type": "dashboard",
-      "requiredTools": ["listInboxes", "getMessages"]
+      "requiredTools": [
+        "listInboxes",
+        "getMessages"
+      ]
     },
     {
       "id": "reply-overview",
       "type": "full-page",
       "route": "/reply",
-      "requiredTools": ["listInboxes", "getMessages"]
+      "requiredTools": [
+        "listInboxes",
+        "getMessages"
+      ]
     }
   ],
   "migrations": {
@@ -38,15 +53,38 @@
         "valueSchema": {
           "type": "object",
           "properties": {
-            "name": { "type": "string" },
-            "status": { "type": "string" },
-            "createdAt": { "type": "string", "format": "date-time" }
+            "name": {
+              "type": "string"
+            },
+            "status": {
+              "type": "string"
+            },
+            "createdAt": {
+              "type": "string",
+              "format": "date-time"
+            }
           },
-          "required": ["name"]
+          "required": [
+            "name"
+          ]
         },
         "relatedCategories": []
       }
     ],
-    "patternTypes": ["reply_activity", "reply_trend"]
+    "patternTypes": [
+      "reply_activity",
+      "reply_trend"
+    ]
+  },
+  "type": "REPLY",
+  "slug": "reply",
+  "agentType": "assistant",
+  "pricing": {
+    "type": "subscription",
+    "monthlyPriceCents": 1000
+  },
+  "author": {
+    "name": "SpokeStack",
+    "url": "https://spokestack.dev"
   }
 }

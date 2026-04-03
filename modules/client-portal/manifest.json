@@ -12,19 +12,65 @@
     "name": "client-portal-agent"
   },
   "tools": [
-    "createPortalUser", "listPortalUsers", "deactivatePortalUser", "managePortalSessions",
-    "generateMagicLink", "validateMagicLink",
-    "listBriefRequests", "reviewBriefRequest", "convertBriefRequest",
-    "trackOnboarding", "updateOnboardingTask", "listOnboardingTasks",
-    "addPortalComment", "listPortalComments"
+    "createPortalUser",
+    "listPortalUsers",
+    "deactivatePortalUser",
+    "managePortalSessions",
+    "generateMagicLink",
+    "validateMagicLink",
+    "listBriefRequests",
+    "reviewBriefRequest",
+    "convertBriefRequest",
+    "trackOnboarding",
+    "updateOnboardingTask",
+    "listOnboardingTasks",
+    "addPortalComment",
+    "listPortalComments"
   ],
   "surfaces": [
-    { "id": "portal-overview", "type": "full-page", "route": "/portal/overview", "requiredTools": ["listPortalUsers", "listBriefRequests"] },
-    { "id": "portal-users", "type": "full-page", "route": "/portal/users", "requiredTools": ["createPortalUser", "listPortalUsers", "deactivatePortalUser"] },
-    { "id": "portal-requests", "type": "full-page", "route": "/portal/requests", "requiredTools": ["listBriefRequests", "reviewBriefRequest", "convertBriefRequest"] }
+    {
+      "id": "portal-overview",
+      "type": "full-page",
+      "route": "/portal/overview",
+      "requiredTools": [
+        "listPortalUsers",
+        "listBriefRequests"
+      ]
+    },
+    {
+      "id": "portal-users",
+      "type": "full-page",
+      "route": "/portal/users",
+      "requiredTools": [
+        "createPortalUser",
+        "listPortalUsers",
+        "deactivatePortalUser"
+      ]
+    },
+    {
+      "id": "portal-requests",
+      "type": "full-page",
+      "route": "/portal/requests",
+      "requiredTools": [
+        "listBriefRequests",
+        "reviewBriefRequest",
+        "convertBriefRequest"
+      ]
+    }
   ],
   "migrations": {
     "install": "migrations/install.ts",
     "uninstall": "migrations/uninstall.ts"
+  },
+  "type": "CLIENT_PORTAL",
+  "slug": "client-portal",
+  "agentType": "portal_manager",
+  "pricing": {
+    "type": "subscription",
+    "monthlyPriceCents": 1500
+  },
+  "author": {
+    "name": "SpokeStack",
+    "url": "https://spokestack.dev"
   }
 }

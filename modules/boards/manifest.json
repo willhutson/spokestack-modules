@@ -11,14 +11,57 @@
     "name": "boards-agent"
   },
   "tools": [
-    "createBoard", "listBoards", "getBoard", "updateBoard", "deleteBoard",
-    "addColumn", "updateColumn", "reorderColumns", "deleteColumn",
-    "createCard", "moveCard", "updateCard", "assignCard", "addCardComment",
-    "getCardActivity", "filterCards", "searchCards", "getCardsByAssignee"
+    "createBoard",
+    "listBoards",
+    "getBoard",
+    "updateBoard",
+    "deleteBoard",
+    "addColumn",
+    "updateColumn",
+    "reorderColumns",
+    "deleteColumn",
+    "createCard",
+    "moveCard",
+    "updateCard",
+    "assignCard",
+    "addCardComment",
+    "getCardActivity",
+    "filterCards",
+    "searchCards",
+    "getCardsByAssignee"
   ],
   "surfaces": [
-    { "id": "boards-dashboard", "type": "dashboard", "requiredTools": ["listBoards", "filterCards"] },
-    { "id": "boards-home", "type": "full-page", "route": "/boards", "requiredTools": ["listBoards", "createBoard"] }
+    {
+      "id": "boards-dashboard",
+      "type": "dashboard",
+      "requiredTools": [
+        "listBoards",
+        "filterCards"
+      ]
+    },
+    {
+      "id": "boards-home",
+      "type": "full-page",
+      "route": "/boards",
+      "requiredTools": [
+        "listBoards",
+        "createBoard"
+      ]
+    }
   ],
-  "migrations": { "install": "migrations/install.ts", "uninstall": "migrations/uninstall.ts" }
+  "migrations": {
+    "install": "migrations/install.ts",
+    "uninstall": "migrations/uninstall.ts"
+  },
+  "type": "BOARDS",
+  "slug": "boards",
+  "agentType": "board_manager",
+  "pricing": {
+    "type": "subscription",
+    "monthlyPriceCents": 500
+  },
+  "author": {
+    "name": "SpokeStack",
+    "url": "https://spokestack.dev"
+  }
 }

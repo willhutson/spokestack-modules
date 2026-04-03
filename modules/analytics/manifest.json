@@ -12,14 +12,51 @@
     "name": "analytics-agent"
   },
   "tools": [
-    "createDashboard", "listDashboards", "getDashboard", "updateDashboard", "deleteDashboard", "saveDashboardLayout",
-    "addWidget", "updateWidget", "removeWidget", "listWidgets",
-    "defineMetric", "listMetrics", "snapshotMetrics", "getMetricHistory"
+    "createDashboard",
+    "listDashboards",
+    "getDashboard",
+    "updateDashboard",
+    "deleteDashboard",
+    "saveDashboardLayout",
+    "addWidget",
+    "updateWidget",
+    "removeWidget",
+    "listWidgets",
+    "defineMetric",
+    "listMetrics",
+    "snapshotMetrics",
+    "getMetricHistory"
   ],
   "surfaces": [
-    { "id": "analytics-home", "type": "full-page", "route": "/analytics", "requiredTools": ["listDashboards", "listMetrics"] },
-    { "id": "analytics-dashboards", "type": "full-page", "route": "/analytics/dashboards", "requiredTools": ["listDashboards", "getDashboard", "createDashboard"] },
-    { "id": "analytics-metrics", "type": "full-page", "route": "/analytics/metrics", "requiredTools": ["listMetrics", "defineMetric", "snapshotMetrics"] }
+    {
+      "id": "analytics-home",
+      "type": "full-page",
+      "route": "/analytics",
+      "requiredTools": [
+        "listDashboards",
+        "listMetrics"
+      ]
+    },
+    {
+      "id": "analytics-dashboards",
+      "type": "full-page",
+      "route": "/analytics/dashboards",
+      "requiredTools": [
+        "listDashboards",
+        "getDashboard",
+        "createDashboard"
+      ]
+    },
+    {
+      "id": "analytics-metrics",
+      "type": "full-page",
+      "route": "/analytics/metrics",
+      "requiredTools": [
+        "listMetrics",
+        "defineMetric",
+        "snapshotMetrics"
+      ]
+    }
   ],
   "migrations": {
     "install": "migrations/install.ts",
@@ -31,5 +68,16 @@
     "icon": "activity",
     "entityLabel": "Dashboard",
     "relationships": []
+  },
+  "type": "ANALYTICS",
+  "slug": "analytics",
+  "agentType": "analyst",
+  "pricing": {
+    "type": "subscription",
+    "monthlyPriceCents": 1000
+  },
+  "author": {
+    "name": "SpokeStack",
+    "url": "https://spokestack.dev"
   }
 }

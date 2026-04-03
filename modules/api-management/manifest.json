@@ -11,13 +11,53 @@
     "name": "api-management-agent"
   },
   "tools": [
-    "createApiKey", "listApiKeys", "revokeApiKey", "rotateApiKey", "getKeyUsage",
-    "createWebhook", "listWebhooks", "updateWebhook", "deleteWebhook", "testWebhook",
-    "getDeliveryLogs", "getRequestLogs", "getUsageStats", "exportLogs"
+    "createApiKey",
+    "listApiKeys",
+    "revokeApiKey",
+    "rotateApiKey",
+    "getKeyUsage",
+    "createWebhook",
+    "listWebhooks",
+    "updateWebhook",
+    "deleteWebhook",
+    "testWebhook",
+    "getDeliveryLogs",
+    "getRequestLogs",
+    "getUsageStats",
+    "exportLogs"
   ],
   "surfaces": [
-    { "id": "api-management-dashboard", "type": "dashboard", "requiredTools": ["listApiKeys", "getUsageStats"] },
-    { "id": "api-management-home", "type": "full-page", "route": "/api-management", "requiredTools": ["listApiKeys", "listWebhooks"] }
+    {
+      "id": "api-management-dashboard",
+      "type": "dashboard",
+      "requiredTools": [
+        "listApiKeys",
+        "getUsageStats"
+      ]
+    },
+    {
+      "id": "api-management-home",
+      "type": "full-page",
+      "route": "/api-management",
+      "requiredTools": [
+        "listApiKeys",
+        "listWebhooks"
+      ]
+    }
   ],
-  "migrations": { "install": "migrations/install.ts", "uninstall": "migrations/uninstall.ts" }
+  "migrations": {
+    "install": "migrations/install.ts",
+    "uninstall": "migrations/uninstall.ts"
+  },
+  "type": "API_MANAGEMENT",
+  "slug": "api-management",
+  "agentType": "assistant",
+  "pricing": {
+    "type": "subscription",
+    "monthlyPriceCents": 1000
+  },
+  "author": {
+    "name": "SpokeStack",
+    "url": "https://spokestack.dev"
+  }
 }

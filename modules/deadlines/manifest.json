@@ -11,18 +11,33 @@
     "path": "src/agent/deadlines-agent.ts",
     "name": "deadlines-agent"
   },
-  "tools": ["createDeadline", "listDeadlines", "updateDeadline", "setReminder", "escalateDeadline", "getUpcoming", "markComplete", "getComplianceReport"],
+  "tools": [
+    "createDeadline",
+    "listDeadlines",
+    "updateDeadline",
+    "setReminder",
+    "escalateDeadline",
+    "getUpcoming",
+    "markComplete",
+    "getComplianceReport"
+  ],
   "surfaces": [
     {
       "id": "deadlines-dashboard",
       "type": "dashboard",
-      "requiredTools": ["createDeadline", "listDeadlines"]
+      "requiredTools": [
+        "createDeadline",
+        "listDeadlines"
+      ]
     },
     {
       "id": "deadlines-overview",
       "type": "full-page",
       "route": "/deadlines",
-      "requiredTools": ["createDeadline", "listDeadlines"]
+      "requiredTools": [
+        "createDeadline",
+        "listDeadlines"
+      ]
     }
   ],
   "migrations": {
@@ -38,15 +53,38 @@
         "valueSchema": {
           "type": "object",
           "properties": {
-            "name": { "type": "string" },
-            "status": { "type": "string" },
-            "createdAt": { "type": "string", "format": "date-time" }
+            "name": {
+              "type": "string"
+            },
+            "status": {
+              "type": "string"
+            },
+            "createdAt": {
+              "type": "string",
+              "format": "date-time"
+            }
           },
-          "required": ["name"]
+          "required": [
+            "name"
+          ]
         },
         "relatedCategories": []
       }
     ],
-    "patternTypes": ["deadlines_activity", "deadlines_trend"]
+    "patternTypes": [
+      "deadlines_activity",
+      "deadlines_trend"
+    ]
+  },
+  "type": "DEADLINES",
+  "slug": "deadlines",
+  "agentType": "assistant",
+  "pricing": {
+    "type": "subscription",
+    "monthlyPriceCents": 500
+  },
+  "author": {
+    "name": "SpokeStack",
+    "url": "https://spokestack.dev"
   }
 }

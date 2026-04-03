@@ -11,13 +11,48 @@
     "name": "builder-agent"
   },
   "tools": [
-    "createTemplate", "listTemplates", "updateTemplate", "publishTemplate",
-    "getTemplateVersions", "setPermissions", "getPermissions", "checkPermission",
-    "getAuditLog", "exportAuditLog"
+    "createTemplate",
+    "listTemplates",
+    "updateTemplate",
+    "publishTemplate",
+    "getTemplateVersions",
+    "setPermissions",
+    "getPermissions",
+    "checkPermission",
+    "getAuditLog",
+    "exportAuditLog"
   ],
   "surfaces": [
-    { "id": "builder-dashboard", "type": "dashboard", "requiredTools": ["listTemplates", "getAuditLog"] },
-    { "id": "builder-home", "type": "full-page", "route": "/builder", "requiredTools": ["listTemplates", "createTemplate"] }
+    {
+      "id": "builder-dashboard",
+      "type": "dashboard",
+      "requiredTools": [
+        "listTemplates",
+        "getAuditLog"
+      ]
+    },
+    {
+      "id": "builder-home",
+      "type": "full-page",
+      "route": "/builder",
+      "requiredTools": [
+        "listTemplates",
+        "createTemplate"
+      ]
+    }
   ],
-  "migrations": { "install": "migrations/install.ts", "uninstall": "migrations/uninstall.ts" }
+  "migrations": {
+    "install": "migrations/install.ts",
+    "uninstall": "migrations/uninstall.ts"
+  },
+  "type": "BUILDER",
+  "slug": "builder",
+  "agentType": "module_builder",
+  "pricing": {
+    "type": "free"
+  },
+  "author": {
+    "name": "SpokeStack",
+    "url": "https://spokestack.dev"
+  }
 }

@@ -11,18 +11,33 @@
     "path": "src/agent/inventory-agent.ts",
     "name": "inventory-agent"
   },
-  "tools": ["addItem", "listItems", "updateStock", "transferItem", "getStockLevel", "setReorderPoint", "createLocation", "getInventoryReport"],
+  "tools": [
+    "addItem",
+    "listItems",
+    "updateStock",
+    "transferItem",
+    "getStockLevel",
+    "setReorderPoint",
+    "createLocation",
+    "getInventoryReport"
+  ],
   "surfaces": [
     {
       "id": "inventory-dashboard",
       "type": "dashboard",
-      "requiredTools": ["addItem", "listItems"]
+      "requiredTools": [
+        "addItem",
+        "listItems"
+      ]
     },
     {
       "id": "inventory-overview",
       "type": "full-page",
       "route": "/inventory",
-      "requiredTools": ["addItem", "listItems"]
+      "requiredTools": [
+        "addItem",
+        "listItems"
+      ]
     }
   ],
   "migrations": {
@@ -38,15 +53,38 @@
         "valueSchema": {
           "type": "object",
           "properties": {
-            "name": { "type": "string" },
-            "status": { "type": "string" },
-            "createdAt": { "type": "string", "format": "date-time" }
+            "name": {
+              "type": "string"
+            },
+            "status": {
+              "type": "string"
+            },
+            "createdAt": {
+              "type": "string",
+              "format": "date-time"
+            }
           },
-          "required": ["name"]
+          "required": [
+            "name"
+          ]
         },
         "relatedCategories": []
       }
     ],
-    "patternTypes": ["inventory_activity", "inventory_trend"]
+    "patternTypes": [
+      "inventory_activity",
+      "inventory_trend"
+    ]
+  },
+  "type": "INVENTORY",
+  "slug": "inventory",
+  "agentType": "assistant",
+  "pricing": {
+    "type": "subscription",
+    "monthlyPriceCents": 1000
+  },
+  "author": {
+    "name": "SpokeStack",
+    "url": "https://spokestack.dev"
   }
 }

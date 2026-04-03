@@ -11,18 +11,33 @@
     "path": "src/agent/channel-agent.ts",
     "name": "channel-agent"
   },
-  "tools": ["listChannels", "sendMessage", "createBroadcast", "getDeliveryReport", "createFlow", "listFlows", "configureAutoReply", "getChannelAnalytics"],
+  "tools": [
+    "listChannels",
+    "sendMessage",
+    "createBroadcast",
+    "getDeliveryReport",
+    "createFlow",
+    "listFlows",
+    "configureAutoReply",
+    "getChannelAnalytics"
+  ],
   "surfaces": [
     {
       "id": "channel-dashboard",
       "type": "dashboard",
-      "requiredTools": ["listChannels", "sendMessage"]
+      "requiredTools": [
+        "listChannels",
+        "sendMessage"
+      ]
     },
     {
       "id": "channel-overview",
       "type": "full-page",
       "route": "/channel",
-      "requiredTools": ["listChannels", "sendMessage"]
+      "requiredTools": [
+        "listChannels",
+        "sendMessage"
+      ]
     }
   ],
   "migrations": {
@@ -38,15 +53,38 @@
         "valueSchema": {
           "type": "object",
           "properties": {
-            "name": { "type": "string" },
-            "status": { "type": "string" },
-            "createdAt": { "type": "string", "format": "date-time" }
+            "name": {
+              "type": "string"
+            },
+            "status": {
+              "type": "string"
+            },
+            "createdAt": {
+              "type": "string",
+              "format": "date-time"
+            }
           },
-          "required": ["name"]
+          "required": [
+            "name"
+          ]
         },
         "relatedCategories": []
       }
     ],
-    "patternTypes": ["channel_activity", "channel_trend"]
+    "patternTypes": [
+      "channel_activity",
+      "channel_trend"
+    ]
+  },
+  "type": "CHANNEL",
+  "slug": "channel",
+  "agentType": "assistant",
+  "pricing": {
+    "type": "subscription",
+    "monthlyPriceCents": 1000
+  },
+  "author": {
+    "name": "SpokeStack",
+    "url": "https://spokestack.dev"
   }
 }

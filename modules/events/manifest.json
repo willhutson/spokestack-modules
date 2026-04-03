@@ -11,11 +11,48 @@
     "name": "events-agent"
   },
   "tools": [
-    "createEvent", "addGuest", "importGuestList", "sendRSVPInvitation", "createRunOfShowItem", "reorderRunOfShow", "addVendor", "trackBudget", "generatePostEventReport"
+    "createEvent",
+    "addGuest",
+    "importGuestList",
+    "sendRSVPInvitation",
+    "createRunOfShowItem",
+    "reorderRunOfShow",
+    "addVendor",
+    "trackBudget",
+    "generatePostEventReport"
   ],
   "surfaces": [
-    { "id": "events-dashboard", "type": "dashboard", "requiredTools": ["trackBudget"] },
-    { "id": "events-home", "type": "full-page", "route": "/events", "requiredTools": ["createEvent", "addGuest", "trackBudget"] }
+    {
+      "id": "events-dashboard",
+      "type": "dashboard",
+      "requiredTools": [
+        "trackBudget"
+      ]
+    },
+    {
+      "id": "events-home",
+      "type": "full-page",
+      "route": "/events",
+      "requiredTools": [
+        "createEvent",
+        "addGuest",
+        "trackBudget"
+      ]
+    }
   ],
-  "migrations": { "install": "migrations/install.ts", "uninstall": "migrations/uninstall.ts" }
+  "migrations": {
+    "install": "migrations/install.ts",
+    "uninstall": "migrations/uninstall.ts"
+  },
+  "type": "EVENTS",
+  "slug": "events",
+  "agentType": "event_planner",
+  "pricing": {
+    "type": "subscription",
+    "monthlyPriceCents": 2000
+  },
+  "author": {
+    "name": "SpokeStack",
+    "url": "https://spokestack.dev"
+  }
 }

@@ -11,11 +11,45 @@
     "name": "media-relations-agent"
   },
   "tools": [
-    "addJournalist", "searchJournalists", "createMediaList", "createPitch", "logCoverage", "getCoverageReport"
+    "addJournalist",
+    "searchJournalists",
+    "createMediaList",
+    "createPitch",
+    "logCoverage",
+    "getCoverageReport"
   ],
   "surfaces": [
-    { "id": "media-relations-dashboard", "type": "dashboard", "requiredTools": ["searchJournalists", "getCoverageReport"] },
-    { "id": "media-relations-home", "type": "full-page", "route": "/media-relations", "requiredTools": ["searchJournalists", "addJournalist"] }
+    {
+      "id": "media-relations-dashboard",
+      "type": "dashboard",
+      "requiredTools": [
+        "searchJournalists",
+        "getCoverageReport"
+      ]
+    },
+    {
+      "id": "media-relations-home",
+      "type": "full-page",
+      "route": "/media-relations",
+      "requiredTools": [
+        "searchJournalists",
+        "addJournalist"
+      ]
+    }
   ],
-  "migrations": { "install": "migrations/install.ts", "uninstall": "migrations/uninstall.ts" }
+  "migrations": {
+    "install": "migrations/install.ts",
+    "uninstall": "migrations/uninstall.ts"
+  },
+  "type": "MEDIA_RELATIONS",
+  "slug": "media-relations",
+  "agentType": "media_relations_manager",
+  "pricing": {
+    "type": "subscription",
+    "monthlyPriceCents": 2000
+  },
+  "author": {
+    "name": "SpokeStack",
+    "url": "https://spokestack.dev"
+  }
 }

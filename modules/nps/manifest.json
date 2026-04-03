@@ -31,19 +31,31 @@
       "id": "nps-home",
       "type": "full-page",
       "route": "/surveys",
-      "requiredTools": ["listSurveys", "listForms"]
+      "requiredTools": [
+        "listSurveys",
+        "listForms"
+      ]
     },
     {
       "id": "nps-surveys",
       "type": "full-page",
       "route": "/surveys/nps",
-      "requiredTools": ["createSurvey", "listSurveys", "getSurveyResults", "analyzeNPS"]
+      "requiredTools": [
+        "createSurvey",
+        "listSurveys",
+        "getSurveyResults",
+        "analyzeNPS"
+      ]
     },
     {
       "id": "nps-forms",
       "type": "full-page",
       "route": "/surveys/forms",
-      "requiredTools": ["createForm", "listForms", "listSubmissions"]
+      "requiredTools": [
+        "createForm",
+        "listForms",
+        "listSubmissions"
+      ]
     }
   ],
   "migrations": {
@@ -56,7 +68,24 @@
     "icon": "bar-chart",
     "entityLabel": "Survey",
     "relationships": [
-      { "sourceField": "clientId", "targetModule": "CRM", "targetEntity": "client", "label": "sent to", "edgeStyle": "solid" }
+      {
+        "sourceField": "clientId",
+        "targetModule": "CRM",
+        "targetEntity": "client",
+        "label": "sent to",
+        "edgeStyle": "solid"
+      }
     ]
+  },
+  "type": "NPS",
+  "slug": "nps",
+  "agentType": "nps_analyst",
+  "pricing": {
+    "type": "subscription",
+    "monthlyPriceCents": 500
+  },
+  "author": {
+    "name": "SpokeStack",
+    "url": "https://spokestack.dev"
   }
 }

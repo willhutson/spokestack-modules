@@ -11,14 +11,51 @@
     "name": "delegation-agent"
   },
   "tools": [
-    "createDelegationProfile", "getDelegationProfile", "updateProfile",
-    "setEscalationRules", "activateDelegation", "deactivateDelegation",
-    "getDelegationStatus", "listActiveDelegations", "getHandoffBriefing",
-    "logActivity", "getActivityLog", "getDelegationSummary"
+    "createDelegationProfile",
+    "getDelegationProfile",
+    "updateProfile",
+    "setEscalationRules",
+    "activateDelegation",
+    "deactivateDelegation",
+    "getDelegationStatus",
+    "listActiveDelegations",
+    "getHandoffBriefing",
+    "logActivity",
+    "getActivityLog",
+    "getDelegationSummary"
   ],
   "surfaces": [
-    { "id": "delegation-dashboard", "type": "dashboard", "requiredTools": ["listActiveDelegations", "getDelegationStatus"] },
-    { "id": "delegation-home", "type": "full-page", "route": "/delegation", "requiredTools": ["listActiveDelegations", "createDelegationProfile"] }
+    {
+      "id": "delegation-dashboard",
+      "type": "dashboard",
+      "requiredTools": [
+        "listActiveDelegations",
+        "getDelegationStatus"
+      ]
+    },
+    {
+      "id": "delegation-home",
+      "type": "full-page",
+      "route": "/delegation",
+      "requiredTools": [
+        "listActiveDelegations",
+        "createDelegationProfile"
+      ]
+    }
   ],
-  "migrations": { "install": "migrations/install.ts", "uninstall": "migrations/uninstall.ts" }
+  "migrations": {
+    "install": "migrations/install.ts",
+    "uninstall": "migrations/uninstall.ts"
+  },
+  "type": "DELEGATION",
+  "slug": "delegation",
+  "agentType": "delegation_coordinator",
+  "pricing": {
+    "type": "subscription",
+    "monthlyPriceCents": 1000
+  },
+  "author": {
+    "name": "SpokeStack",
+    "url": "https://spokestack.dev"
+  }
 }

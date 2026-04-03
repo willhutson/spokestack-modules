@@ -11,18 +11,33 @@
     "path": "src/agent/tickets-agent.ts",
     "name": "tickets-agent"
   },
-  "tools": ["createTicket", "listTickets", "assignTicket", "updateTicketStatus", "addComment", "setPriority", "getSLAStatus", "getTicketMetrics"],
+  "tools": [
+    "createTicket",
+    "listTickets",
+    "assignTicket",
+    "updateTicketStatus",
+    "addComment",
+    "setPriority",
+    "getSLAStatus",
+    "getTicketMetrics"
+  ],
   "surfaces": [
     {
       "id": "tickets-dashboard",
       "type": "dashboard",
-      "requiredTools": ["createTicket", "listTickets"]
+      "requiredTools": [
+        "createTicket",
+        "listTickets"
+      ]
     },
     {
       "id": "tickets-overview",
       "type": "full-page",
       "route": "/tickets",
-      "requiredTools": ["createTicket", "listTickets"]
+      "requiredTools": [
+        "createTicket",
+        "listTickets"
+      ]
     }
   ],
   "migrations": {
@@ -38,15 +53,38 @@
         "valueSchema": {
           "type": "object",
           "properties": {
-            "name": { "type": "string" },
-            "status": { "type": "string" },
-            "createdAt": { "type": "string", "format": "date-time" }
+            "name": {
+              "type": "string"
+            },
+            "status": {
+              "type": "string"
+            },
+            "createdAt": {
+              "type": "string",
+              "format": "date-time"
+            }
           },
-          "required": ["name"]
+          "required": [
+            "name"
+          ]
         },
         "relatedCategories": []
       }
     ],
-    "patternTypes": ["tickets_activity", "tickets_trend"]
+    "patternTypes": [
+      "tickets_activity",
+      "tickets_trend"
+    ]
+  },
+  "type": "TICKETS",
+  "slug": "tickets",
+  "agentType": "assistant",
+  "pricing": {
+    "type": "subscription",
+    "monthlyPriceCents": 500
+  },
+  "author": {
+    "name": "SpokeStack",
+    "url": "https://spokestack.dev"
   }
 }
