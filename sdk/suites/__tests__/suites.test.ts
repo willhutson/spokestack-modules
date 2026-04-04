@@ -15,7 +15,7 @@ describe('Suite Definitions', () => {
     expect(suite).toBeDefined();
     expect(suite!.industry).toBe('marketing_agency');
     expect(suite!.modules).toContain('CRM');
-    expect(suite!.modules).toContain('BRIEFS');
+    expect(suite!.modules).toContain('CONTENT_STUDIO');
   });
 
   it('every suite has required fields', () => {

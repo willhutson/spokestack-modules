@@ -13,7 +13,7 @@ export const SUITES: SuiteDefinition[] = [
     description: "Complete setup for creative agencies in the UAE",
     industry: "marketing_agency",
     region: "MENA",
-    modules: ["CRM", "BRIEFS", "CONTENT_STUDIO", "SOCIAL_PUBLISHING", "TIME_LEAVE", "FINANCE", "ANALYTICS", "PUBLISHER", "REPLY"],
+    modules: ["CRM", "CONTENT_STUDIO", "SOCIAL_PUBLISHING", "TIME_LEAVE", "FINANCE", "ANALYTICS", "PUBLISHER", "REPLY", "MEDIA_BUYING"],
     config: { timezone: "Asia/Dubai", currency: "AED", workWeek: [1, 2, 3, 4, 5], language: "en" },
     moduleOverrides: {
       CRM: { pipelineStages: ["Lead", "Pitch", "Proposal", "Retainer", "Active Client"], defaultCurrency: "AED" },
@@ -40,7 +40,7 @@ export const SUITES: SuiteDefinition[] = [
     version: "1.0.0",
     description: "Media relations, press management, and communications workflows",
     industry: "pr_communications",
-    modules: ["CRM", "BRIEFS", "CONTENT_STUDIO", "PUBLISHER", "LISTENING", "ANALYTICS", "REPLY", "CHANNEL"],
+    modules: ["CRM", "CONTENT_STUDIO", "PUBLISHER", "LISTENING", "ANALYTICS", "REPLY", "CHANNEL"],
     config: { language: "en" },
     moduleOverrides: {
       CRM: { pipelineStages: ["Media Contact", "Pitch", "Coverage", "Follow-up"] },
@@ -61,7 +61,7 @@ export const SUITES: SuiteDefinition[] = [
     version: "1.0.0",
     description: "Design and creative production workflows",
     industry: "creative_studio",
-    modules: ["BRIEFS", "PROJECTS", "CONTENT_STUDIO", "TIME_LEAVE", "CRM", "FINANCE"],
+    modules: ["CONTENT_STUDIO", "TIME_LEAVE", "CRM", "FINANCE"],
     config: { language: "en" },
     moduleOverrides: {
       BRIEFS: { types: ["Design Brief", "Brand Identity Brief", "Packaging Brief", "UI/UX Brief"], reviewStages: ["Internal Review", "Creative Director", "Client Approval"] },
@@ -80,7 +80,7 @@ export const SUITES: SuiteDefinition[] = [
     version: "1.0.0",
     description: "Streamlined consulting with contracts, billing, and client management",
     industry: "consulting_firm",
-    modules: ["CRM", "PROJECTS", "TIME_LEAVE", "FINANCE", "CONTRACTS", "ANALYTICS"],
+    modules: ["CRM", "TIME_LEAVE", "FINANCE", "CONTRACTS", "ANALYTICS", "RFP", "DELEGATION"],
     config: { language: "en" },
     moduleOverrides: {
       CRM: { pipelineStages: ["Prospect", "Discovery", "Proposal", "Engagement", "Renewal"] },
@@ -174,7 +174,7 @@ export const SUITES: SuiteDefinition[] = [
     version: "1.0.0",
     description: "IT services with tickets, sprint planning, and project management",
     industry: "it_consulting",
-    modules: ["CRM", "PROJECTS", "TICKETS", "TIME_LEAVE", "BOARDS", "FINANCE", "ANALYTICS"],
+    modules: ["CRM", "TICKETS", "TIME_LEAVE", "BOARDS", "FINANCE", "ANALYTICS", "ACCESS_CONTROL", "API_MANAGEMENT"],
     config: { language: "en" },
     moduleOverrides: {
       BOARDS: { defaultBoards: ["Sprint Board", "Bug Tracker", "Feature Requests"] },
@@ -194,7 +194,7 @@ export const SUITES: SuiteDefinition[] = [
     version: "1.0.0",
     description: "Event planning with inventory, vendor coordination, and scheduling",
     industry: "event_management",
-    modules: ["CRM", "PROJECTS", "INVENTORY", "SCHEDULER", "ENTITIES", "TIME_LEAVE", "FINANCE"],
+    modules: ["CRM", "INVENTORY", "SCHEDULER", "ENTITIES", "TIME_LEAVE", "FINANCE"],
     config: { language: "en" },
     moduleOverrides: {
       ENTITIES: { entityTypes: ["Venue", "Vendor", "Attendee", "Sponsor"] },
@@ -230,7 +230,7 @@ export const SUITES: SuiteDefinition[] = [
     version: "1.0.0",
     description: "Internal operations for in-house teams",
     industry: "in_house_team",
-    modules: ["BRIEFS", "PROJECTS", "TIME_LEAVE", "BOARDS", "WORKFLOWS", "SPOKECHAT", "ANALYTICS"],
+    modules: ["TIME_LEAVE", "BOARDS", "WORKFLOWS", "SPOKECHAT", "ANALYTICS"],
     config: { language: "en" },
     agentPrompts: {},
     onboarding: {
@@ -246,7 +246,7 @@ export const SUITES: SuiteDefinition[] = [
     industry: "comms_agency",
     region: "MENA",
     modules: [
-      "CRM", "BRIEFS", "CONTENT_STUDIO", "SOCIAL_PUBLISHING",
+      "CRM", "CONTENT_STUDIO", "SOCIAL_PUBLISHING",
       "LISTENING", "ANALYTICS", "CLIENT_PORTAL", "TIME_LEAVE",
       "MEDIA_RELATIONS", "PRESS_RELEASES", "CRISIS_COMMS",
       "CLIENT_REPORTING", "INFLUENCER_MGMT", "EVENTS",
