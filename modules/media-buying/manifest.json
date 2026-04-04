@@ -1,67 +1,45 @@
 {
-  "name": "@spokestack/media-buying",
-  "displayName": "Media Buying",
-  "description": "Ad campaign management, budget allocation, and ROAS tracking.",
-  "version": "0.1.0",
-  "author": {
-    "name": "SpokeStack",
-    "url": "https://spokestack.dev"
-  },
-  "compatibility": {
-    "coreVersion": "1.0.0",
-    "schemaHash": ""
-  },
-  "tier": {
-    "minimum": "BUSINESS",
-    "recommended": "ENTERPRISE"
-  },
+  "name": "Media Buying",
+  "version": "1.0.0",
+  "description": "Media planning, buying, and campaign performance tracking",
+  "type": "MEDIA_BUYING",
+  "slug": "media-buying",
+  "moduleType": "MEDIA_BUYING",
+  "category": "marketing",
+  "minTier": "BUSINESS",
+  "agentType": "analyst",
   "pricing": {
     "type": "subscription",
     "monthlyPriceCents": 1500
   },
-  "schema": {
-    "models": [
-      "mb_Campaign",
-      "mb_AdSet",
-      "mb_Creative",
-      "mb_Budget",
-      "mb_Performance"
-    ],
-    "prefix": "mb_",
-    "dependsOn": []
+  "author": {
+    "name": "SpokeStack",
+    "url": "https://spokestack.dev"
   },
-  "agent": {
-    "name": "media-buying-agent",
-    "personality": "A media buying strategist that manages ad campaigns, allocates budgets, tracks ROAS, and optimizes bid strategies across channels.",
-    "tools": [
-      "createCampaign",
-      "allocateBudget",
-      "trackPerformance",
-      "optimizeBids"
-    ],
-    "contextContributions": []
+  "agentDefinition": {
+    "path": "src/agent/media-buying-agent.ts",
+    "name": "media-buying-agent"
   },
-  "surfaces": {
-    "dashboard": [],
-    "pages": [],
-    "agentCards": []
-  },
-  "milestones": [],
-  "permissions": {
-    "coreRead": [
-      "Organization",
-      "User",
-      "ContextEntry"
-    ],
-    "coreWrite": [
-      "ContextEntry"
-    ],
-    "ownModels": true
-  },
-  "conflicts": [],
-  "enhances": [],
-  "type": "MEDIA_BUYING",
-  "slug": "media-buying",
-  "agentType": "analyst",
-  "category": "marketing"
+  "tools": [
+    "createCampaign",
+    "listCampaigns",
+    "updateCampaign",
+    "getCampaignPerformance",
+    "createAdSet",
+    "updateAdSet",
+    "pauseAdSet",
+    "getAdSetMetrics",
+    "uploadCreative",
+    "listCreatives",
+    "linkCreativeToAdSet",
+    "trackSpend",
+    "getBudgetUtilization",
+    "getROAS",
+    "exportSpendReport"
+  ],
+  "surfaces": [],
+  "migrations": {
+    "install": "migrations/install.ts",
+    "uninstall": "migrations/uninstall.ts"
+  }
 }

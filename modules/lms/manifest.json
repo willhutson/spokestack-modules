@@ -1,67 +1,47 @@
 {
-  "name": "@spokestack/lms",
-  "displayName": "LMS",
-  "description": "Learning management system with courses, lessons, and progress tracking.",
-  "version": "0.1.0",
-  "author": {
-    "name": "SpokeStack",
-    "url": "https://spokestack.dev"
-  },
-  "compatibility": {
-    "coreVersion": "1.0.0",
-    "schemaHash": ""
-  },
-  "tier": {
-    "minimum": "PRO",
-    "recommended": "BUSINESS"
-  },
+  "name": "LMS",
+  "version": "1.0.0",
+  "description": "Learning management system for courses, assessments, and certifications",
+  "type": "LMS",
+  "slug": "lms",
+  "moduleType": "LMS",
+  "category": "ops",
+  "minTier": "PRO",
+  "agentType": "assistant",
   "pricing": {
     "type": "subscription",
     "monthlyPriceCents": 1500
   },
-  "schema": {
-    "models": [
-      "lms_Course",
-      "lms_Lesson",
-      "lms_Enrollment",
-      "lms_Progress",
-      "lms_Certificate"
-    ],
-    "prefix": "lms_",
-    "dependsOn": []
+  "author": {
+    "name": "SpokeStack",
+    "url": "https://spokestack.dev"
   },
-  "agent": {
-    "name": "lms-agent",
-    "personality": "A learning coordinator that creates courses, manages enrollments, tracks learner progress, and generates completion certificates.",
-    "tools": [
-      "createCourse",
-      "enrollUser",
-      "trackProgress",
-      "generateCertificate"
-    ],
-    "contextContributions": []
+  "agentDefinition": {
+    "path": "src/agent/lms-agent.ts",
+    "name": "lms-agent"
   },
-  "surfaces": {
-    "dashboard": [],
-    "pages": [],
-    "agentCards": []
-  },
-  "milestones": [],
-  "permissions": {
-    "coreRead": [
-      "Organization",
-      "User",
-      "ContextEntry"
-    ],
-    "coreWrite": [
-      "ContextEntry"
-    ],
-    "ownModels": true
-  },
-  "conflicts": [],
-  "enhances": [],
-  "type": "LMS",
-  "slug": "lms",
-  "agentType": "assistant",
-  "category": "operations"
+  "tools": [
+    "createCourse",
+    "listCourses",
+    "updateCourse",
+    "publishCourse",
+    "archiveCourse",
+    "createLesson",
+    "updateLesson",
+    "reorderLessons",
+    "addLessonContent",
+    "enrollUser",
+    "getEnrollments",
+    "getProgress",
+    "issueCompletion",
+    "createQuiz",
+    "addQuizQuestion",
+    "submitQuizAttempt",
+    "getQuizResults"
+  ],
+  "surfaces": [],
+  "migrations": {
+    "install": "migrations/install.ts",
+    "uninstall": "migrations/uninstall.ts"
+  }
 }
