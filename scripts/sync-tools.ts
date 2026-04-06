@@ -23,6 +23,7 @@ import path from "path";
 const AGENT_RUNTIME_URL =
   process.env.AGENT_RUNTIME_URL || "http://localhost:8100";
 const SYNC_MODULE = process.env.SYNC_MODULE;
+const AGENT_RUNTIME_SECRET = process.env.AGENT_RUNTIME_SECRET;
 
 interface ToolDefinition {
   name: string;
@@ -41,7 +42,9 @@ interface RegistryResponse {
 async function syncTools() {
   console.log(`Fetching tool registry from ${AGENT_RUNTIME_URL}...`);
 
-  const res = await fetch(`${AGENT_RUNTIME_URL}/api/v1/agents/registry`);
+  const res = await fetch(`${AGENT_RUNTIME_URL}/api/v1/agents/registry`, {
+    headers: AGENT_RUNTIME_SECRET ? { "X-Agent-Secret": AGENT_RUNTIME_SECRET } : {},
+  });
   if (!res.ok) {
     throw new Error(`Registry fetch failed: ${res.status} ${res.statusText}`);
   }
