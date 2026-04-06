@@ -11,12 +11,111 @@
     "name": "client-reporting-agent"
   },
   "tools": [
-    "generateClientReport",
-    "calculateAVE",
-    "calculateSOV",
-    "compileMetrics",
-    "sendReportToClient",
-    "getSentimentBreakdown"
+    {
+      "name": "generate_report",
+      "description": "Create a monthly client report brief",
+      "method": "POST",
+      "path": "/api/v1/briefs",
+      "parameters": {
+        "title": {
+          "type": "string",
+          "required": true,
+          "description": "e.g. 'March 2026 Monthly Report - Client'"
+        },
+        "description": {
+          "type": "string",
+          "required": true,
+          "description": "Full report content"
+        },
+        "clientId": {
+          "type": "string",
+          "required": true
+        }
+      }
+    },
+    {
+      "name": "get_coverage_data",
+      "description": "Get all coverage entries for a period",
+      "method": "GET",
+      "path": "/api/v1/context",
+      "parameters": {
+        "category": {
+          "type": "string",
+          "default": "coverage",
+          "in": "query"
+        }
+      }
+    },
+    {
+      "name": "get_activity_data",
+      "description": "Get recent workspace activity for the report",
+      "method": "GET",
+      "path": "/api/v1/activity",
+      "parameters": {
+        "limit": {
+          "type": "integer",
+          "default": 50,
+          "in": "query"
+        }
+      }
+    },
+    {
+      "name": "get_client_briefs",
+      "description": "Get all briefs for a specific client",
+      "method": "GET",
+      "path": "/api/v1/briefs",
+      "parameters": {}
+    },
+    {
+      "name": "save_report_metrics",
+      "description": "Save calculated report metrics to context",
+      "method": "POST",
+      "path": "/api/v1/context",
+      "parameters": {
+        "key": {
+          "type": "string",
+          "required": true
+        },
+        "value": {
+          "type": "object",
+          "required": true,
+          "description": "{ clientId, period, coverageCount, aveTotal, sovPercentage, sentimentScore }"
+        }
+      },
+      "fixedBodyMerge": {
+        "entryType": "INSIGHT",
+        "category": "report_metric"
+      }
+    },
+    {
+      "name": "list_clients",
+      "description": "List all clients in the workspace",
+      "method": "GET",
+      "path": "/api/v1/clients",
+      "parameters": {}
+    },
+    {
+      "name": "read_context",
+      "description": "Read organizational context — team patterns, client info, preferences, insights",
+      "method": "GET",
+      "path": "/api/v1/context",
+      "parameters": {
+        "category": {
+          "type": "string",
+          "in": "query"
+        },
+        "entryType": {
+          "type": "string",
+          "in": "query",
+          "enum": [
+            "ENTITY",
+            "PATTERN",
+            "PREFERENCE",
+            "INSIGHT"
+          ]
+        }
+      }
+    }
   ],
   "surfaces": [
     {

@@ -12,19 +12,132 @@
     "name": "nps-agent"
   },
   "tools": [
-    "createSurvey",
-    "sendSurvey",
-    "listSurveys",
-    "getSurveyResults",
-    "analyzeNPS",
-    "submitNPSResponse",
-    "listResponses",
-    "createForm",
-    "listForms",
-    "submitForm",
-    "listSubmissions",
-    "reviewSubmission",
-    "getSubmission"
+    {
+      "name": "create_survey",
+      "description": "Create a new NPS survey",
+      "method": "POST",
+      "path": "/api/v1/context",
+      "parameters": {
+        "key": {
+          "type": "string",
+          "required": true
+        },
+        "value": {
+          "type": "object",
+          "required": true,
+          "description": "{ name, question, follow_up_question, target_client_ids[], closes_at }"
+        }
+      },
+      "fixedBodyMerge": {
+        "entryType": "ENTITY",
+        "category": "nps_survey"
+      }
+    },
+    {
+      "name": "log_response",
+      "description": "Log an NPS survey response",
+      "method": "POST",
+      "path": "/api/v1/context",
+      "parameters": {
+        "key": {
+          "type": "string",
+          "required": true
+        },
+        "value": {
+          "type": "object",
+          "required": true,
+          "description": "{ survey_id, score (0-10), comment, client_id, respondent_name }"
+        }
+      },
+      "fixedBodyMerge": {
+        "entryType": "ENTITY",
+        "category": "nps_response"
+      }
+    },
+    {
+      "name": "calculate_nps",
+      "description": "Get all responses for a survey to calculate NPS",
+      "method": "GET",
+      "path": "/api/v1/context",
+      "parameters": {
+        "category": {
+          "type": "string",
+          "default": "nps_response",
+          "in": "query"
+        }
+      }
+    },
+    {
+      "name": "list_surveys",
+      "description": "List all NPS surveys",
+      "method": "GET",
+      "path": "/api/v1/context",
+      "parameters": {
+        "category": {
+          "type": "string",
+          "default": "nps_survey",
+          "in": "query"
+        }
+      }
+    },
+    {
+      "name": "create_followup",
+      "description": "Create a follow-up task to close the loop with a detractor",
+      "method": "POST",
+      "path": "/api/v1/tasks",
+      "parameters": {
+        "title": {
+          "type": "string",
+          "required": true
+        },
+        "description": {
+          "type": "string"
+        },
+        "priority": {
+          "type": "string",
+          "default": "HIGH"
+        }
+      }
+    },
+    {
+      "name": "generate_nps_report",
+      "description": "Generate an NPS report with score, trend, and recommended actions",
+      "method": "POST",
+      "path": "/api/v1/briefs",
+      "parameters": {
+        "title": {
+          "type": "string",
+          "required": true
+        },
+        "description": {
+          "type": "string",
+          "required": true,
+          "description": "Report content"
+        }
+      }
+    },
+    {
+      "name": "read_context",
+      "description": "Read organizational context — team patterns, client info, preferences, insights",
+      "method": "GET",
+      "path": "/api/v1/context",
+      "parameters": {
+        "category": {
+          "type": "string",
+          "in": "query"
+        },
+        "entryType": {
+          "type": "string",
+          "in": "query",
+          "enum": [
+            "ENTITY",
+            "PATTERN",
+            "PREFERENCE",
+            "INSIGHT"
+          ]
+        }
+      }
+    }
   ],
   "surfaces": [
     {

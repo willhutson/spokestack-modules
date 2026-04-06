@@ -12,22 +12,143 @@
     "name": "social_listening_agent"
   },
   "tools": [
-    "setupMonitor",
-    "listMonitors",
-    "updateMonitor",
-    "pauseMonitor",
-    "deleteMonitor",
-    "listMentions",
-    "getMention",
-    "flagMention",
-    "dismissMention",
-    "analyzeSentiment",
-    "getSentimentTrend",
-    "trackCompetitors",
-    "compareCompetitors",
-    "generateReport",
-    "listReports",
-    "alertOnMention"
+    {
+      "name": "log_mention",
+      "description": "Log a brand or keyword mention from social media",
+      "method": "POST",
+      "path": "/api/v1/context",
+      "parameters": {
+        "key": {
+          "type": "string",
+          "required": true
+        },
+        "value": {
+          "type": "object",
+          "required": true,
+          "description": "{ platform, author, content, sentiment, url, keywords[], client_id }"
+        }
+      },
+      "fixedBodyMerge": {
+        "entryType": "ENTITY",
+        "category": "social_mention"
+      }
+    },
+    {
+      "name": "search_mentions",
+      "description": "Search logged social mentions",
+      "method": "GET",
+      "path": "/api/v1/context",
+      "parameters": {
+        "category": {
+          "type": "string",
+          "default": "social_mention",
+          "in": "query"
+        }
+      }
+    },
+    {
+      "name": "create_alert",
+      "description": "Create a listening alert for keywords or sentiment thresholds",
+      "method": "POST",
+      "path": "/api/v1/context",
+      "parameters": {
+        "key": {
+          "type": "string",
+          "required": true
+        },
+        "value": {
+          "type": "object",
+          "required": true,
+          "description": "{ name, alert_type, keyword, sentiment, threshold_percent, notify_via }"
+        }
+      },
+      "fixedBodyMerge": {
+        "entryType": "ENTITY",
+        "category": "listening_alert"
+      }
+    },
+    {
+      "name": "generate_listening_report",
+      "description": "Generate a listening report summarizing mentions and sentiment",
+      "method": "POST",
+      "path": "/api/v1/briefs",
+      "parameters": {
+        "title": {
+          "type": "string",
+          "required": true
+        },
+        "description": {
+          "type": "string",
+          "required": true,
+          "description": "Report content"
+        }
+      }
+    },
+    {
+      "name": "get_sentiment_summary",
+      "description": "Get sentiment breakdown across logged mentions",
+      "method": "GET",
+      "path": "/api/v1/context",
+      "parameters": {
+        "category": {
+          "type": "string",
+          "default": "social_mention",
+          "in": "query"
+        }
+      }
+    },
+    {
+      "name": "create_followup_task",
+      "description": "Create a follow-up task for a pitch or action item",
+      "method": "POST",
+      "path": "/api/v1/tasks",
+      "parameters": {
+        "title": {
+          "type": "string",
+          "required": true
+        },
+        "description": {
+          "type": "string"
+        },
+        "dueDate": {
+          "type": "string",
+          "description": "ISO date"
+        },
+        "priority": {
+          "type": "string",
+          "default": "MEDIUM"
+        }
+      }
+    },
+    {
+      "name": "read_context",
+      "description": "Read organizational context — team patterns, client info, preferences, insights",
+      "method": "GET",
+      "path": "/api/v1/context",
+      "parameters": {
+        "category": {
+          "type": "string",
+          "in": "query"
+        },
+        "entryType": {
+          "type": "string",
+          "in": "query",
+          "enum": [
+            "ENTITY",
+            "PATTERN",
+            "PREFERENCE",
+            "INSIGHT"
+          ]
+        }
+      }
+    },
+    {
+      "name": "list_clients",
+      "description": "List all clients in the workspace",
+      "method": "GET",
+      "path": "/api/v1/clients",
+      "parameters": {}
+    }
   ],
   "surfaces": [
     {

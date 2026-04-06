@@ -12,31 +12,65 @@
     "name": "content_studio_agent"
   },
   "tools": [
-    "uploadAsset",
-    "listAssets",
-    "searchAssets",
-    "getAssetDetails",
-    "updateAsset",
-    "archiveAsset",
-    "createMoodboardV2",
-    "addMoodboardItem",
-    "shareMoodboard",
-    "createVideoProject",
-    "listVideoProjects",
-    "writeScript",
-    "buildStoryboard",
-    "createDeck",
-    "listDecks",
-    "exportDeck",
-    "createDocument",
-    "listDocuments",
-    "searchKnowledge",
-    "submitForApproval",
-    "reviewContent",
-    "listPendingReviews",
-    "trackContentStatus",
-    "createCalendarEntry",
-    "listCalendarEntries"
+    {
+      "name": "create_brief",
+      "description": "Create a new creative brief",
+      "method": "POST",
+      "path": "/api/v1/briefs",
+      "parameters": {
+        "title": {
+          "type": "string",
+          "required": true
+        },
+        "description": {
+          "type": "string"
+        },
+        "clientId": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "list_briefs",
+      "description": "List all briefs, optionally filtered by status",
+      "method": "GET",
+      "path": "/api/v1/briefs",
+      "parameters": {
+        "status": {
+          "type": "string",
+          "in": "query"
+        }
+      }
+    },
+    {
+      "name": "list_clients",
+      "description": "List all clients in the workspace",
+      "method": "GET",
+      "path": "/api/v1/clients",
+      "parameters": {}
+    },
+    {
+      "name": "read_context",
+      "description": "Read organizational context — team patterns, client info, preferences, insights",
+      "method": "GET",
+      "path": "/api/v1/context",
+      "parameters": {
+        "category": {
+          "type": "string",
+          "in": "query"
+        },
+        "entryType": {
+          "type": "string",
+          "in": "query",
+          "enum": [
+            "ENTITY",
+            "PATTERN",
+            "PREFERENCE",
+            "INSIGHT"
+          ]
+        }
+      }
+    }
   ],
   "surfaces": [
     {

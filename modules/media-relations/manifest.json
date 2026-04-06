@@ -11,12 +11,188 @@
     "name": "media-relations-agent"
   },
   "tools": [
-    "addJournalist",
-    "searchJournalists",
-    "createMediaList",
-    "createPitch",
-    "logCoverage",
-    "getCoverageReport"
+    {
+      "name": "add_journalist",
+      "description": "Add a journalist to the media database",
+      "method": "POST",
+      "path": "/api/v1/context",
+      "parameters": {
+        "key": {
+          "type": "string",
+          "required": true,
+          "description": "Unique key like journalist_sarah_ahmed"
+        },
+        "value": {
+          "type": "object",
+          "required": true,
+          "description": "{ name, outlet, beat, email, phone, twitter, linkedin, relationship_score (1-10), notes }"
+        }
+      },
+      "fixedBodyMerge": {
+        "entryType": "ENTITY",
+        "category": "journalist"
+      }
+    },
+    {
+      "name": "search_journalists",
+      "description": "Search the journalist database by beat, outlet, or name",
+      "method": "GET",
+      "path": "/api/v1/context",
+      "parameters": {
+        "category": {
+          "type": "string",
+          "default": "journalist",
+          "in": "query"
+        },
+        "entryType": {
+          "type": "string",
+          "default": "ENTITY",
+          "in": "query"
+        }
+      }
+    },
+    {
+      "name": "create_media_list",
+      "description": "Create a named media list (grouped journalists for outreach)",
+      "method": "POST",
+      "path": "/api/v1/context",
+      "parameters": {
+        "key": {
+          "type": "string",
+          "required": true,
+          "description": "Unique key like list_tech_journalists_uae"
+        },
+        "value": {
+          "type": "object",
+          "required": true,
+          "description": "{ name, description, journalistKeys: string[], purpose }"
+        }
+      },
+      "fixedBodyMerge": {
+        "entryType": "ENTITY",
+        "category": "media_list"
+      }
+    },
+    {
+      "name": "create_pitch",
+      "description": "Create a media pitch (stored as a Brief)",
+      "method": "POST",
+      "path": "/api/v1/briefs",
+      "parameters": {
+        "title": {
+          "type": "string",
+          "required": true,
+          "description": "Pitch headline"
+        },
+        "description": {
+          "type": "string",
+          "description": "Pitch body/angle"
+        },
+        "clientId": {
+          "type": "string",
+          "description": "Client the pitch is for"
+        }
+      }
+    },
+    {
+      "name": "log_coverage",
+      "description": "Log a media coverage hit",
+      "method": "POST",
+      "path": "/api/v1/context",
+      "parameters": {
+        "key": {
+          "type": "string",
+          "required": true,
+          "description": "Unique key like coverage_20260403_thenational"
+        },
+        "value": {
+          "type": "object",
+          "required": true,
+          "description": "{ headline, outlet, journalist, url, date, sentiment, reach_estimate, ave_aed }"
+        }
+      },
+      "fixedBodyMerge": {
+        "entryType": "ENTITY",
+        "category": "coverage"
+      }
+    },
+    {
+      "name": "get_coverage_report",
+      "description": "Get all coverage entries for analysis",
+      "method": "GET",
+      "path": "/api/v1/context",
+      "parameters": {
+        "category": {
+          "type": "string",
+          "default": "coverage",
+          "in": "query"
+        }
+      }
+    },
+    {
+      "name": "list_pitches",
+      "description": "List all active pitches",
+      "method": "GET",
+      "path": "/api/v1/briefs",
+      "parameters": {
+        "status": {
+          "type": "string",
+          "in": "query"
+        }
+      }
+    },
+    {
+      "name": "create_followup_task",
+      "description": "Create a follow-up task for a pitch or action item",
+      "method": "POST",
+      "path": "/api/v1/tasks",
+      "parameters": {
+        "title": {
+          "type": "string",
+          "required": true
+        },
+        "description": {
+          "type": "string"
+        },
+        "dueDate": {
+          "type": "string",
+          "description": "ISO date"
+        },
+        "priority": {
+          "type": "string",
+          "default": "MEDIUM"
+        }
+      }
+    },
+    {
+      "name": "list_clients",
+      "description": "List all clients in the workspace",
+      "method": "GET",
+      "path": "/api/v1/clients",
+      "parameters": {}
+    },
+    {
+      "name": "read_context",
+      "description": "Read organizational context — team patterns, client info, preferences, insights",
+      "method": "GET",
+      "path": "/api/v1/context",
+      "parameters": {
+        "category": {
+          "type": "string",
+          "in": "query"
+        },
+        "entryType": {
+          "type": "string",
+          "in": "query",
+          "enum": [
+            "ENTITY",
+            "PATTERN",
+            "PREFERENCE",
+            "INSIGHT"
+          ]
+        }
+      }
+    }
   ],
   "surfaces": [
     {

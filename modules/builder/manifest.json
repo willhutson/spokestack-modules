@@ -11,16 +11,212 @@
     "name": "builder-agent"
   },
   "tools": [
-    "createTemplate",
-    "listTemplates",
-    "updateTemplate",
-    "publishTemplate",
-    "getTemplateVersions",
-    "setPermissions",
-    "getPermissions",
-    "checkPermission",
-    "getAuditLog",
-    "exportAuditLog"
+    {
+      "name": "scaffold_module",
+      "description": "Scaffold a complete module package from a conversation — generates manifest, tools, system prompt, and pricing",
+      "parameters": {
+        "name": {
+          "type": "string",
+          "required": true,
+          "description": "Human-readable module name"
+        },
+        "slug": {
+          "type": "string",
+          "required": true,
+          "description": "URL-safe slug in kebab-case"
+        },
+        "module_type": {
+          "type": "string",
+          "required": true,
+          "description": "Module type in UPPER_SNAKE_CASE"
+        },
+        "entity_name": {
+          "type": "string",
+          "required": true,
+          "description": "Singular entity name"
+        },
+        "entity_name_plural": {
+          "type": "string",
+          "required": true,
+          "description": "Plural entity name"
+        },
+        "fields": {
+          "type": "array",
+          "required": true,
+          "description": "List of { name, type, required, description }"
+        },
+        "description": {
+          "type": "string",
+          "description": "Full description"
+        },
+        "category": {
+          "type": "string",
+          "description": "Category: Operations, Sales, HR, Finance, Marketing, Legal"
+        },
+        "pricing_type": {
+          "type": "string",
+          "description": "free, paid, or subscription"
+        },
+        "price_cents": {
+          "type": "number",
+          "description": "Price in cents for paid modules"
+        },
+        "monthly_price_cents": {
+          "type": "number",
+          "description": "Monthly price in cents for subscription"
+        }
+      },
+      "handler": "local"
+    },
+    {
+      "name": "validate_module",
+      "description": "Validate a module package for security and completeness — returns blockers and warnings",
+      "parameters": {
+        "module_package": {
+          "type": "object",
+          "required": true,
+          "description": "The module package to validate"
+        }
+      },
+      "handler": "local"
+    },
+    {
+      "name": "test_module",
+      "description": "Test module tools in a sandboxed environment — executes each tool with sample data",
+      "parameters": {
+        "module_package": {
+          "type": "object",
+          "required": true,
+          "description": "The module package to test"
+        }
+      },
+      "handler": "local"
+    },
+    {
+      "name": "publish_module",
+      "description": "Publish a validated module to the SpokeStack Marketplace",
+      "method": "POST",
+      "path": "/api/v1/marketplace/publish",
+      "parameters": {
+        "module_package": {
+          "type": "object",
+          "required": true,
+          "description": "The validated module package"
+        }
+      }
+    },
+    {
+      "name": "list_my_modules",
+      "description": "List all modules published by the current organization",
+      "method": "GET",
+      "path": "/api/v1/marketplace/my-modules",
+      "parameters": {}
+    },
+    {
+      "name": "get_module_analytics",
+      "description": "Get analytics for a published module: install count, revenue, rating, churn",
+      "method": "GET",
+      "path": "/api/v1/marketplace/analytics/{moduleId}",
+      "parameters": {
+        "moduleId": {
+          "type": "string",
+          "required": true,
+          "in": "path"
+        }
+      }
+    },
+    {
+      "name": "read_context",
+      "description": "Read organizational context — team patterns, client info, preferences, insights",
+      "method": "GET",
+      "path": "/api/v1/context",
+      "parameters": {
+        "category": {
+          "type": "string",
+          "in": "query"
+        },
+        "entryType": {
+          "type": "string",
+          "in": "query",
+          "enum": [
+            "ENTITY",
+            "PATTERN",
+            "PREFERENCE",
+            "INSIGHT"
+          ]
+        }
+      }
+    },
+    {
+      "name": "create_module_manifest",
+      "description": "Create a module manifest definition",
+      "method": "POST",
+      "path": "/api/v1/context",
+      "parameters": {
+        "key": {
+          "type": "string",
+          "required": true
+        },
+        "value": {
+          "type": "object",
+          "required": true,
+          "description": "{ module_type, name, description, category, agent_type, tier, tools[], icon, color }"
+        }
+      },
+      "fixedBodyMerge": {
+        "entryType": "ENTITY",
+        "category": "module_manifest"
+      }
+    },
+    {
+      "name": "create_module_page_template",
+      "description": "Generate and store a Next.js page template for a new module",
+      "method": "POST",
+      "path": "/api/v1/context",
+      "parameters": {
+        "key": {
+          "type": "string",
+          "required": true
+        },
+        "value": {
+          "type": "object",
+          "required": true,
+          "description": "{ module_type, module_name, tabs[], agent_type, description }"
+        }
+      },
+      "fixedBodyMerge": {
+        "entryType": "ENTITY",
+        "category": "module_template"
+      }
+    },
+    {
+      "name": "scaffold_agent_config",
+      "description": "Generate and store an agent configuration scaffold",
+      "method": "POST",
+      "path": "/api/v1/context",
+      "parameters": {
+        "key": {
+          "type": "string",
+          "required": true
+        },
+        "value": {
+          "type": "object",
+          "required": true,
+          "description": "{ module_type, canonical_type, mc_type, system_prompt_summary, tools[] }"
+        }
+      },
+      "fixedBodyMerge": {
+        "entryType": "ENTITY",
+        "category": "agent_config"
+      }
+    },
+    {
+      "name": "list_modules",
+      "description": "List all modules installed for the organization",
+      "method": "GET",
+      "path": "/api/v1/modules/installed",
+      "parameters": {}
+    }
   ],
   "surfaces": [
     {

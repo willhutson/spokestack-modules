@@ -11,10 +11,149 @@
     "name": "press-release-agent"
   },
   "tools": [
-    "draftPressRelease",
-    "generatePRContent",
-    "scheduleDistribution",
-    "trackPickups"
+    {
+      "name": "draft_press_release",
+      "description": "Create a new press release draft",
+      "method": "POST",
+      "path": "/api/v1/briefs",
+      "parameters": {
+        "title": {
+          "type": "string",
+          "required": true,
+          "description": "PR headline"
+        },
+        "description": {
+          "type": "string",
+          "required": true,
+          "description": "Full press release text"
+        },
+        "clientId": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "update_press_release",
+      "description": "Update/edit a press release draft",
+      "method": "PATCH",
+      "path": "/api/v1/briefs/{briefId}",
+      "parameters": {
+        "briefId": {
+          "type": "string",
+          "required": true,
+          "in": "path"
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "DRAFT",
+            "ACTIVE",
+            "IN_REVIEW",
+            "COMPLETED"
+          ]
+        }
+      }
+    },
+    {
+      "name": "submit_for_approval",
+      "description": "Submit a press release for client approval",
+      "method": "PATCH",
+      "path": "/api/v1/briefs/{briefId}",
+      "parameters": {
+        "briefId": {
+          "type": "string",
+          "required": true,
+          "in": "path"
+        }
+      },
+      "fixedBody": {
+        "status": "IN_REVIEW"
+      }
+    },
+    {
+      "name": "approve_release",
+      "description": "Approve a press release for distribution",
+      "method": "PATCH",
+      "path": "/api/v1/briefs/{briefId}",
+      "parameters": {
+        "briefId": {
+          "type": "string",
+          "required": true,
+          "in": "path"
+        }
+      },
+      "fixedBody": {
+        "status": "COMPLETED"
+      }
+    },
+    {
+      "name": "list_press_releases",
+      "description": "List all press releases",
+      "method": "GET",
+      "path": "/api/v1/briefs",
+      "parameters": {
+        "status": {
+          "type": "string",
+          "in": "query"
+        }
+      }
+    },
+    {
+      "name": "schedule_distribution",
+      "description": "Schedule a press release for distribution to a media list",
+      "method": "POST",
+      "path": "/api/v1/context",
+      "parameters": {
+        "key": {
+          "type": "string",
+          "required": true
+        },
+        "value": {
+          "type": "object",
+          "required": true,
+          "description": "{ briefId, mediaListKey, scheduledDate, embargoDate }"
+        }
+      },
+      "fixedBodyMerge": {
+        "entryType": "ENTITY",
+        "category": "pr_distribution"
+      }
+    },
+    {
+      "name": "list_clients",
+      "description": "List all clients in the workspace",
+      "method": "GET",
+      "path": "/api/v1/clients",
+      "parameters": {}
+    },
+    {
+      "name": "read_context",
+      "description": "Read organizational context — team patterns, client info, preferences, insights",
+      "method": "GET",
+      "path": "/api/v1/context",
+      "parameters": {
+        "category": {
+          "type": "string",
+          "in": "query"
+        },
+        "entryType": {
+          "type": "string",
+          "in": "query",
+          "enum": [
+            "ENTITY",
+            "PATTERN",
+            "PREFERENCE",
+            "INSIGHT"
+          ]
+        }
+      }
+    }
   ],
   "surfaces": [
     {

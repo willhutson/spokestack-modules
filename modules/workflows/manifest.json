@@ -12,21 +12,179 @@
     "name": "workflow-agent"
   },
   "tools": [
-    "createWorkflow",
-    "listWorkflowTemplates",
-    "getWorkflowTemplate",
-    "publishWorkflow",
-    "archiveWorkflow",
-    "instantiateWorkflow",
-    "listActiveWorkflows",
-    "getWorkflowStatus",
-    "cancelWorkflow",
-    "completeTask",
-    "blockTask",
-    "reassignTask",
-    "listWorkflowTasks",
-    "triggerNudge",
-    "listNudges"
+    {
+      "name": "create_workflow_def",
+      "description": "Create a new workflow definition (trigger → condition → action chain)",
+      "method": "POST",
+      "path": "/api/v1/context",
+      "parameters": {
+        "key": {
+          "type": "string",
+          "required": true
+        },
+        "value": {
+          "type": "object",
+          "required": true,
+          "description": "{ name, trigger_event, condition, action_type, action_config, enabled }"
+        }
+      },
+      "fixedBodyMerge": {
+        "entryType": "ENTITY",
+        "category": "workflow"
+      }
+    },
+    {
+      "name": "create_workflow",
+      "description": "Create an automation workflow",
+      "method": "POST",
+      "path": "/api/v1/context",
+      "parameters": {
+        "key": {
+          "type": "string",
+          "required": true,
+          "description": "Unique workflow key"
+        },
+        "value": {
+          "type": "object",
+          "required": true,
+          "description": "{ entityType, action, handler, conditions, enabled }"
+        }
+      },
+      "fixedBodyMerge": {
+        "entryType": "ENTITY",
+        "category": "workflow"
+      }
+    },
+    {
+      "name": "list_workflows",
+      "description": "List all workflows for the organization",
+      "method": "GET",
+      "path": "/api/v1/context",
+      "parameters": {
+        "category": {
+          "type": "string",
+          "default": "workflow",
+          "in": "query"
+        }
+      }
+    },
+    {
+      "name": "create_trigger",
+      "description": "Create a standalone trigger definition",
+      "method": "POST",
+      "path": "/api/v1/context",
+      "parameters": {
+        "key": {
+          "type": "string",
+          "required": true
+        },
+        "value": {
+          "type": "object",
+          "required": true,
+          "description": "{ name, event, condition }"
+        }
+      },
+      "fixedBodyMerge": {
+        "entryType": "ENTITY",
+        "category": "workflow_trigger"
+      }
+    },
+    {
+      "name": "create_action",
+      "description": "Create an action step that executes as part of a workflow",
+      "method": "POST",
+      "path": "/api/v1/tasks",
+      "parameters": {
+        "title": {
+          "type": "string",
+          "required": true
+        },
+        "description": {
+          "type": "string"
+        },
+        "priority": {
+          "type": "string",
+          "default": "MEDIUM"
+        }
+      }
+    },
+    {
+      "name": "activate_workflow",
+      "description": "Activate or deactivate a workflow",
+      "method": "POST",
+      "path": "/api/v1/context",
+      "parameters": {
+        "key": {
+          "type": "string",
+          "required": true,
+          "description": "Workflow context entry key"
+        },
+        "value": {
+          "type": "object",
+          "required": true,
+          "description": "{ enabled: true/false }"
+        }
+      },
+      "fixedBodyMerge": {
+        "entryType": "ENTITY",
+        "category": "workflow"
+      }
+    },
+    {
+      "name": "read_context",
+      "description": "Read organizational context — team patterns, client info, preferences, insights",
+      "method": "GET",
+      "path": "/api/v1/context",
+      "parameters": {
+        "category": {
+          "type": "string",
+          "in": "query"
+        },
+        "entryType": {
+          "type": "string",
+          "in": "query",
+          "enum": [
+            "ENTITY",
+            "PATTERN",
+            "PREFERENCE",
+            "INSIGHT"
+          ]
+        }
+      }
+    },
+    {
+      "name": "write_context",
+      "description": "Write a new insight, pattern, or entity to the organizational context graph",
+      "method": "POST",
+      "path": "/api/v1/context",
+      "parameters": {
+        "entryType": {
+          "type": "string",
+          "required": true,
+          "enum": [
+            "ENTITY",
+            "PATTERN",
+            "PREFERENCE",
+            "INSIGHT"
+          ]
+        },
+        "category": {
+          "type": "string",
+          "required": true
+        },
+        "key": {
+          "type": "string",
+          "required": true
+        },
+        "value": {
+          "type": "object",
+          "required": true
+        },
+        "confidence": {
+          "type": "number"
+        }
+      }
+    }
   ],
   "surfaces": [
     {

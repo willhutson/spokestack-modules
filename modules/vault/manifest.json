@@ -12,14 +12,215 @@
     "name": "vault-agent"
   },
   "tools": [
-    "uploadDocument",
-    "listDocuments",
-    "getDocument",
-    "shareDocument",
-    "revokeAccess",
-    "getAccessLog",
-    "setRetentionPolicy",
-    "archiveDocument"
+    {
+      "name": "list_tasks",
+      "description": "List tasks with optional status filter",
+      "method": "GET",
+      "path": "/api/v1/tasks",
+      "parameters": {
+        "status": {
+          "type": "string",
+          "in": "query"
+        },
+        "assigneeId": {
+          "type": "string",
+          "in": "query"
+        }
+      }
+    },
+    {
+      "name": "list_projects",
+      "description": "List all projects, optionally filtered by status",
+      "method": "GET",
+      "path": "/api/v1/projects",
+      "parameters": {
+        "status": {
+          "type": "string",
+          "in": "query"
+        }
+      }
+    },
+    {
+      "name": "list_briefs",
+      "description": "List all briefs, optionally filtered by status",
+      "method": "GET",
+      "path": "/api/v1/briefs",
+      "parameters": {
+        "status": {
+          "type": "string",
+          "in": "query"
+        }
+      }
+    },
+    {
+      "name": "list_orders",
+      "description": "List all orders",
+      "method": "GET",
+      "path": "/api/v1/orders",
+      "parameters": {
+        "status": {
+          "type": "string",
+          "in": "query"
+        }
+      }
+    },
+    {
+      "name": "list_clients",
+      "description": "List all clients in the workspace",
+      "method": "GET",
+      "path": "/api/v1/clients",
+      "parameters": {}
+    },
+    {
+      "name": "create_task",
+      "description": "Create a new task in the workspace",
+      "method": "POST",
+      "path": "/api/v1/tasks",
+      "parameters": {
+        "title": {
+          "type": "string",
+          "required": true,
+          "description": "Task title"
+        },
+        "description": {
+          "type": "string",
+          "description": "Task description"
+        },
+        "priority": {
+          "type": "string",
+          "enum": [
+            "LOW",
+            "MEDIUM",
+            "HIGH",
+            "URGENT"
+          ]
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "TODO",
+            "IN_PROGRESS",
+            "DONE"
+          ]
+        },
+        "assigneeId": {
+          "type": "string",
+          "description": "User ID to assign to"
+        },
+        "dueDate": {
+          "type": "string",
+          "description": "Due date in ISO format"
+        }
+      }
+    },
+    {
+      "name": "update_task",
+      "description": "Update a task's status, priority, assignee, or other fields",
+      "method": "PATCH",
+      "path": "/api/v1/tasks/{taskId}",
+      "parameters": {
+        "taskId": {
+          "type": "string",
+          "required": true,
+          "in": "path"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "TODO",
+            "IN_PROGRESS",
+            "DONE"
+          ]
+        },
+        "priority": {
+          "type": "string",
+          "enum": [
+            "LOW",
+            "MEDIUM",
+            "HIGH",
+            "URGENT"
+          ]
+        },
+        "title": {
+          "type": "string"
+        },
+        "assigneeId": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "complete_task",
+      "description": "Mark a task as done",
+      "method": "PATCH",
+      "path": "/api/v1/tasks/{taskId}",
+      "parameters": {
+        "taskId": {
+          "type": "string",
+          "required": true,
+          "in": "path"
+        }
+      },
+      "fixedBody": {
+        "status": "DONE"
+      }
+    },
+    {
+      "name": "read_context",
+      "description": "Read organizational context — team patterns, client info, preferences, insights",
+      "method": "GET",
+      "path": "/api/v1/context",
+      "parameters": {
+        "category": {
+          "type": "string",
+          "in": "query"
+        },
+        "entryType": {
+          "type": "string",
+          "in": "query",
+          "enum": [
+            "ENTITY",
+            "PATTERN",
+            "PREFERENCE",
+            "INSIGHT"
+          ]
+        }
+      }
+    },
+    {
+      "name": "get_recent_activity",
+      "description": "Get recent activity across all entities in the workspace",
+      "method": "GET",
+      "path": "/api/v1/activity",
+      "parameters": {
+        "limit": {
+          "type": "integer",
+          "in": "query",
+          "default": 20
+        }
+      }
+    },
+    {
+      "name": "list_team_members",
+      "description": "List all team members in the workspace",
+      "method": "GET",
+      "path": "/api/v1/team",
+      "parameters": {}
+    },
+    {
+      "name": "search_workspace",
+      "description": "Search across tasks, projects, briefs, clients, and orders via context graph",
+      "method": "GET",
+      "path": "/api/v1/context",
+      "parameters": {
+        "search": {
+          "type": "string",
+          "required": true,
+          "in": "query",
+          "description": "Search query"
+        }
+      }
+    }
   ],
   "surfaces": [
     {

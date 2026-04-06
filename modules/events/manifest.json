@@ -11,15 +11,151 @@
     "name": "events-agent"
   },
   "tools": [
-    "createEvent",
-    "addGuest",
-    "importGuestList",
-    "sendRSVPInvitation",
-    "createRunOfShowItem",
-    "reorderRunOfShow",
-    "addVendor",
-    "trackBudget",
-    "generatePostEventReport"
+    {
+      "name": "create_event",
+      "description": "Create a new event (as a Project)",
+      "method": "POST",
+      "path": "/api/v1/projects",
+      "parameters": {
+        "name": {
+          "type": "string",
+          "required": true,
+          "description": "Event name"
+        },
+        "description": {
+          "type": "string",
+          "description": "Event details, venue, format"
+        }
+      }
+    },
+    {
+      "name": "add_guest",
+      "description": "Add a guest to the event guest list",
+      "method": "POST",
+      "path": "/api/v1/context",
+      "parameters": {
+        "key": {
+          "type": "string",
+          "required": true
+        },
+        "value": {
+          "type": "object",
+          "required": true,
+          "description": "{ eventProjectId, name, email, company, tier, rsvpStatus, dietary, tableAssignment }"
+        }
+      },
+      "fixedBodyMerge": {
+        "entryType": "ENTITY",
+        "category": "event_guest"
+      }
+    },
+    {
+      "name": "get_guest_list",
+      "description": "Get the guest list for an event",
+      "method": "GET",
+      "path": "/api/v1/context",
+      "parameters": {
+        "category": {
+          "type": "string",
+          "default": "event_guest",
+          "in": "query"
+        }
+      }
+    },
+    {
+      "name": "create_run_of_show_item",
+      "description": "Add an item to the event run of show",
+      "method": "POST",
+      "path": "/api/v1/tasks",
+      "parameters": {
+        "title": {
+          "type": "string",
+          "required": true,
+          "description": "e.g. '7:00 PM - Doors open'"
+        },
+        "description": {
+          "type": "string",
+          "description": "Details, responsible person"
+        },
+        "priority": {
+          "type": "string",
+          "default": "HIGH"
+        }
+      }
+    },
+    {
+      "name": "add_vendor",
+      "description": "Add a vendor/supplier for the event (as an Order)",
+      "method": "POST",
+      "path": "/api/v1/orders",
+      "parameters": {
+        "clientId": {
+          "type": "string",
+          "description": "The brand client funding this event"
+        },
+        "items": {
+          "type": "array",
+          "required": true,
+          "description": "[{description, quantity, unitPriceCents}]"
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "update_event_status",
+      "description": "Update the event status",
+      "method": "PATCH",
+      "path": "/api/v1/projects/{projectId}",
+      "parameters": {
+        "projectId": {
+          "type": "string",
+          "required": true,
+          "in": "path"
+        },
+        "status": {
+          "type": "string",
+          "required": true
+        }
+      }
+    },
+    {
+      "name": "list_events",
+      "description": "List all events",
+      "method": "GET",
+      "path": "/api/v1/projects",
+      "parameters": {}
+    },
+    {
+      "name": "list_clients",
+      "description": "List all clients in the workspace",
+      "method": "GET",
+      "path": "/api/v1/clients",
+      "parameters": {}
+    },
+    {
+      "name": "read_context",
+      "description": "Read organizational context — team patterns, client info, preferences, insights",
+      "method": "GET",
+      "path": "/api/v1/context",
+      "parameters": {
+        "category": {
+          "type": "string",
+          "in": "query"
+        },
+        "entryType": {
+          "type": "string",
+          "in": "query",
+          "enum": [
+            "ENTITY",
+            "PATTERN",
+            "PREFERENCE",
+            "INSIGHT"
+          ]
+        }
+      }
+    }
   ],
   "surfaces": [
     {

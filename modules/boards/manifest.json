@@ -11,24 +11,150 @@
     "name": "boards-agent"
   },
   "tools": [
-    "createBoard",
-    "listBoards",
-    "getBoard",
-    "updateBoard",
-    "deleteBoard",
-    "addColumn",
-    "updateColumn",
-    "reorderColumns",
-    "deleteColumn",
-    "createCard",
-    "moveCard",
-    "updateCard",
-    "assignCard",
-    "addCardComment",
-    "getCardActivity",
-    "filterCards",
-    "searchCards",
-    "getCardsByAssignee"
+    {
+      "name": "create_board",
+      "description": "Create a new project board (kanban, sprint, or release board)",
+      "method": "POST",
+      "path": "/api/v1/context",
+      "parameters": {
+        "key": {
+          "type": "string",
+          "required": true,
+          "description": "Unique board key"
+        },
+        "value": {
+          "type": "object",
+          "required": true,
+          "description": "{ name, board_type, columns[], wip_limit, project_id }"
+        }
+      },
+      "fixedBodyMerge": {
+        "entryType": "ENTITY",
+        "category": "board"
+      }
+    },
+    {
+      "name": "add_card",
+      "description": "Add a card (task) to a board",
+      "method": "POST",
+      "path": "/api/v1/tasks",
+      "parameters": {
+        "title": {
+          "type": "string",
+          "required": true
+        },
+        "description": {
+          "type": "string"
+        },
+        "assigneeId": {
+          "type": "string"
+        },
+        "dueDate": {
+          "type": "string"
+        },
+        "priority": {
+          "type": "string",
+          "enum": [
+            "LOW",
+            "MEDIUM",
+            "HIGH",
+            "URGENT"
+          ]
+        }
+      }
+    },
+    {
+      "name": "move_card",
+      "description": "Move a card to a different column on a board",
+      "method": "PATCH",
+      "path": "/api/v1/tasks/{taskId}",
+      "parameters": {
+        "taskId": {
+          "type": "string",
+          "required": true,
+          "in": "path"
+        },
+        "status": {
+          "type": "string",
+          "description": "New column/status"
+        }
+      }
+    },
+    {
+      "name": "list_boards",
+      "description": "List all boards for the organization",
+      "method": "GET",
+      "path": "/api/v1/context",
+      "parameters": {
+        "category": {
+          "type": "string",
+          "default": "board",
+          "in": "query"
+        }
+      }
+    },
+    {
+      "name": "list_board_cards",
+      "description": "List all cards on a specific board",
+      "method": "GET",
+      "path": "/api/v1/tasks",
+      "parameters": {
+        "status": {
+          "type": "string",
+          "in": "query"
+        }
+      }
+    },
+    {
+      "name": "create_column",
+      "description": "Add a new column to an existing board",
+      "method": "POST",
+      "path": "/api/v1/context",
+      "parameters": {
+        "key": {
+          "type": "string",
+          "required": true
+        },
+        "value": {
+          "type": "object",
+          "required": true,
+          "description": "{ boardId, column_name, position, wip_limit }"
+        }
+      },
+      "fixedBodyMerge": {
+        "entryType": "ENTITY",
+        "category": "board_column"
+      }
+    },
+    {
+      "name": "read_context",
+      "description": "Read organizational context — team patterns, client info, preferences, insights",
+      "method": "GET",
+      "path": "/api/v1/context",
+      "parameters": {
+        "category": {
+          "type": "string",
+          "in": "query"
+        },
+        "entryType": {
+          "type": "string",
+          "in": "query",
+          "enum": [
+            "ENTITY",
+            "PATTERN",
+            "PREFERENCE",
+            "INSIGHT"
+          ]
+        }
+      }
+    },
+    {
+      "name": "list_clients",
+      "description": "List all clients in the workspace",
+      "method": "GET",
+      "path": "/api/v1/clients",
+      "parameters": {}
+    }
   ],
   "surfaces": [
     {

@@ -12,20 +12,131 @@
     "name": "client-portal-agent"
   },
   "tools": [
-    "createPortalUser",
-    "listPortalUsers",
-    "deactivatePortalUser",
-    "managePortalSessions",
-    "generateMagicLink",
-    "validateMagicLink",
-    "listBriefRequests",
-    "reviewBriefRequest",
-    "convertBriefRequest",
-    "trackOnboarding",
-    "updateOnboardingTask",
-    "listOnboardingTasks",
-    "addPortalComment",
-    "listPortalComments"
+    {
+      "name": "create_deliverable_entry",
+      "description": "Create a deliverable entry in the client portal",
+      "method": "POST",
+      "path": "/api/v1/context",
+      "parameters": {
+        "key": {
+          "type": "string",
+          "required": true
+        },
+        "value": {
+          "type": "object",
+          "required": true,
+          "description": "{ title, client_id, project_id, deliverable_type, file_url, status }"
+        }
+      },
+      "fixedBodyMerge": {
+        "entryType": "ENTITY",
+        "category": "portal_deliverable"
+      }
+    },
+    {
+      "name": "list_deliverables",
+      "description": "List deliverables in the client portal",
+      "method": "GET",
+      "path": "/api/v1/context",
+      "parameters": {
+        "category": {
+          "type": "string",
+          "default": "portal_deliverable",
+          "in": "query"
+        }
+      }
+    },
+    {
+      "name": "submit_deliverable_for_review",
+      "description": "Submit a deliverable for client review (creates a brief with IN_REVIEW)",
+      "method": "POST",
+      "path": "/api/v1/briefs",
+      "parameters": {
+        "title": {
+          "type": "string",
+          "required": true,
+          "description": "Review request title"
+        },
+        "description": {
+          "type": "string"
+        },
+        "clientId": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "update_approval_status",
+      "description": "Update the approval status of a brief/review request",
+      "method": "PATCH",
+      "path": "/api/v1/briefs/{briefId}",
+      "parameters": {
+        "briefId": {
+          "type": "string",
+          "required": true,
+          "in": "path"
+        },
+        "status": {
+          "type": "string",
+          "required": true,
+          "enum": [
+            "COMPLETED",
+            "DRAFT",
+            "IN_REVIEW"
+          ]
+        }
+      }
+    },
+    {
+      "name": "create_client_update",
+      "description": "Create a client update notification in the portal",
+      "method": "POST",
+      "path": "/api/v1/context",
+      "parameters": {
+        "key": {
+          "type": "string",
+          "required": true
+        },
+        "value": {
+          "type": "object",
+          "required": true,
+          "description": "{ client_id, subject, body, update_type, related_deliverable_id }"
+        }
+      },
+      "fixedBodyMerge": {
+        "entryType": "ENTITY",
+        "category": "client_update"
+      }
+    },
+    {
+      "name": "list_clients",
+      "description": "List all clients in the workspace",
+      "method": "GET",
+      "path": "/api/v1/clients",
+      "parameters": {}
+    },
+    {
+      "name": "read_context",
+      "description": "Read organizational context — team patterns, client info, preferences, insights",
+      "method": "GET",
+      "path": "/api/v1/context",
+      "parameters": {
+        "category": {
+          "type": "string",
+          "in": "query"
+        },
+        "entryType": {
+          "type": "string",
+          "in": "query",
+          "enum": [
+            "ENTITY",
+            "PATTERN",
+            "PREFERENCE",
+            "INSIGHT"
+          ]
+        }
+      }
+    }
   ],
   "surfaces": [
     {

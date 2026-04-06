@@ -11,30 +11,141 @@
     "name": "crm-agent"
   },
   "tools": [
-    "createContact",
-    "listContacts",
-    "updateContact",
-    "createDeal",
-    "updateDeal",
-    "listDeals",
-    "linkContactToDeal",
-    "managePipeline",
-    "logInteraction",
-    "searchCRM",
-    "exportContacts",
-    "manageDealContacts",
-    "manageDealProducts",
-    "trackDealCompetitors",
-    "getDealStageHistory",
-    "manageContactNotes",
-    "manageContactActivities",
-    "manageCRMTasks",
-    "manageProducts",
-    "manageCompetitors",
-    "manageCRMCampaigns",
-    "handleComplaint",
-    "listComplaints",
-    "getComplaintDetails"
+    {
+      "name": "create_client",
+      "description": "Create a new client",
+      "method": "POST",
+      "path": "/api/v1/clients",
+      "parameters": {
+        "name": {
+          "type": "string",
+          "required": true
+        },
+        "email": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "company": {
+          "type": "string"
+        },
+        "industry": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "update_client",
+      "description": "Update client information",
+      "method": "PATCH",
+      "path": "/api/v1/clients/{clientId}",
+      "parameters": {
+        "clientId": {
+          "type": "string",
+          "required": true,
+          "in": "path"
+        },
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "company": {
+          "type": "string"
+        },
+        "industry": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "list_clients",
+      "description": "List all clients in the workspace",
+      "method": "GET",
+      "path": "/api/v1/clients",
+      "parameters": {}
+    },
+    {
+      "name": "list_orders",
+      "description": "List all orders",
+      "method": "GET",
+      "path": "/api/v1/orders",
+      "parameters": {
+        "status": {
+          "type": "string",
+          "in": "query"
+        }
+      }
+    },
+    {
+      "name": "list_briefs",
+      "description": "List all briefs, optionally filtered by status",
+      "method": "GET",
+      "path": "/api/v1/briefs",
+      "parameters": {
+        "status": {
+          "type": "string",
+          "in": "query"
+        }
+      }
+    },
+    {
+      "name": "read_context",
+      "description": "Read organizational context — team patterns, client info, preferences, insights",
+      "method": "GET",
+      "path": "/api/v1/context",
+      "parameters": {
+        "category": {
+          "type": "string",
+          "in": "query"
+        },
+        "entryType": {
+          "type": "string",
+          "in": "query",
+          "enum": [
+            "ENTITY",
+            "PATTERN",
+            "PREFERENCE",
+            "INSIGHT"
+          ]
+        }
+      }
+    },
+    {
+      "name": "write_context",
+      "description": "Write a new insight, pattern, or entity to the organizational context graph",
+      "method": "POST",
+      "path": "/api/v1/context",
+      "parameters": {
+        "entryType": {
+          "type": "string",
+          "required": true,
+          "enum": [
+            "ENTITY",
+            "PATTERN",
+            "PREFERENCE",
+            "INSIGHT"
+          ]
+        },
+        "category": {
+          "type": "string",
+          "required": true
+        },
+        "key": {
+          "type": "string",
+          "required": true
+        },
+        "value": {
+          "type": "object",
+          "required": true
+        },
+        "confidence": {
+          "type": "number"
+        }
+      }
+    }
   ],
   "surfaces": [
     {

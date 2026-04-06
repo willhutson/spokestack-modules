@@ -11,18 +11,139 @@
     "name": "delegation-agent"
   },
   "tools": [
-    "createDelegationProfile",
-    "getDelegationProfile",
-    "updateProfile",
-    "setEscalationRules",
-    "activateDelegation",
-    "deactivateDelegation",
-    "getDelegationStatus",
-    "listActiveDelegations",
-    "getHandoffBriefing",
-    "logActivity",
-    "getActivityLog",
-    "getDelegationSummary"
+    {
+      "name": "delegate_task",
+      "description": "Delegate a new task to a specific team member",
+      "method": "POST",
+      "path": "/api/v1/tasks",
+      "parameters": {
+        "title": {
+          "type": "string",
+          "required": true
+        },
+        "description": {
+          "type": "string"
+        },
+        "assigneeId": {
+          "type": "string",
+          "required": true
+        },
+        "dueDate": {
+          "type": "string"
+        },
+        "priority": {
+          "type": "string",
+          "enum": [
+            "LOW",
+            "MEDIUM",
+            "HIGH",
+            "URGENT"
+          ]
+        }
+      }
+    },
+    {
+      "name": "reassign_task",
+      "description": "Reassign an existing task to a different team member",
+      "method": "PATCH",
+      "path": "/api/v1/tasks/{taskId}",
+      "parameters": {
+        "taskId": {
+          "type": "string",
+          "required": true,
+          "in": "path"
+        },
+        "assigneeId": {
+          "type": "string",
+          "required": true
+        }
+      }
+    },
+    {
+      "name": "check_workload",
+      "description": "Check task workload for a team member or all members",
+      "method": "GET",
+      "path": "/api/v1/tasks",
+      "parameters": {
+        "assigneeId": {
+          "type": "string",
+          "in": "query"
+        },
+        "status": {
+          "type": "string",
+          "in": "query"
+        }
+      }
+    },
+    {
+      "name": "create_escalation_rule",
+      "description": "Create an escalation rule for overdue tasks",
+      "method": "POST",
+      "path": "/api/v1/context",
+      "parameters": {
+        "key": {
+          "type": "string",
+          "required": true
+        },
+        "value": {
+          "type": "object",
+          "required": true,
+          "description": "{ name, trigger_after_hours, level_1_notify, level_2_notify, applies_to_priority }"
+        }
+      },
+      "fixedBodyMerge": {
+        "entryType": "ENTITY",
+        "category": "escalation_rule"
+      }
+    },
+    {
+      "name": "list_escalation_rules",
+      "description": "List all active escalation rules",
+      "method": "GET",
+      "path": "/api/v1/context",
+      "parameters": {
+        "category": {
+          "type": "string",
+          "default": "escalation_rule",
+          "in": "query"
+        }
+      }
+    },
+    {
+      "name": "flag_overdue",
+      "description": "Get all overdue tasks",
+      "method": "GET",
+      "path": "/api/v1/tasks",
+      "parameters": {
+        "status": {
+          "type": "string",
+          "default": "TODO",
+          "in": "query"
+        }
+      }
+    },
+    {
+      "name": "read_context",
+      "description": "Read organizational context — team patterns, client info, preferences, insights",
+      "method": "GET",
+      "path": "/api/v1/context",
+      "parameters": {
+        "category": {
+          "type": "string",
+          "in": "query"
+        },
+        "entryType": {
+          "type": "string",
+          "in": "query",
+          "enum": [
+            "ENTITY",
+            "PATTERN",
+            "PREFERENCE",
+            "INSIGHT"
+          ]
+        }
+      }
+    }
   ],
   "surfaces": [
     {

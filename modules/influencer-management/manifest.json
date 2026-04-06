@@ -11,13 +11,139 @@
     "name": "influencer-management-agent"
   },
   "tools": [
-    "addInfluencer",
-    "searchInfluencers",
-    "createInfluencerCampaign",
-    "createDeliverable",
-    "createInfluencerContract",
-    "calculateROI",
-    "trackEngagement"
+    {
+      "name": "add_influencer",
+      "description": "Add an influencer to the database",
+      "method": "POST",
+      "path": "/api/v1/context",
+      "parameters": {
+        "key": {
+          "type": "string",
+          "required": true
+        },
+        "value": {
+          "type": "object",
+          "required": true,
+          "description": "{ name, handle, platform, followers, engagementRate, niche, location, rateCard, pastCampaigns[] }"
+        }
+      },
+      "fixedBodyMerge": {
+        "entryType": "ENTITY",
+        "category": "influencer"
+      }
+    },
+    {
+      "name": "search_influencers",
+      "description": "Search the influencer database",
+      "method": "GET",
+      "path": "/api/v1/context",
+      "parameters": {
+        "category": {
+          "type": "string",
+          "default": "influencer",
+          "in": "query"
+        }
+      }
+    },
+    {
+      "name": "create_influencer_campaign",
+      "description": "Create an influencer campaign (as a Project)",
+      "method": "POST",
+      "path": "/api/v1/projects",
+      "parameters": {
+        "name": {
+          "type": "string",
+          "required": true
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "create_deliverable",
+      "description": "Create a deliverable task for an influencer",
+      "method": "POST",
+      "path": "/api/v1/tasks",
+      "parameters": {
+        "title": {
+          "type": "string",
+          "required": true
+        },
+        "description": {
+          "type": "string"
+        },
+        "dueDate": {
+          "type": "string"
+        },
+        "priority": {
+          "type": "string",
+          "default": "HIGH"
+        }
+      }
+    },
+    {
+      "name": "create_influencer_contract",
+      "description": "Create a contract/payment order for an influencer",
+      "method": "POST",
+      "path": "/api/v1/orders",
+      "parameters": {
+        "clientId": {
+          "type": "string",
+          "required": true,
+          "description": "The brand client paying for this"
+        },
+        "items": {
+          "type": "array",
+          "required": true,
+          "description": "[{description, quantity, unitPriceCents}]"
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "list_campaigns",
+      "description": "List influencer campaigns",
+      "method": "GET",
+      "path": "/api/v1/projects",
+      "parameters": {
+        "status": {
+          "type": "string",
+          "in": "query"
+        }
+      }
+    },
+    {
+      "name": "list_clients",
+      "description": "List all clients in the workspace",
+      "method": "GET",
+      "path": "/api/v1/clients",
+      "parameters": {}
+    },
+    {
+      "name": "read_context",
+      "description": "Read organizational context — team patterns, client info, preferences, insights",
+      "method": "GET",
+      "path": "/api/v1/context",
+      "parameters": {
+        "category": {
+          "type": "string",
+          "in": "query"
+        },
+        "entryType": {
+          "type": "string",
+          "in": "query",
+          "enum": [
+            "ENTITY",
+            "PATTERN",
+            "PREFERENCE",
+            "INSIGHT"
+          ]
+        }
+      }
+    }
   ],
   "surfaces": [
     {

@@ -11,12 +11,185 @@
     "name": "crisis-comms-agent"
   },
   "tools": [
-    "activateCrisis",
-    "loadPlaybook",
-    "mapStakeholders",
-    "draftHoldingStatement",
-    "escalateCrisis",
-    "getCrisisStatus"
+    {
+      "name": "activate_crisis",
+      "description": "Create a crisis situation (as a Project)",
+      "method": "POST",
+      "path": "/api/v1/projects",
+      "parameters": {
+        "name": {
+          "type": "string",
+          "required": true,
+          "description": "Crisis name/identifier"
+        },
+        "description": {
+          "type": "string",
+          "required": true,
+          "description": "Situation summary"
+        }
+      }
+    },
+    {
+      "name": "draft_holding_statement",
+      "description": "Draft an immediate holding statement",
+      "method": "POST",
+      "path": "/api/v1/briefs",
+      "parameters": {
+        "title": {
+          "type": "string",
+          "required": true
+        },
+        "description": {
+          "type": "string",
+          "required": true,
+          "description": "Holding statement text"
+        },
+        "clientId": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "map_stakeholder",
+      "description": "Add a stakeholder to the crisis map",
+      "method": "POST",
+      "path": "/api/v1/context",
+      "parameters": {
+        "key": {
+          "type": "string",
+          "required": true
+        },
+        "value": {
+          "type": "object",
+          "required": true,
+          "description": "{ name, role, contact, priority (1-5), status, notes }"
+        }
+      },
+      "fixedBodyMerge": {
+        "entryType": "ENTITY",
+        "category": "crisis_stakeholder"
+      }
+    },
+    {
+      "name": "create_crisis_task",
+      "description": "Create an urgent task in the crisis response",
+      "method": "POST",
+      "path": "/api/v1/tasks",
+      "parameters": {
+        "title": {
+          "type": "string",
+          "required": true
+        },
+        "description": {
+          "type": "string"
+        },
+        "priority": {
+          "type": "string",
+          "default": "URGENT"
+        },
+        "dueDate": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "update_crisis_status",
+      "description": "Update the crisis situation status",
+      "method": "PATCH",
+      "path": "/api/v1/projects/{projectId}",
+      "parameters": {
+        "projectId": {
+          "type": "string",
+          "required": true,
+          "in": "path"
+        },
+        "status": {
+          "type": "string",
+          "required": true,
+          "enum": [
+            "PLANNING",
+            "ACTIVE",
+            "ON_HOLD",
+            "COMPLETED"
+          ]
+        }
+      }
+    },
+    {
+      "name": "get_stakeholders",
+      "description": "Get all stakeholders for the current crisis",
+      "method": "GET",
+      "path": "/api/v1/context",
+      "parameters": {
+        "category": {
+          "type": "string",
+          "default": "crisis_stakeholder",
+          "in": "query"
+        }
+      }
+    },
+    {
+      "name": "list_clients",
+      "description": "List all clients in the workspace",
+      "method": "GET",
+      "path": "/api/v1/clients",
+      "parameters": {}
+    },
+    {
+      "name": "read_context",
+      "description": "Read organizational context — team patterns, client info, preferences, insights",
+      "method": "GET",
+      "path": "/api/v1/context",
+      "parameters": {
+        "category": {
+          "type": "string",
+          "in": "query"
+        },
+        "entryType": {
+          "type": "string",
+          "in": "query",
+          "enum": [
+            "ENTITY",
+            "PATTERN",
+            "PREFERENCE",
+            "INSIGHT"
+          ]
+        }
+      }
+    },
+    {
+      "name": "write_context",
+      "description": "Write a new insight, pattern, or entity to the organizational context graph",
+      "method": "POST",
+      "path": "/api/v1/context",
+      "parameters": {
+        "entryType": {
+          "type": "string",
+          "required": true,
+          "enum": [
+            "ENTITY",
+            "PATTERN",
+            "PREFERENCE",
+            "INSIGHT"
+          ]
+        },
+        "category": {
+          "type": "string",
+          "required": true
+        },
+        "key": {
+          "type": "string",
+          "required": true
+        },
+        "value": {
+          "type": "object",
+          "required": true
+        },
+        "confidence": {
+          "type": "number"
+        }
+      }
+    }
   ],
   "surfaces": [
     {

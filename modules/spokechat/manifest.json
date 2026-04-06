@@ -11,30 +11,136 @@
     "name": "spokechat-agent"
   },
   "tools": [
-    "createChannel",
-    "listChannels",
-    "getChannel",
-    "updateChannel",
-    "deleteChannel",
-    "joinChannel",
-    "leaveChannel",
-    "sendMessage",
-    "listMessages",
-    "editMessage",
-    "deleteMessage",
-    "getThread",
-    "searchMessages",
-    "addReaction",
-    "removeReaction",
-    "getReactions",
-    "setPresence",
-    "getUserPresence",
-    "getOnlineUsers",
-    "pinMessage",
-    "unpinMessage",
-    "getPinnedMessages",
-    "createDM",
-    "listDMs"
+    {
+      "name": "create_canned_response",
+      "description": "Create a canned response template for common chat questions",
+      "method": "POST",
+      "path": "/api/v1/context",
+      "parameters": {
+        "key": {
+          "type": "string",
+          "required": true
+        },
+        "value": {
+          "type": "object",
+          "required": true,
+          "description": "{ trigger, title, body, topic, language }"
+        }
+      },
+      "fixedBodyMerge": {
+        "entryType": "ENTITY",
+        "category": "canned_response"
+      }
+    },
+    {
+      "name": "list_canned_responses",
+      "description": "List all canned responses",
+      "method": "GET",
+      "path": "/api/v1/context",
+      "parameters": {
+        "category": {
+          "type": "string",
+          "default": "canned_response",
+          "in": "query"
+        }
+      }
+    },
+    {
+      "name": "create_routing_rule",
+      "description": "Create a routing rule for chat conversations",
+      "method": "POST",
+      "path": "/api/v1/context",
+      "parameters": {
+        "key": {
+          "type": "string",
+          "required": true
+        },
+        "value": {
+          "type": "object",
+          "required": true,
+          "description": "{ name, condition_type, condition_value, route_to, priority }"
+        }
+      },
+      "fixedBodyMerge": {
+        "entryType": "ENTITY",
+        "category": "chat_routing"
+      }
+    },
+    {
+      "name": "list_conversations",
+      "description": "List chat conversations",
+      "method": "GET",
+      "path": "/api/v1/context",
+      "parameters": {
+        "category": {
+          "type": "string",
+          "default": "chat_conversation",
+          "in": "query"
+        }
+      }
+    },
+    {
+      "name": "create_escalation",
+      "description": "Create an URGENT escalation task for a chat conversation",
+      "method": "POST",
+      "path": "/api/v1/tasks",
+      "parameters": {
+        "title": {
+          "type": "string",
+          "required": true
+        },
+        "description": {
+          "type": "string"
+        },
+        "priority": {
+          "type": "string",
+          "default": "URGENT"
+        }
+      }
+    },
+    {
+      "name": "log_conversation",
+      "description": "Log a conversation summary for audit and training",
+      "method": "POST",
+      "path": "/api/v1/context",
+      "parameters": {
+        "key": {
+          "type": "string",
+          "required": true
+        },
+        "value": {
+          "type": "object",
+          "required": true,
+          "description": "{ client_name, channel, summary, resolution, csat_score, duration_minutes }"
+        }
+      },
+      "fixedBodyMerge": {
+        "entryType": "ENTITY",
+        "category": "chat_conversation"
+      }
+    },
+    {
+      "name": "read_context",
+      "description": "Read organizational context — team patterns, client info, preferences, insights",
+      "method": "GET",
+      "path": "/api/v1/context",
+      "parameters": {
+        "category": {
+          "type": "string",
+          "in": "query"
+        },
+        "entryType": {
+          "type": "string",
+          "in": "query",
+          "enum": [
+            "ENTITY",
+            "PATTERN",
+            "PREFERENCE",
+            "INSIGHT"
+          ]
+        }
+      }
+    }
   ],
   "surfaces": [
     {

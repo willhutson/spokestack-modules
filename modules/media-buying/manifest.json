@@ -21,21 +21,133 @@
     "name": "media-buying-agent"
   },
   "tools": [
-    "createCampaign",
-    "listCampaigns",
-    "updateCampaign",
-    "getCampaignPerformance",
-    "createAdSet",
-    "updateAdSet",
-    "pauseAdSet",
-    "getAdSetMetrics",
-    "uploadCreative",
-    "listCreatives",
-    "linkCreativeToAdSet",
-    "trackSpend",
-    "getBudgetUtilization",
-    "getROAS",
-    "exportSpendReport"
+    {
+      "name": "list_tasks",
+      "description": "List tasks with optional status filter",
+      "method": "GET",
+      "path": "/api/v1/tasks",
+      "parameters": {
+        "status": {
+          "type": "string",
+          "in": "query"
+        },
+        "assigneeId": {
+          "type": "string",
+          "in": "query"
+        }
+      }
+    },
+    {
+      "name": "list_projects",
+      "description": "List all projects, optionally filtered by status",
+      "method": "GET",
+      "path": "/api/v1/projects",
+      "parameters": {
+        "status": {
+          "type": "string",
+          "in": "query"
+        }
+      }
+    },
+    {
+      "name": "list_briefs",
+      "description": "List all briefs, optionally filtered by status",
+      "method": "GET",
+      "path": "/api/v1/briefs",
+      "parameters": {
+        "status": {
+          "type": "string",
+          "in": "query"
+        }
+      }
+    },
+    {
+      "name": "list_orders",
+      "description": "List all orders",
+      "method": "GET",
+      "path": "/api/v1/orders",
+      "parameters": {
+        "status": {
+          "type": "string",
+          "in": "query"
+        }
+      }
+    },
+    {
+      "name": "list_clients",
+      "description": "List all clients in the workspace",
+      "method": "GET",
+      "path": "/api/v1/clients",
+      "parameters": {}
+    },
+    {
+      "name": "list_invoices",
+      "description": "List all invoices (via orders with invoice data)",
+      "method": "GET",
+      "path": "/api/v1/orders",
+      "parameters": {
+        "status": {
+          "type": "string",
+          "in": "query"
+        }
+      }
+    },
+    {
+      "name": "read_context",
+      "description": "Read organizational context — team patterns, client info, preferences, insights",
+      "method": "GET",
+      "path": "/api/v1/context",
+      "parameters": {
+        "category": {
+          "type": "string",
+          "in": "query"
+        },
+        "entryType": {
+          "type": "string",
+          "in": "query",
+          "enum": [
+            "ENTITY",
+            "PATTERN",
+            "PREFERENCE",
+            "INSIGHT"
+          ]
+        }
+      }
+    },
+    {
+      "name": "get_recent_activity",
+      "description": "Get recent activity across all entities in the workspace",
+      "method": "GET",
+      "path": "/api/v1/activity",
+      "parameters": {
+        "limit": {
+          "type": "integer",
+          "in": "query",
+          "default": 20
+        }
+      }
+    },
+    {
+      "name": "list_team_members",
+      "description": "List all team members in the workspace",
+      "method": "GET",
+      "path": "/api/v1/team",
+      "parameters": {}
+    },
+    {
+      "name": "search_workspace",
+      "description": "Search across tasks, projects, briefs, clients, and orders via context graph",
+      "method": "GET",
+      "path": "/api/v1/context",
+      "parameters": {
+        "search": {
+          "type": "string",
+          "required": true,
+          "in": "query",
+          "description": "Search query"
+        }
+      }
+    }
   ],
   "surfaces": [],
   "migrations": {

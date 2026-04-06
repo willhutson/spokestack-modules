@@ -11,23 +11,124 @@
     "name": "access-control-agent"
   },
   "tools": [
-    "createPolicy",
-    "listPolicies",
-    "getPolicy",
-    "updatePolicy",
-    "archivePolicy",
-    "clonePolicy",
-    "addRule",
-    "updateRule",
-    "deleteRule",
-    "testRule",
-    "assignPolicy",
-    "revokeAssignment",
-    "listAssignments",
-    "checkAccess",
-    "getPolicyVersions",
-    "compareVersions",
-    "rollbackPolicy"
+    {
+      "name": "create_role",
+      "description": "Create a custom access role with specific permissions",
+      "method": "POST",
+      "path": "/api/v1/context",
+      "parameters": {
+        "key": {
+          "type": "string",
+          "required": true
+        },
+        "value": {
+          "type": "object",
+          "required": true,
+          "description": "{ name, base_role, module_access[], permissions[] }"
+        }
+      },
+      "fixedBodyMerge": {
+        "entryType": "ENTITY",
+        "category": "access_role"
+      }
+    },
+    {
+      "name": "list_roles",
+      "description": "List all roles (built-in and custom)",
+      "method": "GET",
+      "path": "/api/v1/context",
+      "parameters": {
+        "category": {
+          "type": "string",
+          "default": "access_role",
+          "in": "query"
+        }
+      }
+    },
+    {
+      "name": "assign_permission",
+      "description": "Assign a specific permission to a role or user",
+      "method": "POST",
+      "path": "/api/v1/context",
+      "parameters": {
+        "key": {
+          "type": "string",
+          "required": true
+        },
+        "value": {
+          "type": "object",
+          "required": true,
+          "description": "{ permission, target_type, target_id, reason, expires_at }"
+        }
+      },
+      "fixedBodyMerge": {
+        "entryType": "ENTITY",
+        "category": "permission"
+      }
+    },
+    {
+      "name": "audit_access",
+      "description": "Retrieve access log entries for audit",
+      "method": "GET",
+      "path": "/api/v1/context",
+      "parameters": {
+        "category": {
+          "type": "string",
+          "default": "access_log",
+          "in": "query"
+        }
+      }
+    },
+    {
+      "name": "log_access_event",
+      "description": "Log an access event for compliance",
+      "method": "POST",
+      "path": "/api/v1/context",
+      "parameters": {
+        "key": {
+          "type": "string",
+          "required": true
+        },
+        "value": {
+          "type": "object",
+          "required": true,
+          "description": "{ event_type, user_id, target_user_id, resource, details }"
+        }
+      },
+      "fixedBodyMerge": {
+        "entryType": "ENTITY",
+        "category": "access_log"
+      }
+    },
+    {
+      "name": "list_team_members",
+      "description": "List all team members in the workspace",
+      "method": "GET",
+      "path": "/api/v1/team",
+      "parameters": {}
+    },
+    {
+      "name": "read_context",
+      "description": "Read organizational context — team patterns, client info, preferences, insights",
+      "method": "GET",
+      "path": "/api/v1/context",
+      "parameters": {
+        "category": {
+          "type": "string",
+          "in": "query"
+        },
+        "entryType": {
+          "type": "string",
+          "in": "query",
+          "enum": [
+            "ENTITY",
+            "PATTERN",
+            "PREFERENCE",
+            "INSIGHT"
+          ]
+        }
+      }
+    }
   ],
   "surfaces": [
     {

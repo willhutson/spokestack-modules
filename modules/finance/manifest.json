@@ -12,19 +12,116 @@
     "name": "finance-agent"
   },
   "tools": [
-    "createInvoice",
-    "listInvoices",
-    "getInvoice",
-    "updateInvoiceStatus",
-    "trackPayment",
-    "getFinancialSummary",
-    "setBudget",
-    "listBudgets",
-    "trackBudgetSpend",
-    "getBudgetSummary",
-    "forecastRevenue",
-    "getRevenueMetrics",
-    "listForecastScenarios"
+    {
+      "name": "create_order",
+      "description": "Create an order for a client with line items",
+      "method": "POST",
+      "path": "/api/v1/orders",
+      "parameters": {
+        "clientId": {
+          "type": "string",
+          "required": true
+        },
+        "items": {
+          "type": "array",
+          "required": true,
+          "description": "Array of {description, quantity, unitPriceCents}"
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "update_order_status",
+      "description": "Update an order's fulfillment status",
+      "method": "PATCH",
+      "path": "/api/v1/orders/{orderId}",
+      "parameters": {
+        "orderId": {
+          "type": "string",
+          "required": true,
+          "in": "path"
+        },
+        "status": {
+          "type": "string",
+          "required": true,
+          "enum": [
+            "PENDING",
+            "CONFIRMED",
+            "IN_PROGRESS",
+            "COMPLETED",
+            "CANCELED"
+          ]
+        }
+      }
+    },
+    {
+      "name": "generate_invoice",
+      "description": "Generate an invoice from a completed order",
+      "method": "POST",
+      "path": "/api/v1/orders/{orderId}/invoice",
+      "parameters": {
+        "orderId": {
+          "type": "string",
+          "required": true,
+          "in": "path"
+        }
+      }
+    },
+    {
+      "name": "list_orders",
+      "description": "List all orders",
+      "method": "GET",
+      "path": "/api/v1/orders",
+      "parameters": {
+        "status": {
+          "type": "string",
+          "in": "query"
+        }
+      }
+    },
+    {
+      "name": "list_invoices",
+      "description": "List all invoices (via orders with invoice data)",
+      "method": "GET",
+      "path": "/api/v1/orders",
+      "parameters": {
+        "status": {
+          "type": "string",
+          "in": "query"
+        }
+      }
+    },
+    {
+      "name": "list_clients",
+      "description": "List all clients in the workspace",
+      "method": "GET",
+      "path": "/api/v1/clients",
+      "parameters": {}
+    },
+    {
+      "name": "read_context",
+      "description": "Read organizational context — team patterns, client info, preferences, insights",
+      "method": "GET",
+      "path": "/api/v1/context",
+      "parameters": {
+        "category": {
+          "type": "string",
+          "in": "query"
+        },
+        "entryType": {
+          "type": "string",
+          "in": "query",
+          "enum": [
+            "ENTITY",
+            "PATTERN",
+            "PREFERENCE",
+            "INSIGHT"
+          ]
+        }
+      }
+    }
   ],
   "surfaces": [
     {
