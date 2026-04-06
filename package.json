@@ -13,7 +13,8 @@
     "test": "turbo test",
     "lint": "turbo lint",
     "validate": "turbo validate",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "sync-tools": "npx tsx scripts/sync-tools.ts"
   },
   "devDependencies": {
     "@types/node": "^20.19.37",
