@@ -187,5 +187,10 @@
   "author": {
     "name": "SpokeStack",
     "url": "https://spokestack.dev"
-  }
+  },
+  "contextCategories": [
+    "press_release",
+    "media_list",
+    "journalist"
+  ]
 }

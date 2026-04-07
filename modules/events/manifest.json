@@ -190,5 +190,10 @@
   "author": {
     "name": "SpokeStack",
     "url": "https://spokestack.dev"
-  }
+  },
+  "contextCategories": [
+    "event_guest",
+    "vendor",
+    "event_timeline"
+  ]
 }

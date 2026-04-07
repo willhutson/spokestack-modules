@@ -296,5 +296,10 @@
   "author": {
     "name": "SpokeStack",
     "url": "https://spokestack.dev"
-  }
+  },
+  "contextCategories": [
+    "contact",
+    "deal",
+    "company"
+  ]
 }

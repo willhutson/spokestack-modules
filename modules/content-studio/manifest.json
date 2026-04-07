@@ -253,5 +253,9 @@
   "author": {
     "name": "SpokeStack",
     "url": "https://spokestack.dev"
-  }
+  },
+  "contextCategories": [
+    "brand_guide",
+    "content_calendar"
+  ]
 }

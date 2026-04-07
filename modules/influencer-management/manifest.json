@@ -179,5 +179,9 @@
   "author": {
     "name": "SpokeStack",
     "url": "https://spokestack.dev"
-  }
+  },
+  "contextCategories": [
+    "influencer",
+    "campaign"
+  ]
 }

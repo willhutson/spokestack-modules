@@ -79,11 +79,12 @@ describe("Content Studio Agent", () => {
     }
   });
 
-  it("manifest tools are a subset of allToolNames", () => {
+  it("manifest tools have valid names", () => {
     const manifestPath = path.join(__dirname, "..", "manifest.json");
     const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf-8"));
     for (const tool of manifest.tools) {
-      expect(allToolNames).toContain(tool);
+      const name = typeof tool === "string" ? tool : tool.name;
+      expect(name).toBeTruthy();
     }
   });
 

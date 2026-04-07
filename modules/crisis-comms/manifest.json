@@ -223,5 +223,10 @@
   "author": {
     "name": "SpokeStack",
     "url": "https://spokestack.dev"
-  }
+  },
+  "contextCategories": [
+    "crisis_stakeholder",
+    "crisis_playbook",
+    "media_list"
+  ]
 }
