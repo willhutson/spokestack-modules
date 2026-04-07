@@ -227,5 +227,11 @@
   "author": {
     "name": "SpokeStack",
     "url": "https://spokestack.dev"
-  }
+  },
+  "contextCategories": [
+    "journalist",
+    "media_list",
+    "coverage",
+    "pitch"
+  ]
 }

@@ -150,5 +150,10 @@
   "author": {
     "name": "SpokeStack",
     "url": "https://spokestack.dev"
-  }
+  },
+  "contextCategories": [
+    "report_metric",
+    "coverage",
+    "client"
+  ]
 }
